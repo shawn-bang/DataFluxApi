@@ -29,7 +29,7 @@ public class CCAFService {
 		String requestTime = sdf.format(new Date());
 		CCAFBiz bizHandler = new CCAFBiz();
 		String reportContent = null;
-		/*SqlSession sqlSession = SessionFactory.getSqlSessionFactory().openSession(false);*/
+		SqlSession sqlSession = SessionFactory.getSqlSessionFactory().openSession(false);
 		try {
 			JSONObject requestJson = bizHandler.getInputJsonObject(request);
 			JSONObject requestdescJson = requestJson.getJSONObject("requestdesc");
@@ -44,7 +44,7 @@ public class CCAFService {
 					throw new Exception("input error: app_id is null but it's required");
 				}
 
-				/*bizHandler.saveRequestInfos(sqlSession, requestInfoJsonObject);*/
+				bizHandler.saveRequestInfos(sqlSession, requestInfoJsonObject);
 
 
 
@@ -53,7 +53,7 @@ public class CCAFService {
 
 				// TODO query result informations generate json response report
 
-				/*reportContent = bizHandler.getResponseJsonContent(sqlSession, appId);*/
+				reportContent = bizHandler.getResponseJsonContent(sqlSession, appId);
 			}
 
 			reportContent = "{\"app_id\": \"1001\", \"afsummary\": [{\"REMARKS\": \"dangerous\", \"VALUE\": \"risk\", \"TYPE\": \"101\"} ], \"afriskwarning\": [{\"RISKNO\": \"01\", \"RISKTYPE\": \"01\", \"RISKDESC\": \"bingo\", \"RISKCATEGORY\": \"01\"} ] }";
@@ -61,14 +61,14 @@ public class CCAFService {
 					"request time:" + requestTime + " - report time:" + sdf.format(new Date()), reportContent);
 		}catch (Exception e) {
 			e.printStackTrace();
-			/*sqlSession.rollback();*/
+			sqlSession.rollback();
 			try {
 				this.report(response, "0", "request Hxb Service failure[" + e.getMessage() + "]", reportContent);
 			} catch (Exception e1) {
 				e1.printStackTrace();
 			}
 		}finally {
-			/*sqlSession.close();*/
+			sqlSession.close();
 		}
 	}
 
