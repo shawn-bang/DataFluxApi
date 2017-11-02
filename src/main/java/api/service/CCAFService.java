@@ -43,27 +43,22 @@ public class CCAFService {
 				if (appId == null || appId.equals("")) {
 					throw new Exception("input error: app_id is null but it's required");
 				}
-
+				// insert or update request information
 				bizHandler.saveRequestInfos(sqlSession, requestInfoJsonObject);
 
+				// TODO call database callable process and analysis and calculate update result tables
 
-
-				// TODO call sas webserivces api get Participle info
-				// TODO According to Participle info handle every rules update result informations
-
-				// TODO query result informations generate json response report
-
+				// query result information and generate json response report
 				reportContent = bizHandler.getResponseJsonContent(sqlSession, appId);
 			}
 
-			reportContent = "{\"app_id\": \"1001\", \"afsummary\": [{\"REMARKS\": \"dangerous\", \"VALUE\": \"risk\", \"TYPE\": \"101\"} ], \"afriskwarning\": [{\"RISKNO\": \"01\", \"RISKTYPE\": \"01\", \"RISKDESC\": \"bingo\", \"RISKCATEGORY\": \"01\"} ] }";
 			this.report(response, "1",
 					"request time:" + requestTime + " - report time:" + sdf.format(new Date()), reportContent);
 		}catch (Exception e) {
 			e.printStackTrace();
 			sqlSession.rollback();
 			try {
-				this.report(response, "0", "request Hxb Service failure[" + e.getMessage() + "]", reportContent);
+				this.report(response, "0", "request Hxb Service failure" + e.getMessage(), reportContent);
 			} catch (Exception e1) {
 				e1.printStackTrace();
 			}

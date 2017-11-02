@@ -142,11 +142,24 @@ public class CCAFBiz {
 		JSONObject applicantinfo = requestInfoJsonObject.getJSONObject("applicantinfo");
 		JSONArray zmivsinfos = requestInfoJsonObject.getJSONArray("zmivsinfo");
 		String appId = applicantinfo.getString("app_id");
-		List<Map<String, Object>> requestInfosList = hxbDao.isExistsRequest(sqlSession, appId);
-		if (requestInfosList == null || requestInfosList.size() == 0) {
-			// TODO save requestInfo
+		int count = hxbDao.isExistsRequest(sqlSession, appId);
+		if (count <= 0) {
+			hxbDao.saveApplicantinfo(sqlSession, applicantinfo);
+			for (int i = 0; i < zmivsinfos.size(); i++) {
+				JSONObject zmivsinfo = zmivsinfos.getJSONObject(i);
+				zmivsinfo.put("app_id", appId);
+				hxbDao.saveZmivsinfo(sqlSession, zmivsinfo);
+			}
 		} else {
-			// TODO update requestInfo
+			// we have already confirmed
+			hxbDao.updateApplicantinfo(sqlSession, applicantinfo);
+			hxbDao.deleteZmivsinfoByAppid(sqlSession, appId);
+			sqlSession.commit();
+			for (int i = 0; i < zmivsinfos.size(); i++) {
+				JSONObject zmivsinfo = zmivsinfos.getJSONObject(i);
+				zmivsinfo.put("app_id", appId);
+				hxbDao.saveZmivsinfo(sqlSession, zmivsinfo);
+			}
 		}
 		sqlSession.commit();
 		Long endtime = System.currentTimeMillis();
