@@ -32,7 +32,7 @@ public class CCAFServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		response.setContentType("text/html");
-		response.setCharacterEncoding("UTF-8");  
+		response.setCharacterEncoding("UTF-8");
 		PrintWriter out = response.getWriter();
 		out.write("error: you get nothing,please request HxbDataFluxApi by post method!");
         out.flush();
