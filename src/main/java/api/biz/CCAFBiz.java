@@ -64,41 +64,6 @@ public class CCAFBiz {
 		}
 	}
 
-	public void shenqingjian_no_isnull(Map<String, Object> inputCCAppMap) throws Exception {
-		if (inputCCAppMap.get("shenqingjian_no").toString() == null
-				|| inputCCAppMap.get("shenqingjian_no").toString().equals("")) {
-			throw new Exception("input error: shenqingjian_no is null");
-		}
-	}
-
-	public String getCCAppAfRpt(String shenqingjian_no) throws Exception {
-		long starttime = System.currentTimeMillis();
-		String rptStr = null;
-		String reqURL = PropUtil.getPropValue("runningControl", "CCAPPAFURL")+ shenqingjian_no;
-		HttpClientBuilder httpClientBuilder = HttpClientBuilder.create();
-		CloseableHttpClient closeableHttpClient = httpClientBuilder.build();
-		HttpGet httpGet = new HttpGet(reqURL);
-		try {
-			HttpResponse httpResponse = closeableHttpClient.execute(httpGet);
-			HttpEntity entity = httpResponse.getEntity();
-			if (entity != null) {
-				rptStr = EntityUtils.toString(entity, "UTF-8");
-			}
-		} catch (Exception e) {
-			throw e;
-		} finally {
-			try {
-				closeableHttpClient.close();
-			} catch (IOException e) {
-				e.printStackTrace();
-				log.error(e.getMessage(),e);
-			}
-		}
-		Long endtime = System.currentTimeMillis();
-		log.info(shenqingjian_no + ":CCAppAfRpt:" + (endtime - starttime));
-		return rptStr;
-	}
-
 	public String getResponseJsonContent(SqlSession sqlSession, String appId) {
 		HxbDao hxbDao = HxbDao.getInstance();
 		List<Map<String, Object>> afsummaryList = hxbDao.selectAfsummary(sqlSession, appId);
@@ -113,29 +78,10 @@ public class CCAFBiz {
 
 	/**
 	 * 如果AF中不存在该申请号，直接存入；如果AF中已存在该申请号，只更新接口传入的字段(传入了什么字段就更新什么字段，即使传入的是空值也更新为空值)，用于支持接口只传入部分字段的情况
-	 * 
+	 *
 	 * @param sqlSession
-	 * @param inputCCAppMap
+	 * @param requestInfoJsonObject
 	 */
-	public void saveCCAppInfo(SqlSession sqlSession, Map<String, Object> inputCCAppMap) {
-		long starttime = System.currentTimeMillis();
-		GzcbCCAppImpl ccappImpl = GzcbCCAppImpl.getInstance();
-		String shenqingjian_no = (String) inputCCAppMap.get("shenqingjian_no");
-		if (ccappImpl.isExistsCCApp(sqlSession, shenqingjian_no).equals("NO")) {
-			ccappImpl.saveCCApp(sqlSession, inputCCAppMap);
-			sqlSession.commit();
-			this.saveCCSnaInput(sqlSession, inputCCAppMap, shenqingjian_no);
-		} else {
-			Map<String, Object> oldCCAppMap = ccappImpl.selectCCApp(sqlSession, shenqingjian_no);
-			this.renewCCAppMapValue(oldCCAppMap, inputCCAppMap);
-			ccappImpl.updateCCApp(sqlSession, oldCCAppMap);
-			sqlSession.commit();
-			this.saveCCSnaInput(sqlSession, oldCCAppMap, shenqingjian_no);
-		}
-		Long endtime = System.currentTimeMillis();
-		log.info(shenqingjian_no + ":CCAppInfo :" + (endtime - starttime));
-	}
-
 	public void saveRequestInfos(SqlSession sqlSession, JSONObject requestInfoJsonObject) {
 		long starttime = System.currentTimeMillis();
 		HxbDao hxbDao = HxbDao.getInstance();
@@ -154,7 +100,6 @@ public class CCAFBiz {
 			// we have already confirmed
 			hxbDao.updateApplicantinfo(sqlSession, applicantinfo);
 			hxbDao.deleteZmivsinfoByAppid(sqlSession, appId);
-			sqlSession.commit();
 			for (int i = 0; i < zmivsinfos.size(); i++) {
 				JSONObject zmivsinfo = zmivsinfos.getJSONObject(i);
 				zmivsinfo.put("app_id", appId);
@@ -166,74 +111,17 @@ public class CCAFBiz {
 		log.info(appId + ":Hxb save requestInfo :" + (endtime - starttime));
 	}
 
-	private void renewCCAppMapValue(Map<String, Object> oldMap, Map<String, Object> inputCCAppMap) {
-		Iterator<String> iterator = oldMap.keySet().iterator();
-		String tmpkey = "";
-		while (iterator.hasNext()) {
-			tmpkey = iterator.next();
-			if (inputCCAppMap.containsKey(tmpkey)) {
-				oldMap.put(tmpkey, inputCCAppMap.get(tmpkey));
-			}
-		}
-	}
-
-	public Map<String, Object> ccAppJsonToMap(JSONObject ccAppJson) {
-		HashMap<String, Object> ccAppMap = new HashMap<String, Object>();
-		Iterator<String> iterator = ccAppJson.keySet().iterator();
-		String tmpkey = null;
-		while (iterator.hasNext()) {
-			tmpkey = (String) iterator.next();
-			if (tmpkey.equals("salary") || tmpkey.equals("historyid") || tmpkey.equals("loanaccountcount")
-					|| tmpkey.equals("loanmonths") || tmpkey.equals("highestoverdueamountpermon")
-					|| tmpkey.equals("loanmaxduration") || tmpkey.equals("credit_loanaccountcount")
-					|| tmpkey.equals("credit_loanmonths") || tmpkey.equals("credit_highestoverdueamountpermon")
-					|| tmpkey.equals("credit_loanmaxduration") || tmpkey.equals("credit_limit")
-					|| tmpkey.equals("max_credit_limit_per_org") || tmpkey.equals("min_credit_limit_per_org")
-					|| tmpkey.equals("used_credit_limit") || tmpkey.equals("last6_month_used_avg_amount")) {
-				if (!ccAppJson.getString(tmpkey).equals("")) {
-					ccAppMap.put(tmpkey, new java.math.BigDecimal(ccAppJson.getString(tmpkey)));
-				}
-			} else {
-				String tmpvalue=ccAppJson.getString(tmpkey);
-				if (tmpkey.equals("companyphone")||tmpkey.equals("homephone")){
-					tmpvalue=tmpvalue.replaceAll("-", "");
-				}
-				ccAppMap.put(tmpkey,tmpvalue);
-			}
-		}
-		return ccAppMap;
-	}
-
-	public void saveCCSnaInput(SqlSession sqlSession, Map<String, Object> lastestCCAppMap, String shenqingjian_no) {
-		GzcbCCAppImpl ccappImpl = GzcbCCAppImpl.getInstance();
-		ccappImpl.deleteCCSnaInputFromAppno(sqlSession, shenqingjian_no);
-		sqlSession.commit();
-		Iterator<String> it = GzcbCCConfig.getConf_CC_SNAINPUT_TOTYPE_MAP().keySet().iterator();
-		while (it.hasNext()) {
-			String key = it.next();
-			String entityValue = lastestCCAppMap.get(key).toString().trim();
-			if (!entityValue.equals("") && entityValue != null) {
-				Map<String, String> ccSnaInputMap = new HashMap<String, String>();
-				ccSnaInputMap.put("from_node", shenqingjian_no);
-				ccSnaInputMap.put("to_node", entityValue);
-				ccSnaInputMap.put("src_type", key);
-				ccSnaInputMap.put("from_type", "APPNO");
-				ccSnaInputMap.put("to_type", GzcbCCConfig.getConf_CC_SNAINPUT_TOTYPE_MAP().get(key));
-				ccSnaInputMap.put("link_type", GzcbCCConfig.getConf_CC_SNAINPUT_LINKTYPE_MAP().get(key));
-				ccSnaInputMap.put("cluster", GzcbCCConfig.getConf_CC_SNAINPUT_CLUSTER_MAP().get(key));
-				ccappImpl.saveCCSnaInput(sqlSession, ccSnaInputMap);
-			}
-		}
-		sqlSession.commit();
-	}
-
-	public void runAfCCAppRT(SqlSession sqlSession, String shenqingjian_no) {
+	/**
+	 * 调用数据库可执行对象进行业务规则相关逻辑运算并更新结果表数据
+	 * @param sqlSession
+	 * @param shenqingjian_no
+	 */
+	public void runTargetRT(SqlSession sqlSession, String shenqingjian_no) {
 		Long starttime = System.currentTimeMillis();
-		GzcbCCAppImpl ccappImpl = GzcbCCAppImpl.getInstance();
-		ccappImpl.callAfCCAppRT(sqlSession, shenqingjian_no);
+		// TODO call database pl/sql callable object
 		sqlSession.commit();
 		Long endtime = System.currentTimeMillis();
-		log.info(shenqingjian_no + ":runAfCCAppRT:" + (endtime - starttime));
+		log.info(shenqingjian_no + ":runTargetRT:" + (endtime - starttime));
 	}
 
 	public void saveMatchRst(SqlSession sqlSession, String shenqingjian_no, Row__out[] dfouttab) {

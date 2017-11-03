@@ -1508,7 +1508,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             vehicle_query_result = #{vehicle_query_result, jdbcType = VARCHAR},
             vehicle_value = #{vehicle_value, jdbcType = VARCHAR},
             vehicle_age = #{vehicle_age, jdbcType = VARCHAR}
-        where app_id = #{appId,jdbcType =VARCHAR}
+        where app_id = #{app_id,jdbcType =VARCHAR}
     </update>
 
 </mapper>
