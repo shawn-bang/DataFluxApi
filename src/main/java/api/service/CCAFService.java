@@ -3,19 +3,11 @@ package api.service;
 import java.io.PrintWriter;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.Iterator;
-import java.util.Map;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
 import org.apache.ibatis.session.SqlSession;
 import org.apache.log4j.Logger;
-
-import com.dataflux.xsd.archserver.Row__out;
-
 import api.biz.CCAFBiz;
-import api.utils.PropUtil;
 import api.utils.SessionFactory;
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
