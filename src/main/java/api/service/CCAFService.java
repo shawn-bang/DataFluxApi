@@ -31,7 +31,7 @@ public class CCAFService {
 				JSONObject applicantinfo = requestInfoJsonObject.getJSONObject("applicantinfo");
 				String appId = applicantinfo.getString("app_id");
 
-				// shawn:app_id is required
+				// app_id is required
 				if (appId == null || appId.equals("")) {
 					throw new Exception("input error: app_id is null but it's required");
 				}
