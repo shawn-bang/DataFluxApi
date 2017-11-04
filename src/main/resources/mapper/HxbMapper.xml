@@ -68,7 +68,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     </delete>
 
 	<select id="callHandleProcedures" parameterType="String" statementType="CALLABLE">
-		{call hxb_rt_pkg.main(#{appId,jdbcType=VARCHAR})}
+		{call HXB_RT_PKG.RT_MAIN(#{appId,jdbcType=VARCHAR})}
 	</select>
 
 	<insert id="saveApplicantinfo" parameterType="java.util.HashMap" statementType="PREPARED">
