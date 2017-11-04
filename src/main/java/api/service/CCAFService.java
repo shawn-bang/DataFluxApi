@@ -37,9 +37,8 @@ public class CCAFService {
 				}
 				// insert or update request information
 				bizHandler.saveRequestInfos(sqlSession, requestInfoJsonObject);
-
-				// TODO call database callable process and analysis and calculate update result tables
-
+				// call database callable process and analysis and calculate update result tables
+				bizHandler.runHandleProcedures(sqlSession, appId);
 				// query result information and generate json response report
 				reportContent = bizHandler.getResponseJsonContent(sqlSession, appId);
 

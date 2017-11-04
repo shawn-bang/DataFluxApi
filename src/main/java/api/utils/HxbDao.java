@@ -42,6 +42,11 @@ public class HxbDao {
 		mapper.deleteZmivsinfoByAppid(appId);
 	}
 
+	public void runHandleProcedures(SqlSession sqlSession,String appId){
+		HxbMapper mapper = sqlSession.getMapper(HxbMapper.class);
+		mapper.callHandleProcedures(appId);
+	}
+
 	public List<Map<String, Object>>  selectAfsummary(SqlSession sqlSession,String appId){
 		HxbMapper mapper = sqlSession.getMapper(HxbMapper.class);
 		return mapper.selectAfsummary(appId);

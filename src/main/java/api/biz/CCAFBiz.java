@@ -114,14 +114,15 @@ public class CCAFBiz {
 	/**
 	 * 调用数据库可执行对象进行业务规则相关逻辑运算并更新结果表数据
 	 * @param sqlSession
-	 * @param shenqingjian_no
+	 * @param appId
 	 */
-	public void runTargetRT(SqlSession sqlSession, String shenqingjian_no) {
+	public void runHandleProcedures(SqlSession sqlSession, String appId) {
 		Long starttime = System.currentTimeMillis();
-		// TODO call database pl/sql callable object
+		HxbDao hxbDao = HxbDao.getInstance();
+		hxbDao.runHandleProcedures(sqlSession, appId);
 		sqlSession.commit();
 		Long endtime = System.currentTimeMillis();
-		log.info(shenqingjian_no + ":runTargetRT:" + (endtime - starttime));
+		log.info(appId + ":runHandleProcedures:" + (endtime - starttime));
 	}
 
 	public void saveMatchRst(SqlSession sqlSession, String shenqingjian_no, Row__out[] dfouttab) {
