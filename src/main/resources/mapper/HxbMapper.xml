@@ -67,6 +67,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
          where app_id = #{appId,jdbcType =VARCHAR}
     </delete>
 
+	<select id="callHandleProcedures" parameterType="String" statementType="CALLABLE">
+		{call hxb_rt_pkg.main(#{appId,jdbcType=VARCHAR})}
+	</select>
+
 	<insert id="saveApplicantinfo" parameterType="java.util.HashMap" statementType="PREPARED">
 		insert into request_applicantinfo
 		(
