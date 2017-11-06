@@ -1,4 +1,17 @@
-﻿--if exist table af_request_applicantinfo_zmivsinfo
+﻿--if exist table AF_APP_PRC_LOGS
+DROP TABLE af_app_prc_logs cascade constraints;
+create table af_app_prc_logs
+(
+      app_Id VARCHAR2(30) NOT NUll,
+      error_logs VARCHAR2(500),
+      update_date DATE default sysdate not null
+);
+
+comment on table af_app_prc_logs is '存储过程相关日志';
+comment on column af_app_prc_logs.app_Id is '申请进件号码';
+comment on column af_app_prc_logs.error_logs is '日志信息';
+
+--if exist table af_request_applicantinfo_zmivsinfo
 DROP TABLE af_request_applicantinfo_zmivsinfo cascade constraints;
 --create table af_request_applicantinfo_zmivsinfo
 create table request_appinfo_zmivsinfo(
