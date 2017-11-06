@@ -1,4 +1,33 @@
-﻿--if exist table AF_APP_PRC_LOGS
+﻿--if exist table af_app_model_var_input
+DROP TABLE af_app_model_var_input cascade constraints;
+create table af_app_model_var_input
+(
+      APP_ID      VARCHAR2(30),
+      VAR_NAME    VARCHAR2(100),
+      VAR_VALUE   VARCHAR2(30),
+      UPDATE_DATE DATE default sysdate
+);
+-- Add comments to the table
+comment on table af_app_model_var_input is '模型变量输入表';
+-- Add comments to the columns
+comment on column af_app_model_var_input.APP_ID is '申请进件号码';
+comment on column af_app_model_var_input.VAR_NAME is '变量名称';
+comment on column af_app_model_var_input.VAR_VALUE is '变量值';
+
+--if exist table af_app_model_input_parms
+DROP TABLE af_app_model_input_parms cascade constraints;
+create table af_app_model_input_parms
+(
+      MODEL_VAR       VARCHAR2(30),
+      MODEL_VAR_VALUE NUMBER
+);
+-- Add comments to the table
+comment on table af_app_model_input_parms is '模型结果参数表';
+-- Add comments to the columns
+comment on column af_app_model_input_parms.MODEL_VAR is '模型变量名';
+comment on column af_app_model_input_parms.MODEL_VAR_VALUE is '模型变量权重';
+
+--if exist table af_app_prc_logs
 DROP TABLE af_app_prc_logs cascade constraints;
 create table af_app_prc_logs
 (
@@ -11,10 +40,10 @@ comment on table af_app_prc_logs is '存储过程相关日志';
 comment on column af_app_prc_logs.app_Id is '申请进件号码';
 comment on column af_app_prc_logs.error_logs is '日志信息';
 
---if exist table af_request_applicantinfo_zmivsinfo
-DROP TABLE af_request_applicantinfo_zmivsinfo cascade constraints;
---create table af_request_applicantinfo_zmivsinfo
-create table request_appinfo_zmivsinfo(
+--if exist table af_request_appinfo_zmivsinfo
+DROP TABLE af_request_appinfo_zmivsinfo cascade constraints;
+--create table af_request_appinfo_zmivsinfo
+create table af_request_appinfo_zmivsinfo(
       app_id VARCHAR2(25) NOT NUll,
       zm2_crt_time VARCHAR2(20),
       isrisk VARCHAR2(2),
