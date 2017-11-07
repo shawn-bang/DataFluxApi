@@ -125,6 +125,34 @@ public class CCAFBiz {
 		log.info(appId + ":runHandleProcedures:" + (endtime - starttime));
 	}
 
+	/**
+	 * 准备模型应用数据
+	 * @param sqlSession
+	 */
+	public void prepareModelInput(SqlSession sqlSession, JSONObject applicantinfo) {
+		Long starttime = System.currentTimeMillis();
+		HxbDao hxbDao = HxbDao.getInstance();
+		String appId = applicantinfo.getString("app_id");
+		List<Map<String, Object>> params = hxbDao.selectModelInputParams(sqlSession);
+		if (params == null || params.size() == 0) {
+			log.warn(appId + " : haven't found any ModelInputParams rows.");
+			return;
+		}
+		List<Map<String, Object>> values = new ArrayList<Map<String, Object>>();
+		for (Map<String, Object> map : params) {
+			String columnName = map.get("MODEL_VAR").toString();
+			Map<String, Object> value = new HashMap();
+			value.put("app_id", appId);
+			value.put("var_name", columnName);
+			value.put("var_value", applicantinfo.getString(columnName));
+			values.add(value);
+		}
+		hxbDao.saveModelVarInput(sqlSession, values);
+		sqlSession.commit();
+		Long endtime = System.currentTimeMillis();
+		log.info(appId + ":prepareModelInput:" + (endtime - starttime));
+	}
+
 	public void saveMatchRst(SqlSession sqlSession, String shenqingjian_no, Row__out[] dfouttab) {
 		Long starttime = System.currentTimeMillis();
 		Map<String, Map<String, String>> appAddTab = new HashMap<String, Map<String, String>>();
