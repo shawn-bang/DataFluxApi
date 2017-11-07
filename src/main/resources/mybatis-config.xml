@@ -24,13 +24,11 @@
 				<property name="poolPingEnabled" value="true" />
 				<property name="poolPingQuery" value="select now()" />
 				<property name="poolPingConnectionsNotUsedFor" value="72000000" />
-				<!-- <property name = "poolMaximumCheckoutTime" value="20000"></property> -->
 			</dataSource>
 		</environment>
 	</environments>
 
 	<mappers>
-		<mapper resource="mapper/gzcbCCAppAFMapper.xml"></mapper>
 		<mapper resource="mapper/HxbMapper.xml"></mapper>
 	</mappers>
 
