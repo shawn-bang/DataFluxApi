@@ -130,7 +130,7 @@ public class CCAFBiz {
 	 * @param sqlSession
 	 * @param applicantinfo
 	 */
-	public void prepareModelInput(SqlSession sqlSession, JSONObject applicantinfo) throws Exception {
+	public void prepareModelInput(SqlSession sqlSession, JSONObject applicantinfo) {
 		Long starttime = System.currentTimeMillis();
 		HxbDao hxbDao = HxbDao.getInstance();
 		String appId = applicantinfo.getString("app_id");
@@ -138,7 +138,7 @@ public class CCAFBiz {
 		List<Map<String, Object>> params = hxbDao.selectModelInputParams(sqlSession);
 		if (params == null || params.size() == 0) {
 			log.warn(appId + " : haven't found any ModelInputParams rows.");
-			throw new Exception(appId + " : haven't found any ModelInputParams rows.");
+			throw new RuntimeException(appId + " : haven't found any ModelInputParams rows.");
 		}
 		List<Map<String, Object>> values = new ArrayList<Map<String, Object>>();
 		for (Map<String, Object> map : params) {
@@ -160,7 +160,7 @@ public class CCAFBiz {
 	 * @param sqlSession
 	 * @param applicantinfo
 	 */
-	public void prepareSNAInput(SqlSession sqlSession, JSONObject applicantinfo) throws Exception {
+	public void prepareSNAInput(SqlSession sqlSession, JSONObject applicantinfo) {
 		Long starttime = System.currentTimeMillis();
 		HxbDao hxbDao = HxbDao.getInstance();
 		String appId = applicantinfo.getString("app_id");
@@ -168,7 +168,7 @@ public class CCAFBiz {
 		List<Map<String, Object>> params = hxbDao.selectSNAInputConf(sqlSession);
 		if (params == null || params.size() == 0) {
 			log.warn(appId + " : haven't found any ModelInputParams rows.");
-			throw new Exception(appId + " : haven't found any SNAInputParams rows.");
+			throw new RuntimeException(appId + " : haven't found any SNAInputParams rows.");
 		}
 		for (Map<String, Object> map : params) {
 			String columnName = map.get("SRC_TYPE").toString();
