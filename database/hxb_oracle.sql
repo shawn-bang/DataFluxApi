@@ -54,7 +54,7 @@ create table af_request_appinfo_zmivsinfo(
       steelement VARCHAR2(2),
       type VARCHAR2(10),
       update_time VARCHAR2(25),  
-      sys_date date default sysdate not null
+      modify_time date default sysdate not null
  
 );
 
@@ -69,7 +69,7 @@ comment on column  af_request_appinfo_zmivsinfo.zm2_status is '当用户本人�
 comment on column  af_request_appinfo_zmivsinfo.steelement is '对于逾期类风险信息，此字段表示是否结清。T（结清）/F（未结清）';
 comment on column  af_request_appinfo_zmivsinfo.type is '行业类型';
 comment on column  af_request_appinfo_zmivsinfo.update_time is '数据更新时间';
-comment on column  af_request_appinfo_zmivsinfo.sys_date is '更新时间';
+comment on column  af_request_appinfo_zmivsinfo.modify_time is '更新时间';
 
 --if exist table af_response_afsummary
 DROP TABLE af_response_afsummary cascade constraints;
@@ -588,7 +588,7 @@ create table af_request_applicantinfo(
       vehicle_query_result VARCHAR2(100),
       vehicle_value VARCHAR2(100),
       vehicle_age VARCHAR2(100),
-      sys_date date default sysdate not null
+      modify_time date default sysdate not null
 );
 
 comment on table af_request_applicantinfo is '请求报文applicants信息表';
@@ -1069,6 +1069,6 @@ comment on column  af_request_applicantinfo.no_pd_card_6month_ave_pay is '未销
 comment on column  af_request_applicantinfo.vehicle_query_result is '查询结果';
 comment on column  af_request_applicantinfo.vehicle_value is '车辆价值';
 comment on column  af_request_applicantinfo.vehicle_age is '车龄';
-comment on column  af_request_applicantinfo.sys_date is '更新时间';
+comment on column  af_request_applicantinfo.modify_time is '更新时间';
 
 
