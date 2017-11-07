@@ -54,6 +54,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         SELECT 1 FROM DUAL
     </insert>
 
+    <delete id="deleteModelVarInputByAppid" parameterType="String" statementType="PREPARED">
+        delete from af_app_model_var_input
+        where app_id = #{appId,jdbcType =VARCHAR}
+    </delete>
+
     <insert id="saveZmivsinfo" parameterType="java.util.HashMap" statementType="PREPARED">
         insert into request_appinfo_zmivsinfo
         (

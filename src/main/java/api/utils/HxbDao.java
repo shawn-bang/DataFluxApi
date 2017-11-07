@@ -47,6 +47,11 @@ public class HxbDao {
 		mapper.saveModelVarInput(list);
 	}
 
+	public void deleteModelVarInputByAppid(SqlSession sqlSession,String appId){
+		HxbMapper mapper = sqlSession.getMapper(HxbMapper.class);
+		mapper.deleteModelVarInputByAppid(appId);
+	}
+
 	public List<Map<String, Object>>  selectModelInputParams(SqlSession sqlSession){
 		HxbMapper mapper = sqlSession.getMapper(HxbMapper.class);
 		return mapper.selectModelInputParams();

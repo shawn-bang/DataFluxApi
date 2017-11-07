@@ -133,6 +133,7 @@ public class CCAFBiz {
 		Long starttime = System.currentTimeMillis();
 		HxbDao hxbDao = HxbDao.getInstance();
 		String appId = applicantinfo.getString("app_id");
+		hxbDao.deleteModelVarInputByAppid(sqlSession, appId);
 		List<Map<String, Object>> params = hxbDao.selectModelInputParams(sqlSession);
 		if (params == null || params.size() == 0) {
 			log.warn(appId + " : haven't found any ModelInputParams rows.");
