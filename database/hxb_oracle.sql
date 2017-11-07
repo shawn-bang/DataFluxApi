@@ -588,7 +588,7 @@ create table af_request_applicantinfo(
       vehicle_query_result VARCHAR2(100),
       vehicle_value VARCHAR2(100),
       vehicle_age VARCHAR2(100),
-       sys_date date default sysdate not null
+      sys_date date default sysdate not null
 );
 
 comment on table af_request_applicantinfo is '请求报文applicants信息表';
