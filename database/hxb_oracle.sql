@@ -83,7 +83,7 @@ create table af_response_afsummary(
 
 comment on table af_response_afsummary is '响应报文中风险概要信息表';
 comment on column  af_response_afsummary.app_id is '申请件编号';
-comment on column  af_response_afsummary.type is 'af_all,rule,model,sna';
+comment on column  af_response_afsummary.type is 'AF_ALL,RULE,MODEL,SNA';
 comment on column  af_response_afsummary.value is '反欺诈决策结果';
 comment on column  af_response_afsummary.remarks is '反欺诈决策结果描述';
 
@@ -107,7 +107,7 @@ comment on column  af_response_afriskwarning.risktype is '校验规则二级分�
 comment on column  af_response_afriskwarning.riskcategory is '校验规则三级分类编号';
 comment on column  af_response_afriskwarning.riskdesc is '校验结果详情描述';
 comment on column  af_response_afriskwarning.riskcode is '校验结果A,B,C,D,E';
-comment on column af_response_afriskwarning.type is '反欺诈结果类型(af_all,rule,model,sna)';
+comment on column af_response_afriskwarning.type is '反欺诈结果类型(AF_ALL,RULE,MODEL,SNA)';
 
 --if exist table af_request_applicantinfo
 DROP TABLE af_request_applicantinfo cascade constraints;
