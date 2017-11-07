@@ -1,4 +1,51 @@
-﻿--if exist table af_app_model_var_input
+﻿-- create sna conf inputs dependence seq
+create sequence af_sna_conf_input_seq
+minvalue 1
+maxvalue 999999999999
+start with 1
+increment by 1
+nocache;
+
+--if exist table af_app_snainput
+DROP TABLE af_app_snainput cascade constraints;
+create table af_app_snainput
+(
+  idseq       NUMBER not null,
+  from_node   VARCHAR2(50),
+  to_node     VARCHAR2(100),
+  src_type    VARCHAR2(50),
+  from_type   VARCHAR2(30),
+  to_type     VARCHAR2(30),
+  link_type   VARCHAR2(2),
+  ifcluster   VARCHAR2(2),
+  update_date DATE
+);
+comment on table af_app_snainput is '源数据映射结果表';
+comment on column af_app_snainput.from_node is '起始节点-app_id_value';
+comment on column af_app_snainput.to_node is '终止节点-column_value';
+comment on column af_app_snainput.src_type is '源数据字段类型-column_name';
+comment on column af_app_snainput.from_type is '起始数据类型-app_id_name';
+comment on column af_app_snainput.to_type is '终止数据类型-AF_APP_SNAINPUT_CONF.TO_TYPE';
+comment on column af_app_snainput.link_type is '视图链接类型(1实线,4虚线)-AF_APP_SNAINPUT_CONF.LINK_TYPE';
+comment on column af_app_snainput.ifcluster is '是否参与网络构建(1参与0不参与)-AF_APP_SNAINPUT_CONF.IFCLUSTER';
+comment on column af_app_snainput.update_date is '更新日期-系统默认时间';
+
+--if exist table af_app_snainput_conf
+DROP TABLE af_app_snainput_conf cascade constraints;
+create table af_app_snainput_conf
+(
+  src_type  VARCHAR2(100),
+  to_type   VARCHAR2(50),
+  link_type VARCHAR2(2),
+  ifcluster VARCHAR2(2)
+);
+comment on table af_app_snainput_conf is '源数据映射表';
+comment on column af_app_snainput_conf.src_type is '元数据字段列名-我方column_name';
+comment on column af_app_snainput_conf.to_type is 'SNA元素列名-SNA方column_name';
+comment on column af_app_snainput_conf.link_type is '视图链接类型(1实线,4虚线)- 统一給1';
+comment on column af_app_snainput_conf.ifcluster is '是否参与网络构建(1参与0不参与)-统一給1';
+
+--if exist table af_app_model_var_input
 DROP TABLE af_app_model_var_input cascade constraints;
 create table af_app_model_var_input
 (

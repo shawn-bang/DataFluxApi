@@ -13,6 +13,9 @@ public interface HxbMapper {
 	public List<Map<String, Object>> selectModelInputParams();
 	public void saveModelVarInput(List<Map<String, Object>> list);
 	public void deleteModelVarInputByAppid(String appId);
+	public List<Map<String, Object>> selectSNAInputConf();
+	public void saveSNAInput(Map<String, Object> map);
+	public void deleteSNAInputByAppid(String appId);
 	public List<Map<String, Object>> selectAfsummary(String appId);
 	public List<Map<String, Object>> selectAfriskwarning(String appId);
 }

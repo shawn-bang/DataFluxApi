@@ -59,6 +59,46 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         where app_id = #{appId,jdbcType =VARCHAR}
     </delete>
 
+    <select id="selectSNAInputConf" resultType="java.util.HashMap" statementType="PREPARED">
+        SELECT
+            src_type,
+            to_type,
+            link_type,
+            ifcluster
+        FROM af_app_snainput_conf
+    </select>
+
+    <insert id="saveSNAInput" parameterType="java.util.HashMap" statementType="PREPARED">
+        <selectKey keyProperty="id_seq" resultType="int" order="BEFORE">
+            select AF_SNA_CONF_INPUT_SEQ.NEXTVAL from dual
+        </selectKey>
+        insert into af_app_snainput
+        (
+            idseq,
+            from_node,
+            to_node,
+            src_type,
+            from_type,
+            to_type,
+            link_type,
+            ifcluster
+        ) values
+        (
+            ${id_seq},
+            #{from_node, jdbcType = VARCHAR},
+            #{to_node, jdbcType = VARCHAR},
+            #{src_type, jdbcType = VARCHAR},
+            #{from_type, jdbcType = VARCHAR},
+            #{to_type, jdbcType = VARCHAR},
+            #{link_type, jdbcType = VARCHAR},
+            #{ifcluster, jdbcType = VARCHAR}
+        )
+    </insert>
+
+    <delete id="deleteSNAInputByAppid" parameterType="String" statementType="PREPARED">
+        delete from af_app_snainput
+        where from_node = #{appId,jdbcType =VARCHAR}
+    </delete>
     <insert id="saveZmivsinfo" parameterType="java.util.HashMap" statementType="PREPARED">
         insert into request_appinfo_zmivsinfo
         (

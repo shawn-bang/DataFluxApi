@@ -128,6 +128,7 @@ public class CCAFBiz {
 	/**
 	 * 准备模型应用数据
 	 * @param sqlSession
+	 * @param applicantinfo
 	 */
 	public void prepareModelInput(SqlSession sqlSession, JSONObject applicantinfo) {
 		Long starttime = System.currentTimeMillis();
@@ -152,6 +153,41 @@ public class CCAFBiz {
 		sqlSession.commit();
 		Long endtime = System.currentTimeMillis();
 		log.info(appId + ":prepareModelInput:" + (endtime - starttime));
+	}
+
+	/**
+	 * 准备SNA应用数据
+	 * @param sqlSession
+	 * @param applicantinfo
+	 */
+	public void prepareSNAInput(SqlSession sqlSession, JSONObject applicantinfo) {
+		Long starttime = System.currentTimeMillis();
+		HxbDao hxbDao = HxbDao.getInstance();
+		String appId = applicantinfo.getString("app_id");
+		hxbDao.deleteSNAInputByAppid(sqlSession, appId);
+		List<Map<String, Object>> params = hxbDao.selectSNAInputConf(sqlSession);
+		if (params == null || params.size() == 0) {
+			log.warn(appId + " : haven't found any SNAInputParams rows.");
+			return;
+		}
+		for (Map<String, Object> map : params) {
+			String columnName = map.get("SRC_TYPE").toString();
+			String snaColumnName = map.get("TO_TYPE").toString();
+			String link_type = map.get("LINK_TYPE").toString();
+			String ifcluster = map.get("IFCLUSTER").toString();
+			Map<String, Object> value = new HashMap();
+			value.put("from_node", appId);
+			value.put("to_node", applicantinfo.getString(columnName));
+			value.put("src_type", columnName);
+			value.put("from_type", "app_id");
+			value.put("to_type", snaColumnName);
+			value.put("link_type", link_type);
+			value.put("ifcluster", ifcluster);
+			hxbDao.saveSNAInput(sqlSession, value);
+		}
+		sqlSession.commit();
+		Long endtime = System.currentTimeMillis();
+		log.info(appId + ":prepareSNAInput:" + (endtime - starttime));
 	}
 
 	public void saveMatchRst(SqlSession sqlSession, String shenqingjian_no, Row__out[] dfouttab) {

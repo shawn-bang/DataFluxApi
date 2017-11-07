@@ -57,6 +57,21 @@ public class HxbDao {
 		return mapper.selectModelInputParams();
 	}
 
+	public void saveSNAInput(SqlSession sqlSession,Map<String, Object> map){
+		HxbMapper mapper = sqlSession.getMapper(HxbMapper.class);
+		mapper.saveSNAInput(map);
+	}
+
+	public void deleteSNAInputByAppid(SqlSession sqlSession,String appId){
+		HxbMapper mapper = sqlSession.getMapper(HxbMapper.class);
+		mapper.deleteSNAInputByAppid(appId);
+	}
+
+	public List<Map<String, Object>>  selectSNAInputConf(SqlSession sqlSession){
+		HxbMapper mapper = sqlSession.getMapper(HxbMapper.class);
+		return mapper.selectSNAInputConf();
+	}
+
 	public void runHandleProcedures(SqlSession sqlSession,String appId){
 		HxbMapper mapper = sqlSession.getMapper(HxbMapper.class);
 		mapper.callHandleProcedures(appId);

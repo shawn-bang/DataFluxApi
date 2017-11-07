@@ -37,7 +37,9 @@ public class CCAFService {
 				}
 				// insert or update request information
 				bizHandler.saveRequestInfos(sqlSession, requestInfoJsonObject);
+				// TODO Transaction control?
 				bizHandler.prepareModelInput(sqlSession, applicantinfo);
+				bizHandler.prepareSNAInput(sqlSession, applicantinfo);
 
 				// call database callable process and analysis and calculate update result tables
 				bizHandler.runHandleProcedures(sqlSession, appId);
