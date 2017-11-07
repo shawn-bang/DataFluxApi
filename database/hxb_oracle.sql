@@ -144,6 +144,7 @@ create table af_response_afriskwarning(
       riskcategory VARCHAR2(200),
       riskdesc VARCHAR2(200),
       riskcode CHAR(1),
+      ruleno VARCHAR2(20),
       type VARCHAR2(10)
 );
 
@@ -154,6 +155,7 @@ comment on column  af_response_afriskwarning.risktype is '校验规则二级分�
 comment on column  af_response_afriskwarning.riskcategory is '校验规则三级分类编号';
 comment on column  af_response_afriskwarning.riskdesc is '校验结果详情描述';
 comment on column  af_response_afriskwarning.riskcode is '校验结果A,B,C,D,E';
+comment on column  af_response_afriskwarning.ruleno is '校验规则编号';
 comment on column af_response_afriskwarning.type is '反欺诈结果类型(AF_ALL,RULE,MODEL,SNA)';
 
 --if exist table af_request_applicantinfo
