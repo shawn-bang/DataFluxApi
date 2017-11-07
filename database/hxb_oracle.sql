@@ -83,7 +83,7 @@ create table af_response_afsummary(
 
 comment on table af_response_afsummary is '响应报文中风险概要信息表';
 comment on column  af_response_afsummary.app_id is '申请件编号';
-comment on column  af_response_afsummary.type is '待确认';
+comment on column  af_response_afsummary.type is 'af_all,rule,model,sna';
 comment on column  af_response_afsummary.value is '反欺诈决策结果';
 comment on column  af_response_afsummary.remarks is '反欺诈决策结果描述';
 
