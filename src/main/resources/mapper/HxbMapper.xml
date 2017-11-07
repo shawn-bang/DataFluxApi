@@ -33,6 +33,16 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		app_id = #{appId,jdbcType =VARCHAR}
 	</select>
 
+    <delete id="deleteAfsummaryByAppid" parameterType="String" statementType="PREPARED">
+        delete from response_afsummary
+        where app_id = #{appId,jdbcType =VARCHAR}
+    </delete>
+
+    <delete id="deleteAfriskwarningByAppid" parameterType="String" statementType="PREPARED">
+        delete from response_afriskwarning
+        where app_id = #{appId,jdbcType =VARCHAR}
+    </delete>
+
 	<select id="selectModelInputParams" resultType="java.util.HashMap" statementType="PREPARED">
 		SELECT
             model_var,

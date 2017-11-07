@@ -97,6 +97,9 @@ public class CCAFBiz {
 				hxbDao.saveZmivsinfo(sqlSession, zmivsinfo);
 			}
 		} else {
+			// clear old result data
+			hxbDao.deleteAfsummaryByAppid(sqlSession, appId);
+			hxbDao.deleteAfriskwarningByAppid(sqlSession, appId);
 			// we have already confirmed
 			hxbDao.updateApplicantinfo(sqlSession, applicantinfo);
 			hxbDao.deleteZmivsinfoByAppid(sqlSession, appId);

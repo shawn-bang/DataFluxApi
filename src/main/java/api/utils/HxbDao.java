@@ -86,5 +86,15 @@ public class HxbDao {
 		HxbMapper mapper = sqlSession.getMapper(HxbMapper.class);
 		return mapper.selectAfriskwarning(appId);
 	}
+
+	public void deleteAfsummaryByAppid(SqlSession sqlSession,String appId){
+		HxbMapper mapper = sqlSession.getMapper(HxbMapper.class);
+		mapper.deleteAfsummaryByAppid(appId);
+	}
+
+	public void deleteAfriskwarningByAppid(SqlSession sqlSession,String appId){
+		HxbMapper mapper = sqlSession.getMapper(HxbMapper.class);
+		mapper.deleteAfriskwarningByAppid(appId);
+	}
 	
 }

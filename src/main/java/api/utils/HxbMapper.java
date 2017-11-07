@@ -18,4 +18,6 @@ public interface HxbMapper {
 	public void deleteSNAInputByAppid(String appId);
 	public List<Map<String, Object>> selectAfsummary(String appId);
 	public List<Map<String, Object>> selectAfriskwarning(String appId);
+	public void deleteAfsummaryByAppid(String appId);
+	public void deleteAfriskwarningByAppid(String appId);
 }
