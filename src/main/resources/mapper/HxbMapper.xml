@@ -33,6 +33,27 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		app_id = #{appId,jdbcType =VARCHAR}
 	</select>
 
+	<select id="selectModelInputParams" resultType="java.util.HashMap" statementType="PREPARED">
+		SELECT
+            model_var,
+            model_var_value
+		FROM af_app_model_input_parms
+	</select>
+
+    <insert id="saveModelVarInput" parameterType="java.util.List" statementType="PREPARED">
+        insert all
+        <foreach item="item" index="index" collection="list">
+            into af_app_model_var_input
+            (
+                app_id,
+                var_name,
+                var_value
+            ) values
+            (#{item.app_id, jdbcType = VARCHAR}, #{item.var_name, jdbcType = VARCHAR}, #{item.var_value, jdbcType = VARCHAR})
+        </foreach>
+        SELECT 1 FROM DUAL
+    </insert>
+
     <insert id="saveZmivsinfo" parameterType="java.util.HashMap" statementType="PREPARED">
         insert into request_appinfo_zmivsinfo
         (
@@ -68,7 +89,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     </delete>
 
 	<select id="callHandleProcedures" parameterType="String" statementType="CALLABLE">
-		{call HXB_RT_PKG.RT_MAIN(#{appId,jdbcType=VARCHAR})}
+		{call AF_HXBCB.RT_MAIN(#{appId,jdbcType=VARCHAR})}
 	</select>
 
 	<insert id="saveApplicantinfo" parameterType="java.util.HashMap" statementType="PREPARED">

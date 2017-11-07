@@ -42,6 +42,16 @@ public class HxbDao {
 		mapper.deleteZmivsinfoByAppid(appId);
 	}
 
+	public void saveModelVarInput(SqlSession sqlSession,List<Map<String, Object>> list){
+		HxbMapper mapper = sqlSession.getMapper(HxbMapper.class);
+		mapper.saveModelVarInput(list);
+	}
+
+	public List<Map<String, Object>>  selectModelInputParams(SqlSession sqlSession){
+		HxbMapper mapper = sqlSession.getMapper(HxbMapper.class);
+		return mapper.selectModelInputParams();
+	}
+
 	public void runHandleProcedures(SqlSession sqlSession,String appId){
 		HxbMapper mapper = sqlSession.getMapper(HxbMapper.class);
 		mapper.callHandleProcedures(appId);

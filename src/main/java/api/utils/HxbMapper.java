@@ -10,6 +10,8 @@ public interface HxbMapper {
 	public void saveZmivsinfo(Map<String, Object> map);
 	public void deleteZmivsinfoByAppid(String appId);
 	public void callHandleProcedures(String appId);
+	public List<Map<String, Object>> selectModelInputParams();
+	public void saveModelVarInput(List<Map<String, Object>> list);
 	public List<Map<String, Object>> selectAfsummary(String appId);
 	public List<Map<String, Object>> selectAfriskwarning(String appId);
 }
