@@ -67,6 +67,24 @@ public class CCAFBiz {
 		HxbDao hxbDao = HxbDao.getInstance();
 		List<Map<String, Object>> afsummaryList = hxbDao.selectAfsummary(sqlSession, appId);
 		List<Map<String, Object>> afriskwarningList = hxbDao.selectAfriskwarning(sqlSession, appId);
+
+		// default settings
+		if (afsummaryList.size() == 0){
+			Map<String, Object> map = new HashMap();
+			map.put("type", "");
+			map.put("value", "");
+			map.put("remarks", "");
+			afsummaryList.add(map);
+		}
+		if (afriskwarningList.size() == 0) {
+			Map<String, Object> map = new HashMap();
+			map.put("riskno", "");
+			map.put("risktype", "");
+			map.put("riskcategory", "");
+			map.put("riskdesc", "");
+			afriskwarningList.add(map);
+		}
+
 		sqlSession.commit();
 		JSONObject responseJson = new JSONObject();
 		responseJson.put("app_id", appId);

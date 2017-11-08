@@ -23,39 +23,25 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			app_id = #{appId, jdbcType = VARCHAR}
 	</select>
 
-	<select id="selectAfsummary" resultMap="afsummaryResultMap" parameterType="String" statementType="PREPARED">
-		SELECT
-			type,
-			value,
-			remarks
-		FROM
-			(
-			SELECT type, value, remarks
-			  FROM af_response_afsummary
-			 WHERE app_id = #{appId, jdbcType = VARCHAR}
-			 UNION ALL
-			SELECT '' as  type, '' as value, '' as remarks
-			  FROM dual
-			) t
-		where rownum = 1
-	</select>
+    <select id="selectAfsummary" resultMap="afsummaryResultMap" parameterType="String" statementType="PREPARED">
+        SELECT
+        type,
+        value,
+        remarks
+        FROM af_response_afsummary
+        WHERE
+        app_id = #{appId, jdbcType = VARCHAR}
+    </select>
 
-	<select id="selectAfriskwarning" resultMap="afriskwarningResultMap" parameterType="String" statementType="PREPARED">
+    <select id="selectAfriskwarning" resultMap="afriskwarningResultMap" parameterType="String" statementType="PREPARED">
 		SELECT
 			riskno,
 			risktype,
 			riskcategory,
 			riskdesc
-		FROM
-			(
-			SELECT riskno, risktype, riskcategory, riskdesc
-		      FROM af_response_afriskwarning
-			 WHERE app_id = #{appId, jdbcType = VARCHAR}
-			 UNION ALL
-			SELECT '' as  riskno, '' as risktype, '' as riskcategory, '' as riskdesc
-			  FROM dual
-			) t
-		where rownum = 1
+		FROM af_response_afriskwarning
+		WHERE
+		app_id = #{appId, jdbcType = VARCHAR}
 	</select>
 
     <delete id="deleteAfsummaryByAppid" parameterType="String" statementType="PREPARED">
