@@ -65,8 +65,8 @@ public class CCAFBiz {
 	 */
 	public JSONObject getResponseJsonContent(SqlSession sqlSession, String appId) {
 		HxbDao hxbDao = HxbDao.getInstance();
-		List<Map<String, Object>> afsummaryList = hxbDao.selectAfsummary(sqlSession, appId);
-		List<Map<String, Object>> afriskwarningList = hxbDao.selectAfriskwarning(sqlSession, appId);
+		List<Object> afsummaryList = hxbDao.selectAfsummary(sqlSession, appId);
+		List<Object> afriskwarningList = hxbDao.selectAfriskwarning(sqlSession, appId);
 
 		// default settings
 		if (afsummaryList.size() == 0){
@@ -88,8 +88,8 @@ public class CCAFBiz {
 		sqlSession.commit();
 		JSONObject responseJson = new JSONObject();
 		responseJson.put("app_id", appId);
-		responseJson.put("afsummary", JSON.parseArray(JSON.toJSONString(afsummaryList)));
-		responseJson.put("afriskwarning", JSON.parseArray(JSON.toJSONString(afriskwarningList)));
+		responseJson.put("afsummary", new JSONArray(afsummaryList));
+		responseJson.put("afriskwarning", new JSONArray(afriskwarningList));
 		return responseJson;
 	}
 

@@ -21,7 +21,7 @@ public class CCAFService {
 		long starttime = System.currentTimeMillis();
 		String requestTime = sdf.format(new Date());
 		CCAFBiz bizHandler = new CCAFBiz();
-		JSONObject reportJsonObject = null;
+		JSONArray reportJsonObjects = null;
 		SqlSession sqlSession = SessionFactory.getSqlSessionFactory().openSession(false);
 		try {
 			JSONObject requestJson = bizHandler.getInputJsonObject(request);
@@ -45,18 +45,21 @@ public class CCAFService {
 				// call database callable process and analysis and calculate update result tables
 				bizHandler.runHandleProcedures(sqlSession, appId);
 				// query result information and generate json response report
-				reportJsonObject = bizHandler.getResponseJsonContent(sqlSession, appId);
+				if (reportJsonObjects == null) {
+					reportJsonObjects = new JSONArray();
+				}
+				reportJsonObjects.add(bizHandler.getResponseJsonContent(sqlSession, appId));
 
 				Long endtime = System.currentTimeMillis();
 				this.logRequest(requestdescJson, requestTime, starttime, endtime, appId);
 			}
 
-			this.report(response, "1", "request time:" + requestTime + " - report time:" + sdf.format(new Date()), reportJsonObject);
+			this.report(response, "1", "request time:" + requestTime + " - report time:" + sdf.format(new Date()), reportJsonObjects);
 		}catch (Exception e) {
 			e.printStackTrace();
 			sqlSession.rollback();
 			try {
-				this.report(response, "0", "request Hxb Service failure" + e.getMessage(), reportJsonObject);
+				this.report(response, "0", "request Hxb Service failure" + e.getMessage(), reportJsonObjects);
 			} catch (Exception e1) {
 				e1.printStackTrace();
 				log.error("HxbDataFluxApi Service down!");
@@ -66,14 +69,14 @@ public class CCAFService {
 		}
 	}
 
-	private void report(HttpServletResponse response, String status, String message, JSONObject reportJsonObject)
+	private void report(HttpServletResponse response, String status, String message, JSONArray reportJsonObjects)
 			throws Exception {
 		JSONObject reportJson = new JSONObject();
 		JSONObject responseJson = new JSONObject();
 		responseJson.put("status", status);
 		responseJson.put("message", message);
 		reportJson.put("response", responseJson);
-		reportJson.put("afreport",reportJsonObject);
+		reportJson.put("afreport", reportJsonObjects);
 		log.info(reportJson.toString());
 		response.setContentType("application/json");
 		response.setCharacterEncoding("UTF-8");

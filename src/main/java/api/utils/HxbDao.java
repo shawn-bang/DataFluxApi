@@ -77,12 +77,12 @@ public class HxbDao {
 		mapper.callHandleProcedures(appId);
 	}
 
-	public List<Map<String, Object>>  selectAfsummary(SqlSession sqlSession,String appId){
+	public List<Object>  selectAfsummary(SqlSession sqlSession,String appId){
 		HxbMapper mapper = sqlSession.getMapper(HxbMapper.class);
 		return mapper.selectAfsummary(appId);
 	}
 
-	public List<Map<String, Object>>  selectAfriskwarning(SqlSession sqlSession,String appId){
+	public List<Object>  selectAfriskwarning(SqlSession sqlSession,String appId){
 		HxbMapper mapper = sqlSession.getMapper(HxbMapper.class);
 		return mapper.selectAfriskwarning(appId);
 	}
