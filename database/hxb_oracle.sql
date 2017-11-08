@@ -1,4 +1,66 @@
-﻿-- create sna conf inputs dependence seq
+﻿--if exist table AF_APP_MODEL_RESULT
+DROP TABLE AF_APP_MODEL_RESULT cascade constraints;
+create table AF_APP_MODEL_RESULT
+(
+  APP_ID        VARCHAR2(40 CHAR) not null,
+  MODEL_RESSULT VARCHAR2(30 CHAR),
+  UPDATE_DATE   DATE default sysdate
+);
+-- Add comments to the table
+comment on table AF_APP_MODEL_RESULT is '模型结果';
+-- Add comments to the columns
+comment on column AF_APP_MODEL_RESULT.APP_ID is '申请进件号码';
+comment on column AF_APP_MODEL_RESULT.MODEL_RESSULT is '模型结果';
+comment on column AF_APP_MODEL_RESULT.UPDATE_DATE is '更新日期';
+
+--if exist table AF_APP_RISK_CONF_PARMS
+DROP TABLE AF_APP_RISK_CONF_PARMS cascade constraints;
+create table AF_APP_RISK_CONF_PARMS
+(
+  PARM_TYPE        VARCHAR2(20),
+  PARM_LEVEL       VARCHAR2(6),
+  PARM_VALUE_UP    NUMBER,
+  PARM_VALUE_LOWER NUMBER
+);
+-- Add comments to the table
+comment on table AF_APP_RISK_CONF_PARMS is '模型及SNA高中低配置表';
+-- Add comments to the columns
+comment on column AF_APP_RISK_CONF_PARMS.PARM_LEVEL is '风险等级';
+comment on column AF_APP_RISK_CONF_PARMS.PARM_VALUE_UP is '分值上限';
+
+--if exist table AF_APP_SNA_INPUT
+DROP TABLE AF_APP_SNA_INPUT cascade constraints;
+create table AF_APP_SNA_INPUT
+(
+  CLUSTERID VARCHAR2(100),
+  TO_NODE   VARCHAR2(100),
+  TO_TYPE   VARCHAR2(30),
+  NET_SCORE NUMBER
+);
+-- Add comments to the table
+comment on table AF_APP_SNA_INPUT is 'Sna输入表';
+-- Add comments to the columns
+comment on column AF_APP_SNA_INPUT.CLUSTERID is '网络编号';
+comment on column AF_APP_SNA_INPUT.TO_NODE is '实体值';
+comment on column AF_APP_SNA_INPUT.TO_TYPE is '实体类型';
+comment on column AF_APP_SNA_INPUT.NET_SCORE is '网络分值';
+
+--if exist table AF_APP_SNA_RESULT
+DROP TABLE AF_APP_SNA_RESULT cascade constraints;
+create table AF_APP_SNA_RESULT
+(
+  APP_ID      VARCHAR2(40 CHAR) not null,
+  SNA_RESULT  VARCHAR2(500 CHAR),
+  UPDATE_DATE DATE default sysdate
+);
+-- Add comments to the table
+comment on table AF_APP_SNA_RESULT is 'Sna结果表';
+-- Add comments to the columns
+comment on column AF_APP_SNA_RESULT.APP_ID is '申请进件号码';
+comment on column AF_APP_SNA_RESULT.SNA_RESULT is 'Sna结果';
+comment on column AF_APP_SNA_RESULT.UPDATE_DATE is '更新日期';
+
+-- create sna conf inputs dependence seq
 create sequence af_sna_conf_input_seq
 minvalue 1
 maxvalue 999999999999
@@ -86,6 +148,22 @@ create table af_app_prc_logs
 comment on table af_app_prc_logs is '存储过程相关日志';
 comment on column af_app_prc_logs.app_Id is '申请进件号码';
 comment on column af_app_prc_logs.error_logs is '日志信息';
+
+insert into af_app_sna_input(clusterid,to_node,to_type,net_score)values('1','2','mob',300);
+insert into af_app_sna_input(clusterid,to_node,to_type,net_score)values('2','3','idcard',400);
+commit;
+
+insert into af_app_model_input_parms(model_var,model_var_value)values('intercept',600);
+insert into af_app_model_input_parms(model_var,model_var_value)values('C1_CREDPCT',20);
+insert into af_app_model_input_parms(model_var,model_var_value) values ('C6_REL_FLAG1',-30);
+insert into af_app_model_input_parms(model_var,model_var_value) values('PAYMT_YN',70);
+commit;
+
+insert into af_app_risk_conf_parms(parm_type,parm_level,parm_value_up,parm_value_lower) values ('SNA','高',9999,800);
+insert into af_app_risk_conf_parms(parm_type,parm_level,parm_value_up,parm_value_lower) values ('SNA','中',799,500);
+commit;
+
+-----------------------------------------------------------------------------------------
 
 --if exist table af_request_appinfo_zmivsinfo
 DROP TABLE af_request_appinfo_zmivsinfo cascade constraints;
