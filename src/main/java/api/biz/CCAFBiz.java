@@ -10,13 +10,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.xml.rpc.ServiceException;
 
 import api.utils.HxbDao;
-import net.sf.json.JSONArray;
-import org.apache.http.HttpEntity;
-import org.apache.http.HttpResponse;
-import org.apache.http.client.methods.HttpGet;
-import org.apache.http.impl.client.CloseableHttpClient;
-import org.apache.http.impl.client.HttpClientBuilder;
-import org.apache.http.util.EntityUtils;
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONArray;
+import com.alibaba.fastjson.JSONObject;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.log4j.Logger;
 
@@ -25,9 +21,6 @@ import com.dataflux.xsd.archserver.Row__in;
 import com.dataflux.xsd.archserver.Row__out;
 
 import api.utils.GzcbCCAppImpl;
-import api.utils.GzcbCCConfig;
-import api.utils.PropUtil;
-import net.sf.json.JSONObject;
 
 public class CCAFBiz {
 
@@ -49,7 +42,7 @@ public class CCAFBiz {
 					tmpstr=tmpstr.substring(1);
 					log.debug("remove first char rst: "+tmpstr);
 				}
-			return JSONObject.fromObject(tmpstr);
+			return JSON.parseObject(tmpstr);
 		} catch (Exception exception) {
 			log.error("ERROR:getInputJson failed", exception);
 			throw exception;
@@ -64,16 +57,22 @@ public class CCAFBiz {
 		}
 	}
 
-	public String getResponseJsonContent(SqlSession sqlSession, String appId) {
+	/**
+	 * 拼装返回报文需要的JSONObject
+	 * @param sqlSession
+	 * @param appId
+	 * @return
+	 */
+	public JSONObject getResponseJsonContent(SqlSession sqlSession, String appId) {
 		HxbDao hxbDao = HxbDao.getInstance();
 		List<Map<String, Object>> afsummaryList = hxbDao.selectAfsummary(sqlSession, appId);
 		List<Map<String, Object>> afriskwarningList = hxbDao.selectAfriskwarning(sqlSession, appId);
 		sqlSession.commit();
 		JSONObject responseJson = new JSONObject();
 		responseJson.put("app_id", appId);
-		responseJson.put("afsummary", afsummaryList);
-		responseJson.put("afriskwarning", afriskwarningList);
-		return responseJson.toString();
+		responseJson.put("afsummary", JSON.parseArray(JSON.toJSONString(afsummaryList)));
+		responseJson.put("afriskwarning", JSON.parseArray(JSON.toJSONString(afriskwarningList)));
+		return responseJson;
 	}
 
 	/**
@@ -145,7 +144,8 @@ public class CCAFBiz {
 		}
 		List<Map<String, Object>> values = new ArrayList<Map<String, Object>>();
 		for (Map<String, Object> map : params) {
-			String columnName = map.get("MODEL_VAR").toString();
+			// must be lowercase
+			String columnName = map.get("MODEL_VAR").toString().toLowerCase();
 			Map<String, Object> value = new HashMap();
 			value.put("app_id", appId);
 			value.put("var_name", columnName);
@@ -153,7 +153,6 @@ public class CCAFBiz {
 			values.add(value);
 		}
 		hxbDao.saveModelVarInput(sqlSession, values);
-		sqlSession.commit();
 		Long endtime = System.currentTimeMillis();
 		log.info(appId + ":prepareModelInput:" + (endtime - starttime));
 	}
@@ -188,7 +187,6 @@ public class CCAFBiz {
 			value.put("ifcluster", ifcluster);
 			hxbDao.saveSNAInput(sqlSession, value);
 		}
-		sqlSession.commit();
 		Long endtime = System.currentTimeMillis();
 		log.info(appId + ":prepareSNAInput:" + (endtime - starttime));
 	}

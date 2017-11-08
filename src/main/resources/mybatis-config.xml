@@ -10,6 +10,7 @@
 		<setting name="defaultStatementTimeout" value="0"></setting>
 		<setting name="safeRowBoundsEnabled" value="true"></setting>
 		<setting name="jdbcTypeForNull" value="OTHER"></setting>
+		<setting name="callSettersOnNulls" value="true"/>
 	</settings>
 	<environments default="gzcbcc">
 		<environment id="gzcbcc">

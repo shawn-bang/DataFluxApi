@@ -5,12 +5,13 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import com.alibaba.fastjson.JSONArray;
+import com.alibaba.fastjson.JSONObject;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.log4j.Logger;
 import api.biz.CCAFBiz;
 import api.utils.SessionFactory;
-import net.sf.json.JSONArray;
-import net.sf.json.JSONObject;
 
 public class CCAFService {
 	private static Logger log = Logger.getLogger(CCAFService.class);
@@ -20,7 +21,7 @@ public class CCAFService {
 		long starttime = System.currentTimeMillis();
 		String requestTime = sdf.format(new Date());
 		CCAFBiz bizHandler = new CCAFBiz();
-		String reportContent = null;
+		JSONObject reportJsonObject = null;
 		SqlSession sqlSession = SessionFactory.getSqlSessionFactory().openSession(false);
 		try {
 			JSONObject requestJson = bizHandler.getInputJsonObject(request);
@@ -35,27 +36,27 @@ public class CCAFService {
 				if (appId == null || appId.equals("")) {
 					throw new Exception("input error: app_id is null but it's required");
 				}
-				// insert or update request information
-				bizHandler.saveRequestInfos(sqlSession, requestInfoJsonObject);
 				// Transaction control
 				bizHandler.prepareModelInput(sqlSession, applicantinfo);
 				bizHandler.prepareSNAInput(sqlSession, applicantinfo);
+				// insert or update request information
+				bizHandler.saveRequestInfos(sqlSession, requestInfoJsonObject);
 
 				// call database callable process and analysis and calculate update result tables
 				bizHandler.runHandleProcedures(sqlSession, appId);
 				// query result information and generate json response report
-				reportContent = bizHandler.getResponseJsonContent(sqlSession, appId);
+				reportJsonObject = bizHandler.getResponseJsonContent(sqlSession, appId);
 
 				Long endtime = System.currentTimeMillis();
 				this.logRequest(requestdescJson, requestTime, starttime, endtime, appId);
 			}
 
-			this.report(response, "1", "request time:" + requestTime + " - report time:" + sdf.format(new Date()), reportContent);
+			this.report(response, "1", "request time:" + requestTime + " - report time:" + sdf.format(new Date()), reportJsonObject);
 		}catch (Exception e) {
 			e.printStackTrace();
 			sqlSession.rollback();
 			try {
-				this.report(response, "0", "request Hxb Service failure" + e.getMessage(), reportContent);
+				this.report(response, "0", "request Hxb Service failure" + e.getMessage(), reportJsonObject);
 			} catch (Exception e1) {
 				e1.printStackTrace();
 				log.error("HxbDataFluxApi Service down!");
@@ -65,14 +66,14 @@ public class CCAFService {
 		}
 	}
 
-	private void report(HttpServletResponse response, String status, String message, String reportContent)
+	private void report(HttpServletResponse response, String status, String message, JSONObject reportJsonObject)
 			throws Exception {
 		JSONObject reportJson = new JSONObject();
 		JSONObject responseJson = new JSONObject();
 		responseJson.put("status", status);
 		responseJson.put("message", message);
 		reportJson.put("response", responseJson);
-		reportJson.put("afreport",reportContent);
+		reportJson.put("afreport",reportJsonObject);
 		log.info(reportJson.toString());
 		response.setContentType("application/json");
 		response.setCharacterEncoding("UTF-8");
