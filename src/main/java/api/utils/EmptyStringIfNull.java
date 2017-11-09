@@ -8,6 +8,10 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+/**
+ * property default value handler
+ * Solve Problem:The column which has null value is erased by Mybatis
+ */
 public class EmptyStringIfNull implements TypeHandler<String> {
 
 	public void setParameter(PreparedStatement preparedStatement, int i, String s, JdbcType jdbcType) throws SQLException {
