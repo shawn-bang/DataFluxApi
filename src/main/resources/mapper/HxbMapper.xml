@@ -637,7 +637,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			no_pd_card_6month_ave_pay,
 			vehicle_query_result,
 			vehicle_value,
-			vehicle_age
+			vehicle_age,
+			modify_time
 		)
 		values
         (
@@ -1598,7 +1599,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             no_pd_card_6month_ave_pay = #{no_pd_card_6month_ave_pay, jdbcType = VARCHAR},
             vehicle_query_result = #{vehicle_query_result, jdbcType = VARCHAR},
             vehicle_value = #{vehicle_value, jdbcType = VARCHAR},
-            vehicle_age = #{vehicle_age, jdbcType = VARCHAR}
+            vehicle_age = #{vehicle_age, jdbcType = VARCHAR},
+            modify_time = to_date(#{modify_time, jdbcType = VARCHAR},'yyyy-mm-dd hh24:mi:ss')
         where app_id = #{app_id,jdbcType =VARCHAR}
     </update>
 

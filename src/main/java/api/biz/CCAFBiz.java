@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.rmi.RemoteException;
+import java.text.SimpleDateFormat;
 import java.util.*;
 
 import javax.servlet.http.HttpServletRequest;
@@ -118,6 +119,7 @@ public class CCAFBiz {
 			hxbDao.deleteAfsummaryByAppid(sqlSession, appId);
 			hxbDao.deleteAfriskwarningByAppid(sqlSession, appId);
 			// we have already confirmed
+			applicantinfo.put("modify_time", new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date()));
 			hxbDao.updateApplicantinfo(sqlSession, applicantinfo);
 			hxbDao.deleteZmivsinfoByAppid(sqlSession, appId);
 			for (int i = 0; i < zmivsinfos.size(); i++) {
