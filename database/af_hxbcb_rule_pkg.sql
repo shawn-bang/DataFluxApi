@@ -3,6 +3,10 @@ create or replace package AF_HXBCB_RULE_PKG as
   -- Created : 2017/11/3 17:22:14
   -- Purpose : Rule
   -- 触发规则列表
+  -- rule:155
+  procedure RULE_155(app_id_input in varchar2, v_idnbr in varchar2);
+  -- rule:158
+  procedure RULE_158(app_id_input in varchar2, v_coname in af_request_applicantinfo.c1_coname%type);
   -- rule:160
   procedure RULE_160(app_id_input in varchar2, v_coadd in varchar2);
   -- rule:162
@@ -20,6 +24,55 @@ end AF_HXBCB_RULE_PKG;
 /
 
 create or replace package body AF_HXBCB_RULE_PKG as
+
+  -- rule:155
+  procedure RULE_155(app_id_input in varchar2,v_idnbr in varchar2) is
+    flag number;
+    v_error varchar2(500);
+    begin
+      if nvl(v_idnbr, 'null') != 'null' then
+        -- TODO certifi_type check?
+        select count(1) into flag
+        from opas_identity_risklist t
+        where v_idnbr = t.certifi_no and t.curr_status = '1';
+        -- about curr_status column, mybe we need to add a bitmap index
+        -- curr_status must hava value for index and order by
+        -- check flag status
+        if flag > 0 then
+          -- update result data
+          insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno, type) values(app_id_input, 'Z2', 'Z01', 'Z01_1', 'E', '高风险', 'RULE_155', 'RULE');
+          commit;
+        end if;
+      end if;
+      -- handle exceptions
+      exception when others then v_error := 'RULE_155: ' || sqlerrm;
+      insert into af_app_prc_logs(app_id, error_logs) values(app_id_input, v_error);
+      commit;
+      -- don't anything
+    end RULE_155;
+    
+  -- rule:158
+  procedure RULE_158(app_id_input in varchar2, v_coname in af_request_applicantinfo.c1_coname%type) is
+    flag number;
+    v_error varchar2(500);
+    begin
+      if nvl(v_coname, 'null') != 'null' then
+        select count(1) into flag
+        from opas_company_risklist t
+         where t.company_name = v_coname and t.curr_status = '1';
+        if flag > 0 then
+          -- update result data
+          insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno, type) values(app_id_input, 'Z2', 'Z01', 'Z01_4', 'D', '中高风险', 'RULE_158', 'RULE');
+          commit;
+        end if;
+      end if;
+      -- handle exceptions
+      exception when others then v_error := 'RULE_158: ' || sqlerrm;
+      insert into af_app_prc_logs(app_id, error_logs) values(app_id_input, v_error);
+      commit;
+      -- don't anything
+    end RULE_158;    
+
   -- rule:160
   procedure RULE_160(app_id_input in varchar2, v_coadd in varchar2) is
     flag number;
@@ -49,7 +102,7 @@ create or replace package body AF_HXBCB_RULE_PKG as
         -- check flag status
         if flag > 0 then
           -- update result data
-          insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno, type) values(app_id_input, 'Z2', 'Z01', 'Z01_3', 'D', '', 'RULE_160', 'RULE');
+          insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno, type) values(app_id_input, 'Z2', 'Z01', 'Z01_3', 'D', '中高风险', 'RULE_160', 'RULE');
           commit;
         end if;
       end if;
@@ -89,7 +142,7 @@ create or replace package body AF_HXBCB_RULE_PKG as
         -- check flag status
         if flag > 0 then
           -- update result data
-          insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno, type) values(app_id_input, 'Z2', 'Z01', 'Z01_3', 'D', '', 'RULE_162', 'RULE');
+          insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno, type) values(app_id_input, 'Z2', 'Z01', 'Z01_3', 'D', '中高风险', 'RULE_162', 'RULE');
           commit;
         end if;
       end if;
@@ -113,7 +166,7 @@ create or replace package body AF_HXBCB_RULE_PKG as
         -- check flag status
         if flag > 0 then
           -- update result data
-          insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno, type) values(app_id_input, 'Z2', 'Z01', 'Z01_2', 'D', '', 'RULE_164', 'RULE');
+          insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno, type) values(app_id_input, 'Z2', 'Z01', 'Z01_2', 'E', '高风险', 'RULE_164', 'RULE');
           commit;
         end if;
       end if;
@@ -145,7 +198,7 @@ create or replace package body AF_HXBCB_RULE_PKG as
         -- check flag status
         if flag > 0 then
           -- update result data
-          insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno, type) values(app_id_input, 'Z2', 'Z01', 'Z01_2', 'D', '' , 'RULE_166', 'RULE');
+          insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno, type) values(app_id_input, 'Z2', 'Z01', 'Z01_2', 'E', '高风险' , 'RULE_166', 'RULE');
           commit;
         end if;
       end if;
@@ -177,7 +230,7 @@ create or replace package body AF_HXBCB_RULE_PKG as
         -- check flag status
         if flag > 0 then
           -- update result data
-          insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno, type) values(app_id_input, 'Z2', 'Z01', 'Z01_2', 'D', '', 'RULE_168', 'RULE');
+          insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno, type) values(app_id_input, 'Z2', 'Z01', 'Z01_2', 'E', '高风险', 'RULE_168', 'RULE');
           commit;
         end if;
       end if;
@@ -200,7 +253,7 @@ create or replace package body AF_HXBCB_RULE_PKG as
         -- check flag status
         if flag > 0 then
           -- update result data
-          insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno, type) values(app_id_input, 'Z2', 'Z01', 'Z01_6', 'D', '', 'RULE_232', 'RULE');
+          insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno, type) values(app_id_input, 'Z2', 'Z01', 'Z01_6', 'D', '中高风险', 'RULE_232', 'RULE');
           commit;
         end if;
       end if;

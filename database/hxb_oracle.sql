@@ -149,6 +149,9 @@ comment on table af_app_prc_logs is '存储过程相关日志';
 comment on column af_app_prc_logs.app_Id is '申请进件号码';
 comment on column af_app_prc_logs.error_logs is '日志信息';
 
+insert into af_app_snainput_conf(src_type, to_type, link_type, ifcluster) values('c1_idnbr','c1_idnbr','1','1');
+commit;
+
 insert into af_app_sna_input(clusterid,to_node,to_type,net_score)values('1','2','mob',300);
 insert into af_app_sna_input(clusterid,to_node,to_type,net_score)values('2','3','idcard',400);
 commit;
@@ -345,16 +348,16 @@ create table af_request_applicantinfo(
       c5_qq_nbr1 CHAR(20),
       c5_regdte1 VARCHAR2(10),
       c5_weixin_nbr1 CHAR(30),
-      crt_data VARCHAR2(25),
+      crt_date VARCHAR2(25),
       primary_crt_time VARCHAR2(25),
       czfq_match CHAR(1),
       epay_match CHAR(1),
       exist_card_flag CHAR(1),
       hd_info_matching CHAR(1),
       input_channel CHAR(1),
-      is_special_cust CHAR(1),
+      is_special_cust VARCHAR2(50),
       kq VARCHAR2(10),
-      lst_upd_data VARCHAR2(10),
+      lst_upd_date VARCHAR2(25),
       lst_upd_time VARCHAR2(25),
       lst_upd_user VARCHAR2(32),
       main_card_sts VARCHAR2(20),
@@ -714,9 +717,9 @@ create table af_request_applicantinfo(
       no_padc_contract_amt VARCHAR2(10),
       no_pin_debit_card_contract_amt VARCHAR2(10),
       no_pd_card_6month_ave_pay VARCHAR2(10),
-      vehicle_query_result VARCHAR2(100),
-      vehicle_value VARCHAR2(100),
-      vehicle_age VARCHAR2(100),
+      vehicle_query_result VARCHAR2(2),
+      vehicle_value VARCHAR2(8),
+      vehicle_age VARCHAR2(4),
       modify_time date default sysdate not null
 );
 
@@ -826,7 +829,7 @@ comment on column  af_request_applicantinfo.c5_idte1 is '主卡证件有效期';
 comment on column  af_request_applicantinfo.c5_qq_nbr1 is '主卡申请人QQ号码';
 comment on column  af_request_applicantinfo.c5_regdte1 is '车辆行驶证信注册日期（主卡）';
 comment on column  af_request_applicantinfo.c5_weixin_nbr1 is '主卡申请人微信号码';
-comment on column  af_request_applicantinfo.crt_data is '创建日期';
+comment on column  af_request_applicantinfo.crt_date is '创建日期';
 comment on column  af_request_applicantinfo.primary_crt_time is '创建时间';
 comment on column  af_request_applicantinfo.czfq_match is '配发财智分期标志';
 comment on column  af_request_applicantinfo.epay_match is '配发epay卡标志';
@@ -835,7 +838,7 @@ comment on column  af_request_applicantinfo.hd_info_matching is '手机实名验
 comment on column  af_request_applicantinfo.input_channel is '进件渠道';
 comment on column  af_request_applicantinfo.is_special_cust is '是否特殊客户';
 comment on column  af_request_applicantinfo.kq is '费率_客群类别';
-comment on column  af_request_applicantinfo.lst_upd_data is '最后一次修改日期';
+comment on column  af_request_applicantinfo.lst_upd_date is '最后一次修改日期';
 comment on column  af_request_applicantinfo.lst_upd_time is '最后一次修改时间';
 comment on column  af_request_applicantinfo.lst_upd_user is '最后修改人';
 comment on column  af_request_applicantinfo.main_card_sts is '主卡状态';

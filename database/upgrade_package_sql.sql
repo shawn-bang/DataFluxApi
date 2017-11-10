@@ -1,9 +1,13 @@
-create or replace package AF_HXBCB is
+﻿create or replace package AF_HXBCB is
 
   -- Created : 2017/11/3 17:15:27
   -- Purpose : Package for Antifraud
   -- 全局变量声明
   v_errors varchar2(500);
+  -- 申请人证件号码
+  v_idnbr af_request_applicantinfo.c1_idnbr%type;
+  -- 申请人单位名称
+  v_coname af_request_applicantinfo.c1_coname%type;
   -- 申请人单位地址:v_coadd = c1_coadd1 + c1_coadd2 + c1_coadd3 + c1_coadd4
   v_coadd varchar2(120);
   -- 申请人住宅地址:v_hmadd = c1_hmadd1 + c1_hmadd2 + c1_hmadd3 + c1_hmadd4
@@ -44,7 +48,9 @@ create or replace package body AF_HXBCB is
         c1_cotel,
         c1_hmare || c1_hmtel,
         c4_abuser,
-        c4_abname into v_coadd, v_hmadd, v_mobile, v_cotel, v_hmtel, v_abuser, v_abname
+        c4_abname,
+        c1_idnbr,
+        c1_coname into v_coadd, v_hmadd, v_mobile, v_cotel, v_hmtel, v_abuser, v_abname, v_idnbr, v_coname
       from af_request_applicantinfo
       where app_id = app_id_input;
       --调用规则
@@ -74,6 +80,8 @@ create or replace package body AF_HXBCB is
     rules_riskcode af_response_afriskwarning.riskcode%type;
     begin
       --调用规则包中的黑名单规则编号160
+      AF_HXBCB_RULE_PKG.RULE_155(app_id_input, v_idnbr);
+      AF_HXBCB_RULE_PKG.RULE_158(app_id_input, v_coname);
       AF_HXBCB_RULE_PKG.RULE_160(app_id_input, v_coadd);
       AF_HXBCB_RULE_PKG.RULE_162(app_id_input, v_hmadd);
       AF_HXBCB_RULE_PKG.RULE_164(app_id_input, v_mobile);
