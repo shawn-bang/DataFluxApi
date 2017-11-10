@@ -637,8 +637,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			no_pd_card_6month_ave_pay,
 			vehicle_query_result,
 			vehicle_value,
-			vehicle_age,
-			modify_time
+			vehicle_age
 		)
 		values
         (
