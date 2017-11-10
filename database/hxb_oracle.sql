@@ -226,7 +226,8 @@ create table af_response_afriskwarning(
       riskdesc VARCHAR2(200),
       riskcode VARCHAR2(6),
       ruleno VARCHAR2(20),
-      type VARCHAR2(10)
+      type VARCHAR2(10),
+      class VARCHAR2(6)
 );
 
 comment on table af_response_afriskwarning is '响应报文中风险提示信息表';
@@ -238,6 +239,7 @@ comment on column  af_response_afriskwarning.riskdesc is '校验结果详情描�
 comment on column  af_response_afriskwarning.riskcode is '校验结果A,B,C,D,E';
 comment on column  af_response_afriskwarning.ruleno is '校验规则编号';
 comment on column af_response_afriskwarning.type is '反欺诈结果类型(AF_ALL,RULE,MODEL,SNA)';
+comment on column af_response_afriskwarning.class is 'TYPE 二级分类';
 
 --if exist table af_request_applicantinfo
 DROP TABLE af_request_applicantinfo cascade constraints;

@@ -71,6 +71,12 @@ create or replace package body AF_HXBCB is
         insert into af_response_afsummary(app_id, type, value, remarks) values(app_id_input, 'AF_ALL', riskcode, '');
         commit;
       end if;
+      select max(ra.riskcode) into riskcode from af_response_afriskwarning ra where ra.class = 'Z' and ra.app_id = app_id_input;
+      if nvl(riskcode, 'null') = 'null' then
+        insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno, type, class) values(app_id_input, 'Z2', '', '', '', '', '', 'RULE', 'Z');
+        commit;
+      end if;
+      -- TODO W&H             
     end RT_MAIN;
   --规则存储过程
 
@@ -93,10 +99,10 @@ create or replace package body AF_HXBCB is
       if nvl(rules_riskcode, 'null') != 'null' then
         insert into af_response_afsummary(app_id, type, value, remarks) values(app_id_input, 'RULE', rules_riskcode, '');
         commit;
-      else
+      else        
         insert into af_response_afsummary(app_id, type, value, remarks) values(app_id_input, 'RULE', 'A', '');
         commit;
-      end if;
+      end if;     
     end AF_HXBCB_RULE;
 
   --模型存储过程
@@ -127,12 +133,12 @@ create or replace package body AF_HXBCB is
         select sna_result into v_sna_res
         from af_app_sna_result
         where app_id = app_id_res;
-        insert into af_response_afriskwarning(app_id,riskno,risktype,riskcategory,riskdesc,riskcode,type)
+        insert into af_response_afriskwarning(app_id,riskno,risktype,riskcategory,riskdesc,riskcode,type, class)
         values
-          (app_id_res,'Z2','Z05','Z05_1',' ',v_model_res,'MODEL');
-        insert into af_response_afriskwarning(app_id,riskno,risktype,riskcategory,riskdesc,riskcode,type)
+          (app_id_res,'Z2','Z05','Z05_1',' ',v_model_res,'MODEL', 'Z');
+        insert into af_response_afriskwarning(app_id,riskno,risktype,riskcategory,riskdesc,riskcode,type, class)
         values
-          (app_id_res,'Z2','Z06','Z06_1',' ',v_sna_res,'SNA');
+          (app_id_res,'Z2','Z06','Z06_1',' ',v_sna_res,'SNA', 'Z');
         commit;
         --生成模型风险等级结果数据(聚合结果)
         select max(ra.riskcode) into riskcode from af_response_afriskwarning ra where ra.type = 'MODEL' and ra.app_id = app_id_Res;
