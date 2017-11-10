@@ -48,6 +48,9 @@ create or replace package body AF_HXBCB is
       from af_request_applicantinfo
       where app_id = app_id_input;
       --调用规则
+      -- TODO业务场景是(需要添加流程控制):
+      -- 1.申请件首次进来会直接进行黑名单规则计算,不执行模型和SNA计算
+      -- 2.黑名单校验不通过业务方会直接拒掉该笔申请,通过后，业务方会带着新数据再次调用接口进行业务规则，模型，SNA完成全部计算
       AF_HXBCB_RULE(app_id_input);
       --调用模型
       AF_HXBCB_MODEL(app_id_input);
@@ -81,6 +84,9 @@ create or replace package body AF_HXBCB is
       select max(ra.riskcode) into rules_riskcode from af_response_afriskwarning ra where ra.type = 'RULE' and ra.app_id = app_id_input;
       if nvl(rules_riskcode, 'null') != 'null' then
         insert into af_response_afsummary(app_id, type, value, remarks) values(app_id_input, 'RULE', rules_riskcode, '');
+        commit;
+      else
+        insert into af_response_afsummary(app_id, type, value, remarks) values(app_id_input, 'RULE', 'A', '');
         commit;
       end if;
     end AF_HXBCB_RULE;
