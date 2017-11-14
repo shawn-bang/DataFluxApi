@@ -48,6 +48,34 @@
   v_abuser af_request_applicantinfo.c4_abuser%type;
   -- 推广员姓名:c4_abname
   v_abname af_request_applicantinfo.c4_abname%type;
+    --最近30天内的查询机构数_担保资格审查 v_query_org_1m_sum5 = query_org_1m_sum5
+  v_query_org_1m_sum5 af_request_applicantinfo.query_org_1m_sum5%type;
+  --最近30天内的查询机构数_贷后管理 v_query_org_1m_sum1=query_org_1m_sum1
+  v_query_org_1m_sum1 af_request_applicantinfo.query_org_1m_sum1%type;
+  --最近两年内的查询次数_担保资格审查 v_query_rec_2y_sum5=query_rec_2y_sum5
+  v_query_rec_2y_sum5 af_request_applicantinfo.query_rec_2y_sum5%type;
+  --最近两年内的查询次数_贷后管理 v_query_rec_2y_sum1=query_rec_2y_sum1
+  v_query_rec_2y_sum1 af_request_applicantinfo.query_rec_2y_sum1%type;
+  --配偶_联系电话 v_mate_contact_tel = mate_contact_tel
+  v_mate_contact_tel af_request_applicantinfo.mate_contact_tel%type;
+  --直系亲属手机 v_remobil = c1_remobil
+  v_remobil af_request_applicantinfo.c1_remobil%type;
+  --直系亲属关系 v_reship = c1_reship
+  v_reship  af_request_applicantinfo.c1_reship%type;
+  --首张贷记卡发卡月份 v_frs_cred_crd_issue_mon = frs_cred_crd_issue_mon
+  v_frs_cred_crd_issue_mon af_request_applicantinfo.frs_cred_crd_issue_mon%type;
+  --相对位置 v_opposite_position = opposite_position
+  v_opposite_position af_request_applicantinfo.opposite_position%type;
+  --未销户贷记卡_贷款法人机构数/发卡法人机构数 v_no_pd_card_loan_corp_number = no_pd_card_loan_corp_number
+  v_no_pd_card_loan_corp_number af_request_applicantinfo.no_pd_card_loan_corp_number%type;
+  --未销户贷记卡_贷款机构数/发卡机构数 v_no_pd_card_loan_org_number = no_pd_card_loan_org_number
+  v_no_pd_card_loan_org_number af_request_applicantinfo.no_pd_card_loan_org_number%type;
+   --未销户贷记卡_笔数/账户数 v_no_pin_debit_card_acct_num = no_pin_debit_card_acct_num
+  v_no_pin_debit_card_acct_num  af_request_applicantinfo.no_pin_debit_card_acct_num%type;
+    --申主卡申请人教育程度 v_educls = c1_educls
+  v_educls  af_request_applicantinfo.c1_educls%type;
+   --办学形式 v_educationapproach = educationapproach
+  v_educationapproach  af_request_applicantinfo.educationapproach%type;
   -- 声明入口调用过程
   procedure RT_MAIN(app_id_input in varchar2);
   -- 规则调用过程
@@ -76,8 +104,13 @@ create or replace package body AF_HXBCB is
         c4_abuser,
         c4_abname,
         c1_idnbr,
-        c1_coname,c5_idte1,c2_iddt1,c1_idtype,c2_birth,wifimacenenglish,imeienenglish,imsienenglish,ipenenglish,codeaddrenglish,codeemailenglish,codenameenglish into v_coadd, v_hmadd, v_mobile, v_cotel, v_hmtel, v_abuser, v_abname, v_idnbr, v_coname,v_idte1,v_iddt1,v_idtype,
-        v_birth,v_wifimacenenglish,v_imeienenglish,v_imsienenglish,v_ipenenglish,v_codeaddrenglish,v_codeemailenglish,v_codenameenglish
+        c1_coname,c5_idte1,c2_iddt1,c1_idtype,c2_birth,wifimacenenglish,imeienenglish,imsienenglish,ipenenglish,codeaddrenglish,codeemailenglish,codenameenglish,
+        c1_educls,educationapproach,no_pin_debit_card_acct_num,no_pd_card_loan_org_number,opposite_position,frs_cred_crd_issue_mon,
+        c1_reship,c1_remobil,mate_contact_tel,query_rec_2y_sum1,query_rec_2y_sum5,query_org_1m_sum1,query_org_1m_sum5
+         into v_coadd, v_hmadd, v_mobile, v_cotel, v_hmtel, v_abuser, v_abname, v_idnbr, v_coname,v_idte1,v_iddt1,v_idtype,
+        v_birth,v_wifimacenenglish,v_imeienenglish,v_imsienenglish,v_ipenenglish,v_codeaddrenglish,v_codeemailenglish,v_codenameenglish,v_educls,
+         v_educationapproach,v_no_pin_debit_card_acct_num,v_no_pd_card_loan_org_number,v_opposite_position,v_frs_cred_crd_issue_mon,
+         v_reship,v_remobil,v_mate_contact_tel,v_query_rec_2y_sum1,v_query_rec_2y_sum5,v_query_org_1m_sum1,v_query_org_1m_sum5
       from af_request_applicantinfo
       where app_id = app_id_input;
 
@@ -134,6 +167,17 @@ create or replace package body AF_HXBCB is
       AF_HXBCB_RULE_PKG.RULE_166(app_id_input, v_cotel);
       AF_HXBCB_RULE_PKG.RULE_168(app_id_input, v_hmtel);
       AF_HXBCB_RULE_PKG.RULE_232(app_id_input, v_abuser, v_abname);
+      AF_HXBCB_RULE_PKG.RULE_138(app_id_input, v_educls,v_educationapproach);
+      AF_HXBCB_RULE_PKG.RULE_139(app_id_input, v_no_pin_debit_card_acct_num);
+      AF_HXBCB_RULE_PKG.RULE_140(app_id_input, v_no_pd_card_loan_org_number);
+      AF_HXBCB_RULE_PKG.RULE_141(app_id_input, v_no_pd_card_loan_corp_number);
+      AF_HXBCB_RULE_PKG.RULE_142(app_id_input, v_opposite_position);
+      AF_HXBCB_RULE_PKG.RULE_143(app_id_input, v_frs_cred_crd_issue_mon);
+      AF_HXBCB_RULE_PKG.RULE_145(app_id_input, v_reship ,v_remobil ,v_mate_contact_tel);
+      AF_HXBCB_RULE_PKG.RULE_146(app_id_input, v_query_rec_2y_sum1);
+      AF_HXBCB_RULE_PKG.RULE_147(app_id_input, v_query_rec_2y_sum5);
+      AF_HXBCB_RULE_PKG.RULE_148(app_id_input, v_query_org_1m_sum1);
+      AF_HXBCB_RULE_PKG.RULE_149(app_id_input, v_query_org_1m_sum5);
       --生成规则风险等级结果数据(聚合结果)
       select max(ra.riskcode) into rules_riskcode from af_response_afriskwarning ra where ra.type = 'RULE' and ra.app_id = app_id_input;
       if nvl(rules_riskcode, 'null') != 'null' then
