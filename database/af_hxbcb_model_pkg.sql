@@ -3,7 +3,7 @@
   -- Created : 2017/11/6 14:39:38
   -- Purpose : MODEL
   v_model_errors varchar2(500);
-  procedure getModelResult(app_id in varchar);
+  procedure getModelResult(appid in varchar);
   
   
  
@@ -13,7 +13,7 @@ end AF_HXBCB_MODEL_PKG;
 
 create or replace package body AF_HXBCB_MODEL_PKG is
 
-procedure getModelResult(app_id in varchar) is 
+procedure getModelResult(appid in varchar) is 
 begin 
 declare 
  v_var_value number:=0;
@@ -34,7 +34,7 @@ begin
       end if;
       select to_number(var_value) into v_var_value
              from af_app_model_var_input
-             where app_id = app_id and var_name=parm_cur.model_var;
+             where app_id = appid and var_name=parm_cur.model_var;
      v_score :=v_score + to_number(v_var_value) * to_number(parm_cur.model_var_value);
       exception when no_data_found then 
       continue;
@@ -45,17 +45,17 @@ begin
   elsif v_pred_p>=500 and v_pred_p<800 then v_res:='C';
   else v_res:='E';
   end if;
-  delete from af_app_model_result where app_id=app_id;
+  delete from af_app_model_result where app_id=appid;
      commit;
   insert into af_app_model_result(app_id,model_ressult)
   values
-  (app_id,v_res);
+  (appid,v_res);
   commit;
   exception when others then 
      v_model_errors := 'MODEL_PKG.getModelResult:' || sqlerrm;
      insert into AF_App_Prc_Logs(App_Id,Error_Logs)
      values
-     (app_id,v_model_errors);
+     (appid,v_model_errors);
  commit;
 end;
 end getModelResult;

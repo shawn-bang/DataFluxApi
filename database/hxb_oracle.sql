@@ -157,9 +157,9 @@ insert into af_app_sna_input(clusterid,to_node,to_type,net_score)values('2','3',
 commit;
 
 insert into af_app_model_input_parms(model_var,model_var_value)values('intercept',600);
-insert into af_app_model_input_parms(model_var,model_var_value)values('C1_CREDPCT',20);
-insert into af_app_model_input_parms(model_var,model_var_value) values ('C6_REL_FLAG1',-30);
-insert into af_app_model_input_parms(model_var,model_var_value) values('PAYMT_YN',70);
+insert into af_app_model_input_parms(model_var,model_var_value)values('c1_credpct',20);
+insert into af_app_model_input_parms(model_var,model_var_value) values ('c6_rel_flag1',-30);
+insert into af_app_model_input_parms(model_var,model_var_value) values('paymt_yn',70);
 commit;
 
 insert into af_app_risk_conf_parms(parm_type,parm_level,parm_value_up,parm_value_lower) values ('SNA','高',9999,800);
@@ -722,6 +722,7 @@ create table af_request_applicantinfo(
       vehicle_query_result VARCHAR2(2),
       vehicle_value VARCHAR2(8),
       vehicle_age VARCHAR2(4),
+      req_app_num NUMBER(10) default 1,
       modify_time date default sysdate not null
 );
 
@@ -1203,6 +1204,7 @@ comment on column  af_request_applicantinfo.no_pd_card_6month_ave_pay is '未销
 comment on column  af_request_applicantinfo.vehicle_query_result is '查询结果';
 comment on column  af_request_applicantinfo.vehicle_value is '车辆价值';
 comment on column  af_request_applicantinfo.vehicle_age is '车龄';
+comment on column  af_request_applicantinfo.req_app_num is '申请次数';
 comment on column  af_request_applicantinfo.modify_time is '更新时间';
 
 
