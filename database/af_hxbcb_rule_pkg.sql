@@ -480,7 +480,7 @@ create or replace package body AF_HXBCB_RULE_PKG as
     begin
       if nvl(v_educls, 'null') != 'null' and nvl(v_educationapproach, 'null') != 'null' then
           if v_educls = v_educationapproach then
-          insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno, type，class) values(app_id_input, 'Z2', 'Z01', 'Z01_4', 'D', '', 'RULE_138', 'RULE','Z');
+          insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno, type, class) values(app_id_input, 'Z2', 'Z01', 'Z01_4', 'D', '', 'RULE_138', 'RULE','Z');
           commit;
         end if;
       end if;

@@ -192,7 +192,7 @@ create or replace package body AF_HXBCB is
   --模型存储过程
   procedure AF_HXBCB_MODEL(app_id_model in varchar2) is
     begin
-      AF_HXBCB_MODEL_PKG.getModelResult(app_id => app_id_model);
+      AF_HXBCB_MODEL_PKG.getModelResult(appid => app_id_model);
 
     end AF_HXBCB_MODEL;
 
