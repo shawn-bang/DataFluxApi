@@ -2,6 +2,8 @@
 drop table af_app_his_cmp cascade constraints;
 create table af_app_his_cmp
 (
+  APP_ID             varchar(40),
+  DATA_TYPE          varchar(50),
   COMPANY            varchar(30),
   ADDMC              varchar(256),
   LEGALFORMMC        varchar(256),
@@ -27,6 +29,8 @@ create table af_app_today_cmp
 drop table af_app_his_add cascade constraints;
 create table af_app_his_add
 (
+  APP_ID             varchar(40),
+  DATA_TYPE          varchar(50),
   ADDRESS            varchar(30),
   ADDINFO            varchar(256),
   BLOCKMC            varchar(256),
