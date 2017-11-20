@@ -1,4 +1,65 @@
-﻿--if exist table AF_APP_MODEL_RESULT
+﻿--if exist table af_app_his_cmp
+drop table af_app_his_cmp cascade constraints;
+create table af_app_his_cmp
+(
+  COMPANY            varchar(30),
+  ADDMC              varchar(256),
+  LEGALFORMMC        varchar(256),
+  NAMEMC             varchar(256),
+  SITEMC             varchar(256)
+);
+
+--if exist table af_app_today_cmp
+drop table af_app_today_cmp cascade constraints;
+create table af_app_today_cmp
+(
+  APP_ID             varchar(40),
+  DATA_TYPE          varchar(30),
+  DATA_VALUE         varchar(255),
+  NAMEMC             varchar(255),
+  LEGALFORMMC        varchar(255),
+  SITEMC             varchar(255),
+  ADDMC              varchar(255),
+  AF_CREATE_TIME     timestamp default CURRENT_TIMESTAMP
+);
+
+--if exist table af_app_his_add
+drop table af_app_his_add cascade constraints;
+create table af_app_his_add
+(
+  ADDRESS            varchar(30),
+  ADDINFO            varchar(256),
+  BLOCKMC            varchar(256),
+  BUILDINGMC         varchar(256),
+  DISTRICTMC         varchar(256),
+  FLOORMC            varchar(256),
+  POSTALCODEMC       varchar(256),
+  ROOMMC             varchar(256),
+  STREETMC           varchar(256),
+  TOWNMC             varchar(256),
+  UNITMC             varchar(256)
+);
+
+--if exist table af_app_today_add
+drop table af_app_today_add cascade constraints;
+create table af_app_today_add
+(
+  APP_ID             varchar(40),
+  DATA_TYPE          varchar(30),
+  DATA_VALUE         varchar(255),
+  DISTRICTMC         varchar(255),
+  TOWNMC             varchar(255),
+  STREETMC           varchar(255),
+  BLOCKMC            varchar(255),
+  BUILDINGMC         varchar(255),
+  UNITMC             varchar(255),
+  FLOORMC            varchar(255),
+  ROOMMC             varchar(255),
+  ADDINFO            varchar(255),
+  AF_CREATE_TIME     timestamp default CURRENT_TIMESTAMP
+);
+
+--if exist table AF_APP_MODEL_RESULT
 DROP TABLE AF_APP_MODEL_RESULT cascade constraints;
 create table AF_APP_MODEL_RESULT
 (

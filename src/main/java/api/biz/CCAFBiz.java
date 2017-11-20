@@ -356,278 +356,21 @@ public class CCAFBiz {
 		return flag;
 	}
 
-	public Row__out[] getDataFluxMatchRst(Map<String, Object> ccAppMap, String shenqingjian_no)
+	public Row__out[] getDataFluxMatchRst(Map<String, Object> applicantinfo, String appId)
 			throws RemoteException, ServiceException {
 		Long starttime = System.currentTimeMillis();
 		ArrayList<Row__in> list = new ArrayList<Row__in>();
 		String tmpcmpvalue = null;
-		String tmpaddvalue = null;
 
-		tmpcmpvalue = ccAppMap.get("company").toString().trim();
+		String coadd = applicantinfo.get("c1_coadd1").toString() + applicantinfo.get("c1_coadd1").toString() + applicantinfo.get("c1_coadd1").toString() + applicantinfo.get("c1_coadd1").toString();
+		tmpcmpvalue = coadd.trim();
 		if (this.checkCmpValue(tmpcmpvalue)) {
 			Row__in row = new Row__in();
 			row.setData_source("APP");
 			row.setData_type("company");
 			row.setData_value(tmpcmpvalue);
 			row.setEntity_type("CMP");
-			row.setShenqingjian_no(shenqingjian_no);
-			list.add(row);
-		}
-
-		tmpcmpvalue = ccAppMap.get("std_cm_pnm").toString().trim();
-		if (this.checkCmpValue(tmpcmpvalue)) {
-			Row__in row = new Row__in();
-			row.setData_source("GJJ");
-			row.setData_type("std_cm_pnm");
-			row.setData_value(tmpcmpvalue);
-			row.setEntity_type("CMP");
-			row.setShenqingjian_no(shenqingjian_no);
-			list.add(row);
-		}
-
-		tmpcmpvalue = ccAppMap.get("pbc_com_name1").toString().trim();
-		if (this.checkCmpValue(tmpcmpvalue)) {
-			Row__in row = new Row__in();
-			row.setData_source("PBC");
-			row.setData_type("pbc_com_name1");
-			row.setData_value(tmpcmpvalue);
-			row.setEntity_type("CMP");
-			row.setShenqingjian_no(shenqingjian_no);
-			list.add(row);
-		}
-
-		tmpcmpvalue = ccAppMap.get("pbc_com_name2").toString().trim();
-		if (this.checkCmpValue(tmpcmpvalue)) {
-			Row__in row = new Row__in();
-			row.setData_source("PBC");
-			row.setData_type("pbc_com_name2");
-			row.setData_value(tmpcmpvalue);
-			row.setEntity_type("CMP");
-			row.setShenqingjian_no(shenqingjian_no);
-			list.add(row);
-		}
-
-		tmpcmpvalue = ccAppMap.get("pbc_com_name3").toString().trim();
-		if (this.checkCmpValue(tmpcmpvalue)) {
-			Row__in row = new Row__in();
-			row.setData_source("PBC");
-			row.setData_type("pbc_com_name3");
-			row.setData_value(tmpcmpvalue);
-			row.setEntity_type("CMP");
-			row.setShenqingjian_no(shenqingjian_no);
-			list.add(row);
-		}
-
-		tmpcmpvalue = ccAppMap.get("pbc_com_name4").toString().trim();
-		if (this.checkCmpValue(tmpcmpvalue)) {
-			Row__in row = new Row__in();
-			row.setData_source("PBC");
-			row.setData_type("pbc_com_name4");
-			row.setData_value(tmpcmpvalue);
-			row.setEntity_type("CMP");
-			row.setShenqingjian_no(shenqingjian_no);
-			list.add(row);
-		}
-
-		tmpcmpvalue = ccAppMap.get("pbc_com_name5").toString().trim();
-		if (this.checkCmpValue(tmpcmpvalue)) {
-			Row__in row = new Row__in();
-			row.setData_source("PBC");
-			row.setData_type("pbc_com_name5");
-			row.setData_value(tmpcmpvalue);
-			row.setEntity_type("CMP");
-			row.setShenqingjian_no(shenqingjian_no);
-			list.add(row);
-		}
-
-		tmpaddvalue = ccAppMap.get("homeadd1").toString().trim() + ccAppMap.get("homeadd2").toString().trim()
-				+ ccAppMap.get("homeadd3").toString().trim() + ccAppMap.get("homeadd4").toString().trim();
-		if (this.checkAddValue(tmpaddvalue)) {
-			Row__in row = new Row__in();
-			row.setData_source("APP");
-			row.setData_type("homeadd");
-			row.setData_value(tmpaddvalue);
-			row.setEntity_type("ADD");
-			row.setShenqingjian_no(shenqingjian_no);
-			list.add(row);
-		}
-
-		tmpaddvalue = ccAppMap.get("companyadd1").toString().trim() + ccAppMap.get("companyadd2").toString().trim()
-				+ ccAppMap.get("companyadd3").toString().trim() + ccAppMap.get("companyadd4").toString().trim();
-		if (this.checkAddValue(tmpaddvalue)) {
-			Row__in row = new Row__in();
-			row.setData_source("APP");
-			row.setData_type("companyadd");
-			row.setData_value(tmpaddvalue);
-			row.setEntity_type("ADD");
-			row.setShenqingjian_no(shenqingjian_no);
-			list.add(row);
-		}
-
-		tmpaddvalue = ccAppMap.get("comphonequeryresult114").toString().trim()
-				+ ccAppMap.get("comphonequery114").toString().trim()
-				+ ccAppMap.get("comphonecheck114").toString().trim() + ccAppMap.get("companyinfo114").toString().trim();
-		if (this.checkAddValue(tmpaddvalue)) {
-			Row__in row = new Row__in();
-			row.setData_source("APP");
-			row.setData_type("hujiadd");
-			row.setData_value(tmpaddvalue);
-			row.setEntity_type("ADD");
-			row.setShenqingjian_no(shenqingjian_no);
-			list.add(row);
-		}
-
-		tmpaddvalue = ccAppMap.get("post_address").toString().trim();
-		if (this.checkAddValue(tmpaddvalue)) {
-			Row__in row = new Row__in();
-			row.setData_source("PBC");
-			row.setData_type("post_address");
-			row.setData_value(tmpaddvalue);
-			row.setEntity_type("ADD");
-			row.setShenqingjian_no(shenqingjian_no);
-			list.add(row);
-		}
-
-		tmpaddvalue = ccAppMap.get("registere_address").toString().trim();
-		if (this.checkAddValue(tmpaddvalue)) {
-			Row__in row = new Row__in();
-			row.setData_source("PBC");
-			row.setData_type("registere_address");
-			row.setData_value(tmpaddvalue);
-			row.setEntity_type("ADD");
-			row.setShenqingjian_no(shenqingjian_no);
-			list.add(row);
-		}
-
-		tmpaddvalue = ccAppMap.get("pbc_homeaddress_value1").toString().trim();
-		if (this.checkAddValue(tmpaddvalue)) {
-			Row__in row = new Row__in();
-			row.setData_source("PBC");
-			row.setData_type("pbc_homeaddress_value1");
-			row.setData_value(tmpaddvalue);
-			row.setEntity_type("ADD");
-			row.setShenqingjian_no(shenqingjian_no);
-			list.add(row);
-		}
-
-		tmpaddvalue = ccAppMap.get("pbc_homeaddress_value2").toString().trim();
-		if (this.checkAddValue(tmpaddvalue)) {
-			Row__in row = new Row__in();
-			row.setData_source("PBC");
-			row.setData_type("pbc_homeaddress_value2");
-			row.setData_value(tmpaddvalue);
-			row.setEntity_type("ADD");
-			row.setShenqingjian_no(shenqingjian_no);
-			list.add(row);
-		}
-
-		tmpaddvalue = ccAppMap.get("pbc_homeaddress_value3").toString().trim();
-		if (this.checkAddValue(tmpaddvalue)) {
-			Row__in row = new Row__in();
-			row.setData_source("PBC");
-			row.setData_type("pbc_homeaddress_value3");
-			row.setData_value(tmpaddvalue);
-			row.setEntity_type("ADD");
-			row.setShenqingjian_no(shenqingjian_no);
-			list.add(row);
-		}
-
-		tmpaddvalue = ccAppMap.get("pbc_homeaddress_value4").toString().trim();
-		if (this.checkAddValue(tmpaddvalue)) {
-			Row__in row = new Row__in();
-			row.setData_source("PBC");
-			row.setData_type("pbc_homeaddress_value4");
-			row.setData_value(tmpaddvalue);
-			row.setEntity_type("ADD");
-			row.setShenqingjian_no(shenqingjian_no);
-			list.add(row);
-		}
-
-		tmpaddvalue = ccAppMap.get("pbc_homeaddress_value5").toString().trim();
-		if (this.checkAddValue(tmpaddvalue)) {
-			Row__in row = new Row__in();
-			row.setData_source("PBC");
-			row.setData_type("pbc_homeaddress_value5");
-			row.setData_value(tmpaddvalue);
-			row.setEntity_type("ADD");
-			row.setShenqingjian_no(shenqingjian_no);
-			list.add(row);
-		}
-
-		tmpaddvalue = ccAppMap.get("pbc_comaddress_value1").toString().trim();
-		if (this.checkAddValue(tmpaddvalue)) {
-			Row__in row = new Row__in();
-			row.setData_source("PBC");
-			row.setData_type("pbc_comaddress_value1");
-			row.setData_value(tmpaddvalue);
-			row.setEntity_type("ADD");
-			row.setShenqingjian_no(shenqingjian_no);
-			list.add(row);
-		}
-
-		tmpaddvalue = ccAppMap.get("pbc_comaddress_value2").toString().trim();
-		if (this.checkAddValue(tmpaddvalue)) {
-			Row__in row = new Row__in();
-			row.setData_source("PBC");
-			row.setData_type("pbc_comaddress_value2");
-			row.setData_value(tmpaddvalue);
-			row.setEntity_type("ADD");
-			row.setShenqingjian_no(shenqingjian_no);
-			list.add(row);
-		}
-
-		tmpaddvalue = ccAppMap.get("pbc_comaddress_value3").toString().trim();
-		if (this.checkAddValue(tmpaddvalue)) {
-			Row__in row = new Row__in();
-			row.setData_source("PBC");
-			row.setData_type("pbc_comaddress_value3");
-			row.setData_value(tmpaddvalue);
-			row.setEntity_type("ADD");
-			row.setShenqingjian_no(shenqingjian_no);
-			list.add(row);
-		}
-
-		tmpaddvalue = ccAppMap.get("pbc_comaddress_value4").toString().trim();
-		if (this.checkAddValue(tmpaddvalue)) {
-			Row__in row = new Row__in();
-			row.setData_source("PBC");
-			row.setData_type("pbc_comaddress_value4");
-			row.setData_value(tmpaddvalue);
-			row.setEntity_type("ADD");
-			row.setShenqingjian_no(shenqingjian_no);
-			list.add(row);
-		}
-
-		tmpaddvalue = ccAppMap.get("pbc_comaddress_value5").toString().trim();
-		if (this.checkAddValue(tmpaddvalue)) {
-			Row__in row = new Row__in();
-			row.setData_source("PBC");
-			row.setData_type("pbc_comaddress_value5");
-			row.setData_value(tmpaddvalue);
-			row.setEntity_type("ADD");
-			row.setShenqingjian_no(shenqingjian_no);
-			list.add(row);
-		}
-		
-		tmpaddvalue = ccAppMap.get("tongxun_add").toString().trim();
-		if (this.checkAddValue(tmpaddvalue)) {
-			Row__in row = new Row__in();
-			row.setData_source("APP");
-			row.setData_type("tongxun_add");
-			row.setData_value(tmpaddvalue);
-			row.setEntity_type("ADD");
-			row.setShenqingjian_no(shenqingjian_no);
-			list.add(row);
-		}
-		
-		tmpaddvalue = ccAppMap.get("companyname").toString().trim();
-		if (this.checkAddValue(tmpaddvalue)) {
-			Row__in row = new Row__in();
-			row.setData_source("PBC");
-			row.setData_type("companyname");
-			row.setData_value(tmpaddvalue);
-			row.setEntity_type("CMP");
-			row.setShenqingjian_no(shenqingjian_no);
+			row.setShenqingjian_no(appId);
 			list.add(row);
 		}
 
@@ -639,7 +382,7 @@ public class CCAFBiz {
 		DMServiceLocator dsl = new DMServiceLocator();
 		Row__out[] dfouttab = dsl.getDMService().datasvc_ccapp__rt__matchDdf_in(intab);
 		Long endtime = System.currentTimeMillis();
-		log.info(shenqingjian_no + ":runDataFlux:" + (endtime - starttime));
+		log.info(appId + ":runDataFlux:" + (endtime - starttime));
 		return dfouttab;
 	}
 

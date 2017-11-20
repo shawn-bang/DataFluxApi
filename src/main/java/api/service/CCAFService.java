@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
+import com.dataflux.xsd.archserver.Row__out;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.log4j.Logger;
 import api.biz.CCAFBiz;
@@ -41,6 +42,7 @@ public class CCAFService {
 				bizHandler.prepareSNAInput(sqlSession, applicantinfo);
 				// insert or update request information
 				bizHandler.saveRequestInfos(sqlSession, requestInfoJsonObject);
+				Row__out[] dfouttab = bizHandler.getDataFluxMatchRst(applicantinfo, appId);
 
 				// call database callable process and analysis and calculate update result tables
 				bizHandler.runHandleProcedures(sqlSession, appId);
