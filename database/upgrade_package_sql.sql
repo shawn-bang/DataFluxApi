@@ -107,7 +107,7 @@ create or replace package body AF_HXBCB is
         insert into af_response_afsummary(app_id, type, value, remarks) values(app_id_input, 'RULE', rules_riskcode, '');
         commit;
       else        
-        insert into af_response_afsummary(app_id, type, value, remarks) values(app_id_input, 'RULE', 'A', '');
+        insert into af_response_afsummary(app_id, type, value, remarks) values(app_id_input, 'RULE', 'C', '');
         commit;
       end if;     
     end AF_HXBCB_RULE;
