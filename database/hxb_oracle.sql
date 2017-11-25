@@ -260,7 +260,7 @@ comment on column af_response_afriskwarning.class is 'TYPE 二级分类';
 DROP TABLE af_request_applicantinfo cascade constraints;
 --create table af_request_applicantinfo
 create table af_request_applicantinfo(
-      app_id VARCHAR2(16) NOT NULL CONSTRAINT indx_on_app_id PRIMARY KEY,
+      app_id VARCHAR2(16) NOT NULL,
       app_code NUMBER(10),
       app_flag NUMBER(1),
       app_prod VARCHAR2(4),
@@ -1221,5 +1221,14 @@ comment on column  af_request_applicantinfo.vehicle_value is '车辆价值';
 comment on column  af_request_applicantinfo.vehicle_age is '车龄';
 comment on column  af_request_applicantinfo.req_app_num is '申请次数';
 comment on column  af_request_applicantinfo.modify_time is '更新时间';
+
+create unique index idx_appinfo_appid on af_request_applicantinfo(app_id) tablespace index_ts;
+create index idx_sum_appid_type on af_response_afsummary(app_id,type) tablespace index_ts;
+create index idx_warn_appid_class_type on af_response_afriskwarning(app_id,class,type) tablespace index_ts;
+create unique index idx_modelresult_appid on af_app_model_result(app_id) tablespace index_ts;
+create unique index idx_snaresult_appid on af_app_sna_result(app_id) tablespace index_ts;
+create index idx_movinput_appid_varname on af_app_model_var_input(app_id,var_name) tablespace index_ts;
+create index idx_snainput_nodes on af_app_snainput(from_node,to_node,to_type) tablespace index_ts;
+create index idx_sna_input_node_type on af_app_sna_input(to_node,to_type) tablespace index_ts;
 
 
