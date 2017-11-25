@@ -160,7 +160,17 @@ insert into AF_APP_MODEL_INPUT_PARMS (model_var, model_var_value) values ('DEBIT
 insert into AF_APP_MODEL_INPUT_PARMS (model_var, model_var_value) values ('C1_COYR', -1.7);
 commit;
 
-insert into af_app_snainput_conf(src_type, to_type, link_type, ifcluster) values('c1_idnbr','c1_idnbr','1','1');
+insert into af_app_snainput_conf(src_type, to_type, link_type, ifcluster) values('C1_IDNBR','ID_NUM','1','1');
+insert into af_app_snainput_conf(src_type, to_type, link_type, ifcluster) values('C1_MOBILE','MOBILEPHONE','1','1');
+insert into af_app_snainput_conf(src_type, to_type, link_type, ifcluster) values('C1_REMOBIL','MOBILEPHONE','4','1');
+insert into af_app_snainput_conf(src_type, to_type, link_type, ifcluster) values('C1_XMOBIL1','MOBILEPHONE','4','1');
+insert into af_app_snainput_conf(src_type, to_type, link_type, ifcluster) values('C2_MOBILE','MOBILEPHONE','4','1');
+insert into af_app_snainput_conf(src_type, to_type, link_type, ifcluster) values('C1_HMTEL','TELEPHONE','1','1');
+insert into af_app_snainput_conf(src_type, to_type, link_type, ifcluster) values('C2_HMTEL','TELEPHONE','4','1');
+insert into af_app_snainput_conf(src_type, to_type, link_type, ifcluster) values('C1_COTEL','TELEPHONE','4','1');
+insert into af_app_snainput_conf(src_type, to_type, link_type, ifcluster) values('C1_EMAIL','EMAIL','1','1');
+insert into af_app_snainput_conf(src_type, to_type, link_type, ifcluster) values('C1_CARNBR','CARNBR','1','1');
+insert into af_app_snainput_conf(src_type, to_type, link_type, ifcluster) values('C1_CARDNBR','CARDNBR','1','1');
 commit;
 
 insert into af_app_sna_input(clusterid,to_node,to_type,net_score)values('1','2','mob',300);
