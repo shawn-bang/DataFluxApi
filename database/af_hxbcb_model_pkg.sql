@@ -62,12 +62,12 @@ create or replace package body AF_HXBCB_MODEL_PKG is
         for parm_cur in parms_cur
         loop
           begin
-            if upper(parm_cur.model_var)=upper('intercept') then
-              v_score:=v_score + to_number(parm_cur.model_var_value);
-            end if;
             select to_number(var_value) into v_var
             from af_app_model_var_input
             where app_id = appid and upper(var_name)=upper(parm_cur.model_var);
+            if upper(parm_cur.model_var)=upper('intercept') then
+              v_score:=v_score + to_number(parm_cur.model_var_value);
+            end if;
             if upper(parm_cur.model_var)=upper('C1_GENDER') then
               if v_var='M' then v_var_value:=1 ;
               else v_var_value:=0;
@@ -83,7 +83,7 @@ create or replace package body AF_HXBCB_MODEL_PKG is
               else v_var_value:=0;
               end if;
             else
-              v_var_value:=0;
+              v_var_value:=to_number(nvl(v_var, '0'));
             end if;
             v_score :=v_score + to_number(v_var_value) * to_number(parm_cur.model_var_value);
             exception when no_data_found then

@@ -134,12 +134,16 @@ create or replace package body AF_HXBCB is
         v_model_res varchar(10):='';
         riskcode af_response_afriskwarning.riskcode%type;
       begin
-        select model_ressult into v_model_res
-        from af_app_model_result
-        where app_id = app_id_res;
-        select sna_result into v_sna_res
-        from af_app_sna_result
-        where app_id = app_id_res;
+        begin
+          select model_ressult into v_model_res
+          from af_app_model_result
+          where app_id = app_id_res;
+          select sna_result into v_sna_res
+          from af_app_sna_result
+          where app_id = app_id_res;
+          EXCEPTION WHEN NO_DATA_FOUND  THEN
+          NULL;
+        end;
         insert into af_response_afriskwarning(app_id,riskno,risktype,riskcategory,riskdesc,riskcode,type, class)
         values
           (app_id_res,'Z2','Z05','Z05_1',' ',v_model_res,'MODEL', 'Z');
