@@ -149,6 +149,20 @@ comment on table af_app_prc_logs is '存储过程相关日志';
 comment on column af_app_prc_logs.app_Id is '申请进件号码';
 comment on column af_app_prc_logs.error_logs is '日志信息';
 
+insert into AF_APP_MODEL_INPUT_PARMS (model_var, model_var_value) values ('SEMI_CRED_ACCT_NUM', -.1126);
+insert into AF_APP_MODEL_INPUT_PARMS (model_var, model_var_value) values ('C1_EARN', .504);
+insert into AF_APP_MODEL_INPUT_PARMS (model_var, model_var_value) values ('C1_HMYR', .101);
+insert into AF_APP_MODEL_INPUT_PARMS (model_var, model_var_value) values ('C1_GENER', .489);
+insert into AF_APP_MODEL_INPUT_PARMS (model_var, model_var_value) values ('PERSON_HOU_LOAN_NO', -.661);
+insert into AF_APP_MODEL_INPUT_PARMS (model_var, model_var_value) values ('C1_EDUCLS', -1.142);
+insert into AF_APP_MODEL_INPUT_PARMS (model_var, model_var_value) values ('OHTER_LOAN_NUM', .888);
+insert into AF_APP_MODEL_INPUT_PARMS (model_var, model_var_value) values ('C1_MARST', -.446);
+insert into AF_APP_MODEL_INPUT_PARMS (model_var, model_var_value) values ('intercept', .2694);
+insert into AF_APP_MODEL_INPUT_PARMS (model_var, model_var_value) values ('NO_PIN_DEBIT_CARD_ACCT_NUM', -1.189);
+insert into AF_APP_MODEL_INPUT_PARMS (model_var, model_var_value) values ('DEBIT_CARD_OVER_DUE_MONTH_NUM', .421);
+insert into AF_APP_MODEL_INPUT_PARMS (model_var, model_var_value) values ('C1_COYR', -1.7);
+commit;
+
 insert into af_app_snainput_conf(src_type, to_type, link_type, ifcluster) values('c1_idnbr','c1_idnbr','1','1');
 commit;
 
@@ -162,8 +176,12 @@ insert into af_app_model_input_parms(model_var,model_var_value) values ('c6_rel_
 insert into af_app_model_input_parms(model_var,model_var_value) values('paymt_yn',70);
 commit;
 
-insert into af_app_risk_conf_parms(parm_type,parm_level,parm_value_up,parm_value_lower) values ('SNA','高',9999,800);
-insert into af_app_risk_conf_parms(parm_type,parm_level,parm_value_up,parm_value_lower) values ('SNA','中',799,500);
+insert into af_app_risk_conf_parms(parm_type,parm_level,parm_value_up,parm_value_lower) values ('SNA','D',9999,600);
+insert into af_app_risk_conf_parms(parm_type,parm_level,parm_value_up,parm_value_lower) values ('SNA','C',600,300);
+insert into af_app_risk_conf_parms(parm_type,parm_level,parm_value_up,parm_value_lower) values ('SNA','B',300,0);
+insert into af_app_risk_conf_parms(parm_type,parm_level,parm_value_up,parm_value_lower) values ('MODEL','D',100,80);
+insert into af_app_risk_conf_parms(parm_type,parm_level,parm_value_up,parm_value_lower) values ('MODEL','C',80,60);
+insert into af_app_risk_conf_parms(parm_type,parm_level,parm_value_up,parm_value_lower) values ('MODEL','B',60,0);
 commit;
 
 -----------------------------------------------------------------------------------------
