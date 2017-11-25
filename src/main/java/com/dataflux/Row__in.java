@@ -5,10 +5,10 @@
  * by the Apache Axis 1.4 Apr 22, 2006 (06:55:48 PDT) WSDL2Java emitter.
  */
 
-package com.dataflux.xsd.archserver;
+package com.dataflux;
 
 public class Row__in  implements java.io.Serializable {
-    private String shenqingjian_no;
+    private String app_id;
 
     private String entity_type;
 
@@ -22,12 +22,12 @@ public class Row__in  implements java.io.Serializable {
     }
 
     public Row__in(
-           String shenqingjian_no,
+           String app_id,
            String entity_type,
            String data_type,
            String data_value,
            String data_source) {
-           this.shenqingjian_no = shenqingjian_no;
+           this.app_id = app_id;
            this.entity_type = entity_type;
            this.data_type = data_type;
            this.data_value = data_value;
@@ -36,22 +36,22 @@ public class Row__in  implements java.io.Serializable {
 
 
     /**
-     * Gets the shenqingjian_no value for this Row__in.
+     * Gets the app_id value for this Row__in.
      * 
-     * @return shenqingjian_no
+     * @return app_id
      */
-    public String getShenqingjian_no() {
-        return shenqingjian_no;
+    public String getApp_id() {
+        return app_id;
     }
 
 
     /**
-     * Sets the shenqingjian_no value for this Row__in.
+     * Sets the app_id value for this Row__in.
      * 
-     * @param shenqingjian_no
+     * @param app_id
      */
-    public void setShenqingjian_no(String shenqingjian_no) {
-        this.shenqingjian_no = shenqingjian_no;
+    public void setApp_id(String app_id) {
+        this.app_id = app_id;
     }
 
 
@@ -146,9 +146,9 @@ public class Row__in  implements java.io.Serializable {
         __equalsCalc = obj;
         boolean _equals;
         _equals = true && 
-            ((this.shenqingjian_no==null && other.getShenqingjian_no()==null) || 
-             (this.shenqingjian_no!=null &&
-              this.shenqingjian_no.equals(other.getShenqingjian_no()))) &&
+            ((this.app_id==null && other.getApp_id()==null) || 
+             (this.app_id!=null &&
+              this.app_id.equals(other.getApp_id()))) &&
             ((this.entity_type==null && other.getEntity_type()==null) || 
              (this.entity_type!=null &&
               this.entity_type.equals(other.getEntity_type()))) &&
@@ -172,8 +172,8 @@ public class Row__in  implements java.io.Serializable {
         }
         __hashCodeCalc = true;
         int _hashCode = 1;
-        if (getShenqingjian_no() != null) {
-            _hashCode += getShenqingjian_no().hashCode();
+        if (getApp_id() != null) {
+            _hashCode += getApp_id().hashCode();
         }
         if (getEntity_type() != null) {
             _hashCode += getEntity_type().hashCode();
@@ -198,8 +198,8 @@ public class Row__in  implements java.io.Serializable {
     static {
         typeDesc.setXmlType(new javax.xml.namespace.QName("archserver.xsd.dataflux.com", "row__in"));
         org.apache.axis.description.ElementDesc elemField = new org.apache.axis.description.ElementDesc();
-        elemField.setFieldName("shenqingjian_no");
-        elemField.setXmlName(new javax.xml.namespace.QName("", "shenqingjian_no"));
+        elemField.setFieldName("app_id");
+        elemField.setXmlName(new javax.xml.namespace.QName("", "app_id"));
         elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
         elemField.setNillable(false);
         typeDesc.addFieldDesc(elemField);

@@ -96,5 +96,35 @@ public class HxbDao {
 		HxbMapper mapper = sqlSession.getMapper(HxbMapper.class);
 		mapper.deleteAfriskwarningByAppid(appId);
 	}
+
+	public void saveMatchrstInfos(SqlSession sqlSession,List<Map<String, Object>> list){
+		HxbMapper mapper = sqlSession.getMapper(HxbMapper.class);
+		mapper.saveMatchrstInfos(list);
+	}
+
+    public void saveAddMCInfos(SqlSession sqlSession,List<Map<String, Object>> list){
+        HxbMapper mapper = sqlSession.getMapper(HxbMapper.class);
+        mapper.saveAddMCInfos(list);
+    }
+
+    public void saveCmpMCInfos(SqlSession sqlSession,List<Map<String, Object>> list){
+        HxbMapper mapper = sqlSession.getMapper(HxbMapper.class);
+        mapper.saveCmpMCInfos(list);
+    }
+
+    public void deleteAddMCInfosByAppid(SqlSession sqlSession,String appId){
+        HxbMapper mapper = sqlSession.getMapper(HxbMapper.class);
+        mapper.deleteAddMCInfosByAppid(appId);
+    }
+
+    public void deleteCmpMCInfosByAppid(SqlSession sqlSession,String appId){
+        HxbMapper mapper = sqlSession.getMapper(HxbMapper.class);
+        mapper.deleteCmpMCInfosByAppid(appId);
+    }
+
+	public void deleteMatchrstInfosByAppid(SqlSession sqlSession,String appId){
+		HxbMapper mapper = sqlSession.getMapper(HxbMapper.class);
+		mapper.deleteMatchrstInfosByAppid(appId);
+	}
 	
 }

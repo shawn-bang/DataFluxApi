@@ -14,14 +14,11 @@ import api.utils.HxbDao;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
+import com.dataflux.DMService_ServiceLocator;
+import com.dataflux.Row__in;
+import com.dataflux.Row__out;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.log4j.Logger;
-
-import com.dataflux.wsdl.archserver.DMServiceLocator;
-import com.dataflux.xsd.archserver.Row__in;
-import com.dataflux.xsd.archserver.Row__out;
-
-import api.utils.GzcbCCAppImpl;
 
 public class CCAFBiz {
 
@@ -211,127 +208,76 @@ public class CCAFBiz {
 		log.info(appId + ":prepareSNAInput:" + (endtime - starttime));
 	}
 
-	public void saveMatchRst(SqlSession sqlSession, String shenqingjian_no, Row__out[] dfouttab) {
+	public void saveMatchRst(SqlSession sqlSession, String appId, Row__out[] dfouttab) {
 		Long starttime = System.currentTimeMillis();
-		Map<String, Map<String, String>> appAddTab = new HashMap<String, Map<String, String>>();
-		Map<String, Map<String, String>> appCmpTab = new HashMap<String, Map<String, String>>();
-		ArrayList<Map<String, Object>> mtRstTab = new ArrayList<Map<String, Object>>();
-
-		String s_company=null;
-		String s_namemc=null;
-		String s_legalformmc=null;
-		String s_sitemc=null;
-		String s_addinfomc=null;
-		String s_shenqingjian_no=null;
-		
+        List<Map<String, Object>> addMCInfos = new ArrayList<Map<String, Object>>();
+        List<Map<String, Object>> cmpMCInfos = new ArrayList<Map<String, Object>>();
+		List<Map<String, Object>> mtRstTab = new ArrayList<Map<String, Object>>();
 		
 		if (dfouttab != null && dfouttab.length > 0) {
 			for (int i = 0; i < dfouttab.length; i++) {
 
 				HashMap<String, Object> mtrstmp = new HashMap<String, Object>();
-				mtrstmp.put("shenqingjian_no", shenqingjian_no);
-				mtrstmp.put("APP_entity_type", dfouttab[i].getAPP_entity_type());
-				mtrstmp.put("APP_data_type", dfouttab[i].getAPP_data_type());
-				mtrstmp.put("APP_data_value", dfouttab[i].getAPP_data_value());
-				mtrstmp.put("APP_data_source", dfouttab[i].getAPP_data_source());
-				mtrstmp.put("EXT_entity_type", dfouttab[i].getEXT_entity_type());
-				mtrstmp.put("EXT_data_type", dfouttab[i].getEXT_data_type());
-				mtrstmp.put("EXT_data_value", dfouttab[i].getEXT_data_value());
-				mtrstmp.put("EXT_data_source", dfouttab[i].getEXT_data_source());
+				mtrstmp.put("app_id", appId);
+				mtrstmp.put("app_entity_type", dfouttab[i].getAPP_entity_type());
+				mtrstmp.put("app_data_type", dfouttab[i].getAPP_data_type());
+				mtrstmp.put("app_data_value", dfouttab[i].getAPP_data_value());
+				mtrstmp.put("app_data_source", dfouttab[i].getAPP_data_source());
+				mtrstmp.put("ext_entity_type", dfouttab[i].getEXT_entity_type());
+				mtrstmp.put("ext_data_type", dfouttab[i].getEXT_data_type());
+				mtrstmp.put("ext_data_value", dfouttab[i].getEXT_data_value());
+				mtrstmp.put("ext_data_source", dfouttab[i].getEXT_data_source());
 				mtrstmp.put("simulation_parsing", new java.math.BigDecimal(dfouttab[i].getSimulation_parsing()));
 				mtrstmp.put("simulation_char", new java.math.BigDecimal(dfouttab[i].getSimulation_char()));
 				mtrstmp.put("simulation_cluster", new java.math.BigDecimal(dfouttab[i].getSimulation_cluster()));
-				mtrstmp.put("ext_label", dfouttab[i].getExt_label());
 				mtRstTab.add(mtrstmp);
 
 				if (dfouttab[i].getAPP_entity_type().equals("ADD")) {
-					HashMap<String, String> addmp = new HashMap<String, String>();
-					addmp.put("shenqingjian_no", dfouttab[i].getAPP_shenqingjian_no());
+					HashMap<String, Object> addmp = new HashMap<String, Object>();
+					addmp.put("app_id", dfouttab[i].getAPP_app_id());
 					addmp.put("data_type", dfouttab[i].getAPP_data_type());
 					addmp.put("data_value", dfouttab[i].getAPP_data_value());
-					addmp.put("DistrictMC", dfouttab[i].getAPP_DistrictMC());
-					addmp.put("TownMC", dfouttab[i].getAPP_TownMC());
-					addmp.put("StreetMC", dfouttab[i].getAPP_StreetMC());
-					addmp.put("BlockMC", dfouttab[i].getAPP_BlockMC());
-					addmp.put("BuildingMC", dfouttab[i].getAPP_BuildingMC());
-					addmp.put("UnitMC", dfouttab[i].getAPP_UnitMC());
-					addmp.put("FloorMC", dfouttab[i].getAPP_FloorMC());
-					addmp.put("RoomMC", dfouttab[i].getAPP_RoomMC());
-					addmp.put("AddInfo", dfouttab[i].getAPP_AddInfo());
-					appAddTab.put(dfouttab[i].getAPP_data_type(), addmp);
+					addmp.put("districtmc", dfouttab[i].getAPP_DistrictMC());
+					addmp.put("townmc", dfouttab[i].getAPP_TownMC());
+					addmp.put("streetmc", dfouttab[i].getAPP_StreetMC());
+					addmp.put("blockmc", dfouttab[i].getAPP_BlockMC());
+					addmp.put("buildingmc", dfouttab[i].getAPP_BuildingMC());
+					addmp.put("unitmc", dfouttab[i].getAPP_UnitMC());
+					addmp.put("floormc", dfouttab[i].getAPP_FloorMC());
+					addmp.put("roommc", dfouttab[i].getAPP_RoomMC());
+					addmp.put("addinfo", dfouttab[i].getAPP_AddInfo());
+					addMCInfos.add(addmp);
 				}
 				if (dfouttab[i].getAPP_entity_type().equals("CMP")) {
-					HashMap<String, String> cmpmp = new HashMap<String, String>();
-					cmpmp.put("shenqingjian_no", dfouttab[i].getAPP_shenqingjian_no());
+					HashMap<String, Object> cmpmp = new HashMap<String, Object>();
+					cmpmp.put("app_id", dfouttab[i].getAPP_app_id());
 					cmpmp.put("data_type", dfouttab[i].getAPP_data_type());
 					cmpmp.put("data_value", dfouttab[i].getAPP_data_value());
-					cmpmp.put("NameMC", dfouttab[i].getAPP_NameMC());
-					cmpmp.put("LegalFormMC", dfouttab[i].getAPP_LegalFormMC());
-					cmpmp.put("SiteMC", dfouttab[i].getAPP_SiteMC());
-					cmpmp.put("AddMC", dfouttab[i].getAPP_AddMC());
-					appCmpTab.put(dfouttab[i].getAPP_data_type(), cmpmp);
-					
-					if (dfouttab[i].getAPP_data_type().trim().equals("company")){
-						s_shenqingjian_no=dfouttab[i].getAPP_shenqingjian_no();
-						s_company=dfouttab[i].getAPP_data_value();
-						s_namemc=dfouttab[i].getAPP_NameMC();
-						s_legalformmc= dfouttab[i].getAPP_LegalFormMC();
-						s_sitemc=dfouttab[i].getAPP_SiteMC();
-						s_addinfomc=dfouttab[i].getAPP_AddMC();
-					}
+					cmpmp.put("namemc", dfouttab[i].getAPP_NameMC());
+					cmpmp.put("legalformmc", dfouttab[i].getAPP_LegalFormMC());
+					cmpmp.put("sitemc", dfouttab[i].getAPP_SiteMC());
+					cmpmp.put("addmc", dfouttab[i].getAPP_AddMC());
+					cmpMCInfos.add(cmpmp);
 				}
 			}
 
-			GzcbCCAppImpl ccappImpl = GzcbCCAppImpl.getInstance();
-			ccappImpl.deleteCCAppAddFromAppno(sqlSession, shenqingjian_no);
-			sqlSession.commit();
-			Iterator<String> addit = appAddTab.keySet().iterator();
-			while (addit.hasNext()) {
-				ccappImpl.saveCCAppAdd(sqlSession, appAddTab.get(addit.next()));
-				sqlSession.commit();
-			}
-
-			ccappImpl.deleteCCAppCmpFromAppno(sqlSession, shenqingjian_no);
-			sqlSession.commit();
-			Iterator<String> cmpit = appCmpTab.keySet().iterator();
-			while (cmpit.hasNext()) {
-				ccappImpl.saveCCAppCmp(sqlSession, appCmpTab.get(cmpit.next()));
-				sqlSession.commit();
-			}
-
-			ccappImpl.deleteMatchrstbyAppno(sqlSession, shenqingjian_no);
-			sqlSession.commit();
-			Iterator<Map<String, Object>> mtrstit = mtRstTab.iterator();
-			while (mtrstit.hasNext()) {
-				ccappImpl.saveCCAppMatchRst(sqlSession, mtrstit.next());
-				sqlSession.commit();
-			}
-			
-			Map<String,String> paraCompany =new HashMap();
-			paraCompany.put("company", s_company);
-			paraCompany.put("namemc", s_namemc);
-			paraCompany.put("legalformmc", s_legalformmc);
-			paraCompany.put("sitemc", s_sitemc);
-			paraCompany.put("addinfomc", s_addinfomc);
-			
-			String s2_EXT_data_value=null;
-			String s2_ext_label=null;
-			Map<String,String> rstCompanyKequn =ccappImpl.selectMdkKequn(sqlSession, paraCompany);
-			if (rstCompanyKequn !=null && rstCompanyKequn.size()>0){
-				s2_EXT_data_value=rstCompanyKequn.get("company");
-				s2_ext_label=rstCompanyKequn.get("kequn");
-			}
-			
-			Map<String,String> paraMdkKequnMap =new HashMap();
-			paraMdkKequnMap.put("shenqingjian_no", shenqingjian_no);
-			paraMdkKequnMap.put("APP_data_value", s_company);
-			paraMdkKequnMap.put("EXT_data_value", s2_EXT_data_value);
-			paraMdkKequnMap.put("ext_label", s2_ext_label);				
-			ccappImpl.insertMdkKequn(sqlSession, paraMdkKequnMap);
+            HxbDao hxbDao = HxbDao.getInstance();
+			hxbDao.deleteMatchrstInfosByAppid(sqlSession, appId);
+			hxbDao.deleteAddMCInfosByAppid(sqlSession, appId);
+			hxbDao.deleteCmpMCInfosByAppid(sqlSession, appId);
+			if (mtRstTab.size() > 0){
+                hxbDao.saveMatchrstInfos(sqlSession, mtRstTab);
+            }
+            if (addMCInfos.size() > 0){
+                hxbDao.saveAddMCInfos(sqlSession, addMCInfos);
+            }
+            if (cmpMCInfos.size() > 0){
+                hxbDao.saveCmpMCInfos(sqlSession, cmpMCInfos);
+            }
 			sqlSession.commit();
 		}
 		Long endtime = System.currentTimeMillis();
-		log.info(shenqingjian_no + ":saveMatchCode:" + (endtime - starttime));
+		log.info(appId + ":saveMatchCode:" + (endtime - starttime));
 	}
 
 	private boolean checkCmpValue(String cmpvalue) {
@@ -362,7 +308,7 @@ public class CCAFBiz {
 		ArrayList<Row__in> list = new ArrayList<Row__in>();
 		String tmpcmpvalue = null;
 
-		String coadd = applicantinfo.get("c1_coadd1").toString() + applicantinfo.get("c1_coadd1").toString() + applicantinfo.get("c1_coadd1").toString() + applicantinfo.get("c1_coadd1").toString();
+		String coadd = applicantinfo.get("c1_coadd1").toString() + applicantinfo.get("c1_coadd2").toString() + applicantinfo.get("c1_coadd3").toString() + applicantinfo.get("c1_coadd4").toString();
 		tmpcmpvalue = coadd.trim();
 		if (this.checkCmpValue(tmpcmpvalue)) {
 			Row__in row = new Row__in();
@@ -370,7 +316,7 @@ public class CCAFBiz {
 			row.setData_type("company");
 			row.setData_value(tmpcmpvalue);
 			row.setEntity_type("CMP");
-			row.setShenqingjian_no(appId);
+			row.setApp_id(appId);
 			list.add(row);
 		}
 
@@ -379,8 +325,8 @@ public class CCAFBiz {
 			intab[i] = list.get(i);
 		}
 
-		DMServiceLocator dsl = new DMServiceLocator();
-		Row__out[] dfouttab = dsl.getDMService().datasvc_ccapp__rt__matchDdf_in(intab);
+		DMService_ServiceLocator dsl = new DMService_ServiceLocator();
+		Row__out[] dfouttab = dsl.getDMService().datasvc_hxbcb__rt__matchDdf_in(intab);
 		Long endtime = System.currentTimeMillis();
 		log.info(appId + ":runDataFlux:" + (endtime - starttime));
 		return dfouttab;

@@ -5,9 +5,9 @@
  * by the Apache Axis 1.4 Apr 22, 2006 (06:55:48 PDT) WSDL2Java emitter.
  */
 
-package com.dataflux.wsdl.archserver;
+package com.dataflux;
 
-public class DataManagementServiceStub extends org.apache.axis.client.Stub implements com.dataflux.wsdl.archserver.DataManagementServicePortType {
+public class DataManagementServiceStub extends org.apache.axis.client.Stub implements DataManagementServicePortType {
     private java.util.Vector cachedSerClasses = new java.util.Vector();
     private java.util.Vector cachedSerQNames = new java.util.Vector();
     private java.util.Vector cachedSerFactories = new java.util.Vector();
@@ -24,13 +24,13 @@ public class DataManagementServiceStub extends org.apache.axis.client.Stub imple
         org.apache.axis.description.OperationDesc oper;
         org.apache.axis.description.ParameterDesc param;
         oper = new org.apache.axis.description.OperationDesc();
-        oper.setName("datasvc_ccapp__rt__match.ddf_in");
-        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("", "table_"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("archserver.xsd.dataflux.com", "table__in"), com.dataflux.xsd.archserver.Row__in[].class, false, false);
+        oper.setName("datasvc_hxbcb__rt__match.ddf_in");
+        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("", "table_"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("archserver.xsd.dataflux.com", "table__in"), com.dataflux.Row__in[].class, false, false);
         param.setItemQName(new javax.xml.namespace.QName("", "row"));
         param.setOmittable(true);
         oper.addParameter(param);
         oper.setReturnType(new javax.xml.namespace.QName("archserver.xsd.dataflux.com", "table__out"));
-        oper.setReturnClass(com.dataflux.xsd.archserver.Row__out[].class);
+        oper.setReturnClass(Row__out[].class);
         oper.setReturnQName(new javax.xml.namespace.QName("", "table_"));
         param = oper.getReturnParamDesc();
         param.setItemQName(new javax.xml.namespace.QName("", "row"));
@@ -69,6 +69,13 @@ public class DataManagementServiceStub extends org.apache.axis.client.Stub imple
             Class simpledf = org.apache.axis.encoding.ser.SimpleDeserializerFactory.class;
             Class simplelistsf = org.apache.axis.encoding.ser.SimpleListSerializerFactory.class;
             Class simplelistdf = org.apache.axis.encoding.ser.SimpleListDeserializerFactory.class;
+            qName = new javax.xml.namespace.QName("archserver.xsd.dataflux.com", ">row__in>app_id");
+            cachedSerQNames.add(qName);
+            cls = String.class;
+            cachedSerClasses.add(cls);
+            cachedSerFactories.add(org.apache.axis.encoding.ser.BaseSerializerFactory.createFactory(org.apache.axis.encoding.ser.SimpleSerializerFactory.class, cls, qName));
+            cachedDeserFactories.add(org.apache.axis.encoding.ser.BaseDeserializerFactory.createFactory(org.apache.axis.encoding.ser.SimpleDeserializerFactory.class, cls, qName));
+
             qName = new javax.xml.namespace.QName("archserver.xsd.dataflux.com", ">row__in>data_source");
             cachedSerQNames.add(qName);
             cls = String.class;
@@ -97,13 +104,6 @@ public class DataManagementServiceStub extends org.apache.axis.client.Stub imple
             cachedSerFactories.add(org.apache.axis.encoding.ser.BaseSerializerFactory.createFactory(org.apache.axis.encoding.ser.SimpleSerializerFactory.class, cls, qName));
             cachedDeserFactories.add(org.apache.axis.encoding.ser.BaseDeserializerFactory.createFactory(org.apache.axis.encoding.ser.SimpleDeserializerFactory.class, cls, qName));
 
-            qName = new javax.xml.namespace.QName("archserver.xsd.dataflux.com", ">row__in>shenqingjian_no");
-            cachedSerQNames.add(qName);
-            cls = String.class;
-            cachedSerClasses.add(cls);
-            cachedSerFactories.add(org.apache.axis.encoding.ser.BaseSerializerFactory.createFactory(org.apache.axis.encoding.ser.SimpleSerializerFactory.class, cls, qName));
-            cachedDeserFactories.add(org.apache.axis.encoding.ser.BaseDeserializerFactory.createFactory(org.apache.axis.encoding.ser.SimpleDeserializerFactory.class, cls, qName));
-
             qName = new javax.xml.namespace.QName("archserver.xsd.dataflux.com", ">row__out>APP_AddInfo");
             cachedSerQNames.add(qName);
             cls = String.class;
@@ -118,6 +118,13 @@ public class DataManagementServiceStub extends org.apache.axis.client.Stub imple
             cachedSerFactories.add(org.apache.axis.encoding.ser.BaseSerializerFactory.createFactory(org.apache.axis.encoding.ser.SimpleSerializerFactory.class, cls, qName));
             cachedDeserFactories.add(org.apache.axis.encoding.ser.BaseDeserializerFactory.createFactory(org.apache.axis.encoding.ser.SimpleDeserializerFactory.class, cls, qName));
 
+            qName = new javax.xml.namespace.QName("archserver.xsd.dataflux.com", ">row__out>APP_app_id");
+            cachedSerQNames.add(qName);
+            cls = String.class;
+            cachedSerClasses.add(cls);
+            cachedSerFactories.add(org.apache.axis.encoding.ser.BaseSerializerFactory.createFactory(org.apache.axis.encoding.ser.SimpleSerializerFactory.class, cls, qName));
+            cachedDeserFactories.add(org.apache.axis.encoding.ser.BaseDeserializerFactory.createFactory(org.apache.axis.encoding.ser.SimpleDeserializerFactory.class, cls, qName));
+
             qName = new javax.xml.namespace.QName("archserver.xsd.dataflux.com", ">row__out>APP_BlockMC");
             cachedSerQNames.add(qName);
             cls = String.class;
@@ -126,6 +133,13 @@ public class DataManagementServiceStub extends org.apache.axis.client.Stub imple
             cachedDeserFactories.add(org.apache.axis.encoding.ser.BaseDeserializerFactory.createFactory(org.apache.axis.encoding.ser.SimpleDeserializerFactory.class, cls, qName));
 
             qName = new javax.xml.namespace.QName("archserver.xsd.dataflux.com", ">row__out>APP_BuildingMC");
+            cachedSerQNames.add(qName);
+            cls = String.class;
+            cachedSerClasses.add(cls);
+            cachedSerFactories.add(org.apache.axis.encoding.ser.BaseSerializerFactory.createFactory(org.apache.axis.encoding.ser.SimpleSerializerFactory.class, cls, qName));
+            cachedDeserFactories.add(org.apache.axis.encoding.ser.BaseDeserializerFactory.createFactory(org.apache.axis.encoding.ser.SimpleDeserializerFactory.class, cls, qName));
+
+            qName = new javax.xml.namespace.QName("archserver.xsd.dataflux.com", ">row__out>APP_City");
             cachedSerQNames.add(qName);
             cls = String.class;
             cachedSerClasses.add(cls);
@@ -189,13 +203,6 @@ public class DataManagementServiceStub extends org.apache.axis.client.Stub imple
             cachedDeserFactories.add(org.apache.axis.encoding.ser.BaseDeserializerFactory.createFactory(org.apache.axis.encoding.ser.SimpleDeserializerFactory.class, cls, qName));
 
             qName = new javax.xml.namespace.QName("archserver.xsd.dataflux.com", ">row__out>APP_RoomMC");
-            cachedSerQNames.add(qName);
-            cls = String.class;
-            cachedSerClasses.add(cls);
-            cachedSerFactories.add(org.apache.axis.encoding.ser.BaseSerializerFactory.createFactory(org.apache.axis.encoding.ser.SimpleSerializerFactory.class, cls, qName));
-            cachedDeserFactories.add(org.apache.axis.encoding.ser.BaseDeserializerFactory.createFactory(org.apache.axis.encoding.ser.SimpleDeserializerFactory.class, cls, qName));
-
-            qName = new javax.xml.namespace.QName("archserver.xsd.dataflux.com", ">row__out>APP_shenqingjian_no");
             cachedSerQNames.add(qName);
             cls = String.class;
             cachedSerClasses.add(cls);
@@ -300,13 +307,6 @@ public class DataManagementServiceStub extends org.apache.axis.client.Stub imple
             cachedSerFactories.add(org.apache.axis.encoding.ser.BaseSerializerFactory.createFactory(org.apache.axis.encoding.ser.SimpleSerializerFactory.class, cls, qName));
             cachedDeserFactories.add(org.apache.axis.encoding.ser.BaseDeserializerFactory.createFactory(org.apache.axis.encoding.ser.SimpleDeserializerFactory.class, cls, qName));
 
-            qName = new javax.xml.namespace.QName("archserver.xsd.dataflux.com", ">row__out>ext_label");
-            cachedSerQNames.add(qName);
-            cls = String.class;
-            cachedSerClasses.add(cls);
-            cachedSerFactories.add(org.apache.axis.encoding.ser.BaseSerializerFactory.createFactory(org.apache.axis.encoding.ser.SimpleSerializerFactory.class, cls, qName));
-            cachedDeserFactories.add(org.apache.axis.encoding.ser.BaseDeserializerFactory.createFactory(org.apache.axis.encoding.ser.SimpleDeserializerFactory.class, cls, qName));
-
             qName = new javax.xml.namespace.QName("archserver.xsd.dataflux.com", ">row__out>EXT_LegalFormMC");
             cachedSerQNames.add(qName);
             cls = String.class;
@@ -379,21 +379,21 @@ public class DataManagementServiceStub extends org.apache.axis.client.Stub imple
 
             qName = new javax.xml.namespace.QName("archserver.xsd.dataflux.com", "row__in");
             cachedSerQNames.add(qName);
-            cls = com.dataflux.xsd.archserver.Row__in.class;
+            cls = com.dataflux.Row__in.class;
             cachedSerClasses.add(cls);
             cachedSerFactories.add(beansf);
             cachedDeserFactories.add(beandf);
 
             qName = new javax.xml.namespace.QName("archserver.xsd.dataflux.com", "row__out");
             cachedSerQNames.add(qName);
-            cls = com.dataflux.xsd.archserver.Row__out.class;
+            cls = Row__out.class;
             cachedSerClasses.add(cls);
             cachedSerFactories.add(beansf);
             cachedDeserFactories.add(beandf);
 
             qName = new javax.xml.namespace.QName("archserver.xsd.dataflux.com", "table__in");
             cachedSerQNames.add(qName);
-            cls = com.dataflux.xsd.archserver.Row__in[].class;
+            cls = com.dataflux.Row__in[].class;
             cachedSerClasses.add(cls);
             qName = new javax.xml.namespace.QName("archserver.xsd.dataflux.com", "row__in");
             qName2 = new javax.xml.namespace.QName("", "row");
@@ -402,7 +402,7 @@ public class DataManagementServiceStub extends org.apache.axis.client.Stub imple
 
             qName = new javax.xml.namespace.QName("archserver.xsd.dataflux.com", "table__out");
             cachedSerQNames.add(qName);
-            cls = com.dataflux.xsd.archserver.Row__out[].class;
+            cls = Row__out[].class;
             cachedSerClasses.add(cls);
             qName = new javax.xml.namespace.QName("archserver.xsd.dataflux.com", "row__out");
             qName2 = new javax.xml.namespace.QName("", "row");
@@ -437,6 +437,11 @@ public class DataManagementServiceStub extends org.apache.axis.client.Stub imple
                 String key = (String) keys.nextElement();
                 _call.setProperty(key, super.cachedProperties.get(key));
             }
+
+            // Auth:Set Username and Password
+            _call.setUsername("sas");
+            _call.setPassword("sas@123456");
+
             // All the type mapping information is registered
             // when the first call is made.
             // The type mapping information is actually registered in
@@ -475,19 +480,19 @@ public class DataManagementServiceStub extends org.apache.axis.client.Stub imple
         }
     }
 
-    public com.dataflux.xsd.archserver.Row__out[] datasvc_ccapp__rt__matchDdf_in(com.dataflux.xsd.archserver.Row__in[] table_) throws java.rmi.RemoteException {
+    public Row__out[] datasvc_hxbcb__rt__matchDdf_in(com.dataflux.Row__in[] table_) throws java.rmi.RemoteException {
         if (super.cachedEndpoint == null) {
             throw new org.apache.axis.NoEndPointException();
         }
         org.apache.axis.client.Call _call = createCall();
         _call.setOperation(_operations[0]);
         _call.setUseSOAPAction(true);
-        _call.setSOAPActionURI("ccapp_rt_match.ddf*1*5926ACFC1DFEFC60");
+        _call.setSOAPActionURI("hxbcb_rt_match.ddf*1*5A1573BDD3F008AC");
         _call.setEncodingStyle(null);
         _call.setProperty(org.apache.axis.client.Call.SEND_TYPE_ATTR, Boolean.FALSE);
         _call.setProperty(org.apache.axis.AxisEngine.PROP_DOMULTIREFS, Boolean.FALSE);
         _call.setSOAPVersion(org.apache.axis.soap.SOAPConstants.SOAP11_CONSTANTS);
-        _call.setOperationName(new javax.xml.namespace.QName("archserver.xsd.dataflux.com", "datasvc_ccapp__rt__match.ddf_in"));
+        _call.setOperationName(new javax.xml.namespace.QName("archserver.xsd.dataflux.com", "datasvc_hxbcb__rt__match.ddf_in"));
 
         setRequestHeaders(_call);
         setAttachments(_call);
@@ -499,9 +504,9 @@ public class DataManagementServiceStub extends org.apache.axis.client.Stub imple
         else {
             extractAttachments(_call);
             try {
-                return (com.dataflux.xsd.archserver.Row__out[]) _resp;
+                return (Row__out[]) _resp;
             } catch (Exception _exception) {
-                return (com.dataflux.xsd.archserver.Row__out[]) org.apache.axis.utils.JavaUtils.convert(_resp, com.dataflux.xsd.archserver.Row__out[].class);
+                return (Row__out[]) org.apache.axis.utils.JavaUtils.convert(_resp, Row__out[].class);
             }
         }
   } catch (org.apache.axis.AxisFault axisFaultException) {

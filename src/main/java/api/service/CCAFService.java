@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
-import com.dataflux.xsd.archserver.Row__out;
+import com.dataflux.Row__out;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.log4j.Logger;
 import api.biz.CCAFBiz;
@@ -42,9 +42,14 @@ public class CCAFService {
 				bizHandler.prepareSNAInput(sqlSession, applicantinfo);
 				// insert or update request information
 				bizHandler.saveRequestInfos(sqlSession, requestInfoJsonObject);
+				// do we need to recall dataflux when the same appid second request?
+				// call dataflux for fuzzy matching
 				Row__out[] dfouttab = bizHandler.getDataFluxMatchRst(applicantinfo, appId);
+				// update dataflux result to database
+                bizHandler.saveMatchRst(sqlSession, appId, dfouttab);
+                // TODO call database callable process to update the class_id info
 
-				// call database callable process and analysis and calculate update result tables
+				// call database callable process to analysis and calculate update result tables
 				bizHandler.runHandleProcedures(sqlSession, appId);
 				// query result information and generate json response report
 				if (reportJsonObjects == null) {

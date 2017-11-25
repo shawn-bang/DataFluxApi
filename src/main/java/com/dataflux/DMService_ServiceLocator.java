@@ -1,44 +1,32 @@
 /**
- * DMServiceLocator.java
+ * DMService_ServiceLocator.java
  *
  * This file was auto-generated from WSDL
  * by the Apache Axis 1.4 Apr 22, 2006 (06:55:48 PDT) WSDL2Java emitter.
  */
 
-package com.dataflux.wsdl.archserver;
-import api.utils.PropUtil;
+package com.dataflux;
 
-public class DMServiceLocator extends org.apache.axis.client.Service implements DMService {
+public class DMService_ServiceLocator extends org.apache.axis.client.Service implements DMService_Service {
 
 /**
  * Data Management Server
  */
 
-    public DMServiceLocator() {
+    public DMService_ServiceLocator() {
     }
 
 
-    public DMServiceLocator(org.apache.axis.EngineConfiguration config) {
+    public DMService_ServiceLocator(org.apache.axis.EngineConfiguration config) {
         super(config);
     }
 
-    public DMServiceLocator(String wsdlLoc, javax.xml.namespace.QName sName) throws javax.xml.rpc.ServiceException {
+    public DMService_ServiceLocator(String wsdlLoc, javax.xml.namespace.QName sName) throws javax.xml.rpc.ServiceException {
         super(wsdlLoc, sName);
     }
 
     // Use to get a proxy class for DMService
-//    private java.lang.String DMService_address = "http://fanqizha:21036";
-    
-    private static String DMService_address = null;
-    
-    static {
-    	try {
-			DMService_address=PropUtil.getPropValue("runningControl", "DFSERVICEADD");
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-    }
+    private String DMService_address = "http://fna:21036";
 
     public String getDMServiceAddress() {
         return DMService_address;
@@ -55,7 +43,7 @@ public class DMServiceLocator extends org.apache.axis.client.Service implements 
         DMServiceWSDDServiceName = name;
     }
 
-    public com.dataflux.wsdl.archserver.DataManagementServicePortType getDMService() throws javax.xml.rpc.ServiceException {
+    public DataManagementServicePortType getDMService() throws javax.xml.rpc.ServiceException {
        java.net.URL endpoint;
         try {
             endpoint = new java.net.URL(DMService_address);
@@ -66,9 +54,9 @@ public class DMServiceLocator extends org.apache.axis.client.Service implements 
         return getDMService(endpoint);
     }
 
-    public com.dataflux.wsdl.archserver.DataManagementServicePortType getDMService(java.net.URL portAddress) throws javax.xml.rpc.ServiceException {
+    public DataManagementServicePortType getDMService(java.net.URL portAddress) throws javax.xml.rpc.ServiceException {
         try {
-            com.dataflux.wsdl.archserver.DataManagementServiceStub _stub = new com.dataflux.wsdl.archserver.DataManagementServiceStub(portAddress, this);
+            DataManagementServiceStub _stub = new DataManagementServiceStub(portAddress, this);
             _stub.setPortName(getDMServiceWSDDServiceName());
             return _stub;
         }
@@ -88,8 +76,8 @@ public class DMServiceLocator extends org.apache.axis.client.Service implements 
      */
     public java.rmi.Remote getPort(Class serviceEndpointInterface) throws javax.xml.rpc.ServiceException {
         try {
-            if (com.dataflux.wsdl.archserver.DataManagementServicePortType.class.isAssignableFrom(serviceEndpointInterface)) {
-                com.dataflux.wsdl.archserver.DataManagementServiceStub _stub = new com.dataflux.wsdl.archserver.DataManagementServiceStub(new java.net.URL(DMService_address), this);
+            if (DataManagementServicePortType.class.isAssignableFrom(serviceEndpointInterface)) {
+                DataManagementServiceStub _stub = new DataManagementServiceStub(new java.net.URL(DMService_address), this);
                 _stub.setPortName(getDMServiceWSDDServiceName());
                 return _stub;
             }
