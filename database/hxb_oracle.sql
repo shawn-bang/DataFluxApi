@@ -1,6 +1,24 @@
-﻿--if exist table af_app_his_cmp
-drop table af_app_his_cmp cascade constraints;
-create table af_app_his_cmp
+﻿--if exist table af_app_matchrst
+drop table af_app_matchrst cascade constraints;
+create table af_app_matchrst
+(
+  app_id               varchar(20),
+  app_entity_type      varchar(32),
+  app_data_type        varchar(32),
+  app_data_value       varchar(100),
+  app_data_source      varchar(32),
+  ext_entity_type      varchar(32),
+  ext_data_type        varchar(32),
+  ext_data_value       varchar(100),
+  ext_data_source      varchar(32),
+  simulation_parsing   number(10),
+  simulation_char      number(10),
+  simulation_cluster   number(10)
+);
+
+--if exist table af_app_cmp_his
+drop table af_app_cmp_his cascade constraints;
+create table af_app_cmp_his
 (
   APP_ID             varchar(40),
   DATA_TYPE          varchar(50),
@@ -11,9 +29,9 @@ create table af_app_his_cmp
   SITEMC             varchar(256)
 );
 
---if exist table af_app_today_cmp
-drop table af_app_today_cmp cascade constraints;
-create table af_app_today_cmp
+--if exist table af_app_cmp_today
+drop table af_app_cmp_today cascade constraints;
+create table af_app_cmp_today
 (
   APP_ID             varchar(40),
   DATA_TYPE          varchar(30),
@@ -25,9 +43,9 @@ create table af_app_today_cmp
   AF_CREATE_TIME     timestamp default CURRENT_TIMESTAMP
 );
 
---if exist table af_app_his_add
-drop table af_app_his_add cascade constraints;
-create table af_app_his_add
+--if exist table af_app_add_his
+drop table af_app_add_his cascade constraints;
+create table af_app_add_his
 (
   APP_ID             varchar(40),
   DATA_TYPE          varchar(50),
@@ -44,9 +62,9 @@ create table af_app_his_add
   UNITMC             varchar(256)
 );
 
---if exist table af_app_today_add
-drop table af_app_today_add cascade constraints;
-create table af_app_today_add
+--if exist table af_app_add_today
+drop table af_app_add_today cascade constraints;
+create table af_app_add_today
 (
   APP_ID             varchar(40),
   DATA_TYPE          varchar(30),
