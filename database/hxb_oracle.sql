@@ -192,6 +192,29 @@ insert into af_app_risk_conf_parms(parm_type,parm_level,parm_value_up,parm_value
 commit;
 
 -----------------------------------------------------------------------------------------
+--if exist table af_risk_level_settings
+DROP TABLE af_risk_level_settings cascade constraints;
+create table af_risk_level_settings
+(
+  ruleno       VARCHAR2(20) not null,
+  type         VARCHAR2(10),
+  class        VARCHAR2(6),
+  riskno       VARCHAR2(20),
+  risktype     VARCHAR2(20),
+  riskcategory VARCHAR2(200),
+  riskcode     VARCHAR2(6),
+  riskdesc     VARCHAR2(200)
+);
+
+comment on table AF_RESPONSE_AFRISKWARNING is '风险提示信息配置表';
+comment on column AF_RESPONSE_AFRISKWARNING.riskno is '校验规则一级分类编号';
+comment on column AF_RESPONSE_AFRISKWARNING.risktype is '校验规则二级分类编号';
+comment on column AF_RESPONSE_AFRISKWARNING.riskcategory is '校验规则三级分类编号';
+comment on column AF_RESPONSE_AFRISKWARNING.riskdesc is '校验结果详情描述';
+comment on column AF_RESPONSE_AFRISKWARNING.riskcode is '校验结果A,B,C,D,E';
+comment on column AF_RESPONSE_AFRISKWARNING.ruleno is '校验规则编号';
+comment on column AF_RESPONSE_AFRISKWARNING.type is '反欺诈结果类型(AF_ALL,RULE,MODEL,SNA)';
+comment on column AF_RESPONSE_AFRISKWARNING.class is 'TYPE 二级分类';
 
 --if exist table af_request_appinfo_zmivsinfo
 DROP TABLE af_request_appinfo_zmivsinfo cascade constraints;
@@ -1240,5 +1263,6 @@ create unique index idx_snaresult_appid on af_app_sna_result(app_id) tablespace 
 create index idx_movinput_appid_varname on af_app_model_var_input(app_id,var_name) tablespace index_ts;
 create index idx_snainput_nodes on af_app_snainput(from_node,to_node,to_type) tablespace index_ts;
 create index idx_sna_input_node_type on af_app_sna_input(to_node,to_type) tablespace index_ts;
+create unique index idx_risklevel_ruleno on af_risk_level_settings(ruleno) tablespace index_ts;
 
 
