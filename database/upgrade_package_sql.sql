@@ -130,27 +130,42 @@ create or replace package body AF_HXBCB is
   procedure AF_HXBCB_ToResponse(app_id_Res in varchar2) is
     begin
       declare
-        v_sna_res varchar(10):='';
-        v_model_res varchar(10):='';
+        v_sna_res varchar(30):='';
+        v_model_res varchar(30):='';
+        v_desc varchar(20):='';
+        v_code varchar(10):='';
         riskcode af_response_afriskwarning.riskcode%type;
       begin
         begin
-          select model_ressult into v_model_res
-          from af_app_model_result
-          where app_id = app_id_res;
-          select sna_result into v_sna_res
-          from af_app_sna_result
-          where app_id = app_id_res;
-          EXCEPTION WHEN NO_DATA_FOUND  THEN
-          NULL;
+          begin
+            select model_ressult into v_model_res
+            from af_app_model_result
+            where app_id = app_id_res;
+          end;
+          begin
+            select sna_result into v_sna_res
+            from af_app_sna_result
+            where app_id = app_id_res;
+            exception when no_data_found then
+            null;
+          end;
         end;
-        insert into af_response_afriskwarning(app_id,riskno,risktype,riskcategory,riskdesc,riskcode,type, class)
-        values
-          (app_id_res,'Z2','Z05','Z05_1',' ',v_model_res,'MODEL', 'Z');
-        insert into af_response_afriskwarning(app_id,riskno,risktype,riskcategory,riskdesc,riskcode,type, class)
-        values
-          (app_id_res,'Z2','Z06','Z06_1',' ',v_sna_res,'SNA', 'Z');
-        commit;
+        if nvl(v_model_res, 'null') != 'null' then
+          v_code:=substr(v_model_res,1,1);
+          v_desc:=substr(v_model_res,2);
+          insert into af_response_afriskwarning(app_id,riskno,risktype,riskcategory,riskdesc,riskcode,type, class)
+          values
+            (app_id_res,'Z2','Z05','Z05_1',v_desc,v_code,'MODEL', 'Z');
+          commit;
+        end if;
+        if nvl(v_sna_res, 'null') != 'null' then
+          v_code:=substr(v_sna_res,1,1);
+          v_desc:=substr(v_sna_res,2);
+          insert into af_response_afriskwarning(app_id,riskno,risktype,riskcategory,riskdesc,riskcode,type, class)
+          values
+            (app_id_res,'Z2','Z06','Z06_1',v_desc,v_code,'SNA', 'Z');
+          commit;
+        end if;
         --生成模型风险等级结果数据(聚合结果)
         select max(ra.riskcode) into riskcode from af_response_afriskwarning ra where ra.type = 'MODEL' and ra.app_id = app_id_Res;
         if nvl(riskcode, 'null') != 'null' then

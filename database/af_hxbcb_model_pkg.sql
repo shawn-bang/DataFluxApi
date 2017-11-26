@@ -24,7 +24,7 @@ create or replace package body AF_HXBCB_MODEL_PKG is
           where parm_type='MODEL'
         ;
         parm_cur parms_cur%rowtype;
-        v_res varchar2(6):='null';
+        v_res varchar2(30):='null';
       begin
         for parm_cur in parms_cur
         loop
@@ -50,7 +50,7 @@ create or replace package body AF_HXBCB_MODEL_PKG is
         v_var_value number:=0;
         v_score number:=0;
         v_pred_p number(8,4);
-        v_res varchar2(6);
+        v_res varchar2(30);
 
         cursor parms_cur is
           select model_var,model_var_value
@@ -83,17 +83,17 @@ create or replace package body AF_HXBCB_MODEL_PKG is
               else v_var_value:=0;
               end if;
             else
-              v_var_value:=to_number(nvl(v_var, '0'));
+              v_var_value:=to_number(nvl(v_var,'0'));
             end if;
             v_score :=v_score + to_number(v_var_value) * to_number(parm_cur.model_var_value);
             exception when no_data_found then
             continue;
           end;
         end loop;
-        v_pred_p := (1/(1+exp(-1*v_score)))*1000;
+        v_pred_p := (1/(1+exp(-1*v_score)))*100;
         getResLvl(appid, v_pred_p,v_res);
         if v_res !='null' then
-          delete from af_app_model_result where app_id=app_id;
+          delete from af_app_model_result where app_id=appid;
           commit;
           insert into af_app_model_result(app_id,model_ressult)
           values

@@ -183,12 +183,12 @@ insert into af_app_model_input_parms(model_var,model_var_value) values ('c6_rel_
 insert into af_app_model_input_parms(model_var,model_var_value) values('paymt_yn',70);
 commit;
 
-insert into af_app_risk_conf_parms(parm_type,parm_level,parm_value_up,parm_value_lower) values ('SNA','D',9999,600);
-insert into af_app_risk_conf_parms(parm_type,parm_level,parm_value_up,parm_value_lower) values ('SNA','C',600,300);
-insert into af_app_risk_conf_parms(parm_type,parm_level,parm_value_up,parm_value_lower) values ('SNA','B',300,0);
-insert into af_app_risk_conf_parms(parm_type,parm_level,parm_value_up,parm_value_lower) values ('MODEL','D',100,80);
-insert into af_app_risk_conf_parms(parm_type,parm_level,parm_value_up,parm_value_lower) values ('MODEL','C',80,60);
-insert into af_app_risk_conf_parms(parm_type,parm_level,parm_value_up,parm_value_lower) values ('MODEL','B',60,0);
+insert into af_app_risk_conf_parms(parm_type,parm_level,parm_value_up,parm_value_lower) values ('SNA','D中高风险',9999,600);
+insert into af_app_risk_conf_parms(parm_type,parm_level,parm_value_up,parm_value_lower) values ('SNA','C中风险',600,300);
+insert into af_app_risk_conf_parms(parm_type,parm_level,parm_value_up,parm_value_lower) values ('SNA','B中低风险',300,0);
+insert into af_app_risk_conf_parms(parm_type,parm_level,parm_value_up,parm_value_lower) values ('MODEL','D中高风险',100,80);
+insert into af_app_risk_conf_parms(parm_type,parm_level,parm_value_up,parm_value_lower) values ('MODEL','C中风险',80,60);
+insert into af_app_risk_conf_parms(parm_type,parm_level,parm_value_up,parm_value_lower) values ('MODEL','B中低风险',60,0);
 commit;
 
 -----------------------------------------------------------------------------------------
