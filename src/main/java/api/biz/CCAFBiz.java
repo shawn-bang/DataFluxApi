@@ -116,6 +116,7 @@ public class CCAFBiz {
 			hxbDao.deleteAfsummaryByAppid(sqlSession, appId);
 			hxbDao.deleteAfriskwarningByAppid(sqlSession, appId);
 			// we have already confirmed
+			applicantinfo.put("req_app_num", 2);
 			applicantinfo.put("modify_time", new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date()));
 			hxbDao.updateApplicantinfo(sqlSession, applicantinfo);
 			hxbDao.deleteZmivsinfoByAppid(sqlSession, appId);

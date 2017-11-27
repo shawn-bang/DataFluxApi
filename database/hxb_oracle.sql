@@ -232,7 +232,28 @@ comment on table af_app_prc_logs is '存储过程相关日志';
 comment on column af_app_prc_logs.app_Id is '申请进件号码';
 comment on column af_app_prc_logs.error_logs is '日志信息';
 
-insert into af_app_snainput_conf(src_type, to_type, link_type, ifcluster) values('c1_idnbr','c1_idnbr','1','1');
+insert into AF_APP_MODEL_INPUT_PARMS (model_var, model_var_value) values ('SEMI_CRED_ACCT_NUM', -.1126);
+insert into AF_APP_MODEL_INPUT_PARMS (model_var, model_var_value) values ('C1_EARN', .504);
+insert into AF_APP_MODEL_INPUT_PARMS (model_var, model_var_value) values ('C1_HMYR', .101);
+insert into AF_APP_MODEL_INPUT_PARMS (model_var, model_var_value) values ('PERSON_HOU_LOAN_NO', -.661);
+insert into AF_APP_MODEL_INPUT_PARMS (model_var, model_var_value) values ('OHTER_LOAN_NUM', .888);
+insert into AF_APP_MODEL_INPUT_PARMS (model_var, model_var_value) values ('intercept', .2694);
+insert into AF_APP_MODEL_INPUT_PARMS (model_var, model_var_value) values ('NO_PIN_DEBIT_CARD_ACCT_NUM', -1.189);
+insert into AF_APP_MODEL_INPUT_PARMS (model_var, model_var_value) values ('DEBIT_CARD_OVER_DUE_MONTH_NUM', .421);
+insert into AF_APP_MODEL_INPUT_PARMS (model_var, model_var_value) values ('C1_COYR', -1.7);
+commit;
+
+insert into af_app_snainput_conf(src_type, to_type, link_type, ifcluster) values('C1_IDNBR','ID_NUM','1','1');
+insert into af_app_snainput_conf(src_type, to_type, link_type, ifcluster) values('C1_MOBILE','MOBILEPHONE','1','1');
+insert into af_app_snainput_conf(src_type, to_type, link_type, ifcluster) values('C1_REMOBIL','MOBILEPHONE','4','1');
+insert into af_app_snainput_conf(src_type, to_type, link_type, ifcluster) values('C1_XMOBIL1','MOBILEPHONE','4','1');
+insert into af_app_snainput_conf(src_type, to_type, link_type, ifcluster) values('C2_MOBILE','MOBILEPHONE','4','1');
+insert into af_app_snainput_conf(src_type, to_type, link_type, ifcluster) values('C1_HMTEL','TELEPHONE','1','1');
+insert into af_app_snainput_conf(src_type, to_type, link_type, ifcluster) values('C2_HMTEL','TELEPHONE','4','1');
+insert into af_app_snainput_conf(src_type, to_type, link_type, ifcluster) values('C1_COTEL','TELEPHONE','4','1');
+insert into af_app_snainput_conf(src_type, to_type, link_type, ifcluster) values('C1_EMAIL','EMAIL','1','1');
+insert into af_app_snainput_conf(src_type, to_type, link_type, ifcluster) values('C1_CARNBR','CARNBR','1','1');
+insert into af_app_snainput_conf(src_type, to_type, link_type, ifcluster) values('C1_CARDNBR','CARDNBR','1','1');
 commit;
 
 insert into af_app_sna_input(clusterid,to_node,to_type,net_score)values('1','2','mob',300);
@@ -240,16 +261,43 @@ insert into af_app_sna_input(clusterid,to_node,to_type,net_score)values('2','3',
 commit;
 
 insert into af_app_model_input_parms(model_var,model_var_value)values('intercept',600);
-insert into af_app_model_input_parms(model_var,model_var_value)values('C1_CREDPCT',20);
-insert into af_app_model_input_parms(model_var,model_var_value) values ('C6_REL_FLAG1',-30);
-insert into af_app_model_input_parms(model_var,model_var_value) values('PAYMT_YN',70);
+insert into af_app_model_input_parms(model_var,model_var_value)values('c1_credpct',20);
+insert into af_app_model_input_parms(model_var,model_var_value) values ('c6_rel_flag1',-30);
+insert into af_app_model_input_parms(model_var,model_var_value) values('paymt_yn',70);
 commit;
 
-insert into af_app_risk_conf_parms(parm_type,parm_level,parm_value_up,parm_value_lower) values ('SNA','高',9999,800);
-insert into af_app_risk_conf_parms(parm_type,parm_level,parm_value_up,parm_value_lower) values ('SNA','中',799,500);
+insert into af_app_risk_conf_parms(parm_type,parm_level,parm_value_up,parm_value_lower) values ('SNA','D中高风险',9999,600);
+insert into af_app_risk_conf_parms(parm_type,parm_level,parm_value_up,parm_value_lower) values ('SNA','C中风险',600,300);
+insert into af_app_risk_conf_parms(parm_type,parm_level,parm_value_up,parm_value_lower) values ('SNA','B中低风险',300,0);
+insert into af_app_risk_conf_parms(parm_type,parm_level,parm_value_up,parm_value_lower) values ('MODEL','D中高风险',100,80);
+insert into af_app_risk_conf_parms(parm_type,parm_level,parm_value_up,parm_value_lower) values ('MODEL','C中风险',80,60);
+insert into af_app_risk_conf_parms(parm_type,parm_level,parm_value_up,parm_value_lower) values ('MODEL','B中低风险',60,0);
 commit;
 
 -----------------------------------------------------------------------------------------
+--if exist table af_risk_level_settings
+DROP TABLE af_risk_level_settings cascade constraints;
+create table af_risk_level_settings
+(
+  ruleno       VARCHAR2(20) not null,
+  type         VARCHAR2(10),
+  class        VARCHAR2(6),
+  riskno       VARCHAR2(20),
+  risktype     VARCHAR2(20),
+  riskcategory VARCHAR2(200),
+  riskcode     VARCHAR2(6),
+  riskdesc     VARCHAR2(200)
+);
+
+comment on table AF_RESPONSE_AFRISKWARNING is '风险提示信息配置表';
+comment on column AF_RESPONSE_AFRISKWARNING.riskno is '校验规则一级分类编号';
+comment on column AF_RESPONSE_AFRISKWARNING.risktype is '校验规则二级分类编号';
+comment on column AF_RESPONSE_AFRISKWARNING.riskcategory is '校验规则三级分类编号';
+comment on column AF_RESPONSE_AFRISKWARNING.riskdesc is '校验结果详情描述';
+comment on column AF_RESPONSE_AFRISKWARNING.riskcode is '校验结果A,B,C,D,E';
+comment on column AF_RESPONSE_AFRISKWARNING.ruleno is '校验规则编号';
+comment on column AF_RESPONSE_AFRISKWARNING.type is '反欺诈结果类型(AF_ALL,RULE,MODEL,SNA)';
+comment on column AF_RESPONSE_AFRISKWARNING.class is 'TYPE 二级分类';
 
 --if exist table af_request_appinfo_zmivsinfo
 DROP TABLE af_request_appinfo_zmivsinfo cascade constraints;
@@ -328,21 +376,21 @@ comment on column af_response_afriskwarning.class is 'TYPE 二级分类';
 DROP TABLE af_request_applicantinfo cascade constraints;
 --create table af_request_applicantinfo
 create table af_request_applicantinfo(
-      app_id VARCHAR2(16) NOT NULL CONSTRAINT indx_on_app_id PRIMARY KEY,
+      app_id VARCHAR2(16) NOT NULL,
       app_code NUMBER(10),
       app_flag NUMBER(1),
       app_prod VARCHAR2(4),
       c1_carbrnd VARCHAR2(16),
       c1_cardate VARCHAR2(10),
       c1_cardnbr VARCHAR2(19),
-      c1_carnbr VARCHAR2(10),
+      c1_carnbr VARCHAR2(20),
       c1_carst VARCHAR2(1),
       c1_class VARCHAR2(3),
       c1_cname VARCHAR2(30),
       c1_coadd1 VARCHAR2(30),
-      c1_coadd2 VARCHAR2(30),
-      c1_coadd3 VARCHAR2(30),
-      c1_coadd4 VARCHAR2(30),
+      c1_coadd2 VARCHAR2(60),
+      c1_coadd3 VARCHAR2(60),
+      c1_coadd4 VARCHAR2(60),
       c1_cobuscd VARCHAR2(20),
       c1_cocode VARCHAR2(4),
       c1_codept VARCHAR2(20),
@@ -350,7 +398,7 @@ create table af_request_applicantinfo(
       c1_coext VARCHAR2(6),
       c1_cokind VARCHAR2(2),
       c1_colevl VARCHAR2(1),
-      c1_coname VARCHAR2(30),
+      c1_coname VARCHAR2(60),
       c1_copost VARCHAR2(6),
       c1_cotel VARCHAR2(17),
       c1_coyr NUMBER(2),
@@ -361,19 +409,19 @@ create table af_request_applicantinfo(
       c1_gender VARCHAR2(1),
       c1_birth VARCHAR2(10),
       c1_hloan NUMBER(12),
-      c1_hmadd1 VARCHAR2(30),
-      c1_hmadd2 VARCHAR2(30),
-      c1_hmadd3 VARCHAR2(30),
-      c1_hmadd4 VARCHAR2(30),
+      c1_hmadd1 VARCHAR2(60),
+      c1_hmadd2 VARCHAR2(60),
+      c1_hmadd3 VARCHAR2(60),
+      c1_hmadd4 VARCHAR2(60),
       c1_hmare VARCHAR2(4),
       c1_hmpost VARCHAR2(6),
       c1_hmst VARCHAR2(1),
       c1_hmtel VARCHAR2(17),
       c1_hmyr NUMBER(2),
-      c1_idadd1 VARCHAR2(30),
-      c1_idadd2 VARCHAR2(30),
-      c1_idadd3 VARCHAR2(30),
-      c1_idadd4 VARCHAR2(30),
+      c1_idadd1 VARCHAR2(60),
+      c1_idadd2 VARCHAR2(60),
+      c1_idadd3 VARCHAR2(60),
+      c1_idadd4 VARCHAR2(60),
       c1_idnbr VARCHAR2(19),
       c1_idpost VARCHAR2(6),
       c1_idtype VARCHAR2(2),
@@ -805,6 +853,7 @@ create table af_request_applicantinfo(
       vehicle_query_result VARCHAR2(2),
       vehicle_value VARCHAR2(8),
       vehicle_age VARCHAR2(4),
+      req_app_num NUMBER(10) default 1,
       modify_time date default sysdate not null
 );
 
@@ -1286,6 +1335,18 @@ comment on column  af_request_applicantinfo.no_pd_card_6month_ave_pay is '未销
 comment on column  af_request_applicantinfo.vehicle_query_result is '查询结果';
 comment on column  af_request_applicantinfo.vehicle_value is '车辆价值';
 comment on column  af_request_applicantinfo.vehicle_age is '车龄';
+comment on column  af_request_applicantinfo.req_app_num is '申请次数';
 comment on column  af_request_applicantinfo.modify_time is '更新时间';
+
+-----------------------------------------------------------------------------------------
+create unique index idx_appinfo_appid on af_request_applicantinfo(app_id) tablespace index_ts;
+create index idx_sum_appid_type on af_response_afsummary(app_id,type) tablespace index_ts;
+create index idx_warn_appid_class_type on af_response_afriskwarning(app_id,class,type) tablespace index_ts;
+create unique index idx_modelresult_appid on af_app_model_result(app_id) tablespace index_ts;
+create unique index idx_snaresult_appid on af_app_sna_result(app_id) tablespace index_ts;
+create index idx_movinput_appid_varname on af_app_model_var_input(app_id,var_name) tablespace index_ts;
+create index idx_snainput_nodes on af_app_snainput(from_node,to_node,to_type) tablespace index_ts;
+create index idx_sna_input_node_type on af_app_sna_input(to_node,to_type) tablespace index_ts;
+create unique index idx_risklevel_ruleno on af_risk_level_settings(ruleno) tablespace index_ts;
 
 
