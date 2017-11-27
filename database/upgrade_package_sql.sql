@@ -50,7 +50,7 @@
   v_abuser af_request_applicantinfo.c4_abuser%type;
   -- 推广员姓名:c4_abname
   v_abname af_request_applicantinfo.c4_abname%type;
-    --最近30天内的查询机构数_担保资格审查 v_query_org_1m_sum5 = query_org_1m_sum5
+  --最近30天内的查询机构数_担保资格审查 v_query_org_1m_sum5 = query_org_1m_sum5
   v_query_org_1m_sum5 af_request_applicantinfo.query_org_1m_sum5%type;
   --最近30天内的查询机构数_贷后管理 v_query_org_1m_sum1=query_org_1m_sum1
   v_query_org_1m_sum1 af_request_applicantinfo.query_org_1m_sum1%type;
