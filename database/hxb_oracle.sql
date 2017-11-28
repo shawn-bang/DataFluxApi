@@ -1255,6 +1255,7 @@ comment on column  af_request_applicantinfo.vehicle_age is '车龄';
 comment on column  af_request_applicantinfo.req_app_num is '申请次数';
 comment on column  af_request_applicantinfo.modify_time is '更新时间';
 
+-----------------------------------------------------------------------------------------
 create unique index idx_appinfo_appid on af_request_applicantinfo(app_id) tablespace index_ts;
 create index idx_sum_appid_type on af_response_afsummary(app_id,type) tablespace index_ts;
 create index idx_warn_appid_class_type on af_response_afriskwarning(app_id,class,type) tablespace index_ts;

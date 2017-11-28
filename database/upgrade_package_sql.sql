@@ -94,6 +94,7 @@ create or replace package body AF_HXBCB is
     begin
       --调用规则包中的黑名单规则编号160
       AF_HXBCB_RULE_PKG.RULE_155(app_id_input, v_idnbr);
+      AF_HXBCB_RULE_PKG.RULE_156(app_id_input, v_idnbr);
       AF_HXBCB_RULE_PKG.RULE_158(app_id_input, v_coname);
       AF_HXBCB_RULE_PKG.RULE_160(app_id_input, v_coadd);
       AF_HXBCB_RULE_PKG.RULE_162(app_id_input, v_hmadd);

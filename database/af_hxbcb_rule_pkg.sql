@@ -5,6 +5,8 @@ create or replace package AF_HXBCB_RULE_PKG as
   -- 触发规则列表
   -- rule:155
   procedure RULE_155(app_id_input in varchar2, v_idnbr in varchar2);
+  -- rule:156
+  procedure RULE_156(app_id_input in varchar2, v_idnbr in varchar2);
   -- rule:158
   procedure RULE_158(app_id_input in varchar2, v_coname in af_request_applicantinfo.c1_coname%type);
   -- rule:160
@@ -50,6 +52,31 @@ create or replace package body AF_HXBCB_RULE_PKG as
       commit;
       -- don't anything
     end RULE_155;
+
+  -- rule:156
+  procedure RULE_156(app_id_input in varchar2,v_idnbr in varchar2) is
+    flag number;
+    v_error varchar2(500);
+    begin
+      if nvl(v_idnbr, 'null') != 'null' then
+        select count(1) into flag
+        from opas_sameindustry_risklist t
+        where v_idnbr = t.certifi_no and t.curr_status = '1';
+        -- about curr_status column, mybe we need to add a bitmap index
+        -- curr_status must hava value for index and order by
+        -- check flag status
+        if flag > 0 then
+          -- update result data
+          insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno, type, class) values(app_id_input, 'Z2', 'Z01', 'Z01_5', 'D', '中高风险', 'RULE_156', 'RULE', 'Z');
+          commit;
+        end if;
+      end if;
+      -- handle exceptions
+      exception when others then v_error := 'RULE_156: ' || sqlerrm;
+      insert into af_app_prc_logs(app_id, error_logs) values(app_id_input, v_error);
+      commit;
+      -- don't anything
+    end RULE_156;
     
   -- rule:158
   procedure RULE_158(app_id_input in varchar2, v_coname in af_request_applicantinfo.c1_coname%type) is
