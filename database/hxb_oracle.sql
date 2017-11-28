@@ -1,6 +1,7 @@
 ﻿-----------------------------------------------------------------------------------------
 -- DDL comment: dataflux input and output data relation
 -- if exist table af_app_matchrst
+-- Actually we don't how to use this table?
 drop table af_app_matchrst cascade constraints;
 create table af_app_matchrst
 (
@@ -48,6 +49,27 @@ create table af_app_cmp_today
 -- if exist table af_app_add_his
 drop table af_app_add_his cascade constraints;
 create table af_app_add_his
+(
+  APP_ID             varchar(20),
+  DATA_TYPE          varchar(50),
+  CID                varchar(30),
+  ADDINFO            varchar(256),
+  BLOCKMC            varchar(256),
+  BUILDINGMC         varchar(256),
+  DISTRICTMC         varchar(256),
+  FLOORMC            varchar(256),
+  POSTALCODEMC       varchar(256),
+  ROOMMC             varchar(256),
+  STREETMC           varchar(256),
+  TOWNMC             varchar(256),
+  UNITMC             varchar(256),
+  CITY               varchar(100)
+);
+
+-- if exist table af_app_add_ext_his
+-- According to data_source(APP,EXT like PBOC,GJJ,ZIMA,BAIRONG so on)
+drop table af_app_add_ext_his cascade constraints;
+create table af_app_add_ext_his
 (
   APP_ID             varchar(20),
   DATA_TYPE          varchar(50),
