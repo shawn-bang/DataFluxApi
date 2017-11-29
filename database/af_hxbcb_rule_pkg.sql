@@ -69,8 +69,6 @@ create or replace package AF_HXBCB_RULE_PKG as
   procedure RULE_126(app_id_input in varchar2,v_imeienenglish in varchar2);
   -- rule:125
   procedure RULE_125(app_id_input in varchar2,v_wifimacenenglish in varchar2);
-  -- rule:124
-  procedure RULE_124(app_id_input in varchar2,zm_isrisk in varchar2);
   -- rule:122
   procedure RULE_122(app_id_input in varchar2,v_idte1 in varchar2,v_iddt1 in varchar2);
   -- rule:121
