@@ -3,6 +3,64 @@
   -- Created : 2017/11/3 17:15:27
   -- Purpose : Package for Antifraud
   -- 全局变量声明
+  ---------------精确匹配不需要查询历史的规则需要的变量------------------------
+  --申请人贷记卡逾期_最长逾期月数/最长透支月数 v_debit_co_due_longest_over =debit_co_due_longest_over_due
+  v_debit_co_due_longest_over af_request_applicantinfo.debit_co_due_longest_over_due%type;
+  --申请人贷记卡逾期_月份数v_debit_card_over_due_month = debit_card_over_due_month_num
+  v_debit_card_over_due_month af_request_applicantinfo.debit_card_over_due_month_num%type;
+  --申请人贷记卡逾期_笔数/账户数 v_debit_card_over_due_acct_num = debit_card_over_due_acct_num
+  v_debit_card_over_due_acct_num af_request_applicantinfo.debit_card_over_due_acct_num%type;
+  --申请人贷款逾期_月份数 v_loan_overdue_month_num = loan_overdue_month_num
+  v_loan_overdue_month_num af_request_applicantinfo.loan_overdue_month_num%type;
+  --申请人呆帐_笔数 v_bad_debt_num = bad_debt_num
+  v_bad_debt_num af_request_applicantinfo.bad_debt_num%type;
+  --主附卡标识  v1v2_flag = c1c2_flag
+  v1v2_flag af_request_applicantinfo.c1c2_flag%type;
+  --附卡申请人性别 v2_gender = c2_gender
+  v2_gender af_request_applicantinfo.c2_gender%type;
+  --附卡申请人证件号码 v2_idnbr = c2_idnbr
+  v2_idnbr af_request_applicantinfo.c2_idnbr%type;
+  --附卡申请人证件类型
+  v2_idtype af_request_applicantinfo.c2_idtype%type;
+  --主卡申请人性别 v_gender = c1_gender
+  v_gender af_request_applicantinfo.c1_gender%type;
+  --申请人公司中文全称 v_coname = c1_coname
+  v_coname af_request_applicantinfo.c1_coname%type;
+  --申请人推广进件来源 v_apsour = c4_apsour
+  v_apsour af_request_applicantinfo.c4_apsour%type;
+  --申请人家庭电话区号 v_hmare = c1_hmare
+  v_hmare af_request_applicantinfo.c1_hmare%type;
+  --申请人家庭电话v_c1_hmtel = c1_hmtel
+  v_c1_hmtel af_request_applicantinfo.c1_hmtel%type;
+  --申请人直系亲属关系 v_c1_reship = c1_reship
+  v_c1_reship af_request_applicantinfo.c1_reship%type;
+  --申请人配偶的联系电话v_mate_contact_te = mate_contact_tel
+  v_mate_contact_tel af_request_applicantinfo.mate_contact_tel%type;
+  --申请人首张贷记卡发卡月份v_frs_cred_crd_issue_mon = frs_cred_crd_issue_mon
+  v_frs_cred_crd_issue_mon af_request_applicantinfo.frs_cred_crd_issue_mon%type;
+  --申请人未销户贷记卡_贷款法人机构数/发卡法人机构数v_no_pd_card_loan_corp_number = no_pd_card_loan_corp_number
+  v_no_pd_card_loan_corp_number af_request_applicantinfo.no_pd_card_loan_corp_number%type;
+  --申请人未销户贷记卡_贷款机构数/发卡机构数v_no_pd_card_loan_org_number = no_pd_card_loan_org_number
+  v_no_pd_card_loan_org_number af_request_applicantinfo.no_pd_card_loan_org_number%type;
+  --申请人未销户贷记卡_笔数/账户数v_no_pin_debit_card_acct_num = no_pin_debit_card_acct_num
+  v_no_pin_debit_card_acct_num af_request_applicantinfo.no_pin_debit_card_acct_num%type;
+  --申请人教育程度v_educationapproach = educationapproach
+  v_educationapproach af_request_applicantinfo.educationapproach%type;
+  --申请人教育程度v_educls = c1_educls
+  v_educls af_request_applicantinfo.c1_educls%type;
+  --申请人直系亲属手机v_remobil = c1_remobil
+  v_remobil af_request_applicantinfo.c1_remobil%type;
+  --申请人公民身份号码核查结果v_result_xm = result_xm
+  v_result_xm af_request_applicantinfo.result_xm%type;
+  --申请人学历V_EDUCATIONDEGREE = EDUCATIONDEGREE
+  v_educationdegree af_request_applicantinfo.educationdegree%type;
+  --主卡申请人账单邮寄地址v_cycadd1 = c4_cycadd1
+  v_cycadd1 af_request_applicantinfo.c4_cycadd1%type;
+  --申请人准贷记卡60天以上透支_最长逾期月数/最长透支月数v_deb_c60overd_longest_over = deb_c60overd_longest_over_due
+  v_deb_c60overd_longest_over af_request_applicantinfo.deb_c60overd_longest_over_due%type;
+  --申请人准贷记卡60天以上透支_月份数v_deb_c60overd_month_num = deb_c60overd_month_num
+  v_deb_c60overd_month_num af_request_applicantinfo.deb_c60overd_month_num%type;
+  ---------------------------------------------------
   --以下全局变量是r_121至r_131规则开发过程中添加的
   --申请人姓名英文风险描述v_CODENAMEENGLISH = CODENAMEENGLISH
   v_codenameenglish  af_request_applicantinfo.codenameenglish%type;
@@ -108,10 +166,15 @@ create or replace package body AF_HXBCB is
         c4_abuser,
         c4_abname,
         c1_idnbr,
-        c1_coname into v_app_num, v_coadd, v_hmadd, v_mobile, v_cotel, v_hmtel, v_abuser, v_abname, v_idnbr, v_coname,v_idte1,v_iddt1,v_idtype,
+        c1_coname,
+        deb_c60overd_month_num,deb_c60overd_longest_over_due,c4_cycadd1,educationdegree,result_xm,c1_remobil,no_pd_card_loan_org_number,no_pd_card_loan_corp_number,frs_cred_crd_issue_mon,c1_reship,mate_contact_tel,c1_hmare,c1_hmtel,c4_apsour,c1_coname,c1c2_flag,c2_gender,c2_idnbr,c2_idtype,bad_debt_num,loan_overdue_month_num,debit_card_over_due_acct_num,debit_co_due_longest_over_due
+
+      into
+        v_app_num, v_coadd, v_hmadd, v_mobile, v_cotel, v_hmtel, v_abuser, v_abname, v_idnbr, v_coname,v_idte1,v_iddt1,v_idtype,
         v_birth,v_wifimacenenglish,v_imeienenglish,v_imsienenglish,v_ipenenglish,v_codeaddrenglish,v_codeemailenglish,v_codenameenglish,v_educls,
-         v_educationapproach,v_no_pin_debit_card_acct_num,v_no_pd_card_loan_org_number,v_opposite_position,v_frs_cred_crd_issue_mon,
-         v_reship,v_remobil,v_mate_contact_tel,v_query_rec_2y_sum1,v_query_rec_2y_sum5,v_query_org_1m_sum1,v_query_org_1m_sum5
+        v_educationapproach,v_no_pin_debit_card_acct_num,v_no_pd_card_loan_org_number,v_opposite_position,v_frs_cred_crd_issue_mon,
+        v_reship,v_remobil,v_mate_contact_tel,v_query_rec_2y_sum1,v_query_rec_2y_sum5,v_query_org_1m_sum1,v_query_org_1m_sum5
+        ,v_deb_c60overd_month_num,v_deb_c60overd_longest_over,v_cycadd1,v_educationdegree,v_result_xm,v_remobil,v_no_pd_card_loan_org_number,v_no_pd_card_loan_corp_number,v_frs_cred_crd_issue_mon,v_c1_reship,v_mate_contact_tel,v_hmare,v_c1_hmtel,v_apsour,v_coname,v1v2_flag,v2_gender,v2_idnbr,v2_idtype,v_bad_debt_num,v_loan_overdue_month_num,v_debit_card_over_due_acct_num,v_debit_co_due_longest_over
       from af_request_applicantinfo
       where app_id = app_id_input;
 
@@ -152,6 +215,32 @@ create or replace package body AF_HXBCB is
   procedure AF_HXBCB_RULE(app_id_input in varchar2) is
     rules_riskcode af_response_afriskwarning.riskcode%type;
     begin
+      -----精确匹配不需要查询历史的规则----------------------------
+      AF_HXBCB_RULE_PKG.RULE_236(app_id_input);
+      AF_HXBCB_RULE_PKG.RULE_198(app_id_input,v1v2_flag,v2_gender,v2_idnbr,v2_idtype,v_gender,v_idtype,v_idnbr);
+      AF_HXBCB_RULE_PKG.RULE_182(app_id_input,v_coname);
+      AF_HXBCB_RULE_PKG.RULE_153(app_id_input,v_apsour);
+      AF_HXBCB_RULE_PKG.RULE_152(app_id_input,v_apsour);
+      AF_HXBCB_RULE_PKG.RULE_145(app_id_input,v_c1_reship,v_mate_contact_tel,v_remobil);
+      AF_HXBCB_RULE_PKG.RULE_143(app_id_input,v_frs_cred_crd_issue_mon);
+      AF_HXBCB_RULE_PKG.RULE_141(app_id_input,v_no_pd_card_loan_corp_number);
+      AF_HXBCB_RULE_PKG.RULE_140(app_id_input,v_no_pd_card_loan_org_number);
+      AF_HXBCB_RULE_PKG.RULE_139(app_id_input,v_no_pin_debit_card_acct_num);
+      AF_HXBCB_RULE_PKG.RULE_138(app_id_input,v_educls,v_educationapproach);
+      AF_HXBCB_RULE_PKG.RULE_118(app_id_input,v_remobil,v_mobile);
+      AF_HXBCB_RULE_PKG.RULE_98(app_id_input,v_result_xm);
+      AF_HXBCB_RULE_PKG.RULE_96(app_id_input,v_educationdegree);
+      AF_HXBCB_RULE_PKG.RULE_68(app_id_input,v_cycadd1);
+      AF_HXBCB_RULE_PKG.RULE_67(app_id_input,v_cycadd1);
+      AF_HXBCB_RULE_PKG.RULE_65(app_id_input,v_cotel,v_hmare,v_c1_hmtel);
+      AF_HXBCB_RULE_PKG.RULE_49(app_id_input,v_deb_c60overd_longest_over);
+      AF_HXBCB_RULE_PKG.RULE_48(app_id_input,v_deb_c60overd_month_num);
+      AF_HXBCB_RULE_PKG.RULE_46(app_id_input,v_debit_co_due_longest_over);
+      AF_HXBCB_RULE_PKG.RULE_45(app_id_input,v_debit_card_over_due_month);
+      AF_HXBCB_RULE_PKG.RULE_44(app_id_input,v_debit_card_over_due_acct_num);
+      AF_HXBCB_RULE_PKG.RULE_42(app_id_input,v_loan_overdue_month_num);
+      AF_HXBCB_RULE_PKG.RULE_40(app_id_input,v_bad_debt_num);
+      ----------------------------------------------------------
       AF_HXBCB_RULE_PKG.RULE_131(app_id_input,v_codenameenglish);
       AF_HXBCB_RULE_PKG.RULE_130(app_id_input,v_codeemailenglish);
       AF_HXBCB_RULE_PKG.RULE_129(app_id_input,v_codeaddrenglish);
