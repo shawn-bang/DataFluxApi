@@ -142,6 +142,8 @@ create or replace package body AF_HXBCB is
             select model_ressult into v_model_res
             from af_app_model_result
             where app_id = app_id_res;
+            exception when no_data_found then
+            null;
           end;
           begin
             select sna_result into v_sna_res

@@ -24,7 +24,7 @@ create or replace package body AF_HXBCB_SNA_PKG is
           where parm_type='SNA'
         ;
         parm_cur parms_cur%rowtype;
-        v_res varchar2(6):='null';
+        v_res varchar2(30):='null';
       begin
         for parm_cur in parms_cur
         loop
@@ -49,7 +49,7 @@ create or replace package body AF_HXBCB_SNA_PKG is
   is
     begin
       declare v_net_score varchar2(10);
-        v_sna_result varchar2(10);
+        v_sna_result varchar2(30);
       begin
         select max(net_score) into v_net_score
         from (select a.net_score

@@ -2,8 +2,8 @@
 DROP TABLE AF_APP_MODEL_RESULT cascade constraints;
 create table AF_APP_MODEL_RESULT
 (
-  APP_ID        VARCHAR2(40 CHAR) not null,
-  MODEL_RESSULT VARCHAR2(30 CHAR),
+  APP_ID        VARCHAR2(20) not null,
+  MODEL_RESSULT VARCHAR2(30),
   UPDATE_DATE   DATE default sysdate
 );
 -- Add comments to the table
@@ -18,7 +18,7 @@ DROP TABLE AF_APP_RISK_CONF_PARMS cascade constraints;
 create table AF_APP_RISK_CONF_PARMS
 (
   PARM_TYPE        VARCHAR2(20),
-  PARM_LEVEL       VARCHAR2(6),
+  PARM_LEVEL       VARCHAR2(30),
   PARM_VALUE_UP    NUMBER,
   PARM_VALUE_LOWER NUMBER
 );
@@ -49,8 +49,8 @@ comment on column AF_APP_SNA_INPUT.NET_SCORE is '网络分值';
 DROP TABLE AF_APP_SNA_RESULT cascade constraints;
 create table AF_APP_SNA_RESULT
 (
-  APP_ID      VARCHAR2(40 CHAR) not null,
-  SNA_RESULT  VARCHAR2(500 CHAR),
+  APP_ID      VARCHAR2(20) not null,
+  SNA_RESULT  VARCHAR2(500),
   UPDATE_DATE DATE default sysdate
 );
 -- Add comments to the table
@@ -111,7 +111,7 @@ comment on column af_app_snainput_conf.ifcluster is '是否参与网络构建(1�
 DROP TABLE af_app_model_var_input cascade constraints;
 create table af_app_model_var_input
 (
-      APP_ID      VARCHAR2(30),
+      APP_ID      VARCHAR2(20),
       VAR_NAME    VARCHAR2(100),
       VAR_VALUE   VARCHAR2(30),
       UPDATE_DATE DATE default sysdate
@@ -140,13 +140,13 @@ comment on column af_app_model_input_parms.MODEL_VAR_VALUE is '模型变量权�
 DROP TABLE af_app_prc_logs cascade constraints;
 create table af_app_prc_logs
 (
-      app_Id VARCHAR2(30) NOT NUll,
+      app_id VARCHAR2(20) NOT NUll,
       error_logs VARCHAR2(500),
       update_date DATE default sysdate not null
 );
 
 comment on table af_app_prc_logs is '存储过程相关日志';
-comment on column af_app_prc_logs.app_Id is '申请进件号码';
+comment on column af_app_prc_logs.app_id is '申请进件号码';
 comment on column af_app_prc_logs.error_logs is '日志信息';
 
 insert into AF_APP_MODEL_INPUT_PARMS (model_var, model_var_value) values ('SEMI_CRED_ACCT_NUM', -.1126);
@@ -173,15 +173,10 @@ insert into af_app_snainput_conf(src_type, to_type, link_type, ifcluster) values
 insert into af_app_snainput_conf(src_type, to_type, link_type, ifcluster) values('C1_CARDNBR','CARDNBR','1','1');
 commit;
 
-insert into af_app_sna_input(clusterid,to_node,to_type,net_score)values('1','2','mob',300);
-insert into af_app_sna_input(clusterid,to_node,to_type,net_score)values('2','3','idcard',400);
-commit;
-
-insert into af_app_model_input_parms(model_var,model_var_value)values('intercept',600);
-insert into af_app_model_input_parms(model_var,model_var_value)values('c1_credpct',20);
-insert into af_app_model_input_parms(model_var,model_var_value) values ('c6_rel_flag1',-30);
-insert into af_app_model_input_parms(model_var,model_var_value) values('paymt_yn',70);
-commit;
+-- local test
+-- insert into af_app_sna_input(clusterid,to_node,to_type,net_score)values('1','2','mob',300);
+-- insert into af_app_sna_input(clusterid,to_node,to_type,net_score)values('2','3','idcard',400);
+-- commit;
 
 insert into af_app_risk_conf_parms(parm_type,parm_level,parm_value_up,parm_value_lower) values ('SNA','D中高风险',9999,600);
 insert into af_app_risk_conf_parms(parm_type,parm_level,parm_value_up,parm_value_lower) values ('SNA','C中风险',600,300);
@@ -192,35 +187,11 @@ insert into af_app_risk_conf_parms(parm_type,parm_level,parm_value_up,parm_value
 commit;
 
 -----------------------------------------------------------------------------------------
---if exist table af_risk_level_settings
-DROP TABLE af_risk_level_settings cascade constraints;
-create table af_risk_level_settings
-(
-  ruleno       VARCHAR2(20) not null,
-  type         VARCHAR2(10),
-  class        VARCHAR2(6),
-  riskno       VARCHAR2(20),
-  risktype     VARCHAR2(20),
-  riskcategory VARCHAR2(200),
-  riskcode     VARCHAR2(6),
-  riskdesc     VARCHAR2(200)
-);
-
-comment on table AF_RESPONSE_AFRISKWARNING is '风险提示信息配置表';
-comment on column AF_RESPONSE_AFRISKWARNING.riskno is '校验规则一级分类编号';
-comment on column AF_RESPONSE_AFRISKWARNING.risktype is '校验规则二级分类编号';
-comment on column AF_RESPONSE_AFRISKWARNING.riskcategory is '校验规则三级分类编号';
-comment on column AF_RESPONSE_AFRISKWARNING.riskdesc is '校验结果详情描述';
-comment on column AF_RESPONSE_AFRISKWARNING.riskcode is '校验结果A,B,C,D,E';
-comment on column AF_RESPONSE_AFRISKWARNING.ruleno is '校验规则编号';
-comment on column AF_RESPONSE_AFRISKWARNING.type is '反欺诈结果类型(AF_ALL,RULE,MODEL,SNA)';
-comment on column AF_RESPONSE_AFRISKWARNING.class is 'TYPE 二级分类';
-
 --if exist table af_request_appinfo_zmivsinfo
 DROP TABLE af_request_appinfo_zmivsinfo cascade constraints;
 --create table af_request_appinfo_zmivsinfo
 create table af_request_appinfo_zmivsinfo(
-      app_id VARCHAR2(25) NOT NUll,
+      app_id VARCHAR2(20) NOT NUll,
       zm2_crt_time VARCHAR2(20),
       isrisk VARCHAR2(2),
       risk_code VARCHAR2(10),
@@ -251,7 +222,7 @@ comment on column  af_request_appinfo_zmivsinfo.modify_time is '更新时间';
 DROP TABLE af_response_afsummary cascade constraints;
 --create table af_response_afsummary
 create table af_response_afsummary(
-      app_id VARCHAR2(25) NOT NUll,
+      app_id VARCHAR2(20) NOT NUll,
       type VARCHAR2(20),
       value VARCHAR2(6),
       remarks VARCHAR2(200)
@@ -267,7 +238,7 @@ comment on column  af_response_afsummary.remarks is '反欺诈决策结果描述
 DROP TABLE af_response_afriskwarning cascade constraints;
 --create table af_response_afriskwarning
 create table af_response_afriskwarning(
-      app_id VARCHAR2(25) NOT NUll,
+      app_id VARCHAR2(20) NOT NUll,
       riskno VARCHAR2(20),
       risktype VARCHAR2(20),
       riskcategory VARCHAR2(200),
@@ -293,7 +264,7 @@ comment on column af_response_afriskwarning.class is 'TYPE 二级分类';
 DROP TABLE af_request_applicantinfo cascade constraints;
 --create table af_request_applicantinfo
 create table af_request_applicantinfo(
-      app_id VARCHAR2(16) NOT NULL,
+      app_id VARCHAR2(20) NOT NULL,
       app_code NUMBER(10),
       app_flag NUMBER(1),
       app_prod VARCHAR2(4),
@@ -304,7 +275,7 @@ create table af_request_applicantinfo(
       c1_carst VARCHAR2(1),
       c1_class VARCHAR2(3),
       c1_cname VARCHAR2(30),
-      c1_coadd1 VARCHAR2(30),
+      c1_coadd1 VARCHAR2(60),
       c1_coadd2 VARCHAR2(60),
       c1_coadd3 VARCHAR2(60),
       c1_coadd4 VARCHAR2(60),
