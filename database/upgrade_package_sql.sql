@@ -178,8 +178,6 @@ create or replace package body AF_HXBCB is
       from af_request_applicantinfo
       where app_id = app_id_input;
 
-      --从af_request_appinfo_zmivsinfo获取全局变量
-      select isrisk into zm_isrisk from af_request_appinfo_zmivsinfo t  where t.app_id = app_id_input AND isrisk='T';
       --调用规则
       -- TODO业务场景是(需要添加流程控制):
       -- 1.申请件首次进来会直接进行黑名单规则计算,不执行模型和SNA计算
@@ -248,7 +246,6 @@ create or replace package body AF_HXBCB is
       AF_HXBCB_RULE_PKG.RULE_127(app_id_input,v_imsienenglish);
       AF_HXBCB_RULE_PKG.RULE_126(app_id_input,v_imeienenglish);
       AF_HXBCB_RULE_PKG.RULE_125(app_id_input,v_wifimacenenglish);
-      AF_HXBCB_RULE_PKG.RULE_124(app_id_input,zm_isrisk);
       AF_HXBCB_RULE_PKG.RULE_122(app_id_input,v_idte1,v_iddt1);
       AF_HXBCB_RULE_PKG.RULE_121(app_id_input,v_idtype, v_idnbr,v_iddt1,v_idte1,v_birth);
       --调用规则包中的黑名单规则编号160
