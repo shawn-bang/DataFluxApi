@@ -654,6 +654,160 @@ create or replace package body AF_HXBCB_RULE_PKG as
       -- don't anything
     end RULE_40;
 
+
+
+
+ -- rule:131
+  procedure RULE_131(app_id_input in varchar2,v_codenameenglish in varchar2) is
+    v_error varchar2(500);
+    begin
+      if nvl(v_codenameenglish,'null') != 'null' and v_codenameenglish='NAME_Mismatch' then
+        -- update result data
+        insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno,type,class) values(app_id_input, '131', '', '', '', '', 'RULE_131', 'RULE','Z');
+        commit;
+      end if;
+      -- handle exceptions
+      exception when others then v_error := 'RULE_131: ' || sqlerrm;
+      insert into af_app_prc_logs(app_id, error_logs) values(app_id_input, v_error);
+      commit;
+      -- don't anything
+    end RULE_131;
+
+  -- rule:130
+  procedure RULE_130(app_id_input in varchar2,v_codeemailenglish in varchar2) is
+    v_error varchar2(500);
+    begin
+      if nvl(v_codeemailenglish,'null') != 'null' and v_codeemailenglish='EMAIL_Histroy_NegativeList'  then
+        -- update result data
+        insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno,type,class) values(app_id_input, '130', '', '', '', '', 'RULE_130', 'RULE','Z');
+        commit;
+      end if;
+      -- handle exceptions
+      exception when others then v_error := 'RULE_130: ' || sqlerrm;
+      insert into af_app_prc_logs(app_id, error_logs) values(app_id_input, v_error);
+      commit;
+      -- don't anything
+    end RULE_130;
+  -- rule:129
+  procedure RULE_129(app_id_input in varchar2,v_codeaddrenglish in varchar2) is
+    v_error varchar2(500);
+    begin
+      if nvl(v_codeaddrenglish,'null') != 'null' and v_codeaddrenglish='ADDR_Mismatch' then
+        -- update result data
+        insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno,type,class) values(app_id_input, '129', '', '', '', '', 'RULE_129', 'RULE','Z');
+        commit;
+      end if;
+      -- handle exceptions
+      exception when others then v_error := 'RULE_129: ' || sqlerrm;
+      insert into af_app_prc_logs(app_id, error_logs) values(app_id_input, v_error);
+      commit;
+      -- don't anything
+    end RULE_129;
+  -- rule:128
+  procedure RULE_128(app_id_input in varchar2,v_ipenenglish in varchar2) is
+    v_error varchar2(500);
+    begin
+      if nvl(v_ipenenglish,'null') != 'null' and  v_ipenenglish='IP_Mismatch' then
+        -- update result data
+        insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno,type,class) values(app_id_input, '128', '', '', '', '', 'RULE_128', 'RULE','Z');
+        commit;
+      end if;
+      -- handle exceptions
+      exception when others then v_error := 'RULE_128: ' || sqlerrm;
+      insert into af_app_prc_logs(app_id, error_logs) values(app_id_input, v_error);
+      commit;
+      -- don't anything
+    end RULE_128;
+  -- rule:127
+  procedure RULE_127(app_id_input in varchar2,v_imsienenglish in varchar2) is
+    v_error varchar2(500);
+    begin
+      if nvl(v_imsienenglish,'null') != 'null' and v_imsienenglish='IMSI_Histroy_NegativeList' then
+        -- update result data
+        insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno,type,class) values(app_id_input, '127', '', '', '', '', 'RULE_127', 'RULE','Z');
+        commit;
+      end if;
+      -- handle exceptions
+      exception when others then v_error := 'RULE_127: ' || sqlerrm;
+      insert into af_app_prc_logs(app_id, error_logs) values(app_id_input, v_error);
+      commit;
+      -- don't anything
+    end RULE_127;
+  -- rule:126
+  procedure RULE_126(app_id_input in varchar2,v_imeienenglish in varchar2) is
+    v_error varchar2(500);
+    begin
+      if nvl(v_imeienenglish,'null') != 'null' and v_imeienenglish='IMEI_Histroy_NegativeList' then
+        -- update result data
+        insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno,type,class) values(app_id_input, '126', '', '', '', '', 'RULE_126', 'RULE','Z');
+        commit;
+      end if;
+      -- handle exceptions
+      exception when others then v_error := 'RULE_126: ' || sqlerrm;
+      insert into af_app_prc_logs(app_id, error_logs) values(app_id_input, v_error);
+      commit;
+      -- don't anything
+    end RULE_126;
+  -- rule:125
+  procedure RULE_125(app_id_input in varchar2,v_wifimacenenglish in varchar2) is
+    v_error varchar2(500);
+    begin
+      if nvl(v_wifimacenenglish,'null') != 'null' and v_wifimacenenglish='WIFI-MAC_Histroy_NegativeLis' then
+        -- update result data
+        insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno,type,class) values(app_id_input, '125', '', '', '', '', 'RULE_125', 'RULE','Z');
+        commit;
+      end if;
+      -- handle exceptions
+      exception when others then v_error := 'RULE_125: ' || sqlerrm;
+      insert into af_app_prc_logs(app_id, error_logs) values(app_id_input, v_error);
+      commit;
+      -- don't anything
+    end RULE_125;
+  -- rule:122
+  procedure RULE_122(app_id_input in varchar2,v_idte1 in varchar2,v_iddt1 in varchar2) is
+    b_date number(10);
+    v_error varchar2(500);
+    begin
+      --需要确定是否会出现v_idte1是长期的情况
+      if v_idte1 != '长期' then
+        RULE_122.b_date := trunc(months_between(to_date(v_idte1,'yyyy-mm-dd'),to_date('20'||substr(app_id_input,1,6),'yyyy-mm-dd')),2);
+        if nvl(v_idte1,'null') != 'null' and nvl(v_iddt1,'null') != 'null' and RULE_122.b_date <=3  then
+          insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno,type,class) values(app_id_input, '122', '122', '122', '122', '122', 'RULE_122', 'RULE','Z');
+          commit;
+        end if ;
+      end if;
+      -- handle exceptions
+      exception when others then v_error := 'RULE_122: ' || sqlerrm;
+      insert into af_app_prc_logs(app_id, error_logs) values(app_id_input, v_error);
+      commit;
+      -- don't anything
+
+    end RULE_122;
+  -- rule:121
+  procedure RULE_121(app_id_input in varchar2,v_idtype in varchar2, v_idnbr in varchar2,v_iddt1 in varchar2,v_idte1 in varchar2,v_birth in varchar2) is
+    birth  varchar2(10);
+    v_error varchar2(500);
+    begin
+      if nvl(v_iddt1, 'null') != 'null' and nvl(v_idte1, 'null') !='null' then
+        --身份证代类型码值有待确定
+        if v_idtype = 1 then
+          RULE_121.birth := substr(v_idnbr,7,8);
+        else
+          RULE_121.birth := v_birth;
+        end if;
+        if trunc(months_between(to_date(v_iddt1,'yyyy-mm-dd'), to_date(RULE_121.birth,'yyyy-mm-dd'))/ 12,2) > 46 and v_idte1 = '长期' then
+          -- update result data
+          insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno,type,class) values(app_id_input, '121', '121', '121', '121', '121', 'RULE_121', 'RULE','Z');
+          commit;
+        end if;
+      end if;
+      -- handle exceptions
+      exception when others then v_error := 'RULE_121: ' || sqlerrm;
+      insert into af_app_prc_logs(app_id, error_logs) values(app_id_input, v_error);
+      commit;
+      -- don't anything
+    end RULE_121;
+
   -- rule:155
   procedure RULE_155(app_id_input in varchar2,v_idnbr in varchar2) is
     flag number;

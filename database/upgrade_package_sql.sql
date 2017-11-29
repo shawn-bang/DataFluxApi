@@ -3,6 +3,46 @@
   -- Created : 2017/11/3 17:15:27
   -- Purpose : Package for Antifraud
   -- 全局变量声明
+  ----------------------------------------------------------------------
+    --缴费状态 v_pboc_gjj_pay_status = pboc_gjj_pay_status
+  v_pboc_gjj_pay_status af_request_applicantinfo.pboc_gjj_pay_status%type;
+  --缴至月份 v_pay_ym = pay_ym
+  v_pay_ym af_request_applicantinfo.pay_ym%type;
+  --初缴月份 v_first_deposit_ym = first_deposit_ym
+  v_first_deposit_ym af_request_applicantinfo.first_deposit_ym%type;
+  -- 主卡申请人家庭电话区号
+  v_hmare af_request_applicantinfo.c1_hmare%type;
+  -- 申请人住宅号码:v_c1_hmtel = c1_hmtel
+  v_c1_hmtel af_request_applicantinfo.c1_hmtel%type;
+  --累计缴费月数  v_cumul_pay_months = cumul_pay_months
+  v_cumul_pay_months af_request_applicantinfo.cumul_pay_months%type;
+  --缴费状态  v_pboc_yl_pay_status = pboc_yl_pay_status
+  v_pboc_yl_pay_status af_request_applicantinfo.pboc_yl_pay_status%type;
+  --联系人1手机 v_xmobil1 = c1_xmobil1
+  v_xmobil1 af_request_applicantinfo.c1_xmobil1%type;
+  --住宅电话  v_resi_tel = resi_tel
+  v_resi_tel af_request_applicantinfo.resi_tel%type;
+  --直系亲属姓名  v_rename = c1_rename
+  v_rename  af_request_applicantinfo.c1_rename%type;
+  --配偶_姓名  v_mate_name = mate_name
+  v_mate_name  af_request_applicantinfo.mate_name%type;
+  --直系亲属电话区号 v_retelar = c1_retelar
+  v_retelar af_request_applicantinfo.c1_retelar%type;
+  --直系亲属电话  v_retel = c1_retel
+  v_retel af_request_applicantinfo.c1_retel%type;
+  -- 单位电话  v_c_comp_phone = c_comp_phone
+  v_c_comp_phone af_request_applicantinfo.c_comp_phone%type;
+  -- 联系人1电话区号 v_xtelar1 = c1_xtelar1
+  v_xtelar1 af_request_applicantinfo.c1_xtelar1%type;
+  -- 联系人1电话号码:v_xtel1 = c1_xtel1 + c1_xtelar1
+  v_xtel1 af_request_applicantinfo.c1_xtel1%type;
+  -- 逾期天数  v_overdue_day = overdue_day
+  v_overdue_day af_request_applicantinfo.overdue_day%type;
+  --家庭房屋状况 v_hmst = c1_hmst
+  v_hmst af_request_applicantinfo.c1_hmst%type;
+  --手机号码 v_cell_phone = cell_phone
+  v_cell_phone af_request_applicantinfo.cell_phone%type;
+
   ---------------精确匹配不需要查询历史的规则需要的变量------------------------
   --申请人贷记卡逾期_最长逾期月数/最长透支月数 v_debit_co_due_longest_over =debit_co_due_longest_over_due
   v_debit_co_due_longest_over af_request_applicantinfo.debit_co_due_longest_over_due%type;
@@ -61,6 +101,48 @@
   --申请人准贷记卡60天以上透支_月份数v_deb_c60overd_month_num = deb_c60overd_month_num
   v_deb_c60overd_month_num af_request_applicantinfo.deb_c60overd_month_num%type;
   ---------------------------------------------------
+
+
+  --1-37 全局变量
+  --缴费状态 v_pboc_gjj_pay_status = pboc_gjj_pay_status
+  v_pboc_gjj_pay_status af_request_applicantinfo.pboc_gjj_pay_status%type;
+  --缴至月份 v_pay_ym = pay_ym
+  v_pay_ym af_request_applicantinfo.pay_ym%type;
+  --初缴月份 v_first_deposit_ym = first_deposit_ym
+  v_first_deposit_ym af_request_applicantinfo.first_deposit_ym%type;
+  --主卡申请人家庭电话区号
+  v_hmare af_request_applicantinfo.c1_hmare%type;
+  --申请人住宅号码:v_c1_hmtel = c1_hmtel
+  v_c1_hmtel af_request_applicantinfo.c1_hmtel%type;
+  --累计缴费月数  v_cumul_pay_months = cumul_pay_months
+  v_cumul_pay_months af_request_applicantinfo.cumul_pay_months%type;
+  --缴费状态  v_pboc_yl_pay_status = pboc_yl_pay_status
+  v_pboc_yl_pay_status af_request_applicantinfo.pboc_yl_pay_status%type;
+  --联系人1手机 v_xmobil1 = c1_xmobil1
+  v_xmobil1 af_request_applicantinfo.c1_xmobil1%type;
+  --住宅电话  v_resi_tel = resi_tel
+  v_resi_tel af_request_applicantinfo.resi_tel%type;
+  --直系亲属姓名  v_rename = c1_rename
+  v_rename  af_request_applicantinfo.c1_rename%type;
+  --配偶_姓名  v_mate_name = mate_name
+  v_mate_name  af_request_applicantinfo.mate_name%type;
+  --直系亲属电话区号 v_retelar = c1_retelar
+  v_retelar af_request_applicantinfo.c1_retelar%type;
+  --直系亲属电话  v_retel = c1_retel
+  v_retel af_request_applicantinfo.c1_retel%type;
+  --单位电话  v_c_comp_phone = c_comp_phone
+  v_c_comp_phone af_request_applicantinfo.c_comp_phone%type;
+  --联系人1电话区号 v_xtelar1 = c1_xtelar1
+  v_xtelar1 af_request_applicantinfo.c1_xtelar1%type;
+  --联系人1电话号码:v_xtel1 = c1_xtel1 + c1_xtelar1
+  v_xtel1 af_request_applicantinfo.c1_xtel1%type;
+  --逾期天数  v_overdue_day = overdue_day
+  v_overdue_day af_request_applicantinfo.overdue_day%type;
+  --家庭房屋状况 v_hmst = c1_hmst
+  v_hmst af_request_applicantinfo.c1_hmst%type;
+  --手机号码 v_cell_phone = cell_phone
+  v_cell_phone af_request_applicantinfo.cell_phone%type;
+
   --以下全局变量是r_121至r_131规则开发过程中添加的
   --申请人姓名英文风险描述v_CODENAMEENGLISH = CODENAMEENGLISH
   v_codenameenglish  af_request_applicantinfo.codenameenglish%type;
@@ -167,14 +249,18 @@ create or replace package body AF_HXBCB is
         c4_abname,
         c1_idnbr,
         c1_coname,
-        deb_c60overd_month_num,deb_c60overd_longest_over_due,c4_cycadd1,educationdegree,result_xm,c1_remobil,no_pd_card_loan_org_number,no_pd_card_loan_corp_number,frs_cred_crd_issue_mon,c1_reship,mate_contact_tel,c1_hmare,c1_hmtel,c4_apsour,c1_coname,c1c2_flag,c2_gender,c2_idnbr,c2_idtype,bad_debt_num,loan_overdue_month_num,debit_card_over_due_acct_num,debit_co_due_longest_over_due
+        deb_c60overd_month_num,deb_c60overd_longest_over_due,c4_cycadd1,educationdegree,result_xm,c1_remobil,no_pd_card_loan_org_number,no_pd_card_loan_corp_number,frs_cred_crd_issue_mon,c1_reship,mate_contact_tel,c1_hmare,c1_hmtel,c4_apsour,c1_coname,c1c2_flag,c2_gender,c2_idnbr,c2_idtype,bad_debt_num,loan_overdue_month_num,debit_card_over_due_acct_num,debit_co_due_longest_over_due,
+         cell_phone,c1_hmst,overdue_day,c1_retel, c1_retelar,c1_xtel1, c1_xtelar1,c_comp_phone,mate_name,c1_rename,
+        resi_tel,c1_hmtel,pboc_gjj_pay_status,pay_ym,first_deposit_ym
 
       into
         v_app_num, v_coadd, v_hmadd, v_mobile, v_cotel, v_hmtel, v_abuser, v_abname, v_idnbr, v_coname,v_idte1,v_iddt1,v_idtype,
         v_birth,v_wifimacenenglish,v_imeienenglish,v_imsienenglish,v_ipenenglish,v_codeaddrenglish,v_codeemailenglish,v_codenameenglish,v_educls,
         v_educationapproach,v_no_pin_debit_card_acct_num,v_no_pd_card_loan_org_number,v_opposite_position,v_frs_cred_crd_issue_mon,
         v_reship,v_remobil,v_mate_contact_tel,v_query_rec_2y_sum1,v_query_rec_2y_sum5,v_query_org_1m_sum1,v_query_org_1m_sum5
-        ,v_deb_c60overd_month_num,v_deb_c60overd_longest_over,v_cycadd1,v_educationdegree,v_result_xm,v_remobil,v_no_pd_card_loan_org_number,v_no_pd_card_loan_corp_number,v_frs_cred_crd_issue_mon,v_c1_reship,v_mate_contact_tel,v_hmare,v_c1_hmtel,v_apsour,v_coname,v1v2_flag,v2_gender,v2_idnbr,v2_idtype,v_bad_debt_num,v_loan_overdue_month_num,v_debit_card_over_due_acct_num,v_debit_co_due_longest_over
+        ,v_deb_c60overd_month_num,v_deb_c60overd_longest_over,v_cycadd1,v_educationdegree,v_result_xm,v_remobil,v_no_pd_card_loan_org_number,v_no_pd_card_loan_corp_number,v_frs_cred_crd_issue_mon,v_c1_reship,v_mate_contact_tel,v_hmare,v_c1_hmtel,v_apsour,v_coname,v1v2_flag,v2_gender,v2_idnbr,v2_idtype,v_bad_debt_num,v_loan_overdue_month_num,v_debit_card_over_due_acct_num,v_debit_co_due_longest_over,
+         v_cell_phone,v_hmst,v_overdue_day,v_retel,v_retelar,v_xtel1,v_xtelar1,v_c_comp_phone,v_mate_name,v_rename,v_resi_tel,v_c1_hmtel,
+         v_pboc_gjj_pay_status,v_pay_ym,v_first_deposit_ym
       from af_request_applicantinfo
       where app_id = app_id_input;
 
@@ -213,6 +299,30 @@ create or replace package body AF_HXBCB is
   procedure AF_HXBCB_RULE(app_id_input in varchar2) is
     rules_riskcode af_response_afriskwarning.riskcode%type;
     begin
+
+
+      AF_HXBCB_RULE_PKG.RULE_1(app_id_input, v_mate_name,v_reship,v_rename);
+      AF_HXBCB_RULE_PKG.RULE_2(app_id_input, v_mobile,v_cell_phone);
+      AF_HXBCB_RULE_PKG.RULE_18(app_id_input,v_mobile,v_c_comp_phone);
+      AF_HXBCB_RULE_PKG.RULE_19(app_id_input,v_cotel,v_cell_phone);
+      AF_HXBCB_RULE_PKG.RULE_20(app_id_input,v_cotel,v_resi_tel);
+      AF_HXBCB_RULE_PKG.RULE_21(app_id_input,v_cotel,v_c_comp_phone);
+      AF_HXBCB_RULE_PKG.RULE_22(app_id_input, v_c1_hmtel,v_hmare,v_cell_phone);
+      AF_HXBCB_RULE_PKG.RULE_23(app_id_input, v_c1_hmtel,v_hmare,v_resi_tel);
+      AF_HXBCB_RULE_PKG.RULE_24(app_id_input, v_c1_hmtel,v_hmare,v_c_comp_phone);
+      AF_HXBCB_RULE_PKG.RULE_25(app_id_input, v_retel ,v_retelar ,v_cell_phone);
+      AF_HXBCB_RULE_PKG.RULE_26(app_id_input, v_remobil,v_cell_phone);
+      AF_HXBCB_RULE_PKG.RULE_27(app_id_input, v_retel ,v_retelar ,v_resi_tel);
+      AF_HXBCB_RULE_PKG.RULE_28(app_id_input, v_remobil,v_resi_tel);
+      AF_HXBCB_RULE_PKG.RULE_29(app_id_input, v_retel ,v_retelar ,v_c_comp_phone);
+      AF_HXBCB_RULE_PKG.RULE_30(app_id_input, v_remobil,v_c_comp_phone);
+      AF_HXBCB_RULE_PKG.RULE_31(app_id_input, v_xtel1,v_xtelar1,v_cell_phone);
+      AF_HXBCB_RULE_PKG.RULE_32(app_id_input, v_xmobil1,v_cell_phone);
+      AF_HXBCB_RULE_PKG.RULE_33(app_id_input, v_xtel1,v_xtelar1,v_resi_tel);
+      AF_HXBCB_RULE_PKG.RULE_34(app_id_input, v_xmobil1,v_resi_tel);
+      AF_HXBCB_RULE_PKG.RULE_35(app_id_input, v_xtel1,v_xtelar1,v_c_comp_phone);
+      AF_HXBCB_RULE_PKG.RULE_36(app_id_input, v_xmobil1,v_c_comp_phone);
+      AF_HXBCB_RULE_PKG.RULE_37(app_id_input, v_cumul_pay_months,v_pboc_yl_pay_status);
       -----精确匹配不需要查询历史的规则----------------------------
       AF_HXBCB_RULE_PKG.RULE_236(app_id_input);
       AF_HXBCB_RULE_PKG.RULE_198(app_id_input,v1v2_flag,v2_gender,v2_idnbr,v2_idtype,v_gender,v_idtype,v_idnbr);
