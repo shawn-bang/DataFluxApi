@@ -5,10 +5,10 @@
  * by the Apache Axis 1.4 Apr 22, 2006 (06:55:48 PDT) WSDL2Java emitter.
  */
 
-package com.dataflux.xsd.archserver;
+package com.dataflux;
 
 public class Row__out  implements java.io.Serializable {
-    private String APP_shenqingjian_no;
+    private String APP_app_id;
 
     private String APP_entity_type;
 
@@ -87,13 +87,13 @@ public class Row__out  implements java.io.Serializable {
 
     private String EXT_AddMC;
 
-    private String ext_label;
+    private String APP_City;
 
     public Row__out() {
     }
 
     public Row__out(
-           String APP_shenqingjian_no,
+           String APP_app_id,
            String APP_entity_type,
            String APP_data_type,
            String APP_data_value,
@@ -131,8 +131,8 @@ public class Row__out  implements java.io.Serializable {
            String EXT_LegalFormMC,
            String EXT_SiteMC,
            String EXT_AddMC,
-           String ext_label) {
-           this.APP_shenqingjian_no = APP_shenqingjian_no;
+           String APP_City) {
+           this.APP_app_id = APP_app_id;
            this.APP_entity_type = APP_entity_type;
            this.APP_data_type = APP_data_type;
            this.APP_data_value = APP_data_value;
@@ -170,27 +170,27 @@ public class Row__out  implements java.io.Serializable {
            this.EXT_LegalFormMC = EXT_LegalFormMC;
            this.EXT_SiteMC = EXT_SiteMC;
            this.EXT_AddMC = EXT_AddMC;
-           this.ext_label = ext_label;
+           this.APP_City = APP_City;
     }
 
 
     /**
-     * Gets the APP_shenqingjian_no value for this Row__out.
+     * Gets the APP_app_id value for this Row__out.
      * 
-     * @return APP_shenqingjian_no
+     * @return APP_app_id
      */
-    public String getAPP_shenqingjian_no() {
-        return APP_shenqingjian_no;
+    public String getAPP_app_id() {
+        return APP_app_id;
     }
 
 
     /**
-     * Sets the APP_shenqingjian_no value for this Row__out.
+     * Sets the APP_app_id value for this Row__out.
      * 
-     * @param APP_shenqingjian_no
+     * @param APP_app_id
      */
-    public void setAPP_shenqingjian_no(String APP_shenqingjian_no) {
-        this.APP_shenqingjian_no = APP_shenqingjian_no;
+    public void setAPP_app_id(String APP_app_id) {
+        this.APP_app_id = APP_app_id;
     }
 
 
@@ -935,22 +935,22 @@ public class Row__out  implements java.io.Serializable {
 
 
     /**
-     * Gets the ext_label value for this Row__out.
+     * Gets the APP_City value for this Row__out.
      * 
-     * @return ext_label
+     * @return APP_City
      */
-    public String getExt_label() {
-        return ext_label;
+    public String getAPP_City() {
+        return APP_City;
     }
 
 
     /**
-     * Sets the ext_label value for this Row__out.
+     * Sets the APP_City value for this Row__out.
      * 
-     * @param ext_label
+     * @param APP_City
      */
-    public void setExt_label(String ext_label) {
-        this.ext_label = ext_label;
+    public void setAPP_City(String APP_City) {
+        this.APP_City = APP_City;
     }
 
     private Object __equalsCalc = null;
@@ -965,9 +965,9 @@ public class Row__out  implements java.io.Serializable {
         __equalsCalc = obj;
         boolean _equals;
         _equals = true && 
-            ((this.APP_shenqingjian_no==null && other.getAPP_shenqingjian_no()==null) || 
-             (this.APP_shenqingjian_no!=null &&
-              this.APP_shenqingjian_no.equals(other.getAPP_shenqingjian_no()))) &&
+            ((this.APP_app_id==null && other.getAPP_app_id()==null) || 
+             (this.APP_app_id!=null &&
+              this.APP_app_id.equals(other.getAPP_app_id()))) &&
             ((this.APP_entity_type==null && other.getAPP_entity_type()==null) || 
              (this.APP_entity_type!=null &&
               this.APP_entity_type.equals(other.getAPP_entity_type()))) &&
@@ -1079,9 +1079,9 @@ public class Row__out  implements java.io.Serializable {
             ((this.EXT_AddMC==null && other.getEXT_AddMC()==null) || 
              (this.EXT_AddMC!=null &&
               this.EXT_AddMC.equals(other.getEXT_AddMC()))) &&
-            ((this.ext_label==null && other.getExt_label()==null) || 
-             (this.ext_label!=null &&
-              this.ext_label.equals(other.getExt_label())));
+            ((this.APP_City==null && other.getAPP_City()==null) || 
+             (this.APP_City!=null &&
+              this.APP_City.equals(other.getAPP_City())));
         __equalsCalc = null;
         return _equals;
     }
@@ -1093,8 +1093,8 @@ public class Row__out  implements java.io.Serializable {
         }
         __hashCodeCalc = true;
         int _hashCode = 1;
-        if (getAPP_shenqingjian_no() != null) {
-            _hashCode += getAPP_shenqingjian_no().hashCode();
+        if (getAPP_app_id() != null) {
+            _hashCode += getAPP_app_id().hashCode();
         }
         if (getAPP_entity_type() != null) {
             _hashCode += getAPP_entity_type().hashCode();
@@ -1207,8 +1207,8 @@ public class Row__out  implements java.io.Serializable {
         if (getEXT_AddMC() != null) {
             _hashCode += getEXT_AddMC().hashCode();
         }
-        if (getExt_label() != null) {
-            _hashCode += getExt_label().hashCode();
+        if (getAPP_City() != null) {
+            _hashCode += getAPP_City().hashCode();
         }
         __hashCodeCalc = false;
         return _hashCode;
@@ -1221,8 +1221,8 @@ public class Row__out  implements java.io.Serializable {
     static {
         typeDesc.setXmlType(new javax.xml.namespace.QName("archserver.xsd.dataflux.com", "row__out"));
         org.apache.axis.description.ElementDesc elemField = new org.apache.axis.description.ElementDesc();
-        elemField.setFieldName("APP_shenqingjian_no");
-        elemField.setXmlName(new javax.xml.namespace.QName("", "APP_shenqingjian_no"));
+        elemField.setFieldName("APP_app_id");
+        elemField.setXmlName(new javax.xml.namespace.QName("", "APP_app_id"));
         elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
         elemField.setNillable(false);
         typeDesc.addFieldDesc(elemField);
@@ -1449,8 +1449,8 @@ public class Row__out  implements java.io.Serializable {
         elemField.setNillable(false);
         typeDesc.addFieldDesc(elemField);
         elemField = new org.apache.axis.description.ElementDesc();
-        elemField.setFieldName("ext_label");
-        elemField.setXmlName(new javax.xml.namespace.QName("", "ext_label"));
+        elemField.setFieldName("APP_City");
+        elemField.setXmlName(new javax.xml.namespace.QName("", "APP_City"));
         elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
         elemField.setNillable(false);
         typeDesc.addFieldDesc(elemField);

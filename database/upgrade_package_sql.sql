@@ -30,6 +30,8 @@
   v_idtype af_request_applicantinfo.c1_idtype%type;
   --以上全局变量是r_121至r_131规则开发过程中添加的
   v_errors varchar2(500);
+  -- 申请次数
+  v_app_num number;
   -- 申请人证件号码
   v_idnbr af_request_applicantinfo.c1_idnbr%type;
   -- 申请人单位名称
@@ -48,7 +50,7 @@
   v_abuser af_request_applicantinfo.c4_abuser%type;
   -- 推广员姓名:c4_abname
   v_abname af_request_applicantinfo.c4_abname%type;
-    --最近30天内的查询机构数_担保资格审查 v_query_org_1m_sum5 = query_org_1m_sum5
+  --最近30天内的查询机构数_担保资格审查 v_query_org_1m_sum5 = query_org_1m_sum5
   v_query_org_1m_sum5 af_request_applicantinfo.query_org_1m_sum5%type;
   --最近30天内的查询机构数_贷后管理 v_query_org_1m_sum1=query_org_1m_sum1
   v_query_org_1m_sum1 af_request_applicantinfo.query_org_1m_sum1%type;
@@ -96,7 +98,9 @@ create or replace package body AF_HXBCB is
     riskcode af_response_afsummary.value%type;
     begin
       --从request_applicantinfo获取全局参数
-      select c1_coadd1 || c1_coadd2 || c1_coadd3 || c1_coadd4,
+      select
+        req_app_num,
+        c1_coadd1 || c1_coadd2 || c1_coadd3 || c1_coadd4,
         c1_hmadd1 || c1_hmadd2 || c1_hmadd3 || c1_hmadd4,
         c1_mobile,
         c1_cotel,
@@ -104,10 +108,7 @@ create or replace package body AF_HXBCB is
         c4_abuser,
         c4_abname,
         c1_idnbr,
-        c1_coname,c5_idte1,c2_iddt1,c1_idtype,c2_birth,wifimacenenglish,imeienenglish,imsienenglish,ipenenglish,codeaddrenglish,codeemailenglish,codenameenglish,
-        c1_educls,educationapproach,no_pin_debit_card_acct_num,no_pd_card_loan_org_number,opposite_position,frs_cred_crd_issue_mon,
-        c1_reship,c1_remobil,mate_contact_tel,query_rec_2y_sum1,query_rec_2y_sum5,query_org_1m_sum1,query_org_1m_sum5
-         into v_coadd, v_hmadd, v_mobile, v_cotel, v_hmtel, v_abuser, v_abname, v_idnbr, v_coname,v_idte1,v_iddt1,v_idtype,
+        c1_coname into v_app_num, v_coadd, v_hmadd, v_mobile, v_cotel, v_hmtel, v_abuser, v_abname, v_idnbr, v_coname,v_idte1,v_iddt1,v_idtype,
         v_birth,v_wifimacenenglish,v_imeienenglish,v_imsienenglish,v_ipenenglish,v_codeaddrenglish,v_codeemailenglish,v_codenameenglish,v_educls,
          v_educationapproach,v_no_pin_debit_card_acct_num,v_no_pd_card_loan_org_number,v_opposite_position,v_frs_cred_crd_issue_mon,
          v_reship,v_remobil,v_mate_contact_tel,v_query_rec_2y_sum1,v_query_rec_2y_sum5,v_query_org_1m_sum1,v_query_org_1m_sum5
@@ -121,12 +122,15 @@ create or replace package body AF_HXBCB is
       -- 1.申请件首次进来会直接进行黑名单规则计算,不执行模型和SNA计算
       -- 2.黑名单校验不通过业务方会直接拒掉该笔申请,通过后，业务方会带着新数据再次调用接口进行业务规则，模型，SNA完成全部计算
       AF_HXBCB_RULE(app_id_input);
-      --调用模型
-      AF_HXBCB_MODEL(app_id_input);
-      --调用SNA
-      AF_HXBCB_SNA(app_id_input);
-      --toResponse
-      AF_HXBCB_ToResponse(app_id_input);
+      -- 第一次申请只计算黑名单规则
+      if v_app_num > 1 then
+        --调用模型
+        AF_HXBCB_MODEL(app_id_input);
+        --调用SNA
+        AF_HXBCB_SNA(app_id_input);
+        --toResponse
+        AF_HXBCB_ToResponse(app_id_input);
+      end if;
 
       --生成反欺诈决策结果数据(聚合结果)
       select max(ra.value) into riskcode from af_response_afsummary ra where ra.app_id = app_id_input;
@@ -160,6 +164,7 @@ create or replace package body AF_HXBCB is
       AF_HXBCB_RULE_PKG.RULE_121(app_id_input,v_idtype, v_idnbr,v_iddt1,v_idte1,v_birth);
       --调用规则包中的黑名单规则编号160
       AF_HXBCB_RULE_PKG.RULE_155(app_id_input, v_idnbr);
+      AF_HXBCB_RULE_PKG.RULE_156(app_id_input, v_idnbr);
       AF_HXBCB_RULE_PKG.RULE_158(app_id_input, v_coname);
       AF_HXBCB_RULE_PKG.RULE_160(app_id_input, v_coadd);
       AF_HXBCB_RULE_PKG.RULE_162(app_id_input, v_hmadd);
@@ -184,7 +189,7 @@ create or replace package body AF_HXBCB is
         insert into af_response_afsummary(app_id, type, value, remarks) values(app_id_input, 'RULE', rules_riskcode, '');
         commit;
       else        
-        insert into af_response_afsummary(app_id, type, value, remarks) values(app_id_input, 'RULE', 'A', '');
+        insert into af_response_afsummary(app_id, type, value, remarks) values(app_id_input, 'RULE', 'C', '');
         commit;
       end if;     
     end AF_HXBCB_RULE;
@@ -192,7 +197,7 @@ create or replace package body AF_HXBCB is
   --模型存储过程
   procedure AF_HXBCB_MODEL(app_id_model in varchar2) is
     begin
-      AF_HXBCB_MODEL_PKG.getModelResult(app_id => app_id_model);
+      AF_HXBCB_MODEL_PKG.getModelResult(appid => app_id_model);
 
     end AF_HXBCB_MODEL;
 
@@ -207,23 +212,42 @@ create or replace package body AF_HXBCB is
   procedure AF_HXBCB_ToResponse(app_id_Res in varchar2) is
     begin
       declare
-        v_sna_res varchar(10):='';
-        v_model_res varchar(10):='';
+        v_sna_res varchar(30):='';
+        v_model_res varchar(30):='';
+        v_desc varchar(20):='';
+        v_code varchar(10):='';
         riskcode af_response_afriskwarning.riskcode%type;
       begin
-        select model_ressult into v_model_res
-        from af_app_model_result
-        where app_id = app_id_res;
-        select sna_result into v_sna_res
-        from af_app_sna_result
-        where app_id = app_id_res;
-        insert into af_response_afriskwarning(app_id,riskno,risktype,riskcategory,riskdesc,riskcode,type, class)
-        values
-          (app_id_res,'Z2','Z05','Z05_1',' ',v_model_res,'MODEL', 'Z');
-        insert into af_response_afriskwarning(app_id,riskno,risktype,riskcategory,riskdesc,riskcode,type, class)
-        values
-          (app_id_res,'Z2','Z06','Z06_1',' ',v_sna_res,'SNA', 'Z');
-        commit;
+        begin
+          begin
+            select model_ressult into v_model_res
+            from af_app_model_result
+            where app_id = app_id_res;
+          end;
+          begin
+            select sna_result into v_sna_res
+            from af_app_sna_result
+            where app_id = app_id_res;
+            exception when no_data_found then
+            null;
+          end;
+        end;
+        if nvl(v_model_res, 'null') != 'null' then
+          v_code:=substr(v_model_res,1,1);
+          v_desc:=substr(v_model_res,2);
+          insert into af_response_afriskwarning(app_id,riskno,risktype,riskcategory,riskdesc,riskcode,type, class)
+          values
+            (app_id_res,'Z2','Z05','Z05_1',v_desc,v_code,'MODEL', 'Z');
+          commit;
+        end if;
+        if nvl(v_sna_res, 'null') != 'null' then
+          v_code:=substr(v_sna_res,1,1);
+          v_desc:=substr(v_sna_res,2);
+          insert into af_response_afriskwarning(app_id,riskno,risktype,riskcategory,riskdesc,riskcode,type, class)
+          values
+            (app_id_res,'Z2','Z06','Z06_1',v_desc,v_code,'SNA', 'Z');
+          commit;
+        end if;
         --生成模型风险等级结果数据(聚合结果)
         select max(ra.riskcode) into riskcode from af_response_afriskwarning ra where ra.type = 'MODEL' and ra.app_id = app_id_Res;
         if nvl(riskcode, 'null') != 'null' then

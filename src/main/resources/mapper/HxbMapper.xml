@@ -25,12 +25,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
     <select id="selectAfsummary" resultMap="afsummaryResultMap" parameterType="String" statementType="PREPARED">
         SELECT
-        type,
-        value,
-        remarks
+			type,
+			value,
+			remarks
         FROM af_response_afsummary
         WHERE
-        app_id = #{appId, jdbcType = VARCHAR}
+        	app_id = #{appId, jdbcType = VARCHAR}
     </select>
 
     <select id="selectAfriskwarning" resultMap="afriskwarningResultMap" parameterType="String" statementType="PREPARED">
@@ -54,72 +54,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         where app_id = #{appId, jdbcType = VARCHAR}
     </delete>
 
-	<select id="selectModelInputParams" resultType="java.util.HashMap" statementType="PREPARED">
-		SELECT
-            model_var,
-            model_var_value
-		FROM af_app_model_input_parms
-	</select>
-
-    <insert id="saveModelVarInput" parameterType="java.util.List" statementType="PREPARED">
-        insert all
-        <foreach item="item" index="index" collection="list">
-            into af_app_model_var_input
-            (
-                app_id,
-                var_name,
-                var_value
-            ) values
-            (#{item.app_id, jdbcType = VARCHAR}, #{item.var_name, jdbcType = VARCHAR}, #{item.var_value, jdbcType = VARCHAR})
-        </foreach>
-        SELECT 1 FROM DUAL
-    </insert>
-
-    <delete id="deleteModelVarInputByAppid" parameterType="String" statementType="PREPARED">
-        delete from af_app_model_var_input
-        where app_id = #{appId,jdbcType =VARCHAR}
-    </delete>
-
-    <select id="selectSNAInputConf" resultType="java.util.HashMap" statementType="PREPARED">
-        SELECT
-            src_type,
-            to_type,
-            link_type,
-            ifcluster
-        FROM af_app_snainput_conf
-    </select>
-
-    <insert id="saveSNAInput" parameterType="java.util.HashMap" statementType="PREPARED">
-        <selectKey keyProperty="id_seq" resultType="int" order="BEFORE">
-            select AF_SNA_CONF_INPUT_SEQ.NEXTVAL from dual
-        </selectKey>
-        insert into af_app_snainput
-        (
-            idseq,
-            from_node,
-            to_node,
-            src_type,
-            from_type,
-            to_type,
-            link_type,
-            ifcluster
-        ) values
-        (
-            ${id_seq},
-            #{from_node, jdbcType = VARCHAR},
-            #{to_node, jdbcType = VARCHAR},
-            #{src_type, jdbcType = VARCHAR},
-            #{from_type, jdbcType = VARCHAR},
-            #{to_type, jdbcType = VARCHAR},
-            #{link_type, jdbcType = VARCHAR},
-            #{ifcluster, jdbcType = VARCHAR}
-        )
-    </insert>
-
-    <delete id="deleteSNAInputByAppid" parameterType="String" statementType="PREPARED">
-        delete from af_app_snainput
-        where from_node = #{appId,jdbcType =VARCHAR}
-    </delete>
     <insert id="saveZmivsinfo" parameterType="java.util.HashMap" statementType="PREPARED">
         insert into af_request_appinfo_zmivsinfo
         (
@@ -157,6 +91,129 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="callHandleProcedures" parameterType="String" statementType="CALLABLE">
 		{call AF_HXBCB.RT_MAIN(#{appId,jdbcType=VARCHAR})}
 	</select>
+
+	<!-- prepare Model and SNA input start -->
+	<select id="selectModelInputParams" resultType="java.util.HashMap" statementType="PREPARED">
+		SELECT
+			model_var,
+			model_var_value
+		FROM af_app_model_input_parms
+	</select>
+
+	<insert id="saveModelVarInput" parameterType="java.util.List" statementType="PREPARED">
+		insert all
+		<foreach item="item" index="index" collection="list">
+			into af_app_model_var_input
+			(
+				app_id,
+				var_name,
+				var_value
+			) values
+			(#{item.app_id, jdbcType = VARCHAR}, #{item.var_name, jdbcType = VARCHAR}, #{item.var_value, jdbcType = VARCHAR})
+		</foreach>
+		SELECT 1 FROM DUAL
+	</insert>
+
+	<delete id="deleteModelVarInputByAppid" parameterType="String" statementType="PREPARED">
+		delete from af_app_model_var_input
+		where app_id = #{appId,jdbcType =VARCHAR}
+	</delete>
+
+	<select id="selectSNAInputConf" resultType="java.util.HashMap" statementType="PREPARED">
+		SELECT
+			src_type,
+			to_type,
+			link_type,
+			ifcluster
+		FROM af_app_snainput_conf
+	</select>
+
+	<insert id="saveSNAInput" parameterType="java.util.HashMap" statementType="PREPARED">
+		<selectKey keyProperty="id_seq" resultType="int" order="BEFORE">
+			select AF_SNA_CONF_INPUT_SEQ.NEXTVAL from dual
+		</selectKey>
+		insert into af_app_snainput
+		(
+			idseq,
+			from_node,
+			to_node,
+			src_type,
+			from_type,
+			to_type,
+			link_type,
+			ifcluster
+		) values
+		(
+			${id_seq},
+			#{from_node, jdbcType = VARCHAR},
+			#{to_node, jdbcType = VARCHAR},
+			#{src_type, jdbcType = VARCHAR},
+			#{from_type, jdbcType = VARCHAR},
+			#{to_type, jdbcType = VARCHAR},
+			#{link_type, jdbcType = VARCHAR},
+			#{ifcluster, jdbcType = VARCHAR}
+		)
+	</insert>
+
+	<delete id="deleteSNAInputByAppid" parameterType="String" statementType="PREPARED">
+		delete from af_app_snainput
+		where from_node = #{appId,jdbcType =VARCHAR}
+	</delete>
+	<!-- prepare Model and SNA input end -->
+
+
+	<!-- update dataflux result operations start -->
+	<insert id="saveMatchrstInfos" parameterType="java.util.List" statementType="PREPARED">
+		insert all
+		<foreach item="item" index="index" collection="list">
+			into af_app_matchrst
+			(
+				app_id, app_entity_type, app_data_type, app_data_value, app_data_source, ext_entity_type, ext_data_type, ext_data_value, ext_data_source, simulation_parsing, simulation_char, simulation_cluster
+			) values
+			(#{item.app_id, jdbcType = VARCHAR}, #{item.app_entity_type, jdbcType = VARCHAR}, #{item.app_data_type, jdbcType = VARCHAR}, #{item.app_data_value, jdbcType = VARCHAR}, #{item.app_data_source, jdbcType = VARCHAR}, #{item.ext_entity_type, jdbcType = VARCHAR}, #{item.ext_data_type, jdbcType = VARCHAR}, #{item.ext_data_value, jdbcType = VARCHAR}, #{item.ext_data_source, jdbcType = VARCHAR}, #{item.simulation_parsing, jdbcType = NUMERIC}, #{item.simulation_char, jdbcType = NUMERIC}, #{item.simulation_cluster, jdbcType = NUMERIC})
+		</foreach>
+		SELECT 1 FROM DUAL
+	</insert>
+
+	<insert id="saveAddMCInfos" parameterType="java.util.List" statementType="PREPARED">
+		insert all
+		<foreach item="item" index="index" collection="list">
+			into af_app_add_today
+			(
+				app_id, data_type, data_value, districtmc, townmc, streetmc, blockmc, buildingmc, unitmc, floormc, roommc, addinfo
+			) values
+			(#{item.app_id, jdbcType = VARCHAR}, #{item.data_type, jdbcType = VARCHAR}, #{item.data_value, jdbcType = VARCHAR}, #{item.districtmc, jdbcType = VARCHAR}, #{item.townmc, jdbcType = VARCHAR}, #{item.streetmc, jdbcType = VARCHAR}, #{item.blockmc, jdbcType = VARCHAR}, #{item.buildingmc, jdbcType = VARCHAR}, #{item.unitmc, jdbcType = VARCHAR}, #{item.floormc, jdbcType = VARCHAR}, #{item.roommc, jdbcType = VARCHAR}, #{item.addinfo, jdbcType = VARCHAR})
+		</foreach>
+		SELECT 1 FROM DUAL
+	</insert>
+
+	<insert id="saveCmpMCInfos" parameterType="java.util.List" statementType="PREPARED">
+		insert all
+		<foreach item="item" index="index" collection="list">
+			into af_app_cmp_today
+			(
+				app_id, data_type, data_value, namemc, legalformmc, sitemc, addmc
+			) values
+			(#{item.app_id, jdbcType = VARCHAR}, #{item.data_type, jdbcType = VARCHAR}, #{item.data_value, jdbcType = VARCHAR}, #{item.namemc, jdbcType = VARCHAR}, #{item.legalformmc, jdbcType = VARCHAR}, #{item.sitemc, jdbcType = VARCHAR}, #{item.addmc, jdbcType = VARCHAR})
+		</foreach>
+		SELECT 1 FROM DUAL
+	</insert>
+
+	<delete id="deleteAddMCInfosByAppid" parameterType="String" statementType="PREPARED">
+		delete from af_app_add_today
+		where app_id = #{appId,jdbcType =VARCHAR}
+	</delete>
+
+	<delete id="deleteCmpMCInfosByAppid" parameterType="String" statementType="PREPARED">
+		delete from af_app_cmp_today
+		where app_id = #{appId,jdbcType =VARCHAR}
+	</delete>
+
+	<delete id="deleteMatchrstInfosByAppid" parameterType="String" statementType="PREPARED">
+		delete from af_app_matchrst
+		where app_id = #{appId,jdbcType =VARCHAR}
+	</delete>
+	<!-- update dataflux result operations end -->
 
 	<insert id="saveApplicantinfo" parameterType="java.util.HashMap" statementType="PREPARED">
 		insert into af_request_applicantinfo
@@ -1599,6 +1656,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             vehicle_query_result = #{vehicle_query_result, jdbcType = VARCHAR},
             vehicle_value = #{vehicle_value, jdbcType = VARCHAR},
             vehicle_age = #{vehicle_age, jdbcType = VARCHAR},
+            req_app_num = #{req_app_num, jdbcType = NUMERIC},
             modify_time = to_date(#{modify_time, jdbcType = VARCHAR},'yyyy-mm-dd hh24:mi:ss')
         where app_id = #{app_id,jdbcType =VARCHAR}
     </update>

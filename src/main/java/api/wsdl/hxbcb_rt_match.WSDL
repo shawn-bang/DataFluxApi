@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0"?>
 <definitions name="DMService"
         targetNamespace="http://archserver.wsdl.dataflux.com"
         xmlns:tns="http://archserver.wsdl.dataflux.com"
@@ -24,10 +24,10 @@
 
   <complexType name="row__in">
    <sequence>
-    <element name="shenqingjian_no">
+    <element name="app_id">
      <simpleType>
       <restriction base="string">
-       <maxLength value="16"/>
+       <maxLength value="20"/>
       </restriction>
      </simpleType>
     </element>
@@ -71,10 +71,10 @@
 
   <complexType name="row__out">
    <sequence>
-    <element name="APP_shenqingjian_no">
+    <element name="APP_app_id">
      <simpleType>
       <restriction base="string">
-       <maxLength value="16"/>
+       <maxLength value="20"/>
       </restriction>
      </simpleType>
     </element>
@@ -343,10 +343,10 @@
       </restriction>
      </simpleType>
     </element>
-    <element name="ext_label">
+    <element name="APP_City">
      <simpleType>
       <restriction base="string">
-       <maxLength value="255"/>
+       <maxLength value="256"/>
       </restriction>
      </simpleType>
     </element>
@@ -365,40 +365,40 @@
     <element name="table_" type="tns:table__in" minOccurs="0" maxOccurs="1"/>
    </sequence>
   </complexType>
-  <element name="datasvc_ccapp__rt__match.ddf_in" type="tns:request"/>
+  <element name="datasvc_hxbcb__rt__match.ddf_in" type="tns:request"/>
 
   <complexType name="response">
     <sequence>
     <element name="table_" type="tns:table__out" minOccurs="0" maxOccurs="1"/>
    </sequence>
   </complexType>
-  <element name="datasvc_ccapp__rt__match.ddf_out" type="tns:response"/>
+  <element name="datasvc_hxbcb__rt__match.ddf_out" type="tns:response"/>
 
  </schema>
 </types>
 
 
-<message name="datasvc_ccapp__rt__match.ddf_in">
- <part name="body" element="archxsd:datasvc_ccapp__rt__match.ddf_in"/>
+<message name="datasvc_hxbcb__rt__match.ddf_in">
+ <part name="body" element="archxsd:datasvc_hxbcb__rt__match.ddf_in"/>
 </message>
-<message name="datasvc_ccapp__rt__match.ddf_out">
- <part name="body" element="archxsd:datasvc_ccapp__rt__match.ddf_out"/>
+<message name="datasvc_hxbcb__rt__match.ddf_out">
+ <part name="body" element="archxsd:datasvc_hxbcb__rt__match.ddf_out"/>
 </message>
 
 
 <portType name="DataManagementServicePortType">
- <operation name="datasvc_ccapp__rt__match.ddf_in">
+ <operation name="datasvc_hxbcb__rt__match.ddf_in">
   <documentation></documentation>
-  <input message="tns:datasvc_ccapp__rt__match.ddf_in"/>
-  <output message="tns:datasvc_ccapp__rt__match.ddf_out"/>
+  <input message="tns:datasvc_hxbcb__rt__match.ddf_in"/>
+  <output message="tns:datasvc_hxbcb__rt__match.ddf_out"/>
  </operation>
 </portType>
 
 
 <binding name="DataManagementService" type="tns:DataManagementServicePortType">
  <SOAP:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
- <operation name="datasvc_ccapp__rt__match.ddf_in">
-  <SOAP:operation soapAction="ccapp_rt_match.ddf*1*5926ACFC1DFEFC60"/>
+ <operation name="datasvc_hxbcb__rt__match.ddf_in">
+  <SOAP:operation soapAction="hxbcb_rt_match.ddf*1*5A1573BDD3F008AC"/>
   <input>
    <SOAP:body use="literal"/>
   </input>
@@ -412,7 +412,7 @@
 <service name="DMService">
  <documentation>Data Management Server</documentation>
  <port name="DMService" binding="tns:DataManagementService">
-  <SOAP:address location="http://fanqizha:21036"/>
+  <SOAP:address location="http://fna:21036"/>
  </port>
 </service>
 
