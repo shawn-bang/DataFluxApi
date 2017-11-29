@@ -1,6 +1,6 @@
 ﻿-- hxb api business rules package and procedure
 create or replace package AF_HXBCB_RULE_PKG as
-  -- Created : 2017/11/3 17:22:14
+  -- Created : 2017/11/3 17:22:15
   -- Purpose : Rule
   -- 触发规则列表
   -- rule:131
