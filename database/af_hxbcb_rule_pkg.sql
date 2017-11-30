@@ -3,76 +3,82 @@ create or replace package AF_HXBCB_RULE_PKG as
   -- Created : 2017/11/3 17:22:15
   -- Purpose : Rule
   -- 触发规则列表
-  ---------------精确匹配不需要查询历史的规则需要的变量------------------------
-
-  --rule:236
-  procedure RULE_236(app_id_input in varchar2);
-  --rule:198
-  procedure RULE_198(app_id_input in varchar2,v1v2_flag in af_request_applicantinfo.c1c2_flag%type,v2_gender  in af_request_applicantinfo.c2_gender%type,v2_idnbr in  af_request_applicantinfo.c2_idnbr%type,v2_idtype in af_request_applicantinfo.c2_idtype%type,v_gender in af_request_applicantinfo.c1_gender%type,v_idtype in  af_request_applicantinfo.c1_idtype%type,v_idnbr in af_request_applicantinfo.c1_idnbr%type);
-  --rule:182
-  procedure RULE_182(app_id_input in varchar2,v_coname in af_request_applicantinfo.c1_coname%type);
-  --rule:153
-  procedure RULE_153(app_id_input in varchar2,v_apsour in af_request_applicantinfo.c4_apsour%type);
-  --rule:152
-  procedure RULE_152(app_id_input in varchar2,v_apsour in af_request_applicantinfo.c4_apsour%type);
-  --rule:145
-  procedure RULE_145(app_id_input in varchar2,v_c1_reship in af_request_applicantinfo.c1_reship%type, v_mate_contact_tel in af_request_applicantinfo.mate_contact_tel%type,v_remobil in af_request_applicantinfo.c1_remobil%type);
-  --rule:143
-  procedure RULE_143(app_id_input in varchar2,v_frs_cred_crd_issue_mon af_request_applicantinfo.frs_cred_crd_issue_mon%type);
-  --rule:141
-  procedure RULE_141(app_id_input in varchar2,v_no_pd_card_loan_corp_number in af_request_applicantinfo.no_pd_card_loan_corp_number%type);
-  --rule:140
-  procedure RULE_140(app_id_input in varchar2,v_no_pd_card_loan_org_number in af_request_applicantinfo.no_pd_card_loan_org_number%type);
-  --rule:139
-  procedure RULE_139(app_id_input in varchar2,v_no_pin_debit_card_acct_num in af_request_applicantinfo.no_pin_debit_card_acct_num%type);
-  --rule:138
-  procedure RULE_138(app_id_input in varchar2,v_educls in af_request_applicantinfo.c1_educls%type,v_educationapproach in af_request_applicantinfo.educationapproach%type);
-  --rule:118
-  procedure RULE_118(app_id_input in varchar2,v_remobil af_request_applicantinfo.c1_remobil%type,  v_mobile af_request_applicantinfo.c1_mobile%type);
-  --rule:98
-  procedure RULE_98(app_id_input in varchar2,v_result_xm in af_request_applicantinfo.result_xm%type);
-  --rule:96
-  procedure RULE_96(app_id_input in varchar2,v_educationdegree in af_request_applicantinfo.educationdegree%type);
-  --rule:68
-  procedure RULE_68(app_id_input in varchar2,v_cycadd1 in af_request_applicantinfo.c4_cycadd1%type);
-  --rule:67
-  procedure RULE_67(app_id_input in varchar2,v_cycadd1 in af_request_applicantinfo.c4_cycadd1%type);
-  --rule:65
-  procedure RULE_65(app_id_input in varchar2,v_cotel in af_request_applicantinfo.c1_cotel%type,v_hmare in af_request_applicantinfo.c1_hmare%type,v_c1_hmtel in af_request_applicantinfo.c1_hmtel%type);
-  --rule:49
-  procedure RULE_49(app_id_input in varchar2,v_deb_c60overd_longest_over in af_request_applicantinfo.deb_c60overd_longest_over_due%type);
-  --rule:48
-  procedure RULE_48(app_id_input in varchar2,v_deb_c60overd_month_num in af_request_applicantinfo.deb_c60overd_month_num%type);
-  --rule:46
-  procedure RULE_46(app_id_input in varchar2,v_debit_co_due_longest_over in af_request_applicantinfo.debit_co_due_longest_over_due%type);
-  --rule:45
-  procedure RULE_45(app_id_input in varchar2,v_debit_card_over_due_month in af_request_applicantinfo.debit_card_over_due_month_num%type);
-  --rule:44
-  procedure RULE_44(app_id_input in varchar2,v_debit_card_over_due_acct_num in af_request_applicantinfo.debit_card_over_due_acct_num%type);
-  --rule:42
-  procedure RULE_42(app_id_input in varchar2,v_loan_overdue_month_num in af_request_applicantinfo.loan_overdue_month_num%type);
+  ---------------精确匹配------------------------
   --rule:40
   procedure RULE_40(app_id_input in varchar2,v_bad_debt_num in af_request_applicantinfo.bad_debt_num%type);
-  ---------------------------------------------------
+  --rule:42
+  procedure RULE_42(app_id_input in varchar2,v_loan_overdue_month_num in af_request_applicantinfo.loan_overdue_month_num%type);
+  --rule:44
+  procedure RULE_44(app_id_input in varchar2,v_debit_card_over_due_acct_num in af_request_applicantinfo.debit_card_over_due_acct_num%type);
+  --rule:45
+  procedure RULE_45(app_id_input in varchar2,v_debit_card_over_due_month in af_request_applicantinfo.debit_card_over_due_month_num%type);
+  --rule:46
+  procedure RULE_46(app_id_input in varchar2,v_debit_co_due_longest_over in af_request_applicantinfo.debit_co_due_longest_over_due%type);
+  --rule:48
+  procedure RULE_48(app_id_input in varchar2,v_deb_c60overd_month_num in af_request_applicantinfo.deb_c60overd_month_num%type);
+  --rule:49
+  procedure RULE_49(app_id_input in varchar2,v_deb_c60overd_longest_over in af_request_applicantinfo.deb_c60overd_longest_over_due%type);
+  --rule:65
+  procedure RULE_65(app_id_input in varchar2,v_cotel in af_request_applicantinfo.c1_cotel%type,v_hmare in af_request_applicantinfo.c1_hmare%type,v_c1_hmtel in af_request_applicantinfo.c1_hmtel%type);
+  --rule:67
+  procedure RULE_67(app_id_input in varchar2,v_cycadd1 in af_request_applicantinfo.c4_cycadd1%type);
+  --rule:68
+  procedure RULE_68(app_id_input in varchar2,v_cycadd1 in af_request_applicantinfo.c4_cycadd1%type);
+  --rule:70
+  procedure RULE_70(app_id_input in varchar2,v_idnbr af_request_applicantinfo.c1_idnbr%type);
+  --rule:71
+  procedure RULE_71(app_id_input in varchar2,v_idnbr af_request_applicantinfo.c1_idnbr%type);
+  --rule:96
+  procedure RULE_96(app_id_input in varchar2,v_educationdegree in af_request_applicantinfo.educationdegree%type);
+  --rule:98
+  procedure RULE_98(app_id_input in varchar2,v_result_xm in af_request_applicantinfo.result_xm%type);
+  --rule:118
+  procedure RULE_118(app_id_input in varchar2,v_remobil af_request_applicantinfo.c1_remobil%type,  v_mobile af_request_applicantinfo.c1_mobile%type);
+  --rule:138
+  procedure RULE_138(app_id_input in varchar2,v_educls in af_request_applicantinfo.c1_educls%type,v_educationapproach in af_request_applicantinfo.educationapproach%type);
+  --rule:139
+  procedure RULE_139(app_id_input in varchar2,v_no_pin_debit_card_acct_num in af_request_applicantinfo.no_pin_debit_card_acct_num%type);
+  --rule:140
+  procedure RULE_140(app_id_input in varchar2,v_no_pd_card_loan_org_number in af_request_applicantinfo.no_pd_card_loan_org_number%type);
+  --rule:141
+  procedure RULE_141(app_id_input in varchar2,v_no_pd_card_loan_corp_number in af_request_applicantinfo.no_pd_card_loan_corp_number%type);
+  --rule:143
+  procedure RULE_143(app_id_input in varchar2,v_frs_cred_crd_issue_mon af_request_applicantinfo.frs_cred_crd_issue_mon%type);
+  --rule:145
+  procedure RULE_145(app_id_input in varchar2,v_reship in af_request_applicantinfo.c1_reship%type, v_mate_contact_tel in af_request_applicantinfo.mate_contact_tel%type,v_remobil in af_request_applicantinfo.c1_remobil%type);
+  --rule:152
+  procedure RULE_152(app_id_input in varchar2,v_apsour in af_request_applicantinfo.c4_apsour%type);
+  --rule:153
+  procedure RULE_153(app_id_input in varchar2,v_apsour in af_request_applicantinfo.c4_apsour%type);
+  --rule:179
+  procedure RULE_179(app_id_input in varchar2,v_remobil in af_request_applicantinfo.c1_remobil%type,v_rename in af_request_applicantinfo.c1_rename%type);
+  --rule:182
+  procedure RULE_182(app_id_input in varchar2,v_coname in af_request_applicantinfo.c1_coname%type);
+  --rule:198
+  procedure RULE_198(app_id_input in varchar2,v1v2_flag in af_request_applicantinfo.c1c2_flag%type,v2_gender  in af_request_applicantinfo.c2_gender%type,v2_idnbr in  af_request_applicantinfo.c2_idnbr%type,v2_idtype in af_request_applicantinfo.c2_idtype%type,v_gender in af_request_applicantinfo.c1_gender%type,v_idtype in  af_request_applicantinfo.c1_idtype%type,v_idnbr in af_request_applicantinfo.c1_idnbr%type);
+  --rule:236
+  procedure RULE_236(app_id_input in varchar2);
 
-  -- rule:131
-  procedure RULE_131(app_id_input in varchar2,v_codenameenglish in varchar2);
-  -- rule:130
-  procedure RULE_130(app_id_input in varchar2,v_codeemailenglish in varchar2);
-  -- rule:129
-  procedure RULE_129(app_id_input in varchar2,v_codeaddrenglish in varchar2);
-  -- rule:128
-  procedure RULE_128(app_id_input in varchar2,v_ipenenglish in varchar2);
-  -- rule:127
-  procedure RULE_127(app_id_input in varchar2,v_imsienenglish in varchar2);
-  -- rule:126
-  procedure RULE_126(app_id_input in varchar2,v_imeienenglish in varchar2);
-  -- rule:125
-  procedure RULE_125(app_id_input in varchar2,v_wifimacenenglish in varchar2);
-  -- rule:122
-  procedure RULE_122(app_id_input in varchar2,v_idte1 in varchar2,v_iddt1 in varchar2);
   -- rule:121
   procedure RULE_121(app_id_input in varchar2,v_idtype in varchar2, v_idnbr in varchar2,v_iddt1 in varchar2,v_idte1 in varchar2,v_birth in varchar2);
+  -- rule:122
+  procedure RULE_122(app_id_input in varchar2,v_idte1 in varchar2,v_iddt1 in varchar2);
+  -- rule:125
+  procedure RULE_125(app_id_input in varchar2,v_wifimacenenglish in varchar2);
+  -- rule:126
+  procedure RULE_126(app_id_input in varchar2,v_imeienenglish in varchar2);
+  -- rule:127
+  procedure RULE_127(app_id_input in varchar2,v_imsienenglish in varchar2);
+  -- rule:128
+  procedure RULE_128(app_id_input in varchar2,v_ipenenglish in varchar2);
+  -- rule:129
+  procedure RULE_129(app_id_input in varchar2,v_codeaddrenglish in varchar2);
+  -- rule:130
+  procedure RULE_130(app_id_input in varchar2,v_codeemailenglish in varchar2);
+  -- rule:131
+  procedure RULE_131(app_id_input in varchar2,v_codenameenglish in varchar2);
+  ---------------------------------------------------
+
   -- rule:155
   procedure RULE_155(app_id_input in varchar2, v_idnbr in varchar2);
   -- rule:156
@@ -164,26 +170,511 @@ create or replace package AF_HXBCB_RULE_PKG as
 
 end AF_HXBCB_RULE_PKG;
 
-/
+
 
 create or replace package body AF_HXBCB_RULE_PKG as
 
-
-  -- rule:236
-  procedure RULE_236(app_id_input in varchar2) is
+  -- rule:40
+  procedure RULE_40(app_id_input in varchar2,v_bad_debt_num in af_request_applicantinfo.bad_debt_num%type) is
     v_error varchar2(500);
     begin
-      if substr(app_id_input,11,1) = 'V' then
+      if nvl(v_bad_debt_num,'null') = 'null' then
         -- update result data
-        insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno,type,class) values(app_id_input, 'Z2', 'Z03', 'Z03_1', '', '', 'RULE_236', 'RULE','Z');
+        insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno,type,class) values(app_id_input, 'Z2', 'Z03', 'Z03_1', 'null', 'null', 'RULE_40', 'RULE','Z');
         commit;
+      else
+        if v_bad_debt_num >= 2 then
+          -- update result data
+          insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno,type,class) values(app_id_input, 'Z2', 'Z03', 'Z03_1', '', '', 'RULE_40', 'RULE','Z');
+          commit;
+        end if;
       end if;
       -- handle exceptions
-      exception when others then v_error := 'RULE_236: ' || sqlerrm;
+      exception when others then v_error := 'RULE_40: ' || sqlerrm;
       insert into af_app_prc_logs(app_id, error_logs) values(app_id_input, v_error);
       commit;
       -- don't anything
-    end RULE_236;
+    end RULE_40;
+  -- rule:42
+  procedure RULE_42(app_id_input in varchar2,v_loan_overdue_month_num in af_request_applicantinfo.loan_overdue_month_num%type) is
+    v_error varchar2(500);
+    begin
+      if nvl(v_loan_overdue_month_num,'null') = 'null' then
+        -- update result data
+        insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno,type,class) values(app_id_input, 'Z2', 'Z03', 'Z03_1', 'null', 'null', 'RULE_42', 'RULE','Z');
+        commit;
+      else
+        if v_loan_overdue_month_num >= 2 then
+          -- update result data
+          insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno,type,class) values(app_id_input, 'Z2', 'Z03', 'Z03_1', '', '', 'RULE_42', 'RULE','Z');
+          commit;
+        end if;
+      end if;
+      -- handle exceptions
+      exception when others then v_error := 'RULE_42: ' || sqlerrm;
+      insert into af_app_prc_logs(app_id, error_logs) values(app_id_input, v_error);
+      commit;
+      -- don't anything
+    end RULE_42;
+  -- rule:44
+  procedure RULE_44(app_id_input in varchar2,v_debit_card_over_due_acct_num af_request_applicantinfo.debit_card_over_due_acct_num%type) is
+    v_error varchar2(500);
+    begin
+      if nvl(v_debit_card_over_due_acct_num,'null') = 'null' then
+        -- update result data
+        insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno,type,class) values(app_id_input, 'Z2', 'Z03', 'Z03_1', 'null', 'null', 'RULE_44', 'RULE','Z');
+        commit;
+      else
+        if v_debit_card_over_due_acct_num >= 2 then
+          -- update result data
+          insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno,type,class) values(app_id_input, 'Z2', 'Z03', 'Z03_1', '', '', 'RULE_44', 'RULE','Z');
+          commit;
+        end if;
+      end if;
+      -- handle exceptions
+      exception when others then v_error := 'RULE_44: ' || sqlerrm;
+      insert into af_app_prc_logs(app_id, error_logs) values(app_id_input, v_error);
+      commit;
+      -- don't anything
+    end RULE_44;
+  -- rule:45
+  procedure RULE_45(app_id_input in varchar2,v_debit_card_over_due_month in af_request_applicantinfo.debit_card_over_due_month_num%type) is
+    v_error varchar2(500);
+    begin
+      if nvl(v_debit_card_over_due_month,'null') = 'null' then
+        -- update result data
+        insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno,type,class) values(app_id_input, 'Z2', 'Z03', 'Z03_1', 'null', 'null', 'RULE_45', 'RULE','Z');
+        commit;
+      else
+        if v_debit_card_over_due_month >= 2 then
+          -- update result data
+          insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno,type,class) values(app_id_input, 'Z2', 'Z03', 'Z03_1', '', '', 'RULE_45', 'RULE','Z');
+          commit;
+        end if;
+      end if;
+      -- handle exceptions
+      exception when others then v_error := 'RULE_45: ' || sqlerrm;
+      insert into af_app_prc_logs(app_id, error_logs) values(app_id_input, v_error);
+      commit;
+      -- don't anything
+    end RULE_45;
+  -- rule:46
+  procedure RULE_46(app_id_input in varchar2,v_debit_co_due_longest_over in af_request_applicantinfo.debit_co_due_longest_over_due%type) is
+    v_error varchar2(500);
+    begin
+      if nvl(v_debit_co_due_longest_over,'null') = 'null' then
+        -- update result data
+        insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno,type,class) values(app_id_input, 'Z2', 'Z03', 'Z03_1', 'null', 'null', 'RULE_46', 'RULE','Z');
+        commit;
+      else
+        if v_debit_co_due_longest_over >= 2 then
+          -- update result data
+          insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno,type,class) values(app_id_input, 'Z2', 'Z03', 'Z03_1', '', '', 'RULE_46', 'RULE','Z');
+          commit;
+        end if;
+      end if;
+      -- handle exceptions
+      exception when others then v_error := 'RULE_46: ' || sqlerrm;
+      insert into af_app_prc_logs(app_id, error_logs) values(app_id_input, v_error);
+      commit;
+      -- don't anything
+    end RULE_46;
+  -- rule:48
+  procedure RULE_48(app_id_input in varchar2,v_deb_c60overd_month_num in af_request_applicantinfo.deb_c60overd_month_num%type) is
+    v_error varchar2(500);
+    begin
+      if nvl(v_deb_c60overd_month_num,'null') = 'null' then
+        -- update result data
+        insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno,type,class) values(app_id_input, 'Z2', 'Z03', 'Z03_1', 'NULL', 'NULL', 'RULE_48', 'RULE','Z');
+        commit;
+      else
+        if v_deb_c60overd_month_num >= 2 then
+          -- update result data
+          insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno,type,class) values(app_id_input, 'Z2', 'Z03', 'Z03_1', '', '', 'RULE_48', 'RULE','Z');
+          commit;
+        end if;
+
+      end if;
+      -- handle exceptions
+      exception when others then v_error := 'RULE_48: ' || sqlerrm;
+      insert into af_app_prc_logs(app_id, error_logs) values(app_id_input, v_error);
+      commit;
+      -- don't anything
+    end RULE_48;
+  -- rule:49
+  procedure RULE_49(app_id_input in varchar2,v_deb_c60overd_longest_over in af_request_applicantinfo.deb_c60overd_longest_over_due%type) is
+    v_error varchar2(500);
+    begin
+      if nvl(v_deb_c60overd_longest_over,'null') = 'null' then
+        -- update result data
+        insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno,type,class) values(app_id_input, 'Z2', 'Z03', 'Z03_1', 'NULL', 'NULL', 'RULE_49', 'RULE','Z');
+        commit;
+      else
+        if v_deb_c60overd_longest_over >= 2  then
+          -- update result data
+          insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno,type,class) values(app_id_input, 'Z2', 'Z03', 'Z03_1', '', '', 'RULE_49', 'RULE','Z');
+          commit;
+        end if;
+      end if;
+      -- handle exceptions
+      exception when others then v_error := 'RULE_49: ' || sqlerrm;
+      insert into af_app_prc_logs(app_id, error_logs) values(app_id_input, v_error);
+      commit;
+      -- don't anything
+    end RULE_49;
+  -- rule:65
+  procedure RULE_65(app_id_input in varchar2,v_cotel in af_request_applicantinfo.c1_cotel%type,v_hmare in af_request_applicantinfo.c1_hmare%type,v_c1_hmtel in af_request_applicantinfo.c1_hmtel%type) is
+    v_error varchar2(500);
+    begin
+      if nvl(v_hmare,'null') != 'null' and nvl(v_c1_hmtel,'null') != 'null' and nvl(v_cotel,'null') != 'null' and v_hmare || v_c1_hmtel = v_cotel then
+        -- update result data
+        insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno,type,class) values(app_id_input, 'Z2', 'Z03', 'Z03_2', '', '', 'RULE_65', 'RULE','Z');
+        commit;
+      end if;
+      -- handle exceptions
+      exception when others then v_error := 'RULE_65: ' || sqlerrm;
+      insert into af_app_prc_logs(app_id, error_logs) values(app_id_input, v_error);
+      commit;
+      -- don't anything
+    end RULE_65;
+  -- rule:67
+  procedure RULE_67(app_id_input in varchar2,v_cycadd1 in af_request_applicantinfo.c4_cycadd1%type) is
+    v_error varchar2(500);
+    begin
+      -- 假设码值是5,后面还需要根据具体的码表更改
+      if nvl(v_cycadd1,'null') != 'null' and v_cycadd1 = 'H' then
+        -- update result data
+        insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno,type,class) values(app_id_input, 'Z2', 'Z03', 'Z03_3', '', '', 'RULE_67', 'RULE','Z');
+        commit;
+      end if;
+      -- handle exceptions
+      exception when others then v_error := 'RULE_67: ' || sqlerrm;
+      insert into af_app_prc_logs(app_id, error_logs) values(app_id_input, v_error);
+      commit;
+      -- don't anything
+    end RULE_67;
+  -- rule:68
+  procedure RULE_68(app_id_input in varchar2,v_cycadd1 in af_request_applicantinfo.c4_cycadd1%type) is
+    v_error varchar2(500);
+    begin
+      -- 动态码值,后面还需要根据具体的需求更改
+      if nvl(v_cycadd1,'null') != 'null' and v_cycadd1 = 'B' then
+        -- update result data
+        insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno,type,class) values(app_id_input, 'Z2', 'Z03', 'Z03_3', '', '', 'RULE_68', 'RULE','Z');
+        commit;
+      end if;
+      -- handle exceptions
+      exception when others then v_error := 'RULE_68: ' || sqlerrm;
+      insert into af_app_prc_logs(app_id, error_logs) values(app_id_input, v_error);
+      commit;
+      -- don't anything
+    end RULE_68;
+  -- rule:70
+  procedure RULE_70(app_id_input in varchar2,v_idnbr in af_request_applicantinfo.c1_idnbr%type) is
+    flag number;
+    v_error varchar2(500);
+    begin
+      select count(distinct(t.c1_mobile))
+      into flag
+      from af_request_appinfo_his_hot t
+      where 1 = 1
+            and t.c1_idnbr = v_idnbr
+            and t.c1_mobile is not null;
+      if flag >= 2 then
+        -- update result data
+        insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno,type,class) values(app_id_input, 'Z2', 'Z01', 'Z01_2', '', '', 'RULE_70', 'RULE','Z');
+        commit;
+
+      end if;
+      -- handle exceptions
+      exception when others then v_error := 'RULE_70: ' || sqlerrm;
+      insert into af_app_prc_logs(app_id, error_logs) values(app_id_input, v_error);
+      commit;
+      -- don't anything
+    end RULE_70;
+  -- rule:71
+  procedure RULE_71(app_id_input in varchar2,v_idnbr in af_request_applicantinfo.c1_idnbr%type) is
+    flag number;
+    v_error varchar2(500);
+    begin
+      select count(distinct(t.c1_cotel))
+      into flag
+      from af_request_appinfo_his_hot t
+      where 1 = 1
+            and t.c1_idnbr = v_idnbr
+            and t.c1_cotel is not null;
+      if flag >= 2 then
+        -- update result data
+        insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno,type,class) values(app_id_input, 'Z2', 'Z01', 'Z01_2', '', '', 'RULE_71', 'RULE','Z');
+        commit;
+      end if;
+      -- handle exceptions
+      exception when others then v_error := 'RULE_71: ' || sqlerrm;
+      insert into af_app_prc_logs(app_id, error_logs) values(app_id_input, v_error);
+      commit;
+      -- don't anything
+    end RULE_71;
+
+  -- rule:96
+  procedure RULE_96(app_id_input in varchar2,v_educationdegree in af_request_applicantinfo.educationdegree%type) is
+    v_error varchar2(500);
+    begin
+
+      if nvl(v_educationdegree,'null') != 'null' then
+        -- educationdegree学历对应码值判断学位是否高于大专
+        -- update result data
+        insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno,type,class) values(app_id_input, 'Z2', 'Z03', 'Z03_1', '', '', 'RULE_96', 'RULE','Z');
+        commit;
+      end if;
+      -- handle exceptions
+      exception when others then v_error := 'RULE_96: ' || sqlerrm;
+      insert into af_app_prc_logs(app_id, error_logs) values(app_id_input, v_error);
+      commit;
+      -- don't anything
+    end RULE_96;
+  -- rule:98
+  procedure RULE_98(app_id_input in varchar2,v_result_xm in af_request_applicantinfo.result_xm%type) is
+    v_error varchar2(500);
+    begin
+
+      if nvl(v_result_xm,'null') != 'null' then
+        -- result_xm公民身份号码核查结果码值需要确定
+        -- update result data
+        insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno,type,class) values(app_id_input, 'Z2', 'Z03', 'Z03_1', '', '', 'RULE_98', 'RULE','Z');
+        commit;
+      end if;
+      -- handle exceptions
+      exception when others then v_error := 'RULE_98: ' || sqlerrm;
+      insert into af_app_prc_logs(app_id, error_logs) values(app_id_input, v_error);
+      commit;
+      -- don't anything
+    end RULE_98;
+  -- rule:118
+  procedure RULE_118(app_id_input in varchar2, v_remobil af_request_applicantinfo.c1_remobil%type,  v_mobile af_request_applicantinfo.c1_mobile%type) is
+    v_error varchar2(500);
+    begin
+
+      if nvl(v_remobil,'null') != 'null' and nvl(v_mobile,'null') != 'null'  then
+        -- 需要从app_id中整理出市字段并且匹配电话的区号
+        -- update result data
+        insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno,type,class) values(app_id_input, 'Z2', 'Z03', 'Z03_2', '', '', 'RULE_118', 'RULE','Z');
+        commit;
+      end if;
+      -- handle exceptions
+      exception when others then v_error := 'RULE_118: ' || sqlerrm;
+      insert into af_app_prc_logs(app_id, error_logs) values(app_id_input, v_error);
+      commit;
+      -- don't anything
+    end RULE_118;
+  -- rule:138
+  procedure RULE_138(app_id_input in varchar2, v_educls in af_request_applicantinfo.c1_educls%type,v_educationapproach in af_request_applicantinfo.educationapproach%type) is
+    v_error varchar2(500);
+    begin
+
+      if nvl(v_educls,'null') != 'null' and nvl(v_educationapproach,'null') != 'null'  and v_educls = v_educationapproach then
+
+        -- update result data
+        insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno,type,class) values(app_id_input, 'Z2', 'Z03', 'Z03_1', '', '', 'RULE_138', 'RULE','Z');
+        commit;
+      end if;
+      -- handle exceptions
+      exception when others then v_error := 'RULE_138: ' || sqlerrm;
+      insert into af_app_prc_logs(app_id, error_logs) values(app_id_input, v_error);
+      commit;
+      -- don't anything
+    end RULE_138;
+  -- rule:139
+  procedure RULE_139(app_id_input in varchar2,v_no_pin_debit_card_acct_num in af_request_applicantinfo.no_pin_debit_card_acct_num%type) is
+    v_error varchar2(500);
+    begin
+      --N的值不确定
+      if nvl(v_no_pin_debit_card_acct_num,'null') = 'null'  then
+
+        -- update result data
+        insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno,type,class) values(app_id_input, 'Z2', 'Z03', 'Z03_1', 'NULL', 'NULL', 'RULE_139', 'RULE','Z');
+        commit;
+      else
+        if v_no_pin_debit_card_acct_num >= '5' then
+          -- update result data
+          insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno,type,class) values(app_id_input, 'Z2', 'Z03', 'Z03_1', '', '', 'RULE_139', 'RULE','Z');
+          commit;
+        end if;
+      end if;
+      -- handle exceptions
+      exception when others then v_error := 'RULE_139: ' || sqlerrm;
+      insert into af_app_prc_logs(app_id, error_logs) values(app_id_input, v_error);
+      commit;
+      -- don't anything
+    end RULE_139;
+  -- rule:140
+  procedure RULE_140(app_id_input in varchar2,v_no_pd_card_loan_org_number in af_request_applicantinfo.no_pd_card_loan_org_number%type) is
+    v_error varchar2(500);
+    begin
+      --N的值不确定
+      if nvl(v_no_pd_card_loan_org_number,'null') = 'null' then
+
+        -- update result data
+        insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno,type,class) values(app_id_input, 'Z2', 'Z03', 'Z03_1', 'NULL', 'NULL', 'RULE_140', 'RULE','Z');
+        commit;
+      else
+        if  v_no_pd_card_loan_org_number >= 'N'  then
+
+          -- update result data
+          insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno,type,class) values(app_id_input, 'Z2', 'Z03', 'Z03_1', '', '', 'RULE_140', 'RULE','Z');
+          commit;
+        end if;
+
+      end if;
+      -- handle exceptions
+      exception when others then v_error := 'RULE_140: ' || sqlerrm;
+      insert into af_app_prc_logs(app_id, error_logs) values(app_id_input, v_error);
+      commit;
+      -- don't anything
+    end RULE_140;
+  -- rule:141
+  procedure RULE_141(app_id_input in varchar2,v_no_pd_card_loan_corp_number in af_request_applicantinfo.no_pd_card_loan_corp_number%type) is
+    v_error varchar2(500);
+    begin
+      --N的值不确定
+      if nvl(v_no_pd_card_loan_corp_number,'null') = 'null'then
+
+        -- update result data
+        insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno,type,class) values(app_id_input, 'Z2', 'Z03', 'Z03_1', 'NULL', 'NULL', 'RULE_141', 'RULE','Z');
+        commit;
+      else
+        if  v_no_pd_card_loan_corp_number >= 'N'  then
+          -- update result data
+          insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno,type,class) values(app_id_input, 'Z2', 'Z03', 'Z03_1', '', '', 'RULE_141', 'RULE','Z');
+          commit;
+        end if;
+      end if;
+      -- handle exceptions
+      exception when others then v_error := 'RULE_141: ' || sqlerrm;
+      insert into af_app_prc_logs(app_id, error_logs) values(app_id_input, v_error);
+      commit;
+      -- don't anything
+    end RULE_141;
+  -- rule:143
+  procedure RULE_143(app_id_input in varchar2,v_frs_cred_crd_issue_mon in af_request_applicantinfo.frs_cred_crd_issue_mon%type) is
+    v_error varchar2(500);
+    begin
+      --N的值不确定
+      if nvl(v_frs_cred_crd_issue_mon,'null') = 'null'  then
+
+        -- update result data
+        insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno,type,class) values(app_id_input, 'Z2', 'Z03', 'Z03_1', 'NULL', 'NULL', 'RULE_143', 'RULE','Z');
+        commit;
+      else
+        if  v_frs_cred_crd_issue_mon <= 'N' then
+          -- update result data
+          insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno,type,class) values(app_id_input, 'Z2', 'Z03', 'Z03_1', '', '', 'RULE_143', 'RULE','Z');
+          commit;
+        end if;
+      end if;
+      -- handle exceptions
+      exception when others then v_error := 'RULE_143: ' || sqlerrm;
+      insert into af_app_prc_logs(app_id, error_logs) values(app_id_input, v_error);
+      commit;
+      -- don't anything
+    end RULE_143;
+  -- rule:145
+  procedure RULE_145(app_id_input in varchar2,v_reship in af_request_applicantinfo.c1_reship%type,v_mate_contact_tel in af_request_applicantinfo.mate_contact_tel%type,v_remobil in af_request_applicantinfo.c1_remobil%type) is
+    v_error varchar2(500);
+    begin
+      --c1_reship配偶是字段 还是码值不确定
+      if v_reship = '配偶' and nvl(v_remobil,'null') != 'null' then
+        if nvl(v_mate_contact_tel,'null') = 'null' then
+          -- update result data
+          insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno,type,class) values(app_id_input, 'Z2', 'Z03', 'Z03_2', 'NULL', 'NULL', 'RULE_145', 'RULE','Z');
+          commit;
+        else
+          if v_remobil = v_mate_contact_tel then
+            -- update result data
+            insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno,type,class) values(app_id_input, 'Z2', 'Z03', 'Z03_2', '', '', 'RULE_145', 'RULE','Z');
+            commit;
+          end if;
+        end if;
+
+      end if;
+      -- handle exceptions
+      exception when others then v_error := 'RULE_145: ' || sqlerrm;
+      insert into af_app_prc_logs(app_id, error_logs) values(app_id_input, v_error);
+      commit;
+      -- don't anything
+    end RULE_145;
+  -- rule:152
+  procedure RULE_152(app_id_input in varchar2,v_apsour in af_request_applicantinfo.c4_apsour%type) is
+    v_error varchar2(500);
+    begin
+      -- c4_apsour推广进件来源的码值还需要根据具体的码表更改判断码值是否等于 (我行客户 or 陌生拜访 or 电话营销 or 信函营销)
+      if nvl(v_apsour,'null') != 'null' then
+        -- update result data
+        insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno,type,class) values(app_id_input, 'Z2', 'Z03', 'Z03_1', '', '', 'RULE_152', 'RULE','Z');
+        commit;
+      end if;
+      -- handle exceptions
+      exception when others then v_error := 'RULE_152: ' || sqlerrm;
+      insert into af_app_prc_logs(app_id, error_logs) values(app_id_input, v_error);
+      commit;
+      -- don't anything
+    end RULE_152;
+  -- rule:153
+  procedure RULE_153(app_id_input in varchar2,v_apsour in af_request_applicantinfo.c4_apsour%type) is
+    v_error varchar2(500);
+    begin
+      -- c4_apsour推广进件来源的码值还需要判断码值是否等于 (他人转介 or 设点营销 or 熟人介绍 or 自进件)
+      if nvl(v_apsour,'null') != 'null' then
+        -- update result data
+        insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno,type,class) values(app_id_input, 'Z2', 'Z03', 'Z03_1', '', '', 'RULE_153', 'RULE','Z');
+        commit;
+      end if;
+      -- handle exceptions
+      exception when others then v_error := 'RULE_153: ' || sqlerrm;
+      insert into af_app_prc_logs(app_id, error_logs) values(app_id_input, v_error);
+      commit;
+      -- don't anything
+    end RULE_153;
+  -- rule:179
+  procedure RULE_179(app_id_input in varchar2,v_remobil in af_request_applicantinfo.c1_remobil%type,v_rename in af_request_applicantinfo.c1_rename%type) is
+    flag number;
+    v_error varchar2(500);
+    --N的值还需要确定
+    begin
+      if nvl(v_remobil,'null') != 'null' and nvl(v_remobil,'null') != 'null' then
+        select count(1)
+        into flag
+        from af_request_appinfo_his_hot t
+        where 1 = 1
+              and t.c1_remobil = v_remobil
+              and t.c1_rename != v_rename;
+        if flag > 'N' then
+          -- update result data
+          insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno,type,class) values(app_id_input, 'Z2', 'Z01', 'Z01_2', '', '', 'RULE_179', 'RULE','Z');
+          commit;
+        end if;
+      end if;
+      -- handle exceptions
+      exception when others then v_error := 'RULE_179: ' || sqlerrm;
+      insert into af_app_prc_logs(app_id, error_logs) values(app_id_input, v_error);
+      commit;
+      -- don't anything
+    end RULE_179;
+  -- rule:182
+  procedure RULE_182(app_id_input in varchar2,v_coname in af_request_applicantinfo.c1_coname%type) is
+    v_error varchar2(500);
+    begin
+
+      if nvl(v_coname,'null') != 'null' and instr(v_coname,'投资') != '0' then
+        -- update result data
+        insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno,type,class) values(app_id_input, 'Z2', 'Z03', 'Z03_4', '', '', 'RULE_182', 'RULE','Z');
+        commit;
+      end if;
+      -- handle exceptions
+      exception when others then v_error := 'RULE_182: ' || sqlerrm;
+      insert into af_app_prc_logs(app_id, error_logs) values(app_id_input, v_error);
+      commit;
+      -- don't anything
+    end RULE_182;
   -- rule:198
   procedure RULE_198(app_id_input in varchar2,v1v2_flag in af_request_applicantinfo.c1c2_flag%type,v2_gender  in af_request_applicantinfo.c2_gender%type,v2_idnbr in  af_request_applicantinfo.c2_idnbr%type,v2_idtype in af_request_applicantinfo.c2_idtype%type,v_gender in af_request_applicantinfo.c1_gender%type,v_idtype in  af_request_applicantinfo.c1_idtype%type,v_idnbr in af_request_applicantinfo.c1_idnbr%type) is
     v_error varchar2(500);
@@ -222,532 +713,65 @@ create or replace package body AF_HXBCB_RULE_PKG as
       -- don't anything
     end RULE_198;
 
-  -- rule:182
-  procedure RULE_182(app_id_input in varchar2,v_coname in af_request_applicantinfo.c1_coname%type) is
+  -- rule:236
+  procedure RULE_236(app_id_input in varchar2) is
     v_error varchar2(500);
     begin
+      if substr(app_id_input,11,1) = 'V' then
+        -- update result data
+        insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno,type,class) values(app_id_input, 'Z2', 'Z03', 'Z03_1', '', '', 'RULE_236', 'RULE','Z');
+        commit;
+      end if;
+      -- handle exceptions
+      exception when others then v_error := 'RULE_236: ' || sqlerrm;
+      insert into af_app_prc_logs(app_id, error_logs) values(app_id_input, v_error);
+      commit;
+      -- don't anything
+    end RULE_236;
 
-      if nvl(v_coname,'null') != 'null' and instr(v_coname,'投资') != '0' then
-        -- update result data
-        insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno,type,class) values(app_id_input, 'Z2', 'Z03', 'Z03_4', '', '', 'RULE_182', 'RULE','Z');
-        commit;
-      end if;
-      -- handle exceptions
-      exception when others then v_error := 'RULE_182: ' || sqlerrm;
-      insert into af_app_prc_logs(app_id, error_logs) values(app_id_input, v_error);
-      commit;
-      -- don't anything
-    end RULE_182;
-  -- rule:153
-  procedure RULE_153(app_id_input in varchar2,v_apsour in af_request_applicantinfo.c4_apsour%type) is
+  -- rule:121
+  procedure RULE_121(app_id_input in varchar2,v_idtype in varchar2, v_idnbr in varchar2,v_iddt1 in varchar2,v_idte1 in varchar2,v_birth in varchar2) is
+    birth  varchar2(10);
     v_error varchar2(500);
     begin
-      -- c4_apsour推广进件来源的码值还需要判断码值是否等于 (他人转介 or 设点营销 or 熟人介绍 or 自进件)
-      if nvl(v_apsour,'null') != 'null' then
-        -- update result data
-        insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno,type,class) values(app_id_input, 'Z2', 'Z03', 'Z03_1', '', '', 'RULE_153', 'RULE','Z');
-        commit;
-      end if;
-      -- handle exceptions
-      exception when others then v_error := 'RULE_153: ' || sqlerrm;
-      insert into af_app_prc_logs(app_id, error_logs) values(app_id_input, v_error);
-      commit;
-      -- don't anything
-    end RULE_153;
-  -- rule:152
-  procedure RULE_152(app_id_input in varchar2,v_apsour in af_request_applicantinfo.c4_apsour%type) is
-    v_error varchar2(500);
-    begin
-      -- c4_apsour推广进件来源的码值还需要根据具体的码表更改判断码值是否等于 (我行客户 or 陌生拜访 or 电话营销 or 信函营销)
-      if nvl(v_apsour,'null') != 'null' then
-        -- update result data
-        insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno,type,class) values(app_id_input, 'Z2', 'Z03', 'Z03_1', '', '', 'RULE_152', 'RULE','Z');
-        commit;
-      end if;
-      -- handle exceptions
-      exception when others then v_error := 'RULE_152: ' || sqlerrm;
-      insert into af_app_prc_logs(app_id, error_logs) values(app_id_input, v_error);
-      commit;
-      -- don't anything
-    end RULE_152;
-  -- rule:145
-  procedure RULE_145(app_id_input in varchar2,v_c1_reship in af_request_applicantinfo.c1_reship%type,v_mate_contact_tel in af_request_applicantinfo.mate_contact_tel%type,v_remobil in af_request_applicantinfo.c1_remobil%type) is
-    v_error varchar2(500);
-    begin
-      --c1_reship配偶是字段 还是码值不确定
-      if v_c1_reship = '配偶' and nvl(v_remobil,'null') != 'null' then
-        if nvl(v_mate_contact_tel,'null') = 'null' then
-          -- update result data
-          insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno,type,class) values(app_id_input, 'Z2', 'Z03', 'Z03_2', 'NULL', 'NULL', 'RULE_145', 'RULE','Z');
-          commit;
+      if nvl(v_iddt1, 'null') != 'null' and nvl(v_idte1, 'null') !='null' then
+        --身份证代类型码值有待确定
+        if v_idtype = 1 then
+          RULE_121.birth := substr(v_idnbr,7,8);
         else
-          if v_remobil = v_mate_contact_tel then
-            -- update result data
-            insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno,type,class) values(app_id_input, 'Z2', 'Z03', 'Z03_2', '', '', 'RULE_145', 'RULE','Z');
-            commit;
-          end if;
+          RULE_121.birth := v_birth;
         end if;
-
-      end if;
-      -- handle exceptions
-      exception when others then v_error := 'RULE_145: ' || sqlerrm;
-      insert into af_app_prc_logs(app_id, error_logs) values(app_id_input, v_error);
-      commit;
-      -- don't anything
-    end RULE_145;
-  -- rule:143
-  procedure RULE_143(app_id_input in varchar2,v_frs_cred_crd_issue_mon in af_request_applicantinfo.frs_cred_crd_issue_mon%type) is
-    v_error varchar2(500);
-    begin
-      --N的值不确定
-      if nvl(v_frs_cred_crd_issue_mon,'null') = 'null'  then
-
-        -- update result data
-        insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno,type,class) values(app_id_input, 'Z2', 'Z03', 'Z03_1', 'NULL', 'NULL', 'RULE_143', 'RULE','Z');
-        commit;
-      else
-        if  v_frs_cred_crd_issue_mon <= 'N' then
+        if trunc(months_between(to_date(v_iddt1,'yyyy-mm-dd'), to_date(RULE_121.birth,'yyyy-mm-dd'))/ 12,2) > 46 and v_idte1 != '长期' then
           -- update result data
-          insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno,type,class) values(app_id_input, 'Z2', 'Z03', 'Z03_1', '', '', 'RULE_143', 'RULE','Z');
+          insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno,type,class) values(app_id_input, '121', '121', '121', '121', '121', 'RULE_121', 'RULE','Z');
           commit;
         end if;
       end if;
       -- handle exceptions
-      exception when others then v_error := 'RULE_143: ' || sqlerrm;
+      exception when others then v_error := 'RULE_121: ' || sqlerrm;
       insert into af_app_prc_logs(app_id, error_logs) values(app_id_input, v_error);
       commit;
       -- don't anything
-    end RULE_143;
-  -- rule:141
-  procedure RULE_141(app_id_input in varchar2,v_no_pd_card_loan_corp_number in af_request_applicantinfo.no_pd_card_loan_corp_number%type) is
+    end RULE_121;
+  -- rule:122
+  procedure RULE_122(app_id_input in varchar2,v_idte1 in varchar2,v_iddt1 in varchar2) is
+    b_date varchar2(10);
     v_error varchar2(500);
     begin
-      --N的值不确定
-      if nvl(v_no_pd_card_loan_corp_number,'null') = 'null'then
-
-        -- update result data
-        insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno,type,class) values(app_id_input, 'Z2', 'Z03', 'Z03_1', 'NULL', 'NULL', 'RULE_141', 'RULE','Z');
-        commit;
-      else
-        if  v_no_pd_card_loan_corp_number >= 'N'  then
-          -- update result data
-          insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno,type,class) values(app_id_input, 'Z2', 'Z03', 'Z03_1', '', '', 'RULE_141', 'RULE','Z');
+      --需要确定是否会出现v_idte1是长期的情况
+      if  nvl(v_idte1,'null') != 'null' and nvl(v_iddt1,'null') != 'null'  then
+        RULE_122.b_date := trunc(months_between(to_date(v_idte1,'yyyy-mm-dd'),to_date('20'||substr(app_id_input,1,6),'yyyy-mm-dd')),2);
+        if  RULE_122.b_date <=3  then
+          insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno,type,class) values(app_id_input, '122', '122', '122', '122', '122', 'RULE_122', 'RULE','Z');
           commit;
-        end if;
+        end if ;
       end if;
       -- handle exceptions
-      exception when others then v_error := 'RULE_141: ' || sqlerrm;
+      exception when others then v_error := 'RULE_122: ' || sqlerrm;
       insert into af_app_prc_logs(app_id, error_logs) values(app_id_input, v_error);
       commit;
       -- don't anything
-    end RULE_141;
-  -- rule:140
-  procedure RULE_140(app_id_input in varchar2,v_no_pd_card_loan_org_number in af_request_applicantinfo.no_pd_card_loan_org_number%type) is
-    v_error varchar2(500);
-    begin
-      --N的值不确定
-      if nvl(v_no_pd_card_loan_org_number,'null') = 'null' then
-
-        -- update result data
-        insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno,type,class) values(app_id_input, 'Z2', 'Z03', 'Z03_1', 'NULL', 'NULL', 'RULE_140', 'RULE','Z');
-        commit;
-      else
-        if  v_no_pd_card_loan_org_number >= 'N'  then
-
-          -- update result data
-          insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno,type,class) values(app_id_input, 'Z2', 'Z03', 'Z03_1', '', '', 'RULE_140', 'RULE','Z');
-          commit;
-        end if;
-
-      end if;
-      -- handle exceptions
-      exception when others then v_error := 'RULE_140: ' || sqlerrm;
-      insert into af_app_prc_logs(app_id, error_logs) values(app_id_input, v_error);
-      commit;
-      -- don't anything
-    end RULE_140;
-  -- rule:139
-  procedure RULE_139(app_id_input in varchar2,v_no_pin_debit_card_acct_num in af_request_applicantinfo.no_pin_debit_card_acct_num%type) is
-    v_error varchar2(500);
-    begin
-      --N的值不确定
-      if nvl(v_no_pin_debit_card_acct_num,'null') = 'null'  then
-
-        -- update result data
-        insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno,type,class) values(app_id_input, 'Z2', 'Z03', 'Z03_1', 'NULL', 'NULL', 'RULE_139', 'RULE','Z');
-        commit;
-      else
-        if v_no_pin_debit_card_acct_num >= '5' then
-          -- update result data
-          insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno,type,class) values(app_id_input, 'Z2', 'Z03', 'Z03_1', '', '', 'RULE_139', 'RULE','Z');
-          commit;
-        end if;
-      end if;
-      -- handle exceptions
-      exception when others then v_error := 'RULE_139: ' || sqlerrm;
-      insert into af_app_prc_logs(app_id, error_logs) values(app_id_input, v_error);
-      commit;
-      -- don't anything
-    end RULE_139;
-  -- rule:138
-  procedure RULE_138(app_id_input in varchar2, v_educls in af_request_applicantinfo.c1_educls%type,v_educationapproach in af_request_applicantinfo.educationapproach%type) is
-    v_error varchar2(500);
-    begin
-
-      if nvl(v_educls,'null') != 'null' and nvl(v_educationapproach,'null') != 'null'  and v_educls = v_educationapproach then
-
-        -- update result data
-        insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno,type,class) values(app_id_input, 'Z2', 'Z03', 'Z03_1', '', '', 'RULE_138', 'RULE','Z');
-        commit;
-      end if;
-      -- handle exceptions
-      exception when others then v_error := 'RULE_138: ' || sqlerrm;
-      insert into af_app_prc_logs(app_id, error_logs) values(app_id_input, v_error);
-      commit;
-      -- don't anything
-    end RULE_138;
-  -- rule:118
-  procedure RULE_118(app_id_input in varchar2, v_remobil af_request_applicantinfo.c1_remobil%type,  v_mobile af_request_applicantinfo.c1_mobile%type) is
-    v_error varchar2(500);
-    begin
-
-      if nvl(v_remobil,'null') != 'null' and nvl(v_mobile,'null') != 'null'  then
-        -- 需要从app_id中整理出市字段并且匹配电话的区号
-        -- update result data
-        insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno,type,class) values(app_id_input, 'Z2', 'Z03', 'Z03_2', '', '', 'RULE_118', 'RULE','Z');
-        commit;
-      end if;
-      -- handle exceptions
-      exception when others then v_error := 'RULE_118: ' || sqlerrm;
-      insert into af_app_prc_logs(app_id, error_logs) values(app_id_input, v_error);
-      commit;
-      -- don't anything
-    end RULE_118;
-  -- rule:98
-  procedure RULE_98(app_id_input in varchar2,v_result_xm in af_request_applicantinfo.result_xm%type) is
-    v_error varchar2(500);
-    begin
-
-      if nvl(v_result_xm,'null') != 'null' then
-        -- result_xm公民身份号码核查结果码值需要确定
-        -- update result data
-        insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno,type,class) values(app_id_input, 'Z2', 'Z03', 'Z03_1', '', '', 'RULE_98', 'RULE','Z');
-        commit;
-      end if;
-      -- handle exceptions
-      exception when others then v_error := 'RULE_98: ' || sqlerrm;
-      insert into af_app_prc_logs(app_id, error_logs) values(app_id_input, v_error);
-      commit;
-      -- don't anything
-    end RULE_98;
-  -- rule:96
-  procedure RULE_96(app_id_input in varchar2,v_educationdegree in af_request_applicantinfo.educationdegree%type) is
-    v_error varchar2(500);
-    begin
-
-      if nvl(v_educationdegree,'null') != 'null' then
-        -- educationdegree学历对应码值判断学位是否高于大专
-        -- update result data
-        insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno,type,class) values(app_id_input, 'Z2', 'Z03', 'Z03_1', '', '', 'RULE_96', 'RULE','Z');
-        commit;
-      end if;
-      -- handle exceptions
-      exception when others then v_error := 'RULE_96: ' || sqlerrm;
-      insert into af_app_prc_logs(app_id, error_logs) values(app_id_input, v_error);
-      commit;
-      -- don't anything
-    end RULE_96;
-  -- rule:68
-  procedure RULE_68(app_id_input in varchar2,v_cycadd1 in af_request_applicantinfo.c4_cycadd1%type) is
-    v_error varchar2(500);
-    begin
-      -- 动态码值,后面还需要根据具体的需求更改
-      if nvl(v_cycadd1,'null') != 'null' and v_cycadd1 = 'B' then
-        -- update result data
-        insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno,type,class) values(app_id_input, 'Z2', 'Z03', 'Z03_3', '', '', 'RULE_68', 'RULE','Z');
-        commit;
-      end if;
-      -- handle exceptions
-      exception when others then v_error := 'RULE_68: ' || sqlerrm;
-      insert into af_app_prc_logs(app_id, error_logs) values(app_id_input, v_error);
-      commit;
-      -- don't anything
-    end RULE_68;
-  -- rule:67
-  procedure RULE_67(app_id_input in varchar2,v_cycadd1 in af_request_applicantinfo.c4_cycadd1%type) is
-    v_error varchar2(500);
-    begin
-      -- 假设码值是5,后面还需要根据具体的码表更改
-      if nvl(v_cycadd1,'null') != 'null' and v_cycadd1 = 'H' then
-        -- update result data
-        insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno,type,class) values(app_id_input, 'Z2', 'Z03', 'Z03_3', '', '', 'RULE_67', 'RULE','Z');
-        commit;
-      end if;
-      -- handle exceptions
-      exception when others then v_error := 'RULE_67: ' || sqlerrm;
-      insert into af_app_prc_logs(app_id, error_logs) values(app_id_input, v_error);
-      commit;
-      -- don't anything
-    end RULE_67;
-  -- rule:65
-
-  procedure RULE_65(app_id_input in varchar2,v_cotel in af_request_applicantinfo.c1_cotel%type,v_hmare in af_request_applicantinfo.c1_hmare%type,v_c1_hmtel in af_request_applicantinfo.c1_hmtel%type) is
-    v_error varchar2(500);
-    begin
-      if nvl(v_hmare,'null') != 'null' and nvl(v_c1_hmtel,'null') != 'null' and nvl(v_cotel,'null') != 'null' and v_hmare || v_c1_hmtel = v_cotel then
-        -- update result data
-        insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno,type,class) values(app_id_input, 'Z2', 'Z03', 'Z03_2', '', '', 'RULE_65', 'RULE','Z');
-        commit;
-      end if;
-      -- handle exceptions
-      exception when others then v_error := 'RULE_65: ' || sqlerrm;
-      insert into af_app_prc_logs(app_id, error_logs) values(app_id_input, v_error);
-      commit;
-      -- don't anything
-    end RULE_65;
-  -- rule:49
-  procedure RULE_49(app_id_input in varchar2,v_deb_c60overd_longest_over in af_request_applicantinfo.deb_c60overd_longest_over_due%type) is
-    v_error varchar2(500);
-    begin
-      if nvl(v_deb_c60overd_longest_over,'null') = 'null' then
-        -- update result data
-        insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno,type,class) values(app_id_input, 'Z2', 'Z03', 'Z03_1', 'NULL', 'NULL', 'RULE_49', 'RULE','Z');
-        commit;
-      else
-        if v_deb_c60overd_longest_over >= 2  then
-          -- update result data
-          insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno,type,class) values(app_id_input, 'Z2', 'Z03', 'Z03_1', '', '', 'RULE_49', 'RULE','Z');
-          commit;
-        end if;
-      end if;
-      -- handle exceptions
-      exception when others then v_error := 'RULE_49: ' || sqlerrm;
-      insert into af_app_prc_logs(app_id, error_logs) values(app_id_input, v_error);
-      commit;
-      -- don't anything
-    end RULE_49;
-  -- rule:48
-  procedure RULE_48(app_id_input in varchar2,v_deb_c60overd_month_num in af_request_applicantinfo.deb_c60overd_month_num%type) is
-    v_error varchar2(500);
-    begin
-      if nvl(v_deb_c60overd_month_num,'null') = 'null' then
-        -- update result data
-        insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno,type,class) values(app_id_input, 'Z2', 'Z03', 'Z03_1', 'NULL', 'NULL', 'RULE_48', 'RULE','Z');
-        commit;
-      else
-        if v_deb_c60overd_month_num >= 2 then
-          -- update result data
-          insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno,type,class) values(app_id_input, 'Z2', 'Z03', 'Z03_1', '', '', 'RULE_48', 'RULE','Z');
-          commit;
-        end if;
-
-      end if;
-      -- handle exceptions
-      exception when others then v_error := 'RULE_48: ' || sqlerrm;
-      insert into af_app_prc_logs(app_id, error_logs) values(app_id_input, v_error);
-      commit;
-      -- don't anything
-    end RULE_48;
-  -- rule:46
-  procedure RULE_46(app_id_input in varchar2,v_debit_co_due_longest_over in af_request_applicantinfo.debit_co_due_longest_over_due%type) is
-    v_error varchar2(500);
-    begin
-      if nvl(v_debit_co_due_longest_over,'null') = 'null' then
-        -- update result data
-        insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno,type,class) values(app_id_input, 'Z2', 'Z03', 'Z03_1', 'null', 'null', 'RULE_46', 'RULE','Z');
-        commit;
-      else
-        if v_debit_co_due_longest_over >= 2 then
-          -- update result data
-          insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno,type,class) values(app_id_input, 'Z2', 'Z03', 'Z03_1', '', '', 'RULE_46', 'RULE','Z');
-          commit;
-        end if;
-      end if;
-      -- handle exceptions
-      exception when others then v_error := 'RULE_46: ' || sqlerrm;
-      insert into af_app_prc_logs(app_id, error_logs) values(app_id_input, v_error);
-      commit;
-      -- don't anything
-    end RULE_46;
-  -- rule:45
-  procedure RULE_45(app_id_input in varchar2,v_debit_card_over_due_month in af_request_applicantinfo.debit_card_over_due_month_num%type) is
-    v_error varchar2(500);
-    begin
-      if nvl(v_debit_card_over_due_month,'null') = 'null' then
-        -- update result data
-        insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno,type,class) values(app_id_input, 'Z2', 'Z03', 'Z03_1', 'null', 'null', 'RULE_45', 'RULE','Z');
-        commit;
-      else
-        if v_debit_card_over_due_month >= 2 then
-          -- update result data
-          insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno,type,class) values(app_id_input, 'Z2', 'Z03', 'Z03_1', '', '', 'RULE_45', 'RULE','Z');
-          commit;
-        end if;
-      end if;
-      -- handle exceptions
-      exception when others then v_error := 'RULE_45: ' || sqlerrm;
-      insert into af_app_prc_logs(app_id, error_logs) values(app_id_input, v_error);
-      commit;
-      -- don't anything
-    end RULE_45;
-  -- rule:44
-  procedure RULE_44(app_id_input in varchar2,v_debit_card_over_due_acct_num af_request_applicantinfo.debit_card_over_due_acct_num%type) is
-    v_error varchar2(500);
-    begin
-      if nvl(v_debit_card_over_due_acct_num,'null') = 'null' then
-        -- update result data
-        insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno,type,class) values(app_id_input, 'Z2', 'Z03', 'Z03_1', 'null', 'null', 'RULE_44', 'RULE','Z');
-        commit;
-      else
-        if v_debit_card_over_due_acct_num >= 2 then
-          -- update result data
-          insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno,type,class) values(app_id_input, 'Z2', 'Z03', 'Z03_1', '', '', 'RULE_44', 'RULE','Z');
-          commit;
-        end if;
-      end if;
-      -- handle exceptions
-      exception when others then v_error := 'RULE_44: ' || sqlerrm;
-      insert into af_app_prc_logs(app_id, error_logs) values(app_id_input, v_error);
-      commit;
-      -- don't anything
-    end RULE_44;
-  -- rule:42
-  procedure RULE_42(app_id_input in varchar2,v_loan_overdue_month_num in af_request_applicantinfo.loan_overdue_month_num%type) is
-    v_error varchar2(500);
-    begin
-      if nvl(v_loan_overdue_month_num,'null') = 'null' then
-        -- update result data
-        insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno,type,class) values(app_id_input, 'Z2', 'Z03', 'Z03_1', 'null', 'null', 'RULE_42', 'RULE','Z');
-        commit;
-      else
-        if v_loan_overdue_month_num >= 2 then
-          -- update result data
-          insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno,type,class) values(app_id_input, 'Z2', 'Z03', 'Z03_1', '', '', 'RULE_42', 'RULE','Z');
-          commit;
-        end if;
-      end if;
-      -- handle exceptions
-      exception when others then v_error := 'RULE_42: ' || sqlerrm;
-      insert into af_app_prc_logs(app_id, error_logs) values(app_id_input, v_error);
-      commit;
-      -- don't anything
-    end RULE_42;
-  -- rule:40
-  procedure RULE_40(app_id_input in varchar2,v_bad_debt_num in af_request_applicantinfo.bad_debt_num%type) is
-    v_error varchar2(500);
-    begin
-      if nvl(v_bad_debt_num,'null') = 'null' then
-        -- update result data
-        insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno,type,class) values(app_id_input, 'Z2', 'Z03', 'Z03_1', 'null', 'null', 'RULE_40', 'RULE','Z');
-        commit;
-      else
-        if v_bad_debt_num >= 2 then
-          -- update result data
-          insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno,type,class) values(app_id_input, 'Z2', 'Z03', 'Z03_1', '', '', 'RULE_40', 'RULE','Z');
-          commit;
-        end if;
-      end if;
-      -- handle exceptions
-      exception when others then v_error := 'RULE_40: ' || sqlerrm;
-      insert into af_app_prc_logs(app_id, error_logs) values(app_id_input, v_error);
-      commit;
-      -- don't anything
-    end RULE_40;
-
-
-
-
- -- rule:131
-  procedure RULE_131(app_id_input in varchar2,v_codenameenglish in varchar2) is
-    v_error varchar2(500);
-    begin
-      if nvl(v_codenameenglish,'null') != 'null' and v_codenameenglish='NAME_Mismatch' then
-        -- update result data
-        insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno,type,class) values(app_id_input, '131', '', '', '', '', 'RULE_131', 'RULE','Z');
-        commit;
-      end if;
-      -- handle exceptions
-      exception when others then v_error := 'RULE_131: ' || sqlerrm;
-      insert into af_app_prc_logs(app_id, error_logs) values(app_id_input, v_error);
-      commit;
-      -- don't anything
-    end RULE_131;
-
-  -- rule:130
-  procedure RULE_130(app_id_input in varchar2,v_codeemailenglish in varchar2) is
-    v_error varchar2(500);
-    begin
-      if nvl(v_codeemailenglish,'null') != 'null' and v_codeemailenglish='EMAIL_Histroy_NegativeList'  then
-        -- update result data
-        insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno,type,class) values(app_id_input, '130', '', '', '', '', 'RULE_130', 'RULE','Z');
-        commit;
-      end if;
-      -- handle exceptions
-      exception when others then v_error := 'RULE_130: ' || sqlerrm;
-      insert into af_app_prc_logs(app_id, error_logs) values(app_id_input, v_error);
-      commit;
-      -- don't anything
-    end RULE_130;
-  -- rule:129
-  procedure RULE_129(app_id_input in varchar2,v_codeaddrenglish in varchar2) is
-    v_error varchar2(500);
-    begin
-      if nvl(v_codeaddrenglish,'null') != 'null' and v_codeaddrenglish='ADDR_Mismatch' then
-        -- update result data
-        insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno,type,class) values(app_id_input, '129', '', '', '', '', 'RULE_129', 'RULE','Z');
-        commit;
-      end if;
-      -- handle exceptions
-      exception when others then v_error := 'RULE_129: ' || sqlerrm;
-      insert into af_app_prc_logs(app_id, error_logs) values(app_id_input, v_error);
-      commit;
-      -- don't anything
-    end RULE_129;
-  -- rule:128
-  procedure RULE_128(app_id_input in varchar2,v_ipenenglish in varchar2) is
-    v_error varchar2(500);
-    begin
-      if nvl(v_ipenenglish,'null') != 'null' and  v_ipenenglish='IP_Mismatch' then
-        -- update result data
-        insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno,type,class) values(app_id_input, '128', '', '', '', '', 'RULE_128', 'RULE','Z');
-        commit;
-      end if;
-      -- handle exceptions
-      exception when others then v_error := 'RULE_128: ' || sqlerrm;
-      insert into af_app_prc_logs(app_id, error_logs) values(app_id_input, v_error);
-      commit;
-      -- don't anything
-    end RULE_128;
-  -- rule:127
-  procedure RULE_127(app_id_input in varchar2,v_imsienenglish in varchar2) is
-    v_error varchar2(500);
-    begin
-      if nvl(v_imsienenglish,'null') != 'null' and v_imsienenglish='IMSI_Histroy_NegativeList' then
-        -- update result data
-        insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno,type,class) values(app_id_input, '127', '', '', '', '', 'RULE_127', 'RULE','Z');
-        commit;
-      end if;
-      -- handle exceptions
-      exception when others then v_error := 'RULE_127: ' || sqlerrm;
-      insert into af_app_prc_logs(app_id, error_logs) values(app_id_input, v_error);
-      commit;
-      -- don't anything
-    end RULE_127;
-  -- rule:126
-  procedure RULE_126(app_id_input in varchar2,v_imeienenglish in varchar2) is
-    v_error varchar2(500);
-    begin
-      if nvl(v_imeienenglish,'null') != 'null' and v_imeienenglish='IMEI_Histroy_NegativeList' then
-        -- update result data
-        insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno,type,class) values(app_id_input, '126', '', '', '', '', 'RULE_126', 'RULE','Z');
-        commit;
-      end if;
-      -- handle exceptions
-      exception when others then v_error := 'RULE_126: ' || sqlerrm;
-      insert into af_app_prc_logs(app_id, error_logs) values(app_id_input, v_error);
-      commit;
-      -- don't anything
-    end RULE_126;
+    end RULE_122;
   -- rule:125
   procedure RULE_125(app_id_input in varchar2,v_wifimacenenglish in varchar2) is
     v_error varchar2(500);
@@ -763,50 +787,97 @@ create or replace package body AF_HXBCB_RULE_PKG as
       commit;
       -- don't anything
     end RULE_125;
-  -- rule:122
-  procedure RULE_122(app_id_input in varchar2,v_idte1 in varchar2,v_iddt1 in varchar2) is
-    b_date number(10);
+  -- rule:126
+  procedure RULE_126(app_id_input in varchar2,v_imeienenglish in varchar2) is
     v_error varchar2(500);
     begin
-      --需要确定是否会出现v_idte1是长期的情况
-      if v_idte1 != '长期' then
-        RULE_122.b_date := trunc(months_between(to_date(v_idte1,'yyyy-mm-dd'),to_date('20'||substr(app_id_input,1,6),'yyyy-mm-dd')),2);
-        if nvl(v_idte1,'null') != 'null' and nvl(v_iddt1,'null') != 'null' and RULE_122.b_date <=3  then
-          insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno,type,class) values(app_id_input, '122', '122', '122', '122', '122', 'RULE_122', 'RULE','Z');
-          commit;
-        end if ;
+      if nvl(v_imeienenglish,'null') != 'null' and v_imeienenglish='IMEI_Histroy_NegativeList' then
+        -- update result data
+        insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno,type,class) values(app_id_input, '126', '', '', '', '', 'RULE_126', 'RULE','Z');
+        commit;
       end if;
       -- handle exceptions
-      exception when others then v_error := 'RULE_122: ' || sqlerrm;
+      exception when others then v_error := 'RULE_126: ' || sqlerrm;
       insert into af_app_prc_logs(app_id, error_logs) values(app_id_input, v_error);
       commit;
       -- don't anything
+    end RULE_126;
+  -- rule:127
+  procedure RULE_127(app_id_input in varchar2,v_imsienenglish in varchar2) is
+    v_error varchar2(500);
+    begin
+      if nvl(v_imsienenglish,'null') != 'null' and v_imsienenglish='IMSI_Histroy_NegativeList' then
+        -- update result data
+        insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno,type,class) values(app_id_input, '127', '', '', '', '', 'RULE_127', 'RULE','Z');
+        commit;
+      end if;
+      -- handle exceptions
+      exception when others then v_error := 'RULE_127: ' || sqlerrm;
+      insert into af_app_prc_logs(app_id, error_logs) values(app_id_input, v_error);
+      commit;
+      -- don't anything
+    end RULE_127;
+  -- rule:128
+  procedure RULE_128(app_id_input in varchar2,v_ipenenglish in varchar2) is
+    v_error varchar2(500);
+    begin
+      if nvl(v_ipenenglish,'null') != 'null' and  v_ipenenglish='IP_Mismatch' then
+        -- update result data
+        insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno,type,class) values(app_id_input, '128', '', '', '', '', 'RULE_128', 'RULE','Z');
+        commit;
+      end if;
+      -- handle exceptions
+      exception when others then v_error := 'RULE_128: ' || sqlerrm;
+      insert into af_app_prc_logs(app_id, error_logs) values(app_id_input, v_error);
+      commit;
+      -- don't anything
+    end RULE_128;
+  -- rule:129
+  procedure RULE_129(app_id_input in varchar2,v_codeaddrenglish in varchar2) is
+    v_error varchar2(500);
+    begin
+      if nvl(v_codeaddrenglish,'null') != 'null' and v_codeaddrenglish='ADDR_Mismatch' then
+        -- update result data
+        insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno,type,class) values(app_id_input, '129', '', '', '', '', 'RULE_129', 'RULE','Z');
+        commit;
+      end if;
+      -- handle exceptions
+      exception when others then v_error := 'RULE_129: ' || sqlerrm;
+      insert into af_app_prc_logs(app_id, error_logs) values(app_id_input, v_error);
+      commit;
+      -- don't anything
+    end RULE_129;
+  -- rule:130
+  procedure RULE_130(app_id_input in varchar2,v_codeemailenglish in varchar2) is
+    v_error varchar2(500);
+    begin
+      if nvl(v_codeemailenglish,'null') != 'null' and v_codeemailenglish='EMAIL_Histroy_NegativeList'  then
+        -- update result data
+        insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno,type,class) values(app_id_input, '130', '', '', '', '', 'RULE_130', 'RULE','Z');
+        commit;
+      end if;
+      -- handle exceptions
+      exception when others then v_error := 'RULE_130: ' || sqlerrm;
+      insert into af_app_prc_logs(app_id, error_logs) values(app_id_input, v_error);
+      commit;
+      -- don't anything
+    end RULE_130;
+  -- rule:131
+  procedure RULE_131(app_id_input in varchar2,v_codenameenglish in varchar2) is
+    v_error varchar2(500);
+    begin
+      if nvl(v_codenameenglish,'null') != 'null' and v_codenameenglish='NAME_Mismatch' then
+        -- update result data
+        insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno,type,class) values(app_id_input, '131', '', '', '', '', 'RULE_131', 'RULE','Z');
+        commit;
+      end if;
+      -- handle exceptions
+      exception when others then v_error := 'RULE_131: ' || sqlerrm;
+      insert into af_app_prc_logs(app_id, error_logs) values(app_id_input, v_error);
+      commit;
+      -- don't anything
+    end RULE_131;
 
-    end RULE_122;
-  -- rule:121
-  procedure RULE_121(app_id_input in varchar2,v_idtype in varchar2, v_idnbr in varchar2,v_iddt1 in varchar2,v_idte1 in varchar2,v_birth in varchar2) is
-    birth  varchar2(10);
-    v_error varchar2(500);
-    begin
-      if nvl(v_iddt1, 'null') != 'null' and nvl(v_idte1, 'null') !='null' then
-        --身份证代类型码值有待确定
-        if v_idtype = 1 then
-          RULE_121.birth := substr(v_idnbr,7,8);
-        else
-          RULE_121.birth := v_birth;
-        end if;
-        if trunc(months_between(to_date(v_iddt1,'yyyy-mm-dd'), to_date(RULE_121.birth,'yyyy-mm-dd'))/ 12,2) > 46 and v_idte1 = '长期' then
-          -- update result data
-          insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno,type,class) values(app_id_input, '121', '121', '121', '121', '121', 'RULE_121', 'RULE','Z');
-          commit;
-        end if;
-      end if;
-      -- handle exceptions
-      exception when others then v_error := 'RULE_121: ' || sqlerrm;
-      insert into af_app_prc_logs(app_id, error_logs) values(app_id_input, v_error);
-      commit;
-      -- don't anything
-    end RULE_121;
 
   -- rule:155
   procedure RULE_155(app_id_input in varchar2,v_idnbr in varchar2) is
