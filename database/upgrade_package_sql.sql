@@ -1,4 +1,4 @@
-﻿create or replace package AF_HXBCB is
+﻿﻿create or replace package AF_HXBCB is
 
   -- Created : 2017/11/3 17:15:27
   -- Purpose : Package for Antifraud
@@ -221,7 +221,6 @@ create or replace package body AF_HXBCB is
         no_pin_debit_card_acct_num,
         no_pd_card_loan_org_number,
         opposite_position,
-        frs_cred_crd_issue_mon,
         c1_reship,
         mate_contact_tel,
         query_rec_2y_sum1,
@@ -286,7 +285,6 @@ create or replace package body AF_HXBCB is
         v_no_pin_debit_card_acct_num,
         v_no_pd_card_loan_org_number,
         v_opposite_position,
-        v_frs_cred_crd_issue_mon,
         v_reship,
         v_mate_contact_tel,
         v_query_rec_2y_sum1,
@@ -344,25 +342,25 @@ create or replace package body AF_HXBCB is
     begin
       AF_HXBCB_RULE_PKG.RULE_1(app_id_input, v_mate_name,v_reship,v_rename);
       AF_HXBCB_RULE_PKG.RULE_2(app_id_input, v_mobile,v_cell_phone);
-      AF_HXBCB_RULE_PKG.RULE_18(app_id_input,v_mobile,v_c_comp_phone);
+      AF_HXBCB_RULE_PKG.RULE_18(app_id_input,v_mobile,v_comp_phone);
       AF_HXBCB_RULE_PKG.RULE_19(app_id_input,v_cotel,v_cell_phone);
       AF_HXBCB_RULE_PKG.RULE_20(app_id_input,v_cotel,v_resi_tel);
-      AF_HXBCB_RULE_PKG.RULE_21(app_id_input,v_cotel,v_c_comp_phone);
-      AF_HXBCB_RULE_PKG.RULE_22(app_id_input, v_c1_hmtel,v_hmare,v_cell_phone);
-      AF_HXBCB_RULE_PKG.RULE_23(app_id_input, v_c1_hmtel,v_hmare,v_resi_tel);
-      AF_HXBCB_RULE_PKG.RULE_24(app_id_input, v_c1_hmtel,v_hmare,v_c_comp_phone);
+      AF_HXBCB_RULE_PKG.RULE_21(app_id_input,v_cotel,v_comp_phone);
+      AF_HXBCB_RULE_PKG.RULE_22(app_id_input, v_hmtel,v_hmare,v_cell_phone);
+      AF_HXBCB_RULE_PKG.RULE_23(app_id_input, v_hmtel,v_hmare,v_resi_tel);
+      AF_HXBCB_RULE_PKG.RULE_24(app_id_input, v_hmtel,v_hmare,v_comp_phone);
       AF_HXBCB_RULE_PKG.RULE_25(app_id_input, v_retel ,v_retelar ,v_cell_phone);
       AF_HXBCB_RULE_PKG.RULE_26(app_id_input, v_remobil,v_cell_phone);
       AF_HXBCB_RULE_PKG.RULE_27(app_id_input, v_retel ,v_retelar ,v_resi_tel);
       AF_HXBCB_RULE_PKG.RULE_28(app_id_input, v_remobil,v_resi_tel);
-      AF_HXBCB_RULE_PKG.RULE_29(app_id_input, v_retel ,v_retelar ,v_c_comp_phone);
-      AF_HXBCB_RULE_PKG.RULE_30(app_id_input, v_remobil,v_c_comp_phone);
+      AF_HXBCB_RULE_PKG.RULE_29(app_id_input, v_retel ,v_retelar ,v_comp_phone);
+      AF_HXBCB_RULE_PKG.RULE_30(app_id_input, v_remobil,v_comp_phone);
       AF_HXBCB_RULE_PKG.RULE_31(app_id_input, v_xtel1,v_xtelar1,v_cell_phone);
       AF_HXBCB_RULE_PKG.RULE_32(app_id_input, v_xmobil1,v_cell_phone);
       AF_HXBCB_RULE_PKG.RULE_33(app_id_input, v_xtel1,v_xtelar1,v_resi_tel);
       AF_HXBCB_RULE_PKG.RULE_34(app_id_input, v_xmobil1,v_resi_tel);
-      AF_HXBCB_RULE_PKG.RULE_35(app_id_input, v_xtel1,v_xtelar1,v_c_comp_phone);
-      AF_HXBCB_RULE_PKG.RULE_36(app_id_input, v_xmobil1,v_c_comp_phone);
+      AF_HXBCB_RULE_PKG.RULE_35(app_id_input, v_xtel1,v_xtelar1,v_comp_phone);
+      AF_HXBCB_RULE_PKG.RULE_36(app_id_input, v_xmobil1,v_comp_phone);
       AF_HXBCB_RULE_PKG.RULE_37(app_id_input, v_cumul_pay_months,v_pboc_yl_pay_status);
       -----精确匹配的规则----------------------------
       AF_HXBCB_RULE_PKG.RULE_40(app_id_input,v_bad_debt_num);

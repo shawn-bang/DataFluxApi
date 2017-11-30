@@ -19,7 +19,7 @@ create or replace package AF_HXBCB_RULE_PKG as
   --rule:49
   procedure RULE_49(app_id_input in varchar2,v_deb_c60overd_longest_over in af_request_applicantinfo.deb_c60overd_longest_over_due%type);
   --rule:65
-  procedure RULE_65(app_id_input in varchar2,v_cotel in af_request_applicantinfo.c1_cotel%type,v_hmare in af_request_applicantinfo.c1_hmare%type,v_c1_hmtel in af_request_applicantinfo.c1_hmtel%type);
+  procedure RULE_65(app_id_input in varchar2,v_cotel in af_request_applicantinfo.c1_cotel%type,v_hmare in af_request_applicantinfo.c1_hmare%type,v_hmtel in af_request_applicantinfo.c1_hmtel%type);
   --rule:67
   procedure RULE_67(app_id_input in varchar2,v_cycadd1 in af_request_applicantinfo.c4_cycadd1%type);
   --rule:68
@@ -121,25 +121,25 @@ create or replace package AF_HXBCB_RULE_PKG as
   procedure RULE_149(app_id_input in varchar2, v_query_org_1m_sum5 in af_request_applicantinfo.query_org_1m_sum5%type);
 
 
-  -- rule:1
+    -- rule:1
   procedure RULE_1(app_id_input in varchar2,v_mate_name in af_request_applicantinfo.mate_name%type,v_reship in af_request_applicantinfo.c1_reship%type,v_rename in af_request_applicantinfo.c1_rename%type);
   -- rule:2
   procedure RULE_2(app_id_input in varchar2,v_mobile in af_request_applicantinfo.c1_mobile%type,v_cell_phone in af_request_applicantinfo.cell_phone%type);
   -- rule:18
-  procedure RULE_18(app_id_input in varchar2,v_mobile in af_request_applicantinfo.c1_mobile%type,v_c_comp_phone in af_request_applicantinfo.c_comp_phone%type);
+  procedure RULE_18(app_id_input in varchar2,v_mobile in af_request_applicantinfo.c1_mobile%type,v_comp_phone in af_request_applicantinfo.c_comp_phone%type);
   -- rule:19
   procedure RULE_19(app_id_input in varchar2,v_cotel in af_request_applicantinfo.c1_cotel%type,v_cell_phone in af_request_applicantinfo.cell_phone%type);
   -- rule:20
   procedure RULE_20(app_id_input in varchar2,v_cotel in af_request_applicantinfo.c1_cotel%type,v_resi_tel in af_request_applicantinfo.resi_tel%type);
   -- rule:21
-  procedure RULE_21(app_id_input in varchar2,v_cotel in af_request_applicantinfo.c1_cotel%type,v_c_comp_phone in af_request_applicantinfo.c_comp_phone%type);
+  procedure RULE_21(app_id_input in varchar2,v_cotel in af_request_applicantinfo.c1_cotel%type,v_comp_phone in af_request_applicantinfo.c_comp_phone%type);
 
   -- rule:22
-  procedure RULE_22(app_id_input in varchar2,v_c1_hmtel af_request_applicantinfo.c1_hmtel%type,v_hmare af_request_applicantinfo.c1_hmare%type,v_cell_phone in af_request_applicantinfo.cell_phone%type);
+  procedure RULE_22(app_id_input in varchar2,v_hmtel af_request_applicantinfo.c1_hmtel%type,v_hmare af_request_applicantinfo.c1_hmare%type,v_cell_phone in af_request_applicantinfo.cell_phone%type);
   -- rule:23
-  procedure RULE_23(app_id_input in varchar2,v_c1_hmtel af_request_applicantinfo.c1_hmtel%type,v_hmare af_request_applicantinfo.c1_hmare%type, v_resi_tel in af_request_applicantinfo.resi_tel%type);
+  procedure RULE_23(app_id_input in varchar2,v_hmtel af_request_applicantinfo.c1_hmtel%type,v_hmare af_request_applicantinfo.c1_hmare%type, v_resi_tel in af_request_applicantinfo.resi_tel%type);
   -- rule:24
-  procedure RULE_24(app_id_input in varchar2,v_c1_hmtel af_request_applicantinfo.c1_hmtel%type,v_hmare af_request_applicantinfo.c1_hmare%type,v_c_comp_phone in af_request_applicantinfo.c_comp_phone%type);
+  procedure RULE_24(app_id_input in varchar2,v_hmtel af_request_applicantinfo.c1_hmtel%type,v_hmare af_request_applicantinfo.c1_hmare%type,v_comp_phone in af_request_applicantinfo.c_comp_phone%type);
   -- rule:25
   procedure RULE_25(app_id_input in varchar2,v_retel in af_request_applicantinfo.c1_retel%type,v_retelar in af_request_applicantinfo.cell_phone%type,v_cell_phone in af_request_applicantinfo.cell_phone%type);
   -- rule:26
@@ -149,9 +149,9 @@ create or replace package AF_HXBCB_RULE_PKG as
   -- rule:28
   procedure RULE_28(app_id_input in varchar2,v_remobil in af_request_applicantinfo.c1_remobil%type,v_resi_tel in af_request_applicantinfo.resi_tel%type);
   -- rule:29
-  procedure RULE_29(app_id_input in varchar2,v_retel in af_request_applicantinfo.c1_retel%type,v_retelar in af_request_applicantinfo.cell_phone%type,v_c_comp_phone in af_request_applicantinfo.c_comp_phone%type);
+  procedure RULE_29(app_id_input in varchar2,v_retel in af_request_applicantinfo.c1_retel%type,v_retelar in af_request_applicantinfo.cell_phone%type,v_comp_phone in af_request_applicantinfo.c_comp_phone%type);
   -- rule:30
-  procedure RULE_30(app_id_input in varchar2,v_remobil in af_request_applicantinfo.c1_remobil%type,v_c_comp_phone in af_request_applicantinfo.c_comp_phone%type);
+  procedure RULE_30(app_id_input in varchar2,v_remobil in af_request_applicantinfo.c1_remobil%type,v_comp_phone in af_request_applicantinfo.c_comp_phone%type);
   -- rule:31
   procedure RULE_31(app_id_input in varchar2, v_xtel1 in af_request_applicantinfo.c1_xtel1%type,v_xtelar1 in af_request_applicantinfo.c1_xtelar1%type,v_cell_phone in af_request_applicantinfo.cell_phone%type);
   -- rule:32
@@ -161,13 +161,13 @@ create or replace package AF_HXBCB_RULE_PKG as
   -- rule:34
   procedure RULE_34(app_id_input in varchar2,v_xmobil1 in af_request_applicantinfo.c1_xmobil1%type,v_resi_tel in af_request_applicantinfo.resi_tel%type);
   -- rule:35
-  procedure RULE_35(app_id_input in varchar2, v_xtel1 in af_request_applicantinfo.c1_xtel1%type,v_xtelar1 in af_request_applicantinfo.c1_xtelar1%type,v_c_comp_phone in af_request_applicantinfo.c_comp_phone%type);
+  procedure RULE_35(app_id_input in varchar2, v_xtel1 in af_request_applicantinfo.c1_xtel1%type,v_xtelar1 in af_request_applicantinfo.c1_xtelar1%type,v_comp_phone in af_request_applicantinfo.c_comp_phone%type);
   -- rule:36
-  procedure RULE_36(app_id_input in varchar2,v_xmobil1 in af_request_applicantinfo.c1_xmobil1%type,v_c_comp_phone in af_request_applicantinfo.c_comp_phone%type);
+  procedure RULE_36(app_id_input in varchar2,v_xmobil1 in af_request_applicantinfo.c1_xmobil1%type,v_comp_phone in af_request_applicantinfo.c_comp_phone%type);
   -- rule:37
   procedure RULE_37(app_id_input in varchar2,v_cumul_pay_months in af_request_applicantinfo.cumul_pay_months%type, v_pboc_yl_pay_status in af_request_applicantinfo.pboc_yl_pay_status%type);
-
-
+  -- rule:38
+  procedure RULE_38(app_id_input in varchar2,v_pboc_gjj_pay_status in af_request_applicantinfo.pboc_gjj_pay_status%type,v_pay_ym in af_request_applicantinfo.pay_ym%type, v_first_deposit_ym in af_request_applicantinfo.first_deposit_ym%type);
 end AF_HXBCB_RULE_PKG;
 
 
@@ -323,10 +323,10 @@ create or replace package body AF_HXBCB_RULE_PKG as
       -- don't anything
     end RULE_49;
   -- rule:65
-  procedure RULE_65(app_id_input in varchar2,v_cotel in af_request_applicantinfo.c1_cotel%type,v_hmare in af_request_applicantinfo.c1_hmare%type,v_c1_hmtel in af_request_applicantinfo.c1_hmtel%type) is
+  procedure RULE_65(app_id_input in varchar2,v_cotel in af_request_applicantinfo.c1_cotel%type,v_hmare in af_request_applicantinfo.c1_hmare%type,v_hmtel in af_request_applicantinfo.c1_hmtel%type) is
     v_error varchar2(500);
     begin
-      if nvl(v_hmare,'null') != 'null' and nvl(v_c1_hmtel,'null') != 'null' and nvl(v_cotel,'null') != 'null' and v_hmare || v_c1_hmtel = v_cotel then
+      if nvl(v_hmare,'null') != 'null' and nvl(v_hmtel,'null') != 'null' and nvl(v_cotel,'null') != 'null' and v_hmare || v_hmtel = v_cotel then
         -- update result data
         insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno,type,class) values(app_id_input, 'Z2', 'Z03', 'Z03_2', '', '', 'RULE_65', 'RULE','Z');
         commit;
@@ -1328,16 +1328,16 @@ create or replace package body AF_HXBCB_RULE_PKG as
       -- don't anything
     end RULE_149;
 
-    -- rule:1
+-- rule:1
  procedure RULE_1(app_id_input in varchar2,v_mate_name in af_request_applicantinfo.mate_name%type,v_reship in af_request_applicantinfo.c1_reship%type,v_rename in af_request_applicantinfo.c1_rename%type) is
    v_error varchar(500);
    begin
      if v_reship = '配偶'  then
        if nvl(v_rename,'null') = 'null' then
-         insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno, type,class) values(app_id_input, 'Z', 'Z03', 'Z03_1', 'NULL', 'NULL', 'RULE_1', 'RULE','Z');
+         insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno, type,class) values(app_id_input, 'Z2', 'Z03', 'Z03_1', 'NULL', 'NULL', 'RULE_1', 'RULE','Z');
          else
        if v_rename = v_mate_name then
-         insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno, type,class) values(app_id_input, 'Z', 'Z03', 'Z03_1', '', '', 'RULE_1', 'RULE','Z');
+         insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno, type,class) values(app_id_input, 'Z2', 'Z03', 'Z03_1', '', '', 'RULE_1', 'RULE','Z');
           commit;
         end if;
       end if;
@@ -1354,10 +1354,10 @@ create or replace package body AF_HXBCB_RULE_PKG as
    begin
      if nvl(v_mobile,'null') != 'null'  then
        if nvl(v_cell_phone,'null') = 'null' then
-         insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno, type,class) values(app_id_input, 'Z', 'Z03', 'Z03_3', 'NULL', 'NULL', 'RULE_2', 'RULE','Z');
+         insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno, type,class) values(app_id_input, 'Z2', 'Z03', 'Z03_3', 'NULL', 'NULL', 'RULE_2', 'RULE','Z');
          else
        if v_mobile = v_cell_phone then
-         insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno, type,class) values(app_id_input, 'Z', 'Z03', 'Z03_3', '', '', 'RULE_2', 'RULE','Z');
+         insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno, type,class) values(app_id_input, 'Z2', 'Z03', 'Z03_3', '', '', 'RULE_2', 'RULE','Z');
           commit;
         end if;
       end if;
@@ -1369,15 +1369,15 @@ create or replace package body AF_HXBCB_RULE_PKG as
       -- don't anything
     end RULE_2;
 -- rule:18
- procedure RULE_18(app_id_input in varchar2,v_mobile in af_request_applicantinfo.c1_mobile%type,v_c_comp_phone in af_request_applicantinfo.c_comp_phone%type) is
+ procedure RULE_18(app_id_input in varchar2,v_mobile in af_request_applicantinfo.c1_mobile%type,v_comp_phone in af_request_applicantinfo.c_comp_phone%type) is
    v_error varchar(500);
    begin
      if nvl(v_mobile,'null') != 'null'  then
-       if nvl(v_c_comp_phone,'null') = 'null' then
-         insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno, type,class) values(app_id_input, 'Z', 'Z03', 'Z03_2', 'NULL', 'NULL', 'RULE_18', 'RULE','Z');
+       if nvl(v_comp_phone,'null') = 'null' then
+         insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno, type,class) values(app_id_input, 'Z2', 'Z03', 'Z03_2', 'NULL', 'NULL', 'RULE_18', 'RULE','Z');
          else
-       if v_mobile = v_c_comp_phone then
-         insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno, type,class) values(app_id_input, 'Z', 'Z03', 'Z03_2', '', '', 'RULE_18', 'RULE','Z');
+       if v_mobile = v_comp_phone then
+         insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno, type,class) values(app_id_input, 'Z2', 'Z03', 'Z03_2', '', '', 'RULE_18', 'RULE','Z');
           commit;
         end if;
       end if;
@@ -1394,10 +1394,10 @@ create or replace package body AF_HXBCB_RULE_PKG as
    begin
      if nvl(v_cotel,'null') != 'null'  then
        if nvl(v_cell_phone,'null') = 'null' then
-         insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno, type,class) values(app_id_input, 'Z', 'Z03', 'Z03_2', 'NULL', 'NULL', 'RULE_19', 'RULE','Z');
+         insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno, type,class) values(app_id_input, 'Z2', 'Z03', 'Z03_2', 'NULL', 'NULL', 'RULE_19', 'RULE','Z');
          else
        if v_cotel = v_cell_phone then
-         insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno, type,class) values(app_id_input, 'Z', 'Z03', 'Z03_2', '', '', 'RULE_19', 'RULE','Z');
+         insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno, type,class) values(app_id_input, 'Z2', 'Z03', 'Z03_2', '', '', 'RULE_19', 'RULE','Z');
           commit;
         end if;
       end if;
@@ -1414,10 +1414,10 @@ create or replace package body AF_HXBCB_RULE_PKG as
    begin
      if nvl(v_cotel,'null') != 'null'  then
        if nvl(v_resi_tel,'null') = 'null' then
-         insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno, type,class) values(app_id_input, 'Z', 'Z03', 'Z03_2', 'NULL', 'NULL', 'RULE_20', 'RULE','Z');
+         insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno, type,class) values(app_id_input, 'Z2', 'Z03', 'Z03_2', 'NULL', 'NULL', 'RULE_20', 'RULE','Z');
         else
        if v_cotel = v_resi_tel then
-         insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno, type,class) values(app_id_input, 'Z', 'Z03', 'Z03_2', '', '', 'RULE_20', 'RULE','Z');
+         insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno, type,class) values(app_id_input, 'Z2', 'Z03', 'Z03_2', '', '', 'RULE_20', 'RULE','Z');
           commit;
         end if;
       end if;
@@ -1429,15 +1429,15 @@ create or replace package body AF_HXBCB_RULE_PKG as
       -- don't anything
     end RULE_20;
 -- rule:21
- procedure RULE_21(app_id_input in varchar2,v_cotel in af_request_applicantinfo.c1_cotel%type,v_c_comp_phone in af_request_applicantinfo.c_comp_phone%type) is
+ procedure RULE_21(app_id_input in varchar2,v_cotel in af_request_applicantinfo.c1_cotel%type,v_comp_phone in af_request_applicantinfo.c_comp_phone%type) is
    v_error varchar(500);
    begin
      if nvl(v_cotel,'null') != 'null'  then
-       if nvl(v_c_comp_phone,'null') = 'null' then
-         insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno, type,class) values(app_id_input, 'Z', 'Z03', 'Z03_2', 'NULL', 'NULL', 'RULE_21', 'RULE','Z');
+       if nvl(v_comp_phone,'null') = 'null' then
+         insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno, type,class) values(app_id_input, 'Z2', 'Z03', 'Z03_2', 'NULL', 'NULL', 'RULE_21', 'RULE','Z');
          else
-       if v_cotel = v_c_comp_phone then
-         insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno, type,class) values(app_id_input, 'Z', 'Z03', 'Z03_2', '', '', 'RULE_21', 'RULE','Z');
+       if v_cotel = v_comp_phone then
+         insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno, type,class) values(app_id_input, 'Z2', 'Z03', 'Z03_2', '', '', 'RULE_21', 'RULE','Z');
           commit;
         end if;
       end if;
@@ -1450,15 +1450,15 @@ create or replace package body AF_HXBCB_RULE_PKG as
     end RULE_21;
 
    -- rule:22
- procedure RULE_22(app_id_input in varchar2,v_c1_hmtel af_request_applicantinfo.c1_hmtel%type,v_hmare af_request_applicantinfo.c1_hmare%type, v_cell_phone in af_request_applicantinfo.cell_phone%type) is
+ procedure RULE_22(app_id_input in varchar2,v_hmtel af_request_applicantinfo.c1_hmtel%type,v_hmare af_request_applicantinfo.c1_hmare%type, v_cell_phone in af_request_applicantinfo.cell_phone%type) is
    v_error varchar(500);
    begin
-     if nvl(v_c1_hmtel,'null') != 'null' and nvl(v_hmare,'null') != 'null' then
+     if nvl(v_hmtel,'null') != 'null' and nvl(v_hmare,'null') != 'null' then
        if nvl(v_cell_phone,'null') = 'null' then
-         insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno, type,class) values(app_id_input, 'Z', 'Z03', 'Z03_2', 'NULL', 'NULL', 'RULE_22', 'RULE','Z');
+         insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno, type,class) values(app_id_input, 'Z2', 'Z03', 'Z03_2', 'NULL', 'NULL', 'RULE_22', 'RULE','Z');
          else
-       if  v_c1_hmtel || v_hmare = v_cell_phone then
-         insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno, type,class) values(app_id_input, 'Z', 'Z03', 'Z03_2', '', '', 'RULE_22', 'RULE','Z');
+       if  v_hmtel || v_hmare = v_cell_phone then
+         insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno, type,class) values(app_id_input, 'Z2', 'Z03', 'Z03_2', '', '', 'RULE_22', 'RULE','Z');
           commit;
       end if;
       end if;
@@ -1470,15 +1470,15 @@ create or replace package body AF_HXBCB_RULE_PKG as
       -- don't anything
     end RULE_22;
    -- rule:23
- procedure RULE_23(app_id_input in varchar2,v_c1_hmtel af_request_applicantinfo.c1_hmtel%type,v_hmare af_request_applicantinfo.c1_hmare%type, v_resi_tel in af_request_applicantinfo.resi_tel%type) is
+ procedure RULE_23(app_id_input in varchar2,v_hmtel af_request_applicantinfo.c1_hmtel%type,v_hmare af_request_applicantinfo.c1_hmare%type, v_resi_tel in af_request_applicantinfo.resi_tel%type) is
    v_error varchar(500);
    begin
-     if nvl(v_c1_hmtel,'null') != 'null' and nvl(v_hmare,'null') != 'null' then
+     if nvl(v_hmtel,'null') != 'null' and nvl(v_hmare,'null') != 'null' then
        if nvl(v_resi_tel,'null') = 'null' then
-         insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno, type,class) values(app_id_input, 'Z', 'Z03', 'Z03_2', 'NULL', 'NULL', 'RULE_23', 'RULE','Z');
+         insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno, type,class) values(app_id_input, 'Z2', 'Z03', 'Z03_2', 'NULL', 'NULL', 'RULE_23', 'RULE','Z');
          else
-       if  v_c1_hmtel || v_hmare = v_resi_tel then
-         insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno, type,class) values(app_id_input, 'Z', 'Z03', 'Z03_2', '', '', 'RULE_23', 'RULE','Z');
+       if  v_hmtel || v_hmare = v_resi_tel then
+         insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno, type,class) values(app_id_input, 'Z2', 'Z03', 'Z03_2', '', '', 'RULE_23', 'RULE','Z');
           commit;
       end if;
       end if;
@@ -1491,15 +1491,15 @@ create or replace package body AF_HXBCB_RULE_PKG as
     end RULE_23;
 
    -- rule:24
- procedure RULE_24(app_id_input in varchar2,v_c1_hmtel af_request_applicantinfo.c1_hmtel%type,v_hmare af_request_applicantinfo.c1_hmare%type, v_c_comp_phone in af_request_applicantinfo.c_comp_phone%type) is
+ procedure RULE_24(app_id_input in varchar2,v_hmtel af_request_applicantinfo.c1_hmtel%type,v_hmare af_request_applicantinfo.c1_hmare%type, v_comp_phone in af_request_applicantinfo.c_comp_phone%type) is
    v_error varchar(500);
    begin
-     if nvl(v_c1_hmtel,'null') != 'null' and nvl(v_hmare,'null') != 'null' then
-       if nvl(v_c_comp_phone,'null') = 'null' then
-         insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno, type,class) values(app_id_input, 'Z', 'Z03', 'Z03_2', 'NULL', 'NULL', 'RULE_24', 'RULE','Z');
+     if nvl(v_hmtel,'null') != 'null' and nvl(v_hmare,'null') != 'null' then
+       if nvl(v_comp_phone,'null') = 'null' then
+         insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno, type,class) values(app_id_input, 'Z2', 'Z03', 'Z03_2', 'NULL', 'NULL', 'RULE_24', 'RULE','Z');
          else
-      if  v_c1_hmtel || v_hmare = v_c_comp_phone then
-         insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno, type,class) values(app_id_input, 'Z', 'Z03', 'Z03_2', '', '', 'RULE_24', 'RULE','Z');
+      if  v_hmtel || v_hmare = v_comp_phone then
+         insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno, type,class) values(app_id_input, 'Z2', 'Z03', 'Z03_2', '', '', 'RULE_24', 'RULE','Z');
           commit;
       end if;
       end if;
@@ -1517,10 +1517,10 @@ create or replace package body AF_HXBCB_RULE_PKG as
    begin
      if nvl(v_retel,'null') != 'null' and nvl(v_retelar,'null') != 'null'  then
        if nvl(v_cell_phone,'null') = 'null' then
-         insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno, type,class) values(app_id_input, 'Z', 'Z03', 'Z03_2', 'NULL', 'NULL', 'RULE_24', 'RULE','Z');
+         insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno, type,class) values(app_id_input, 'Z2', 'Z03', 'Z03_2', 'NULL', 'NULL', 'RULE_24', 'RULE','Z');
          else
        if  v_retel || v_retelar = v_cell_phone then
-         insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno, type,class) values(app_id_input, 'Z', 'Z03', 'Z03_2', '', '', 'RULE_25', 'RULE','Z');
+         insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno, type,class) values(app_id_input, 'Z2', 'Z03', 'Z03_2', '', '', 'RULE_25', 'RULE','Z');
           commit;
       end if;
       end if;
@@ -1537,10 +1537,10 @@ create or replace package body AF_HXBCB_RULE_PKG as
    begin
      if nvl(v_remobil,'null') != 'null' then
        if nvl(v_cell_phone,'null') = 'null' then
-         insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno, type,class) values(app_id_input, 'Z', 'Z03', 'Z03_2', 'NULL', 'NULL', 'RULE_26', 'RULE','Z');
+         insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno, type,class) values(app_id_input, 'Z2', 'Z03', 'Z03_2', 'NULL', 'NULL', 'RULE_26', 'RULE','Z');
          else
        if  v_remobil = v_cell_phone then
-         insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno, type,class) values(app_id_input, 'Z', 'Z03', 'Z03_2', '', '', 'RULE_26', 'RULE','Z');
+         insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno, type,class) values(app_id_input, 'Z2', 'Z03', 'Z03_2', '', '', 'RULE_26', 'RULE','Z');
           commit;
       end if;
       end if;
@@ -1558,10 +1558,10 @@ create or replace package body AF_HXBCB_RULE_PKG as
    begin
      if nvl(v_retel,'null') != 'null' and nvl(v_retelar,'null') != 'null' then
        if nvl(v_resi_tel,'null') = 'null' then
-         insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno, type,class) values(app_id_input, 'Z', 'Z03', 'Z03_2', 'NULL', 'NULL', 'RULE_27', 'RULE','Z');
+         insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno, type,class) values(app_id_input, 'Z2', 'Z03', 'Z03_2', 'NULL', 'NULL', 'RULE_27', 'RULE','Z');
          else
        if  v_retel || v_retelar = v_resi_tel then
-         insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno, type,class) values(app_id_input, 'Z', 'Z03', 'Z03_2', '', '', 'RULE_27', 'RULE','Z');
+         insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno, type,class) values(app_id_input, 'Z2', 'Z03', 'Z03_2', '', '', 'RULE_27', 'RULE','Z');
           commit;
       end if;
       end if;
@@ -1579,10 +1579,10 @@ create or replace package body AF_HXBCB_RULE_PKG as
    begin
      if nvl(v_remobil,'null') != 'null' then
        if nvl(v_resi_tel,'null') = 'null' then
-         insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno, type,class) values(app_id_input, 'Z', 'Z03', 'Z03_2', 'NULL', 'NULL', 'RULE_28', 'RULE','Z');
+         insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno, type,class) values(app_id_input, 'Z2', 'Z03', 'Z03_2', 'NULL', 'NULL', 'RULE_28', 'RULE','Z');
          else
        if  v_remobil = v_resi_tel then
-         insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno, type,class) values(app_id_input, 'Z', 'Z03', 'Z03_2', '', '', 'RULE_28', 'RULE','Z');
+         insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno, type,class) values(app_id_input, 'Z2', 'Z03', 'Z03_2', '', '', 'RULE_28', 'RULE','Z');
           commit;
       end if;
       end if;
@@ -1595,15 +1595,15 @@ create or replace package body AF_HXBCB_RULE_PKG as
     end RULE_28;
 
    -- rule:29
- procedure RULE_29(app_id_input in varchar2,v_retel in af_request_applicantinfo.c1_retel%type,v_retelar in af_request_applicantinfo.cell_phone%type,v_c_comp_phone in af_request_applicantinfo.c_comp_phone%type) is
+ procedure RULE_29(app_id_input in varchar2,v_retel in af_request_applicantinfo.c1_retel%type,v_retelar in af_request_applicantinfo.cell_phone%type,v_comp_phone in af_request_applicantinfo.c_comp_phone%type) is
    v_error varchar(500);
    begin
      if nvl(v_retel,'null') != 'null' and  nvl(v_retelar,'null') != 'null' then
-       if nvl(v_c_comp_phone,'null') = 'null' then
-         insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno, type,class) values(app_id_input, 'Z', 'Z03', 'Z03_2', 'NULL', 'NULL', 'RULE_29', 'RULE','Z');
+       if nvl(v_comp_phone,'null') = 'null' then
+         insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno, type,class) values(app_id_input, 'Z2', 'Z03', 'Z03_2', 'NULL', 'NULL', 'RULE_29', 'RULE','Z');
          else
-       if  v_retel || v_retelar = v_c_comp_phone then
-         insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno, type,class) values(app_id_input, 'Z', 'Z03', 'Z03_2', '', '', 'RULE_29', 'RULE','Z');
+       if  v_retel || v_retelar = v_comp_phone then
+         insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno, type,class) values(app_id_input, 'Z2', 'Z03', 'Z03_2', '', '', 'RULE_29', 'RULE','Z');
           commit;
       end if;
       end if;
@@ -1616,15 +1616,15 @@ create or replace package body AF_HXBCB_RULE_PKG as
     end RULE_29;
 
    -- rule:30
- procedure RULE_30(app_id_input in varchar2,v_remobil in af_request_applicantinfo.c1_remobil%type,v_c_comp_phone in af_request_applicantinfo.c_comp_phone%type) is
+ procedure RULE_30(app_id_input in varchar2,v_remobil in af_request_applicantinfo.c1_remobil%type,v_comp_phone in af_request_applicantinfo.c_comp_phone%type) is
    v_error varchar(500);
    begin
      if nvl(v_remobil,'null') != 'null' then
-       if nvl(v_c_comp_phone,'null') = 'null' then
-         insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno, type,class) values(app_id_input, 'Z', 'Z03', 'Z03_2', 'NULL', 'NULL', 'RULE_30', 'RULE','Z');
+       if nvl(v_comp_phone,'null') = 'null' then
+         insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno, type,class) values(app_id_input, 'Z2', 'Z03', 'Z03_2', 'NULL', 'NULL', 'RULE_30', 'RULE','Z');
          else
-       if  v_remobil = v_c_comp_phone then
-         insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno, type,class) values(app_id_input, 'Z', 'Z03', 'Z03_2', '', '', 'RULE_30', 'RULE','Z');
+       if  v_remobil = v_comp_phone then
+         insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno, type,class) values(app_id_input, 'Z2', 'Z03', 'Z03_2', '', '', 'RULE_30', 'RULE','Z');
           commit;
       end if;
       end if;
@@ -1647,10 +1647,10 @@ create or replace package body AF_HXBCB_RULE_PKG as
    begin
      if nvl(v_xtel1,'null') != 'null' and nvl(v_xtelar1,'null') != 'null' then
        if nvl(v_cell_phone,'null') = 'null' then
-         insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno, type,class) values(app_id_input, 'Z', 'Z03', 'Z03_2', 'NULL', 'NULL', 'RULE_31', 'RULE','Z');
+         insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno, type,class) values(app_id_input, 'Z2', 'Z03', 'Z03_2', 'NULL', 'NULL', 'RULE_31', 'RULE','Z');
          else
        if  v_xtel1 || v_xtelar1  = v_cell_phone then
-         insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno, type,class) values(app_id_input, 'Z', 'Z03', 'Z03_2', '', '', 'RULE_31', 'RULE','Z');
+         insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno, type,class) values(app_id_input, 'Z2', 'Z03', 'Z03_2', '', '', 'RULE_31', 'RULE','Z');
           commit;
       end if;
       end if;
@@ -1667,10 +1667,10 @@ create or replace package body AF_HXBCB_RULE_PKG as
    begin
      if nvl(v_xmobil1,'null') != 'null'  then
        if nvl(v_cell_phone,'null') = 'null' then
-         insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno, type,class) values(app_id_input, 'Z', 'Z03', 'Z03_2', 'NULL', 'NULL', 'RULE_32', 'RULE','Z');
+         insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno, type,class) values(app_id_input, 'Z2', 'Z03', 'Z03_2', 'NULL', 'NULL', 'RULE_32', 'RULE','Z');
          else
        if  v_xmobil1 = v_cell_phone then
-         insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno, type,class) values(app_id_input, 'Z', 'Z03', 'Z03_2', '', '', 'RULE_32', 'RULE','Z');
+         insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno, type,class) values(app_id_input, 'Z2', 'Z03', 'Z03_2', '', '', 'RULE_32', 'RULE','Z');
           commit;
       end if;
       end if;
@@ -1687,10 +1687,10 @@ create or replace package body AF_HXBCB_RULE_PKG as
    begin
      if nvl(v_xtel1,'null') != 'null' and nvl(v_xtelar1,'null') != 'null' then
        if nvl(v_resi_tel,'null') = 'null' then
-         insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno, type,class) values(app_id_input, 'Z', 'Z03', 'Z03_2', 'NULL', 'NULL', 'RULE_33', 'RULE','Z');
+         insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno, type,class) values(app_id_input, 'Z2', 'Z03', 'Z03_2', 'NULL', 'NULL', 'RULE_33', 'RULE','Z');
          else
        if  v_xtel1 || v_xtelar1 = v_resi_tel then
-         insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno, type,class) values(app_id_input, 'Z', 'Z03', 'Z03_2', '', '', 'RULE_33', 'RULE','Z');
+         insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno, type,class) values(app_id_input, 'Z2', 'Z03', 'Z03_2', '', '', 'RULE_33', 'RULE','Z');
           commit;
       end if;
       end if;
@@ -1707,10 +1707,10 @@ create or replace package body AF_HXBCB_RULE_PKG as
    begin
      if nvl(v_xmobil1,'null') != 'null'  then
        if nvl(v_resi_tel,'null') = 'null' then
-         insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno, type,class) values(app_id_input, 'Z', 'Z03', 'Z03_2', 'NULL', 'NULL', 'RULE_34', 'RULE','Z');
+         insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno, type,class) values(app_id_input, 'Z2', 'Z03', 'Z03_2', 'NULL', 'NULL', 'RULE_34', 'RULE','Z');
          else
        if  v_xmobil1 = v_resi_tel then
-         insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno, type,class) values(app_id_input, 'Z', 'Z03', 'Z03_2', '', '', 'RULE_34', 'RULE','Z');
+         insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno, type,class) values(app_id_input, 'Z2', 'Z03', 'Z03_2', '', '', 'RULE_34', 'RULE','Z');
           commit;
       end if;
       end if;
@@ -1724,15 +1724,15 @@ create or replace package body AF_HXBCB_RULE_PKG as
 
 
      -- rule:35
- procedure RULE_35(app_id_input in varchar2,v_xtel1 in af_request_applicantinfo.c1_xtel1%type,v_xtelar1 in af_request_applicantinfo.c1_xtelar1%type, v_c_comp_phone in af_request_applicantinfo.c_comp_phone%type) is
+ procedure RULE_35(app_id_input in varchar2,v_xtel1 in af_request_applicantinfo.c1_xtel1%type,v_xtelar1 in af_request_applicantinfo.c1_xtelar1%type, v_comp_phone in af_request_applicantinfo.c_comp_phone%type) is
    v_error varchar(500);
    begin
      if nvl(v_xtel1,'null') != 'null'  and nvl(v_xtelar1,'null') != 'null' then
-       if nvl(v_c_comp_phone,'null') = 'null' then
-         insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno, type,class) values(app_id_input, 'Z', 'Z03', 'Z03_2', 'NULL', 'NULL', 'RULE_35', 'RULE','Z');
+       if nvl(v_comp_phone,'null') = 'null' then
+         insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno, type,class) values(app_id_input, 'Z2', 'Z03', 'Z03_2', 'NULL', 'NULL', 'RULE_35', 'RULE','Z');
          else
-       if  v_xtel1 || v_xtelar1 = v_c_comp_phone then
-         insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno, type,class) values(app_id_input, 'Z', 'Z03', 'Z03_2', '', '', 'RULE_35', 'RULE','Z');
+       if  v_xtel1 || v_xtelar1 = v_comp_phone then
+         insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno, type,class) values(app_id_input, 'Z2', 'Z03', 'Z03_2', '', '', 'RULE_35', 'RULE','Z');
           commit;
       end if;
       end if;
@@ -1744,15 +1744,15 @@ create or replace package body AF_HXBCB_RULE_PKG as
       -- don't anything
     end RULE_35;
      -- rule:36
- procedure RULE_36(app_id_input in varchar2,v_xmobil1 in af_request_applicantinfo.c1_xmobil1%type, v_c_comp_phone in af_request_applicantinfo.c_comp_phone%type) is
+ procedure RULE_36(app_id_input in varchar2,v_xmobil1 in af_request_applicantinfo.c1_xmobil1%type, v_comp_phone in af_request_applicantinfo.c_comp_phone%type) is
    v_error varchar(500);
    begin
      if nvl(v_xmobil1,'null') != 'null' then
-       if nvl(v_c_comp_phone,'null') = 'null' then
-         insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno, type,class) values(app_id_input, 'Z', 'Z03', 'Z03_2', 'NULL', 'NULL', 'RULE_36', 'RULE','Z');
+       if nvl(v_comp_phone,'null') = 'null' then
+         insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno, type,class) values(app_id_input, 'Z2', 'Z03', 'Z03_2', 'NULL', 'NULL', 'RULE_36', 'RULE','Z');
          else
-       if  v_xmobil1 = v_c_comp_phone then
-         insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno, type,class) values(app_id_input, 'Z', 'Z03', 'Z03_2', '', '', 'RULE_36', 'RULE','Z');
+       if  v_xmobil1 = v_comp_phone then
+         insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno, type,class) values(app_id_input, 'Z2', 'Z03', 'Z03_2', '', '', 'RULE_36', 'RULE','Z');
           commit;
       end if;
       end if;
@@ -1769,10 +1769,10 @@ create or replace package body AF_HXBCB_RULE_PKG as
    begin
      if v_pboc_yl_pay_status = '缴交状态' then
        if nvl(v_cumul_pay_months,'null') = 'null' then
-         insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno, type,class) values(app_id_input, 'Z', 'Z03', 'Z03_1', 'NULL', 'NULL', 'RULE_37', 'RULE','Z');
+         insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno, type,class) values(app_id_input, 'Z2', 'Z03', 'Z03_1', 'NULL', 'NULL', 'RULE_37', 'RULE','Z');
          else
        if  v_cumul_pay_months >= 6 then
-         insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno, type,class) values(app_id_input, 'Z', 'Z03', 'Z03_1', '', '', 'RULE_37', 'RULE','Z');
+         insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno, type,class) values(app_id_input, 'Z2', 'Z03', 'Z03_1', '', '', 'RULE_37', 'RULE','Z');
           commit;
       end if;
       end if;
@@ -1784,6 +1784,29 @@ create or replace package body AF_HXBCB_RULE_PKG as
       -- don't anything
     end RULE_37;
 
+
+     -- rule:38
+ procedure RULE_38(app_id_input in varchar2,v_pboc_gjj_pay_status in af_request_applicantinfo.pboc_gjj_pay_status%type,v_pay_ym in af_request_applicantinfo.pay_ym%type, v_first_deposit_ym in af_request_applicantinfo.first_deposit_ym%type) is
+   b_date varchar2(10);
+   v_error varchar(500);
+   begin
+     if v_pboc_gjj_pay_status = '缴交状态' then
+       b_date := trunc(months_between(to_date(v_pay_ym,'yyyy-mm-dd'),to_date(v_first_deposit_ym,'yyyy-mm-dd')),2);
+       if nvl(v_first_deposit_ym,'null') = 'null' and nvl(v_pay_ym,'null') = 'null'  then
+         insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno, type,class) values(app_id_input, 'Z2', 'Z03', 'Z03_1', 'NULL', 'NULL', 'RULE_38', 'RULE','Z');
+         else
+       if  b_date >= 6 then
+         insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno, type,class) values(app_id_input, 'Z2', 'Z03', 'Z03_1', '', '', 'RULE_38', 'RULE','Z');
+          commit;
+      end if;
+      end if;
+      end if;
+      -- handle exceptions
+      exception when others then v_error := 'RULE_38: ' || sqlerrm;
+      insert into af_app_prc_logs(app_id, error_logs) values(app_id_input, v_error);
+      commit;
+      -- don't anything
+    end RULE_38;
 
 
 end AF_HXBCB_RULE_PKG;
