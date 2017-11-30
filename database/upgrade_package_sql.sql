@@ -362,6 +362,11 @@ create or replace package body AF_HXBCB is
       AF_HXBCB_RULE_PKG.RULE_35(app_id_input, v_xtel1,v_xtelar1,v_comp_phone);
       AF_HXBCB_RULE_PKG.RULE_36(app_id_input, v_xmobil1,v_comp_phone);
       AF_HXBCB_RULE_PKG.RULE_37(app_id_input, v_cumul_pay_months,v_pboc_yl_pay_status);
+      AF_HXBCB_RULE_PKG.RULE_38(app_id_input, v_pboc_gjj_pay_status ,v_pay_ym, v_first_deposit_ym);
+      AF_HXBCB_RULE_PKG.RULE_80(app_id_input, v_mobile);
+      AF_HXBCB_RULE_PKG.RULE_175(app_id_input, v_remobil, v_reship);
+      AF_HXBCB_RULE_PKG.RULE_176(app_id_input, v_remobil, v_rename);
+      AF_HXBCB_RULE_PKG.RULE_176(app_id_input, v_xname1, v_xmobil1);
       -----精确匹配的规则----------------------------
       AF_HXBCB_RULE_PKG.RULE_40(app_id_input,v_bad_debt_num);
       AF_HXBCB_RULE_PKG.RULE_42(app_id_input,v_loan_overdue_month_num);

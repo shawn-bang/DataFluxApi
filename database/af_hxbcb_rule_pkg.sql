@@ -172,10 +172,18 @@ create or replace package AF_HXBCB_RULE_PKG as
   procedure RULE_36(app_id_input in varchar2,v_xmobil1 in af_request_applicantinfo.c1_xmobil1%type,v_comp_phone in af_request_applicantinfo.c_comp_phone%type);
   -- rule:37
   procedure RULE_37(app_id_input in varchar2,v_cumul_pay_months in af_request_applicantinfo.cumul_pay_months%type, v_pboc_yl_pay_status in af_request_applicantinfo.pboc_yl_pay_status%type);
-  -- rule:38
+ -- rule:38
   procedure RULE_38(app_id_input in varchar2,v_pboc_gjj_pay_status in af_request_applicantinfo.pboc_gjj_pay_status%type,v_pay_ym in af_request_applicantinfo.pay_ym%type, v_first_deposit_ym in af_request_applicantinfo.first_deposit_ym%type);
-end AF_HXBCB_RULE_PKG;
+  -- rule:80
+  procedure RULE_80(app_id_input in varchar2,v_mobile in af_request_applicantinfo.c1_mobile%type,v_idnbr in af_request_applicantinfo.c1_idnbr%type);
+  -- rule:175
+  procedure RULE_175(app_id_input in varchar2, v_remobil in af_request_applicantinfo.c1_remobil%type,v_reship in af_request_applicantinfo.c1_reship%type);
+  -- rule:176
+  procedure RULE_176(app_id_input in varchar2, v_remobil in af_request_applicantinfo.c1_remobil%type,v_rename in af_request_applicantinfo.c1_rename%type);
+  -- rule:178
+  procedure RULE_178(app_id_input in varchar2,v_xname1 in af_request_applicantinfo.c1_xname1%type,v_xmobil1 in af_request_applicantinfo.c1_xmobil1%type);
 
+end AF_HXBCB_RULE_PKG;
 
 
 create or replace package body AF_HXBCB_RULE_PKG as
@@ -1862,5 +1870,101 @@ create or replace package body AF_HXBCB_RULE_PKG as
       -- don't anything
     end RULE_38;
 
+-- rule:80
+  procedure RULE_80(app_id_input in varchar2, v_mobile in af_request_applicantinfo.c1_mobile%type,v_idnbr in af_request_applicantinfo.c1_idnbr%type) is
+    flag1 number;
+    flag2 number;
+    v_error varchar2(500);
+    begin
+      if nvl(v_mobile, 'null') != 'null' then
+        select count(1) into flag1
+        from af_request_applicantinfo t
+         where v_mobile = t.c1_mobile ;
+        if flag1 > 1 then
+          select count(distinct c1_idnbr) into flag2
+           from af_request_applicantinfo t
+           where v_mobile = t.c1_mobile ;
+           if flag2 > 3 then
+          -- update result data
+          insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno, type) values(app_id_input, 'Z2', 'Z01', 'Z01_2', '', '', 'RULE_80', 'RULE');
+          commit;
+        end if;
+      end if;
+     end if;
+      -- handle exceptions
+      exception when others then v_error := 'RULE_80: ' || sqlerrm;
+      insert into af_app_prc_logs(app_id, error_logs) values(app_id_input, v_error);
+      commit;
+      -- don't anything
+    end RULE_80;
+-- rule:175
+  procedure RULE_175(app_id_input in varchar2, v_remobil in af_request_applicantinfo.c1_remobil%type,v_reship in af_request_applicantinfo.c1_reship%type) is
+    flag1 number;
+    N number;
+    v_error varchar2(500);
+    begin
+      if nvl(v_remobil, 'null') != 'null' and nvl(v_reship, 'null') != 'null' then
 
+        select count(1) into flag1
+        from af_request_applicantinfo t
+         where v_remobil = t.c1_remobil and v_reship != t.c1_reship;
+        if flag1 > 2 then
+          -- update result data
+          insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno, type) values(app_id_input, 'Z2', 'Z01', 'Z01_2', '', '', 'RULE_175', 'RULE');
+          commit;
+        end if;
+      end if;
+      -- handle exceptions
+      exception when others then v_error := 'RULE_175: ' || sqlerrm;
+      insert into af_app_prc_logs(app_id, error_logs) values(app_id_input, v_error);
+      commit;
+      -- don't anything
+    end RULE_175;
+
+-- rule:176
+  procedure RULE_176(app_id_input in varchar2, v_remobil in af_request_applicantinfo.c1_remobil%type,v_rename in af_request_applicantinfo.c1_rename%type) is
+    flag number;
+    N number;
+    v_error varchar2(500);
+    begin
+      if nvl(v_remobil, 'null') != 'null' and nvl(v_rename, 'null') != 'null' then
+
+        select count(1) into flag
+        from af_request_applicantinfo t
+         where v_rename = t.c1_xname1 and v_remobil = t.c1_xmobil1;
+        if flag > 2 then
+          -- update result data
+          insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno, type) values(app_id_input, 'Z2', 'Z01', 'Z01_2', '', '', 'RULE_176', 'RULE');
+          commit;
+        end if;
+      end if;
+      -- handle exceptions
+      exception when others then v_error := 'RULE_176: ' || sqlerrm;
+      insert into af_app_prc_logs(app_id, error_logs) values(app_id_input, v_error);
+      commit;
+      -- don't anything
+    end RULE_176;
+-- rule:178
+  procedure RULE_178(app_id_input in varchar2,v_xname1 in af_request_applicantinfo.c1_xname1%type,v_xmobil1 in af_request_applicantinfo.c1_xmobil1%type) is
+    flag number;
+    N number;
+    v_error varchar2(500);
+    begin
+      if nvl(v_xname1, 'null') != 'null' and nvl(v_xmobil1, 'null') != 'null' then
+
+        select count(1) into flag
+        from af_request_applicantinfo t
+         where t.c1_remobil = v_xmobil1 and t.c1_rename = v_xname1 ;
+        if flag > 2 then
+          -- update result data
+          insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno, type) values(app_id_input, 'Z2', 'Z01', 'Z01_1', '', '', 'RULE_178', 'RULE');
+          commit;
+        end if;
+      end if;
+      -- handle exceptions
+      exception when others then v_error := 'RULE_178: ' || sqlerrm;
+      insert into af_app_prc_logs(app_id, error_logs) values(app_id_input, v_error);
+      commit;
+      -- don't anything
+    end RULE_178;
 end AF_HXBCB_RULE_PKG;
