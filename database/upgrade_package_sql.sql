@@ -370,6 +370,7 @@ create or replace package body AF_HXBCB is
       AF_HXBCB_RULE_PKG.RULE_46(app_id_input,v_debit_co_due_longest_over);
       AF_HXBCB_RULE_PKG.RULE_48(app_id_input,v_deb_c60overd_month_num);
       AF_HXBCB_RULE_PKG.RULE_49(app_id_input,v_deb_c60overd_longest_over);
+      AF_HXBCB_RULE_PKG.RULE_65(app_id_input,v_cotel,v_hmare,v_hmtel);
       AF_HXBCB_RULE_PKG.RULE_67(app_id_input,v_cycadd1);
       AF_HXBCB_RULE_PKG.RULE_68(app_id_input,v_cycadd1);
       AF_HXBCB_RULE_PKG.RULE_70(app_id_input,v_idnbr);
@@ -383,8 +384,11 @@ create or replace package body AF_HXBCB is
       AF_HXBCB_RULE_PKG.RULE_141(app_id_input,v_no_pd_card_loan_corp_number);
       AF_HXBCB_RULE_PKG.RULE_143(app_id_input,v_frs_cred_crd_issue_mon);
       AF_HXBCB_RULE_PKG.RULE_145(app_id_input,v_reship,v_mate_contact_tel,v_remobil);
-      AF_HXBCB_RULE_PKG.RULE_152(app_id_input,v_apsour);
-      AF_HXBCB_RULE_PKG.RULE_153(app_id_input,v_apsour);
+      AF_HXBCB_RULE_PKG.RULE_152_1(app_id_input,v_apsour);
+      AF_HXBCB_RULE_PKG.RULE_152_2(app_id_input,v_apsour);
+      AF_HXBCB_RULE_PKG.RULE_152_4(app_id_input,v_apsour);
+      AF_HXBCB_RULE_PKG.RULE_153_2(app_id_input,v_apsour);
+      AF_HXBCB_RULE_PKG.RULE_153_3(app_id_input,v_apsour);
       AF_HXBCB_RULE_PKG.RULE_179(app_id_input,v_remobil,v_rename);
       AF_HXBCB_RULE_PKG.RULE_182(app_id_input,v_coname);
       AF_HXBCB_RULE_PKG.RULE_198(app_id_input,v1v2_flag,v2_gender,v2_idnbr,v2_idtype,v_gender,v_idtype,v_idnbr);

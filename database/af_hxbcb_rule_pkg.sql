@@ -46,10 +46,16 @@ create or replace package AF_HXBCB_RULE_PKG as
   procedure RULE_143(app_id_input in varchar2,v_frs_cred_crd_issue_mon af_request_applicantinfo.frs_cred_crd_issue_mon%type);
   --rule:145
   procedure RULE_145(app_id_input in varchar2,v_reship in af_request_applicantinfo.c1_reship%type, v_mate_contact_tel in af_request_applicantinfo.mate_contact_tel%type,v_remobil in af_request_applicantinfo.c1_remobil%type);
-  --rule:152
-  procedure RULE_152(app_id_input in varchar2,v_apsour in af_request_applicantinfo.c4_apsour%type);
-  --rule:153
-  procedure RULE_153(app_id_input in varchar2,v_apsour in af_request_applicantinfo.c4_apsour%type);
+  --rule:152_1
+  procedure RULE_152_1(app_id_input in varchar2,v_apsour in af_request_applicantinfo.c4_apsour%type);
+  --rule:152_2
+  procedure RULE_152_2(app_id_input in varchar2,v_apsour in af_request_applicantinfo.c4_apsour%type);
+  --rule:152_4
+  procedure RULE_152_4(app_id_input in varchar2,v_apsour in af_request_applicantinfo.c4_apsour%type);
+  --rule:153_2
+  procedure RULE_153_2(app_id_input in varchar2,v_apsour in af_request_applicantinfo.c4_apsour%type);
+  --rule:153_3
+  procedure RULE_153_3(app_id_input in varchar2,v_apsour in af_request_applicantinfo.c4_apsour%type);
   --rule:179
   procedure RULE_179(app_id_input in varchar2,v_remobil in af_request_applicantinfo.c1_remobil%type,v_rename in af_request_applicantinfo.c1_rename%type);
   --rule:182
@@ -602,38 +608,86 @@ create or replace package body AF_HXBCB_RULE_PKG as
       commit;
       -- don't anything
     end RULE_145;
-  -- rule:152
-  procedure RULE_152(app_id_input in varchar2,v_apsour in af_request_applicantinfo.c4_apsour%type) is
+  -- rule:152_1
+  procedure RULE_152_1(app_id_input in varchar2,v_apsour in af_request_applicantinfo.c4_apsour%type) is
     v_error varchar2(500);
     begin
       -- c4_apsour推广进件来源的码值还需要根据具体的码表更改判断码值是否等于 (我行客户 or 陌生拜访 or 电话营销 or 信函营销)
       if nvl(v_apsour,'null') != 'null' then
         -- update result data
-        insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno,type,class) values(app_id_input, 'Z2', 'Z03', 'Z03_1', '', '', 'RULE_152', 'RULE','Z');
+        insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno,type,class) values(app_id_input, 'Z2', 'Z03', 'Z03_1', '', '', 'RULE_152_1', 'RULE','Z');
         commit;
       end if;
       -- handle exceptions
-      exception when others then v_error := 'RULE_152: ' || sqlerrm;
+      exception when others then v_error := 'RULE_152_1: ' || sqlerrm;
       insert into af_app_prc_logs(app_id, error_logs) values(app_id_input, v_error);
       commit;
       -- don't anything
-    end RULE_152;
-  -- rule:153
-  procedure RULE_153(app_id_input in varchar2,v_apsour in af_request_applicantinfo.c4_apsour%type) is
+    end RULE_152_1;
+  -- rule:152_2
+  procedure RULE_152_2(app_id_input in varchar2,v_apsour in af_request_applicantinfo.c4_apsour%type) is
+    v_error varchar2(500);
+    begin
+      -- c4_apsour推广进件来源的码值还需要根据具体的码表更改判断码值是否等于 (我行客户 or 陌生拜访 or 电话营销 or 信函营销)
+      if nvl(v_apsour,'null') != 'null' then
+        -- update result data
+        insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno,type,class) values(app_id_input, 'Z2', 'Z03', 'Z03_1', '', '', 'RULE_152_2', 'RULE','Z');
+        commit;
+      end if;
+      -- handle exceptions
+      exception when others then v_error := 'RULE_152_2: ' || sqlerrm;
+      insert into af_app_prc_logs(app_id, error_logs) values(app_id_input, v_error);
+      commit;
+      -- don't anything
+    end RULE_152_2;
+  -- rule:152_4
+  procedure RULE_152_4(app_id_input in varchar2,v_apsour in af_request_applicantinfo.c4_apsour%type) is
+    v_error varchar2(500);
+    begin
+      -- c4_apsour推广进件来源的码值还需要根据具体的码表更改判断码值是否等于 (我行客户 or 陌生拜访 or 电话营销 or 信函营销)
+      if nvl(v_apsour,'null') != 'null' then
+        -- update result data
+        insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno,type,class) values(app_id_input, 'Z2', 'Z03', 'Z03_1', '', '', 'RULE_152_4', 'RULE','Z');
+        commit;
+      end if;
+      -- handle exceptions
+      exception when others then v_error := 'RULE_152_4: ' || sqlerrm;
+      insert into af_app_prc_logs(app_id, error_logs) values(app_id_input, v_error);
+      commit;
+      -- don't anything
+    end RULE_152_4;
+  -- rule:153_2
+  procedure RULE_153_2(app_id_input in varchar2,v_apsour in af_request_applicantinfo.c4_apsour%type) is
     v_error varchar2(500);
     begin
       -- c4_apsour推广进件来源的码值还需要判断码值是否等于 (他人转介 or 设点营销 or 熟人介绍 or 自进件)
       if nvl(v_apsour,'null') != 'null' then
         -- update result data
-        insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno,type,class) values(app_id_input, 'Z2', 'Z03', 'Z03_1', '', '', 'RULE_153', 'RULE','Z');
+        insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno,type,class) values(app_id_input, 'Z2', 'Z03', 'Z03_1', '', '', 'RULE_153_2', 'RULE','Z');
         commit;
       end if;
       -- handle exceptions
-      exception when others then v_error := 'RULE_153: ' || sqlerrm;
+      exception when others then v_error := 'RULE_153_2: ' || sqlerrm;
       insert into af_app_prc_logs(app_id, error_logs) values(app_id_input, v_error);
       commit;
       -- don't anything
-    end RULE_153;
+    end RULE_153_2;
+  -- rule:153_3
+  procedure RULE_153_3(app_id_input in varchar2,v_apsour in af_request_applicantinfo.c4_apsour%type) is
+    v_error varchar2(500);
+    begin
+      -- c4_apsour推广进件来源的码值还需要判断码值是否等于 (他人转介 or 设点营销 or 熟人介绍 or 自进件)
+      if nvl(v_apsour,'null') != 'null' then
+        -- update result data
+        insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno,type,class) values(app_id_input, 'Z2', 'Z03', 'Z03_1', '', '', 'RULE_153_3', 'RULE','Z');
+        commit;
+      end if;
+      -- handle exceptions
+      exception when others then v_error := 'RULE_153_3: ' || sqlerrm;
+      insert into af_app_prc_logs(app_id, error_logs) values(app_id_input, v_error);
+      commit;
+      -- don't anything
+    end RULE_153_3;
   -- rule:179
   procedure RULE_179(app_id_input in varchar2,v_remobil in af_request_applicantinfo.c1_remobil%type,v_rename in af_request_applicantinfo.c1_rename%type) is
     flag number;
