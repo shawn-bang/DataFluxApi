@@ -194,7 +194,7 @@ create or replace package body AF_HXBCB_RULE_PKG as
     begin
       if nvl(v_bad_debt_num,'null') = 'null' then
         -- update result data
-        insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno,type,class) values(app_id_input, 'Z2', 'Z03', 'Z03_1', 'null', 'null', 'RULE_40', 'RULE','Z');
+        insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno,type,class) values(app_id_input, 'Z2', 'Z03', 'Z03_1', 'NULL', 'NULL', 'RULE_40', 'RULE','Z');
         commit;
       else
         if v_bad_debt_num >= 2 then
@@ -215,7 +215,7 @@ create or replace package body AF_HXBCB_RULE_PKG as
     begin
       if nvl(v_loan_overdue_month_num,'null') = 'null' then
         -- update result data
-        insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno,type,class) values(app_id_input, 'Z2', 'Z03', 'Z03_1', 'null', 'null', 'RULE_42', 'RULE','Z');
+        insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno,type,class) values(app_id_input, 'Z2', 'Z03', 'Z03_1', 'NULL', 'NULL', 'RULE_42', 'RULE','Z');
         commit;
       else
         if v_loan_overdue_month_num >= 2 then
@@ -236,7 +236,7 @@ create or replace package body AF_HXBCB_RULE_PKG as
     begin
       if nvl(v_debit_card_over_due_acct_num,'null') = 'null' then
         -- update result data
-        insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno,type,class) values(app_id_input, 'Z2', 'Z03', 'Z03_1', 'null', 'null', 'RULE_44', 'RULE','Z');
+        insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno,type,class) values(app_id_input, 'Z2', 'Z03', 'Z03_1', 'NULL', 'NULL', 'RULE_44', 'RULE','Z');
         commit;
       else
         if v_debit_card_over_due_acct_num >= 2 then
@@ -257,7 +257,7 @@ create or replace package body AF_HXBCB_RULE_PKG as
     begin
       if nvl(v_debit_card_over_due_month,'null') = 'null' then
         -- update result data
-        insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno,type,class) values(app_id_input, 'Z2', 'Z03', 'Z03_1', 'null', 'null', 'RULE_45', 'RULE','Z');
+        insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno,type,class) values(app_id_input, 'Z2', 'Z03', 'Z03_1', 'NULL', 'NULL', 'RULE_45', 'RULE','Z');
         commit;
       else
         if v_debit_card_over_due_month >= 2 then
@@ -278,7 +278,7 @@ create or replace package body AF_HXBCB_RULE_PKG as
     begin
       if nvl(v_debit_co_due_longest_over,'null') = 'null' then
         -- update result data
-        insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno,type,class) values(app_id_input, 'Z2', 'Z03', 'Z03_1', 'null', 'null', 'RULE_46', 'RULE','Z');
+        insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno,type,class) values(app_id_input, 'Z2', 'Z03', 'Z03_1', 'NULL', 'NULL', 'RULE_46', 'RULE','Z');
         commit;
       else
         if v_debit_co_due_longest_over >= 2 then
@@ -356,7 +356,7 @@ create or replace package body AF_HXBCB_RULE_PKG as
     v_error varchar2(500);
     begin
       -- 假设码值是5,后面还需要根据具体的码表更改
-      if nvl(v_cycadd1,'null') != 'null' and v_cycadd1 = 'H' then
+      if nvl(v_cycadd1,'null') != 'null' and v_cycadd1 = 'B' then
         -- update result data
         insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno,type,class) values(app_id_input, 'Z2', 'Z03', 'Z03_3', '', '', 'RULE_67', 'RULE','Z');
         commit;
@@ -372,7 +372,7 @@ create or replace package body AF_HXBCB_RULE_PKG as
     v_error varchar2(500);
     begin
       -- 动态码值,后面还需要根据具体的需求更改
-      if nvl(v_cycadd1,'null') != 'null' and v_cycadd1 = 'B' then
+      if nvl(v_cycadd1,'null') != 'null' and v_cycadd1 = 'H' then
         -- update result data
         insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno,type,class) values(app_id_input, 'Z2', 'Z03', 'Z03_3', '', '', 'RULE_68', 'RULE','Z');
         commit;
@@ -398,7 +398,6 @@ create or replace package body AF_HXBCB_RULE_PKG as
         -- update result data
         insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno,type,class) values(app_id_input, 'Z2', 'Z01', 'Z01_2', '', '', 'RULE_70', 'RULE','Z');
         commit;
-
       end if;
       -- handle exceptions
       exception when others then v_error := 'RULE_70: ' || sqlerrm;
@@ -428,12 +427,10 @@ create or replace package body AF_HXBCB_RULE_PKG as
       commit;
       -- don't anything
     end RULE_71;
-
   -- rule:96
   procedure RULE_96(app_id_input in varchar2,v_educationdegree in af_request_applicantinfo.educationdegree%type) is
     v_error varchar2(500);
     begin
-
       if nvl(v_educationdegree,'null') != 'null' then
         -- educationdegree学历对应码值判断学位是否高于大专
         -- update result data
@@ -450,7 +447,6 @@ create or replace package body AF_HXBCB_RULE_PKG as
   procedure RULE_98(app_id_input in varchar2,v_result_xm in af_request_applicantinfo.result_xm%type) is
     v_error varchar2(500);
     begin
-
       if nvl(v_result_xm,'null') != 'null' then
         -- result_xm公民身份号码核查结果码值需要确定
         -- update result data
@@ -467,9 +463,7 @@ create or replace package body AF_HXBCB_RULE_PKG as
   procedure RULE_118(app_id_input in varchar2, v_remobil af_request_applicantinfo.c1_remobil%type,  v_mobile af_request_applicantinfo.c1_mobile%type) is
     v_error varchar2(500);
     begin
-
-      if nvl(v_remobil,'null') != 'null' and nvl(v_mobile,'null') != 'null'  then
-        -- 需要从app_id中整理出市字段并且匹配电话的区号
+      if nvl(v_remobil,'null') != 'null' and nvl(v_mobile,'null') != 'null' and v_remobil = v_mobile  then
         -- update result data
         insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno,type,class) values(app_id_input, 'Z2', 'Z03', 'Z03_2', '', '', 'RULE_118', 'RULE','Z');
         commit;
@@ -484,9 +478,7 @@ create or replace package body AF_HXBCB_RULE_PKG as
   procedure RULE_138(app_id_input in varchar2, v_educls in af_request_applicantinfo.c1_educls%type,v_educationapproach in af_request_applicantinfo.educationapproach%type) is
     v_error varchar2(500);
     begin
-
       if nvl(v_educls,'null') != 'null' and nvl(v_educationapproach,'null') != 'null'  and v_educls = v_educationapproach then
-
         -- update result data
         insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno,type,class) values(app_id_input, 'Z2', 'Z03', 'Z03_1', '', '', 'RULE_138', 'RULE','Z');
         commit;
@@ -503,12 +495,11 @@ create or replace package body AF_HXBCB_RULE_PKG as
     begin
       --N的值不确定
       if nvl(v_no_pin_debit_card_acct_num,'null') = 'null'  then
-
         -- update result data
         insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno,type,class) values(app_id_input, 'Z2', 'Z03', 'Z03_1', 'NULL', 'NULL', 'RULE_139', 'RULE','Z');
         commit;
       else
-        if v_no_pin_debit_card_acct_num >= '5' then
+        if v_no_pin_debit_card_acct_num >= 'N' then
           -- update result data
           insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno,type,class) values(app_id_input, 'Z2', 'Z03', 'Z03_1', '', '', 'RULE_139', 'RULE','Z');
           commit;
@@ -526,18 +517,15 @@ create or replace package body AF_HXBCB_RULE_PKG as
     begin
       --N的值不确定
       if nvl(v_no_pd_card_loan_org_number,'null') = 'null' then
-
         -- update result data
         insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno,type,class) values(app_id_input, 'Z2', 'Z03', 'Z03_1', 'NULL', 'NULL', 'RULE_140', 'RULE','Z');
         commit;
       else
         if  v_no_pd_card_loan_org_number >= 'N'  then
-
           -- update result data
           insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno,type,class) values(app_id_input, 'Z2', 'Z03', 'Z03_1', '', '', 'RULE_140', 'RULE','Z');
           commit;
         end if;
-
       end if;
       -- handle exceptions
       exception when others then v_error := 'RULE_140: ' || sqlerrm;
@@ -551,7 +539,6 @@ create or replace package body AF_HXBCB_RULE_PKG as
     begin
       --N的值不确定
       if nvl(v_no_pd_card_loan_corp_number,'null') = 'null'then
-
         -- update result data
         insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno,type,class) values(app_id_input, 'Z2', 'Z03', 'Z03_1', 'NULL', 'NULL', 'RULE_141', 'RULE','Z');
         commit;
@@ -574,7 +561,6 @@ create or replace package body AF_HXBCB_RULE_PKG as
     begin
       --N的值不确定
       if nvl(v_frs_cred_crd_issue_mon,'null') = 'null'  then
-
         -- update result data
         insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno,type,class) values(app_id_input, 'Z2', 'Z03', 'Z03_1', 'NULL', 'NULL', 'RULE_143', 'RULE','Z');
         commit;
@@ -608,7 +594,6 @@ create or replace package body AF_HXBCB_RULE_PKG as
             commit;
           end if;
         end if;
-
       end if;
       -- handle exceptions
       exception when others then v_error := 'RULE_145: ' || sqlerrm;
@@ -725,7 +710,6 @@ create or replace package body AF_HXBCB_RULE_PKG as
   procedure RULE_182(app_id_input in varchar2,v_coname in af_request_applicantinfo.c1_coname%type) is
     v_error varchar2(500);
     begin
-
       if nvl(v_coname,'null') != 'null' and instr(v_coname,'投资') != '0' then
         -- update result data
         insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno,type,class) values(app_id_input, 'Z2', 'Z03', 'Z03_4', '', '', 'RULE_182', 'RULE','Z');
@@ -767,7 +751,6 @@ create or replace package body AF_HXBCB_RULE_PKG as
           end if;
         end if;
       end if;
-
       -- handle exceptions
       exception when others then v_error := 'RULE_198: ' || sqlerrm;
       insert into af_app_prc_logs(app_id, error_logs) values(app_id_input, v_error);
@@ -821,7 +804,7 @@ create or replace package body AF_HXBCB_RULE_PKG as
     v_error varchar2(500);
     begin
       --需要确定是否会出现v_idte1是长期的情况
-      if  nvl(v_idte1,'null') != 'null' and nvl(v_iddt1,'null') != 'null'  then
+      if  nvl(v_idte1,'null') != 'null' and nvl(v_iddt1,'null') != 'null' and v_idte1 != '长期'  then
         RULE_122.b_date := trunc(months_between(to_date(v_idte1,'yyyy-mm-dd'),to_date('20'||substr(app_id_input,1,6),'yyyy-mm-dd')),2);
         if  RULE_122.b_date <=3  then
           insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno,type,class) values(app_id_input, '122', '122', '122', '122', '122', 'RULE_122', 'RULE','Z');
@@ -838,7 +821,7 @@ create or replace package body AF_HXBCB_RULE_PKG as
   procedure RULE_125(app_id_input in varchar2,v_wifimacenenglish in varchar2) is
     v_error varchar2(500);
     begin
-      if nvl(v_wifimacenenglish,'null') != 'null' and v_wifimacenenglish='WIFI-MAC_Histroy_NegativeLis' then
+      if nvl(v_wifimacenenglish,'null') != 'null' and v_wifimacenenglish = 'WIFI-MAC_Histroy_NegativeLis' then
         -- update result data
         insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno,type,class) values(app_id_input, '125', '', '', '', '', 'RULE_125', 'RULE','Z');
         commit;
@@ -853,7 +836,7 @@ create or replace package body AF_HXBCB_RULE_PKG as
   procedure RULE_126(app_id_input in varchar2,v_imeienenglish in varchar2) is
     v_error varchar2(500);
     begin
-      if nvl(v_imeienenglish,'null') != 'null' and v_imeienenglish='IMEI_Histroy_NegativeList' then
+      if nvl(v_imeienenglish,'null') != 'null' and v_imeienenglish = 'IMEI_Histroy_NegativeList' then
         -- update result data
         insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno,type,class) values(app_id_input, '126', '', '', '', '', 'RULE_126', 'RULE','Z');
         commit;
@@ -868,7 +851,7 @@ create or replace package body AF_HXBCB_RULE_PKG as
   procedure RULE_127(app_id_input in varchar2,v_imsienenglish in varchar2) is
     v_error varchar2(500);
     begin
-      if nvl(v_imsienenglish,'null') != 'null' and v_imsienenglish='IMSI_Histroy_NegativeList' then
+      if nvl(v_imsienenglish,'null') != 'null' and v_imsienenglish = 'IMSI_Histroy_NegativeList' then
         -- update result data
         insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno,type,class) values(app_id_input, '127', '', '', '', '', 'RULE_127', 'RULE','Z');
         commit;
@@ -883,7 +866,7 @@ create or replace package body AF_HXBCB_RULE_PKG as
   procedure RULE_128(app_id_input in varchar2,v_ipenenglish in varchar2) is
     v_error varchar2(500);
     begin
-      if nvl(v_ipenenglish,'null') != 'null' and  v_ipenenglish='IP_Mismatch' then
+      if nvl(v_ipenenglish,'null') != 'null' and  v_ipenenglish = 'IP_Mismatch' then
         -- update result data
         insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno,type,class) values(app_id_input, '128', '', '', '', '', 'RULE_128', 'RULE','Z');
         commit;
@@ -898,7 +881,7 @@ create or replace package body AF_HXBCB_RULE_PKG as
   procedure RULE_129(app_id_input in varchar2,v_codeaddrenglish in varchar2) is
     v_error varchar2(500);
     begin
-      if nvl(v_codeaddrenglish,'null') != 'null' and v_codeaddrenglish='ADDR_Mismatch' then
+      if nvl(v_codeaddrenglish,'null') != 'null' and v_codeaddrenglish = 'ADDR_Mismatch' then
         -- update result data
         insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno,type,class) values(app_id_input, '129', '', '', '', '', 'RULE_129', 'RULE','Z');
         commit;
@@ -913,7 +896,7 @@ create or replace package body AF_HXBCB_RULE_PKG as
   procedure RULE_130(app_id_input in varchar2,v_codeemailenglish in varchar2) is
     v_error varchar2(500);
     begin
-      if nvl(v_codeemailenglish,'null') != 'null' and v_codeemailenglish='EMAIL_Histroy_NegativeList'  then
+      if nvl(v_codeemailenglish,'null') != 'null' and v_codeemailenglish = 'EMAIL_Histroy_NegativeList'  then
         -- update result data
         insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno,type,class) values(app_id_input, '130', '', '', '', '', 'RULE_130', 'RULE','Z');
         commit;
@@ -928,7 +911,7 @@ create or replace package body AF_HXBCB_RULE_PKG as
   procedure RULE_131(app_id_input in varchar2,v_codenameenglish in varchar2) is
     v_error varchar2(500);
     begin
-      if nvl(v_codenameenglish,'null') != 'null' and v_codenameenglish='NAME_Mismatch' then
+      if nvl(v_codenameenglish,'null') != 'null' and v_codenameenglish = 'NAME_Mismatch' then
         -- update result data
         insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno,type,class) values(app_id_input, '131', '', '', '', '', 'RULE_131', 'RULE','Z');
         commit;
