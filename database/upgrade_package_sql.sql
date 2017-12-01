@@ -367,7 +367,7 @@ create or replace package body AF_HXBCB is
       AF_HXBCB_RULE_PKG.RULE_175(app_id_input, v_remobil, v_reship);
       AF_HXBCB_RULE_PKG.RULE_176(app_id_input, v_remobil, v_rename);
       AF_HXBCB_RULE_PKG.RULE_176(app_id_input, v_xname1, v_xmobil1);
-      -----精确匹配的规则----------------------------
+      -----精确匹配的规则---------------------------
       AF_HXBCB_RULE_PKG.RULE_40(app_id_input,v_bad_debt_num);
       AF_HXBCB_RULE_PKG.RULE_42(app_id_input,v_loan_overdue_month_num);
       AF_HXBCB_RULE_PKG.RULE_44(app_id_input,v_debit_card_over_due_acct_num);
@@ -407,7 +407,6 @@ create or replace package body AF_HXBCB is
       AF_HXBCB_RULE_PKG.RULE_129(app_id_input,v_codeaddrenglish);
       AF_HXBCB_RULE_PKG.RULE_130(app_id_input,v_codeemailenglish);
       AF_HXBCB_RULE_PKG.RULE_131(app_id_input,v_codenameenglish);
-      ----------------------------------------------------------
       --调用规则包中的黑名单规则编号160
       AF_HXBCB_RULE_PKG.RULE_155(app_id_input, v_idnbr);
       AF_HXBCB_RULE_PKG.RULE_156(app_id_input, v_idnbr);
