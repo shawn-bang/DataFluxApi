@@ -59,7 +59,7 @@ public class CCAFService {
 			e.printStackTrace();
 			sqlSession.rollback();
 			try {
-				this.report(response, "0", "request Hxb Service failure" + e.getMessage(), reportJsonObjects);
+				this.report(response, "0", "request Hxb Service failure.", reportJsonObjects);
 			} catch (Exception e1) {
 				e1.printStackTrace();
 				log.error("HxbDataFluxApi Service down!");
