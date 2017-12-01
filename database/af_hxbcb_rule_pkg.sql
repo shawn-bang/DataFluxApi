@@ -3,88 +3,162 @@ create or replace package AF_HXBCB_RULE_PKG as
   -- Created : 2017/11/3 17:22:15
   -- Purpose : Rule
   -- 触发规则列表
-  ---------------精确匹配------------------------
   --rule:40
+  --@author chen
+  --@date 2017-12-1 18:52:00
   procedure RULE_40(app_id_input in varchar2,v_bad_debt_num in af_request_applicantinfo.bad_debt_num%type);
   --rule:42
+  --@author chen
+  --@date 2017-12-1 18:52:00
   procedure RULE_42(app_id_input in varchar2,v_loan_overdue_month_num in af_request_applicantinfo.loan_overdue_month_num%type);
   --rule:44
+  --@author chen
+  --@date 2017-12-1 18:52:00
   procedure RULE_44(app_id_input in varchar2,v_debit_card_over_due_acct_num in af_request_applicantinfo.debit_card_over_due_acct_num%type);
   --rule:45
+  --@author chen
+  --@date 2017-12-1 18:52:00
   procedure RULE_45(app_id_input in varchar2,v_debit_card_over_due_month in af_request_applicantinfo.debit_card_over_due_month_num%type);
   --rule:46
+  --@author chen
+  --@date 2017-12-1 18:52:00
   procedure RULE_46(app_id_input in varchar2,v_debit_co_due_longest_over in af_request_applicantinfo.debit_co_due_longest_over_due%type);
   --rule:48
+  --@author chen
+  --@date 2017-12-1 18:52:00
   procedure RULE_48(app_id_input in varchar2,v_deb_c60overd_month_num in af_request_applicantinfo.deb_c60overd_month_num%type);
   --rule:49
+  --@author chen
+  --@date 2017-12-1 18:52:00
   procedure RULE_49(app_id_input in varchar2,v_deb_c60overd_longest_over in af_request_applicantinfo.deb_c60overd_longest_over_due%type);
   --rule:65
+  --@author chen
+  --@date 2017-12-1 18:52:00
   procedure RULE_65(app_id_input in varchar2,v_cotel in af_request_applicantinfo.c1_cotel%type,v_hmare in af_request_applicantinfo.c1_hmare%type,v_hmtel in af_request_applicantinfo.c1_hmtel%type);
   --rule:67
+  --@author chen
+  --@date 2017-12-1 18:52:00
   procedure RULE_67(app_id_input in varchar2,v_cycadd1 in af_request_applicantinfo.c4_cycadd1%type);
   --rule:68
+  --@author chen
+  --@date 2017-12-1 18:52:00
   procedure RULE_68(app_id_input in varchar2,v_cycadd1 in af_request_applicantinfo.c4_cycadd1%type);
   --rule:70
+  --@author chen
+  --@date 2017-12-1 18:52:00
   procedure RULE_70(app_id_input in varchar2,v_idnbr af_request_applicantinfo.c1_idnbr%type);
   --rule:71
+  --@author chen
+  --@date 2017-12-1 18:52:00
   procedure RULE_71(app_id_input in varchar2,v_idnbr af_request_applicantinfo.c1_idnbr%type);
   --rule:96
+  --@author chen
+  --@date 2017-12-1 18:52:00
   procedure RULE_96(app_id_input in varchar2,v_educationdegree in af_request_applicantinfo.educationdegree%type);
   --rule:98
+  --@author chen
+  --@date 2017-12-1 18:52:00
   procedure RULE_98(app_id_input in varchar2,v_result_xm in af_request_applicantinfo.result_xm%type);
   --rule:118
+  --@author chen
+  --@date 2017-12-1 18:52:00
   procedure RULE_118(app_id_input in varchar2,v_remobil af_request_applicantinfo.c1_remobil%type,  v_mobile af_request_applicantinfo.c1_mobile%type);
   --rule:138
+  --@author chen
+  --@date 2017-12-1 18:52:00
   procedure RULE_138(app_id_input in varchar2,v_educls in af_request_applicantinfo.c1_educls%type,v_educationapproach in af_request_applicantinfo.educationapproach%type);
   --rule:139
+  --@author chen
+  --@date 2017-12-1 18:52:00
   procedure RULE_139(app_id_input in varchar2,v_no_pin_debit_card_acct_num in af_request_applicantinfo.no_pin_debit_card_acct_num%type);
   --rule:140
+  --@author chen
+  --@date 2017-12-1 18:52:00
   procedure RULE_140(app_id_input in varchar2,v_no_pd_card_loan_org_number in af_request_applicantinfo.no_pd_card_loan_org_number%type);
   --rule:141
+  --@author chen
+  --@date 2017-12-1 18:52:00
   procedure RULE_141(app_id_input in varchar2,v_no_pd_card_loan_corp_number in af_request_applicantinfo.no_pd_card_loan_corp_number%type);
   --rule:143
+  --@author chen
+  --@date 2017-12-1 18:52:00
   procedure RULE_143(app_id_input in varchar2,v_frs_cred_crd_issue_mon af_request_applicantinfo.frs_cred_crd_issue_mon%type);
   --rule:145
+  --@author chen
+  --@date 2017-12-1 18:52:00
   procedure RULE_145(app_id_input in varchar2,v_reship in af_request_applicantinfo.c1_reship%type, v_mate_contact_tel in af_request_applicantinfo.mate_contact_tel%type,v_remobil in af_request_applicantinfo.c1_remobil%type);
   --rule:152_1
+  --@author chen
+  --@date 2017-12-1 18:52:00
   procedure RULE_152_1(app_id_input in varchar2,v_apsour in af_request_applicantinfo.c4_apsour%type);
   --rule:152_2
+  --@author chen
+  --@date 2017-12-1 18:52:00
   procedure RULE_152_2(app_id_input in varchar2,v_apsour in af_request_applicantinfo.c4_apsour%type);
   --rule:152_4
+  --@author chen
+  --@date 2017-12-1 18:52:00
   procedure RULE_152_4(app_id_input in varchar2,v_apsour in af_request_applicantinfo.c4_apsour%type);
   --rule:153_2
+  --@author chen
+  --@date 2017-12-1 18:52:00
   procedure RULE_153_2(app_id_input in varchar2,v_apsour in af_request_applicantinfo.c4_apsour%type);
   --rule:153_3
+  --@author chen
+  --@date 2017-12-1 18:52:00
   procedure RULE_153_3(app_id_input in varchar2,v_apsour in af_request_applicantinfo.c4_apsour%type);
   --rule:179
+  --@author chen
+  --@date 2017-12-1 18:52:00
   procedure RULE_179(app_id_input in varchar2,v_remobil in af_request_applicantinfo.c1_remobil%type,v_rename in af_request_applicantinfo.c1_rename%type);
   --rule:182
+  --@author chen
+  --@date 2017-12-1 18:52:00
   procedure RULE_182(app_id_input in varchar2,v_coname in af_request_applicantinfo.c1_coname%type);
   --rule:198
+  --@author chen
+  --@date 2017-12-1 18:52:00
   procedure RULE_198(app_id_input in varchar2,v1v2_flag in af_request_applicantinfo.c1c2_flag%type,v2_gender  in af_request_applicantinfo.c2_gender%type,v2_idnbr in  af_request_applicantinfo.c2_idnbr%type,v2_idtype in af_request_applicantinfo.c2_idtype%type,v_gender in af_request_applicantinfo.c1_gender%type,v_idtype in  af_request_applicantinfo.c1_idtype%type,v_idnbr in af_request_applicantinfo.c1_idnbr%type);
   --rule:236
+  --@author chen
+  --@date 2017-12-1 18:52:00
   procedure RULE_236(app_id_input in varchar2);
-
   -- rule:121
+  --@author chen
+  --@date 2017-12-1 18:52:00
   procedure RULE_121(app_id_input in varchar2,v_idtype in varchar2, v_idnbr in varchar2,v_iddt1 in varchar2,v_idte1 in varchar2,v_birth in varchar2);
   -- rule:122
+  --@author chen
+  --@date 2017-12-1 18:52:00
   procedure RULE_122(app_id_input in varchar2,v_idte1 in varchar2,v_iddt1 in varchar2);
   -- rule:125
+  --@author chen
+  --@date 2017-12-1 18:52:00
   procedure RULE_125(app_id_input in varchar2,v_wifimacenenglish in varchar2);
   -- rule:126
+  --@author chen
+  --@date 2017-12-1 18:52:00
   procedure RULE_126(app_id_input in varchar2,v_imeienenglish in varchar2);
   -- rule:127
+  --@author chen
+  --@date 2017-12-1 18:52:00
   procedure RULE_127(app_id_input in varchar2,v_imsienenglish in varchar2);
   -- rule:128
+  --@author chen
+  --@date 2017-12-1 18:52:00
   procedure RULE_128(app_id_input in varchar2,v_ipenenglish in varchar2);
   -- rule:129
+  --@author chen
+  --@date 2017-12-1 18:52:00
   procedure RULE_129(app_id_input in varchar2,v_codeaddrenglish in varchar2);
   -- rule:130
+  --@author chen
+  --@date 2017-12-1 18:52:00
   procedure RULE_130(app_id_input in varchar2,v_codeemailenglish in varchar2);
   -- rule:131
+  --@author chen
+  --@date 2017-12-1 18:52:00
   procedure RULE_131(app_id_input in varchar2,v_codenameenglish in varchar2);
-  ---------------------------------------------------
-
   -- rule:155
   procedure RULE_155(app_id_input in varchar2, v_idnbr in varchar2);
   -- rule:156
@@ -185,10 +259,12 @@ create or replace package AF_HXBCB_RULE_PKG as
 
 end AF_HXBCB_RULE_PKG;
 
-
+/
 create or replace package body AF_HXBCB_RULE_PKG as
 
   -- rule:40
+  -- @author chen
+  -- @date 2017-12-1 18:52:00
   procedure RULE_40(app_id_input in varchar2,v_bad_debt_num in af_request_applicantinfo.bad_debt_num%type) is
     v_error varchar2(500);
     begin
@@ -196,12 +272,10 @@ create or replace package body AF_HXBCB_RULE_PKG as
         -- update result data
         insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno,type,class) values(app_id_input, 'Z2', 'Z03', 'Z03_1', 'NULL', 'NULL', 'RULE_40', 'RULE','Z');
         commit;
-      else
-        if v_bad_debt_num >= 2 then
-          -- update result data
-          insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno,type,class) values(app_id_input, 'Z2', 'Z03', 'Z03_1', '', '', 'RULE_40', 'RULE','Z');
-          commit;
-        end if;
+      elsif v_bad_debt_num >= 2 then
+        -- update result data
+        insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno,type,class) values(app_id_input, 'Z2', 'Z03', 'Z03_1', '', '', 'RULE_40', 'RULE','Z');
+        commit;
       end if;
       -- handle exceptions
       exception when others then v_error := 'RULE_40: ' || sqlerrm;
@@ -209,7 +283,10 @@ create or replace package body AF_HXBCB_RULE_PKG as
       commit;
       -- don't anything
     end RULE_40;
+
   -- rule:42
+  -- @author chen
+  -- @date 2017-12-1 18:52:00
   procedure RULE_42(app_id_input in varchar2,v_loan_overdue_month_num in af_request_applicantinfo.loan_overdue_month_num%type) is
     v_error varchar2(500);
     begin
@@ -217,12 +294,10 @@ create or replace package body AF_HXBCB_RULE_PKG as
         -- update result data
         insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno,type,class) values(app_id_input, 'Z2', 'Z03', 'Z03_1', 'NULL', 'NULL', 'RULE_42', 'RULE','Z');
         commit;
-      else
-        if v_loan_overdue_month_num >= 2 then
-          -- update result data
-          insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno,type,class) values(app_id_input, 'Z2', 'Z03', 'Z03_1', '', '', 'RULE_42', 'RULE','Z');
-          commit;
-        end if;
+      elsif v_loan_overdue_month_num >= 2 then
+        -- update result data
+        insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno,type,class) values(app_id_input, 'Z2', 'Z03', 'Z03_1', '', '', 'RULE_42', 'RULE','Z');
+        commit;
       end if;
       -- handle exceptions
       exception when others then v_error := 'RULE_42: ' || sqlerrm;
@@ -230,7 +305,10 @@ create or replace package body AF_HXBCB_RULE_PKG as
       commit;
       -- don't anything
     end RULE_42;
+
   -- rule:44
+  -- @author chen
+  -- @date 2017-12-1 18:52:00
   procedure RULE_44(app_id_input in varchar2,v_debit_card_over_due_acct_num af_request_applicantinfo.debit_card_over_due_acct_num%type) is
     v_error varchar2(500);
     begin
@@ -238,12 +316,10 @@ create or replace package body AF_HXBCB_RULE_PKG as
         -- update result data
         insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno,type,class) values(app_id_input, 'Z2', 'Z03', 'Z03_1', 'NULL', 'NULL', 'RULE_44', 'RULE','Z');
         commit;
-      else
-        if v_debit_card_over_due_acct_num >= 2 then
-          -- update result data
-          insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno,type,class) values(app_id_input, 'Z2', 'Z03', 'Z03_1', '', '', 'RULE_44', 'RULE','Z');
-          commit;
-        end if;
+      elsif v_debit_card_over_due_acct_num >= 2 then
+        -- update result data
+        insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno,type,class) values(app_id_input, 'Z2', 'Z03', 'Z03_1', '', '', 'RULE_44', 'RULE','Z');
+        commit;
       end if;
       -- handle exceptions
       exception when others then v_error := 'RULE_44: ' || sqlerrm;
@@ -251,7 +327,10 @@ create or replace package body AF_HXBCB_RULE_PKG as
       commit;
       -- don't anything
     end RULE_44;
+
   -- rule:45
+  -- @author chen
+  -- @date 2017-12-1 18:52:00
   procedure RULE_45(app_id_input in varchar2,v_debit_card_over_due_month in af_request_applicantinfo.debit_card_over_due_month_num%type) is
     v_error varchar2(500);
     begin
@@ -259,12 +338,10 @@ create or replace package body AF_HXBCB_RULE_PKG as
         -- update result data
         insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno,type,class) values(app_id_input, 'Z2', 'Z03', 'Z03_1', 'NULL', 'NULL', 'RULE_45', 'RULE','Z');
         commit;
-      else
-        if v_debit_card_over_due_month >= 2 then
-          -- update result data
-          insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno,type,class) values(app_id_input, 'Z2', 'Z03', 'Z03_1', '', '', 'RULE_45', 'RULE','Z');
-          commit;
-        end if;
+      elsif v_debit_card_over_due_month >= 2 then
+        -- update result data
+        insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno,type,class) values(app_id_input, 'Z2', 'Z03', 'Z03_1', '', '', 'RULE_45', 'RULE','Z');
+        commit;
       end if;
       -- handle exceptions
       exception when others then v_error := 'RULE_45: ' || sqlerrm;
@@ -272,7 +349,10 @@ create or replace package body AF_HXBCB_RULE_PKG as
       commit;
       -- don't anything
     end RULE_45;
+
   -- rule:46
+  -- @author chen
+  -- @date 2017-12-1 18:52:00
   procedure RULE_46(app_id_input in varchar2,v_debit_co_due_longest_over in af_request_applicantinfo.debit_co_due_longest_over_due%type) is
     v_error varchar2(500);
     begin
@@ -280,12 +360,10 @@ create or replace package body AF_HXBCB_RULE_PKG as
         -- update result data
         insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno,type,class) values(app_id_input, 'Z2', 'Z03', 'Z03_1', 'NULL', 'NULL', 'RULE_46', 'RULE','Z');
         commit;
-      else
-        if v_debit_co_due_longest_over >= 2 then
-          -- update result data
-          insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno,type,class) values(app_id_input, 'Z2', 'Z03', 'Z03_1', '', '', 'RULE_46', 'RULE','Z');
-          commit;
-        end if;
+      elsif v_debit_co_due_longest_over >= 2 then
+        -- update result data
+        insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno,type,class) values(app_id_input, 'Z2', 'Z03', 'Z03_1', '', '', 'RULE_46', 'RULE','Z');
+        commit;
       end if;
       -- handle exceptions
       exception when others then v_error := 'RULE_46: ' || sqlerrm;
@@ -293,7 +371,10 @@ create or replace package body AF_HXBCB_RULE_PKG as
       commit;
       -- don't anything
     end RULE_46;
+
   -- rule:48
+  -- @author chen
+  -- @date 2017-12-1 18:52:00
   procedure RULE_48(app_id_input in varchar2,v_deb_c60overd_month_num in af_request_applicantinfo.deb_c60overd_month_num%type) is
     v_error varchar2(500);
     begin
@@ -301,13 +382,10 @@ create or replace package body AF_HXBCB_RULE_PKG as
         -- update result data
         insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno,type,class) values(app_id_input, 'Z2', 'Z03', 'Z03_1', 'NULL', 'NULL', 'RULE_48', 'RULE','Z');
         commit;
-      else
-        if v_deb_c60overd_month_num >= 2 then
-          -- update result data
-          insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno,type,class) values(app_id_input, 'Z2', 'Z03', 'Z03_1', '', '', 'RULE_48', 'RULE','Z');
-          commit;
-        end if;
-
+      elsif v_deb_c60overd_month_num >= 2 then
+        -- update result data
+        insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno,type,class) values(app_id_input, 'Z2', 'Z03', 'Z03_1', '', '', 'RULE_48', 'RULE','Z');
+        commit;
       end if;
       -- handle exceptions
       exception when others then v_error := 'RULE_48: ' || sqlerrm;
@@ -315,7 +393,10 @@ create or replace package body AF_HXBCB_RULE_PKG as
       commit;
       -- don't anything
     end RULE_48;
+
   -- rule:49
+  -- @author chen
+  -- @date 2017-12-1 18:52:00
   procedure RULE_49(app_id_input in varchar2,v_deb_c60overd_longest_over in af_request_applicantinfo.deb_c60overd_longest_over_due%type) is
     v_error varchar2(500);
     begin
@@ -323,12 +404,10 @@ create or replace package body AF_HXBCB_RULE_PKG as
         -- update result data
         insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno,type,class) values(app_id_input, 'Z2', 'Z03', 'Z03_1', 'NULL', 'NULL', 'RULE_49', 'RULE','Z');
         commit;
-      else
-        if v_deb_c60overd_longest_over >= 2  then
-          -- update result data
-          insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno,type,class) values(app_id_input, 'Z2', 'Z03', 'Z03_1', '', '', 'RULE_49', 'RULE','Z');
-          commit;
-        end if;
+      elsif v_deb_c60overd_longest_over >= 2  then
+        -- update result data
+        insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno,type,class) values(app_id_input, 'Z2', 'Z03', 'Z03_1', '', '', 'RULE_49', 'RULE','Z');
+        commit;
       end if;
       -- handle exceptions
       exception when others then v_error := 'RULE_49: ' || sqlerrm;
@@ -336,7 +415,10 @@ create or replace package body AF_HXBCB_RULE_PKG as
       commit;
       -- don't anything
     end RULE_49;
+
   -- rule:65
+  -- @author chen
+  -- @date 2017-12-1 18:52:00
   procedure RULE_65(app_id_input in varchar2,v_cotel in af_request_applicantinfo.c1_cotel%type,v_hmare in af_request_applicantinfo.c1_hmare%type,v_hmtel in af_request_applicantinfo.c1_hmtel%type) is
     v_error varchar2(500);
     begin
@@ -351,7 +433,10 @@ create or replace package body AF_HXBCB_RULE_PKG as
       commit;
       -- don't anything
     end RULE_65;
+
   -- rule:67
+  -- @author chen
+  -- @date 2017-12-1 18:52:00
   procedure RULE_67(app_id_input in varchar2,v_cycadd1 in af_request_applicantinfo.c4_cycadd1%type) is
     v_error varchar2(500);
     begin
@@ -367,7 +452,10 @@ create or replace package body AF_HXBCB_RULE_PKG as
       commit;
       -- don't anything
     end RULE_67;
+
   -- rule:68
+  -- @author chen
+  -- @date 2017-12-1 18:52:00
   procedure RULE_68(app_id_input in varchar2,v_cycadd1 in af_request_applicantinfo.c4_cycadd1%type) is
     v_error varchar2(500);
     begin
@@ -383,7 +471,10 @@ create or replace package body AF_HXBCB_RULE_PKG as
       commit;
       -- don't anything
     end RULE_68;
+
   -- rule:70
+  -- @author chen
+  -- @date 2017-12-1 18:52:00
   procedure RULE_70(app_id_input in varchar2,v_idnbr in af_request_applicantinfo.c1_idnbr%type) is
     flag number;
     v_error varchar2(500);
@@ -405,7 +496,10 @@ create or replace package body AF_HXBCB_RULE_PKG as
       commit;
       -- don't anything
     end RULE_70;
+
   -- rule:71
+  -- @author chen
+  -- @date 2017-12-1 18:52:00
   procedure RULE_71(app_id_input in varchar2,v_idnbr in af_request_applicantinfo.c1_idnbr%type) is
     flag number;
     v_error varchar2(500);
@@ -427,7 +521,10 @@ create or replace package body AF_HXBCB_RULE_PKG as
       commit;
       -- don't anything
     end RULE_71;
+
   -- rule:96
+  -- @author chen
+  -- @date 2017-12-1 18:52:00
   procedure RULE_96(app_id_input in varchar2,v_educationdegree in af_request_applicantinfo.educationdegree%type) is
     v_error varchar2(500);
     begin
@@ -443,7 +540,10 @@ create or replace package body AF_HXBCB_RULE_PKG as
       commit;
       -- don't anything
     end RULE_96;
+
   -- rule:98
+  -- @author chen
+  -- @date 2017-12-1 18:52:00
   procedure RULE_98(app_id_input in varchar2,v_result_xm in af_request_applicantinfo.result_xm%type) is
     v_error varchar2(500);
     begin
@@ -459,7 +559,10 @@ create or replace package body AF_HXBCB_RULE_PKG as
       commit;
       -- don't anything
     end RULE_98;
+
   -- rule:118
+  -- @author chen
+  -- @date 2017-12-1 18:52:00
   procedure RULE_118(app_id_input in varchar2, v_remobil af_request_applicantinfo.c1_remobil%type,  v_mobile af_request_applicantinfo.c1_mobile%type) is
     v_error varchar2(500);
     begin
@@ -474,7 +577,10 @@ create or replace package body AF_HXBCB_RULE_PKG as
       commit;
       -- don't anything
     end RULE_118;
+
   -- rule:138
+  -- @author chen
+  -- @date 2017-12-1 18:52:00
   procedure RULE_138(app_id_input in varchar2, v_educls in af_request_applicantinfo.c1_educls%type,v_educationapproach in af_request_applicantinfo.educationapproach%type) is
     v_error varchar2(500);
     begin
@@ -489,7 +595,10 @@ create or replace package body AF_HXBCB_RULE_PKG as
       commit;
       -- don't anything
     end RULE_138;
+
   -- rule:139
+  -- @author chen
+  -- @date 2017-12-1 18:52:00
   procedure RULE_139(app_id_input in varchar2,v_no_pin_debit_card_acct_num in af_request_applicantinfo.no_pin_debit_card_acct_num%type) is
     v_error varchar2(500);
     begin
@@ -498,12 +607,10 @@ create or replace package body AF_HXBCB_RULE_PKG as
         -- update result data
         insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno,type,class) values(app_id_input, 'Z2', 'Z03', 'Z03_1', 'NULL', 'NULL', 'RULE_139', 'RULE','Z');
         commit;
-      else
-        if v_no_pin_debit_card_acct_num >= 'N' then
-          -- update result data
-          insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno,type,class) values(app_id_input, 'Z2', 'Z03', 'Z03_1', '', '', 'RULE_139', 'RULE','Z');
-          commit;
-        end if;
+      elsif v_no_pin_debit_card_acct_num >= 'N' then
+        -- update result data
+        insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno,type,class) values(app_id_input, 'Z2', 'Z03', 'Z03_1', '', '', 'RULE_139', 'RULE','Z');
+        commit;
       end if;
       -- handle exceptions
       exception when others then v_error := 'RULE_139: ' || sqlerrm;
@@ -511,7 +618,10 @@ create or replace package body AF_HXBCB_RULE_PKG as
       commit;
       -- don't anything
     end RULE_139;
+
   -- rule:140
+  -- @author chen
+  -- @date 2017-12-1 18:52:00
   procedure RULE_140(app_id_input in varchar2,v_no_pd_card_loan_org_number in af_request_applicantinfo.no_pd_card_loan_org_number%type) is
     v_error varchar2(500);
     begin
@@ -520,12 +630,10 @@ create or replace package body AF_HXBCB_RULE_PKG as
         -- update result data
         insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno,type,class) values(app_id_input, 'Z2', 'Z03', 'Z03_1', 'NULL', 'NULL', 'RULE_140', 'RULE','Z');
         commit;
-      else
-        if  v_no_pd_card_loan_org_number >= 'N'  then
-          -- update result data
-          insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno,type,class) values(app_id_input, 'Z2', 'Z03', 'Z03_1', '', '', 'RULE_140', 'RULE','Z');
-          commit;
-        end if;
+      elsif  v_no_pd_card_loan_org_number >= 'N'  then
+        -- update result data
+        insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno,type,class) values(app_id_input, 'Z2', 'Z03', 'Z03_1', '', '', 'RULE_140', 'RULE','Z');
+        commit;
       end if;
       -- handle exceptions
       exception when others then v_error := 'RULE_140: ' || sqlerrm;
@@ -533,7 +641,10 @@ create or replace package body AF_HXBCB_RULE_PKG as
       commit;
       -- don't anything
     end RULE_140;
+
   -- rule:141
+  -- @author chen
+  -- @date 2017-12-1 18:52:00
   procedure RULE_141(app_id_input in varchar2,v_no_pd_card_loan_corp_number in af_request_applicantinfo.no_pd_card_loan_corp_number%type) is
     v_error varchar2(500);
     begin
@@ -542,12 +653,10 @@ create or replace package body AF_HXBCB_RULE_PKG as
         -- update result data
         insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno,type,class) values(app_id_input, 'Z2', 'Z03', 'Z03_1', 'NULL', 'NULL', 'RULE_141', 'RULE','Z');
         commit;
-      else
-        if  v_no_pd_card_loan_corp_number >= 'N'  then
-          -- update result data
-          insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno,type,class) values(app_id_input, 'Z2', 'Z03', 'Z03_1', '', '', 'RULE_141', 'RULE','Z');
-          commit;
-        end if;
+      elsif  v_no_pd_card_loan_corp_number >= 'N'  then
+        -- update result data
+        insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno,type,class) values(app_id_input, 'Z2', 'Z03', 'Z03_1', '', '', 'RULE_141', 'RULE','Z');
+        commit;
       end if;
       -- handle exceptions
       exception when others then v_error := 'RULE_141: ' || sqlerrm;
@@ -555,7 +664,10 @@ create or replace package body AF_HXBCB_RULE_PKG as
       commit;
       -- don't anything
     end RULE_141;
+
   -- rule:143
+  -- @author chen
+  -- @date 2017-12-1 18:52:00
   procedure RULE_143(app_id_input in varchar2,v_frs_cred_crd_issue_mon in af_request_applicantinfo.frs_cred_crd_issue_mon%type) is
     v_error varchar2(500);
     begin
@@ -564,12 +676,10 @@ create or replace package body AF_HXBCB_RULE_PKG as
         -- update result data
         insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno,type,class) values(app_id_input, 'Z2', 'Z03', 'Z03_1', 'NULL', 'NULL', 'RULE_143', 'RULE','Z');
         commit;
-      else
-        if  v_frs_cred_crd_issue_mon <= 'N' then
-          -- update result data
-          insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno,type,class) values(app_id_input, 'Z2', 'Z03', 'Z03_1', '', '', 'RULE_143', 'RULE','Z');
-          commit;
-        end if;
+      elsif  v_frs_cred_crd_issue_mon <= 'N' then
+        -- update result data
+        insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno,type,class) values(app_id_input, 'Z2', 'Z03', 'Z03_1', '', '', 'RULE_143', 'RULE','Z');
+        commit;
       end if;
       -- handle exceptions
       exception when others then v_error := 'RULE_143: ' || sqlerrm;
@@ -577,7 +687,10 @@ create or replace package body AF_HXBCB_RULE_PKG as
       commit;
       -- don't anything
     end RULE_143;
+
   -- rule:145
+  -- @author chen
+  -- @date 2017-12-1 18:52:00
   procedure RULE_145(app_id_input in varchar2,v_reship in af_request_applicantinfo.c1_reship%type,v_mate_contact_tel in af_request_applicantinfo.mate_contact_tel%type,v_remobil in af_request_applicantinfo.c1_remobil%type) is
     v_error varchar2(500);
     begin
@@ -587,12 +700,10 @@ create or replace package body AF_HXBCB_RULE_PKG as
           -- update result data
           insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno,type,class) values(app_id_input, 'Z2', 'Z03', 'Z03_2', 'NULL', 'NULL', 'RULE_145', 'RULE','Z');
           commit;
-        else
-          if v_remobil = v_mate_contact_tel then
-            -- update result data
-            insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno,type,class) values(app_id_input, 'Z2', 'Z03', 'Z03_2', '', '', 'RULE_145', 'RULE','Z');
-            commit;
-          end if;
+        elsif v_remobil = v_mate_contact_tel then
+          -- update result data
+          insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno,type,class) values(app_id_input, 'Z2', 'Z03', 'Z03_2', '', '', 'RULE_145', 'RULE','Z');
+          commit;
         end if;
       end if;
       -- handle exceptions
@@ -601,7 +712,10 @@ create or replace package body AF_HXBCB_RULE_PKG as
       commit;
       -- don't anything
     end RULE_145;
+
   -- rule:152_1
+  -- @author chen
+  -- @date 2017-12-1 18:52:00
   procedure RULE_152_1(app_id_input in varchar2,v_apsour in af_request_applicantinfo.c4_apsour%type) is
     v_error varchar2(500);
     begin
@@ -617,7 +731,10 @@ create or replace package body AF_HXBCB_RULE_PKG as
       commit;
       -- don't anything
     end RULE_152_1;
+
   -- rule:152_2
+  -- @author chen
+  -- @date 2017-12-1 18:52:00
   procedure RULE_152_2(app_id_input in varchar2,v_apsour in af_request_applicantinfo.c4_apsour%type) is
     v_error varchar2(500);
     begin
@@ -633,7 +750,10 @@ create or replace package body AF_HXBCB_RULE_PKG as
       commit;
       -- don't anything
     end RULE_152_2;
+
   -- rule:152_4
+  -- @author chen
+  -- @date 2017-12-1 18:52:00
   procedure RULE_152_4(app_id_input in varchar2,v_apsour in af_request_applicantinfo.c4_apsour%type) is
     v_error varchar2(500);
     begin
@@ -649,7 +769,10 @@ create or replace package body AF_HXBCB_RULE_PKG as
       commit;
       -- don't anything
     end RULE_152_4;
+
   -- rule:153_2
+  -- @author chen
+  -- @date 2017-12-1 18:52:00
   procedure RULE_153_2(app_id_input in varchar2,v_apsour in af_request_applicantinfo.c4_apsour%type) is
     v_error varchar2(500);
     begin
@@ -665,7 +788,10 @@ create or replace package body AF_HXBCB_RULE_PKG as
       commit;
       -- don't anything
     end RULE_153_2;
+
   -- rule:153_3
+  -- @author chen
+  -- @date 2017-12-1 18:52:00
   procedure RULE_153_3(app_id_input in varchar2,v_apsour in af_request_applicantinfo.c4_apsour%type) is
     v_error varchar2(500);
     begin
@@ -681,7 +807,10 @@ create or replace package body AF_HXBCB_RULE_PKG as
       commit;
       -- don't anything
     end RULE_153_3;
+
   -- rule:179
+  -- @author chen
+  -- @date 2017-12-1 18:52:00
   procedure RULE_179(app_id_input in varchar2,v_remobil in af_request_applicantinfo.c1_remobil%type,v_rename in af_request_applicantinfo.c1_rename%type) is
     flag number;
     v_error varchar2(500);
@@ -706,7 +835,10 @@ create or replace package body AF_HXBCB_RULE_PKG as
       commit;
       -- don't anything
     end RULE_179;
+
   -- rule:182
+  -- @author chen
+  -- @date 2017-12-1 18:52:00
   procedure RULE_182(app_id_input in varchar2,v_coname in af_request_applicantinfo.c1_coname%type) is
     v_error varchar2(500);
     begin
@@ -721,7 +853,10 @@ create or replace package body AF_HXBCB_RULE_PKG as
       commit;
       -- don't anything
     end RULE_182;
+
   -- rule:198
+  -- @author chen
+  -- @date 2017-12-1 18:52:00
   procedure RULE_198(app_id_input in varchar2,v1v2_flag in af_request_applicantinfo.c1c2_flag%type,v2_gender  in af_request_applicantinfo.c2_gender%type,v2_idnbr in  af_request_applicantinfo.c2_idnbr%type,v2_idtype in af_request_applicantinfo.c2_idtype%type,v_gender in af_request_applicantinfo.c1_gender%type,v_idtype in  af_request_applicantinfo.c1_idtype%type,v_idnbr in af_request_applicantinfo.c1_idnbr%type) is
     v_error varchar2(500);
     begin
@@ -737,18 +872,16 @@ create or replace package body AF_HXBCB_RULE_PKG as
           insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno,type,class) values(app_id_input, 'W2', 'W01', 'W01_4', '', '', 'RULE_198', 'RULE','Z');
           commit;
         end if;
-      else
-        if  nvl(v2_gender,'null') != 'null' and v2_idtype = '身份证'  then
-          if mod(substr(v2_idnbr,-2,1),2) = 0 and v2_gender = '女' then
-            -- update result data
-            insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno,type,class) values(app_id_input, 'W2', 'W01', 'W01_4', '', '', 'RULE_198', 'RULE','Z');
-            commit;
-          end if;
-          if mod(substr(v2_idnbr,-2,1),2) = 1 and  v2_gender = '男' then
-            -- update result data
-            insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno,type,class) values(app_id_input, 'W2', 'W01', 'W01_4', '', '', 'RULE_198', 'RULE','Z');
-            commit;
-          end if;
+      elsif  nvl(v2_gender,'null') != 'null' and v2_idtype = '身份证'  then
+        if mod(substr(v2_idnbr,-2,1),2) = 0 and v2_gender = '女' then
+          -- update result data
+          insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno,type,class) values(app_id_input, 'W2', 'W01', 'W01_4', '', '', 'RULE_198', 'RULE','Z');
+          commit;
+        end if;
+        if mod(substr(v2_idnbr,-2,1),2) = 1 and  v2_gender = '男' then
+          -- update result data
+          insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno,type,class) values(app_id_input, 'W2', 'W01', 'W01_4', '', '', 'RULE_198', 'RULE','Z');
+          commit;
         end if;
       end if;
       -- handle exceptions
@@ -759,6 +892,8 @@ create or replace package body AF_HXBCB_RULE_PKG as
     end RULE_198;
 
   -- rule:236
+  -- @author chen
+  -- @date 2017-12-1 18:52:00
   procedure RULE_236(app_id_input in varchar2) is
     v_error varchar2(500);
     begin
@@ -775,6 +910,8 @@ create or replace package body AF_HXBCB_RULE_PKG as
     end RULE_236;
 
   -- rule:121
+  -- @author chen
+  -- @date 2017-12-1 18:52:00
   procedure RULE_121(app_id_input in varchar2,v_idtype in varchar2, v_idnbr in varchar2,v_iddt1 in varchar2,v_idte1 in varchar2,v_birth in varchar2) is
     birth  varchar2(10);
     v_error varchar2(500);
@@ -798,7 +935,10 @@ create or replace package body AF_HXBCB_RULE_PKG as
       commit;
       -- don't anything
     end RULE_121;
+
   -- rule:122
+  -- @author chen
+  -- @date 2017-12-1 18:52:00
   procedure RULE_122(app_id_input in varchar2,v_idte1 in varchar2,v_iddt1 in varchar2) is
     b_date varchar2(10);
     v_error varchar2(500);
@@ -817,7 +957,10 @@ create or replace package body AF_HXBCB_RULE_PKG as
       commit;
       -- don't anything
     end RULE_122;
+
   -- rule:125
+  -- @author chen
+  -- @date 2017-12-1 18:52:00
   procedure RULE_125(app_id_input in varchar2,v_wifimacenenglish in varchar2) is
     v_error varchar2(500);
     begin
@@ -832,7 +975,10 @@ create or replace package body AF_HXBCB_RULE_PKG as
       commit;
       -- don't anything
     end RULE_125;
+
   -- rule:126
+  -- @author chen
+  -- @date 2017-12-1 18:52:00
   procedure RULE_126(app_id_input in varchar2,v_imeienenglish in varchar2) is
     v_error varchar2(500);
     begin
@@ -847,7 +993,10 @@ create or replace package body AF_HXBCB_RULE_PKG as
       commit;
       -- don't anything
     end RULE_126;
+
   -- rule:127
+  -- @author chen
+  -- @date 2017-12-1 18:52:00
   procedure RULE_127(app_id_input in varchar2,v_imsienenglish in varchar2) is
     v_error varchar2(500);
     begin
@@ -862,7 +1011,10 @@ create or replace package body AF_HXBCB_RULE_PKG as
       commit;
       -- don't anything
     end RULE_127;
+
   -- rule:128
+  -- @author chen
+  -- @date 2017-12-1 18:52:00
   procedure RULE_128(app_id_input in varchar2,v_ipenenglish in varchar2) is
     v_error varchar2(500);
     begin
@@ -877,7 +1029,10 @@ create or replace package body AF_HXBCB_RULE_PKG as
       commit;
       -- don't anything
     end RULE_128;
+
   -- rule:129
+  -- @author chen
+  -- @date 2017-12-1 18:52:00
   procedure RULE_129(app_id_input in varchar2,v_codeaddrenglish in varchar2) is
     v_error varchar2(500);
     begin
@@ -892,7 +1047,10 @@ create or replace package body AF_HXBCB_RULE_PKG as
       commit;
       -- don't anything
     end RULE_129;
+
   -- rule:130
+  -- @author chen
+  -- @date 2017-12-1 18:52:00
   procedure RULE_130(app_id_input in varchar2,v_codeemailenglish in varchar2) is
     v_error varchar2(500);
     begin
@@ -907,7 +1065,10 @@ create or replace package body AF_HXBCB_RULE_PKG as
       commit;
       -- don't anything
     end RULE_130;
+
   -- rule:131
+  -- @author chen
+  -- @date 2017-12-1 18:52:00
   procedure RULE_131(app_id_input in varchar2,v_codenameenglish in varchar2) is
     v_error varchar2(500);
     begin
