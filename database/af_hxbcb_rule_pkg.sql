@@ -1908,7 +1908,7 @@ create or replace package body AF_HXBCB_RULE_PKG as
         select count(1) into flag1
         from af_request_applicantinfo t
          where v_remobil = t.c1_remobil and v_reship != t.c1_reship;
-        if flag1 > 2 then
+        if flag1 > N then
           -- update result data
           insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno, type) values(app_id_input, 'Z2', 'Z01', 'Z01_2', '', '', 'RULE_175', 'RULE');
           commit;
@@ -1932,7 +1932,7 @@ create or replace package body AF_HXBCB_RULE_PKG as
         select count(1) into flag
         from af_request_applicantinfo t
          where v_rename = t.c1_xname1 and v_remobil = t.c1_xmobil1;
-        if flag > 2 then
+        if flag > N then
           -- update result data
           insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno, type) values(app_id_input, 'Z2', 'Z01', 'Z01_2', '', '', 'RULE_176', 'RULE');
           commit;
@@ -1955,7 +1955,7 @@ create or replace package body AF_HXBCB_RULE_PKG as
         select count(1) into flag
         from af_request_applicantinfo t
          where t.c1_remobil = v_xmobil1 and t.c1_rename = v_xname1 ;
-        if flag > 2 then
+        if flag > N then
           -- update result data
           insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno, type) values(app_id_input, 'Z2', 'Z01', 'Z01_1', '', '', 'RULE_178', 'RULE');
           commit;
