@@ -340,6 +340,8 @@ create or replace package body AF_HXBCB is
   procedure AF_HXBCB_RULE(app_id_input in varchar2) is
     rules_riskcode af_response_afriskwarning.riskcode%type;
     begin
+      -- @author song
+      -- @date 2017-12-2 10:30:00
       AF_HXBCB_RULE_PKG.RULE_1(app_id_input, v_mate_name,v_reship,v_rename);
       AF_HXBCB_RULE_PKG.RULE_2(app_id_input, v_mobile,v_cell_phone);
       AF_HXBCB_RULE_PKG.RULE_18(app_id_input,v_mobile,v_comp_phone);
@@ -364,6 +366,10 @@ create or replace package body AF_HXBCB is
       AF_HXBCB_RULE_PKG.RULE_37(app_id_input, v_cumul_pay_months,v_pboc_yl_pay_status);
       AF_HXBCB_RULE_PKG.RULE_38(app_id_input, v_pboc_gjj_pay_status ,v_pay_ym, v_first_deposit_ym);
       AF_HXBCB_RULE_PKG.RULE_80(app_id_input, v_mobile);
+      AF_HXBCB_RULE_PKG.RULE_146(app_id_input, v_query_rec_2y_sum1);
+      AF_HXBCB_RULE_PKG.RULE_147(app_id_input, v_query_rec_2y_sum5);
+      AF_HXBCB_RULE_PKG.RULE_148(app_id_input, v_query_org_1m_sum1);
+      AF_HXBCB_RULE_PKG.RULE_149(app_id_input, v_query_org_1m_sum5);
       AF_HXBCB_RULE_PKG.RULE_175(app_id_input, v_remobil, v_reship);
       AF_HXBCB_RULE_PKG.RULE_176(app_id_input, v_remobil, v_rename);
       AF_HXBCB_RULE_PKG.RULE_176(app_id_input, v_xname1, v_xmobil1);
@@ -417,17 +423,7 @@ create or replace package body AF_HXBCB is
       AF_HXBCB_RULE_PKG.RULE_166(app_id_input, v_cotel);
       AF_HXBCB_RULE_PKG.RULE_168(app_id_input, v_hmtel);
       AF_HXBCB_RULE_PKG.RULE_232(app_id_input, v_abuser, v_abname);
-      AF_HXBCB_RULE_PKG.RULE_138(app_id_input, v_educls,v_educationapproach);
-      AF_HXBCB_RULE_PKG.RULE_139(app_id_input, v_no_pin_debit_card_acct_num);
-      AF_HXBCB_RULE_PKG.RULE_140(app_id_input, v_no_pd_card_loan_org_number);
-      AF_HXBCB_RULE_PKG.RULE_141(app_id_input, v_no_pd_card_loan_corp_number);
       AF_HXBCB_RULE_PKG.RULE_142(app_id_input, v_opposite_position);
-      AF_HXBCB_RULE_PKG.RULE_143(app_id_input, v_frs_cred_crd_issue_mon);
-      AF_HXBCB_RULE_PKG.RULE_145(app_id_input, v_reship ,v_remobil ,v_mate_contact_tel);
-      AF_HXBCB_RULE_PKG.RULE_146(app_id_input, v_query_rec_2y_sum1);
-      AF_HXBCB_RULE_PKG.RULE_147(app_id_input, v_query_rec_2y_sum5);
-      AF_HXBCB_RULE_PKG.RULE_148(app_id_input, v_query_org_1m_sum1);
-      AF_HXBCB_RULE_PKG.RULE_149(app_id_input, v_query_org_1m_sum5);
       --生成规则风险等级结果数据(聚合结果)
       select max(ra.riskcode) into rules_riskcode from af_response_afriskwarning ra where ra.type = 'RULE' and ra.app_id = app_id_input;
       if nvl(rules_riskcode, 'null') != 'null' then
