@@ -18,7 +18,7 @@ create or replace package AF_HXBCB_RULE_PKG as
   -- rule:166
   procedure RULE_166(app_id_input in varchar2, v_cotel in af_request_applicantinfo.c1_cotel%type);
   -- rule:168
-  procedure RULE_168(app_id_input in varchar2, v_hmtel in varchar2);
+  procedure RULE_168(app_id_input in varchar2, v_hmare in af_request_applicantinfo.c1_hmare%type, v_hmtel in af_request_applicantinfo.c1_hmtel%type);
   -- rule:232
   procedure RULE_232(app_id_input in varchar2, v_abuser in af_request_applicantinfo.c4_abuser%type, v_abname in af_request_applicantinfo.c4_abname%type);
 end AF_HXBCB_RULE_PKG;
@@ -235,22 +235,24 @@ create or replace package body AF_HXBCB_RULE_PKG as
       -- don't anything
     end RULE_166;
   -- rule:168
-  procedure RULE_168(app_id_input in varchar2, v_hmtel in varchar2) is
+  procedure RULE_168(app_id_input in varchar2, v_hmare in af_request_applicantinfo.c1_hmare%type, v_hmtel in af_request_applicantinfo.c1_hmtel%type) is
     flag number;
+    v_telephone varchar2(21);
     v_error varchar2(500);
     begin
-      if nvl(v_hmtel, 'null') != 'null' then
+      if nvl(v_hmare, 'null') != 'null' and nvl(v_hmtel, 'null') != 'null' then
+        v_telephone:=v_hmare || v_hmtel;
         select count(1) into flag
         from opas_tel_risklist t
         where exists(
                   select 1 from opas_tel_risklist t_1
-                  where t.company_tel = v_hmtel
+                  where t.company_tel = v_telephone
                   union all
                   select 1 from opas_tel_risklist t_2
-                  where t.living_tel = v_hmtel
+                  where t.living_tel = v_telephone
                   union all
                   select 1 from opas_tel_risklist t_3
-                  where t.other_tel = v_hmtel
+                  where t.other_tel = v_telephone
               ) and t.curr_status = '1';
         -- about curr_status column, mybe we need to add a bitmap index
         -- curr_status must hava value for index and order by
