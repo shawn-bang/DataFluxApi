@@ -2345,6 +2345,19 @@ comment on column  af_request_appinfo_his_cold.vehicle_value is '车辆价值';
 comment on column  af_request_appinfo_his_cold.vehicle_age is '车龄';
 
 -----------------------------------------------------------------------------------------
+-- init risk result settings data
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskcode, riskdesc) values('RULE_155','HIT','RULE','Z','Z2','Z01','Z01_1','E','高风险');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskcode, riskdesc) values('RULE_156','HIT','RULE','Z','Z2','Z01','Z01_5','D','中高风险');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskcode, riskdesc) values('RULE_158','HIT','RULE','Z','Z2','Z01','Z01_4','D','中高风险');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskcode, riskdesc) values('RULE_160','HIT','RULE','Z','Z2','Z01','Z01_3','D','中高风险');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskcode, riskdesc) values('RULE_162','HIT','RULE','Z','Z2','Z01','Z01_3','D','中高风险');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskcode, riskdesc) values('RULE_164','HIT','RULE','Z','Z2','Z01','Z01_2','E','高风险');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskcode, riskdesc) values('RULE_166','HIT','RULE','Z','Z2','Z01','Z01_2','E','高风险');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskcode, riskdesc) values('RULE_168','HIT','RULE','Z','Z2','Z01','Z01_2','E','中高风险');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskcode, riskdesc) values('RULE_232','HIT','RULE','Z','Z2','Z01','Z01_6','D','中高风险');
+commit;
+
+-----------------------------------------------------------------------------------------
 --创建表空间的sql
 --create tablespace index_ts datafile 'D:\test.ora' size 1000m;
 -- DDL comment: create index
