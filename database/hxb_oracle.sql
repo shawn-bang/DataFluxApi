@@ -290,7 +290,7 @@ create table af_request_applicantinfo(
       c1_copost VARCHAR2(6),
       c1_cotel VARCHAR2(17),
       c1_coyr NUMBER(2),
-      c1_earn NUMBER(5,1),
+      c1_earn NUMBER(6,1),
       c1_educls VARCHAR2(1),
       c1_email VARCHAR2(40),
       c1_ename VARCHAR2(30),
@@ -433,7 +433,7 @@ create table af_request_applicantinfo(
       c2_coname VARCHAR2(30),
       c2_cotel VARCHAR2(17),
       c2_coyr NUMBER(2),
-      c2_earn NUMBER(5,1),
+      c2_earn NUMBER(6,1),
       c2_email VARCHAR2(40),
       c2_ename VARCHAR2(30),
       c2_gender VARCHAR2(1),
@@ -1235,6 +1235,7 @@ create unique index idx_snaresult_appid on af_app_sna_result(app_id) tablespace 
 create index idx_movinput_appid_varname on af_app_model_var_input(app_id,var_name) tablespace index_ts;
 create index idx_snainput_nodes on af_app_snainput(from_node,to_node,to_type) tablespace index_ts;
 create index idx_sna_input_node_type on af_app_sna_input(to_node,to_type) tablespace index_ts;
-create unique index idx_risklevel_ruleno on af_risk_level_settings(ruleno) tablespace index_ts;
+-- 1130 deploy none
+-- create unique index idx_risklevel_ruleno on af_risk_level_settings(ruleno) tablespace index_ts;
 
 

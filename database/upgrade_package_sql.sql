@@ -18,8 +18,10 @@
   v_mobile af_request_applicantinfo.c1_mobile%type;
   -- 申请人单位号码:v_cotel = c1_cotel
   v_cotel af_request_applicantinfo.c1_cotel%type;
-  -- 申请人住宅号码:v_hmtel = c1_hmare + c1_hmtel
-  v_hmtel varchar2(21);
+  -- 申请人住宅号码区号:c1_hmare
+  v_hmare af_request_applicantinfo.c1_hmare%type;
+  -- 申请人住宅号码:c1_hmtel
+  v_hmtel af_request_applicantinfo.c1_hmtel%type;
   -- 推广员编号:c4_abuser
   v_abuser af_request_applicantinfo.c4_abuser%type;
   -- 推广员姓名:c4_abname
@@ -50,11 +52,12 @@ create or replace package body AF_HXBCB is
         c1_hmadd1 || c1_hmadd2 || c1_hmadd3 || c1_hmadd4,
         c1_mobile,
         c1_cotel,
-        c1_hmare || c1_hmtel,
+        c1_hmare,
+        c1_hmtel,
         c4_abuser,
         c4_abname,
         c1_idnbr,
-        c1_coname into v_app_num, v_coadd, v_hmadd, v_mobile, v_cotel, v_hmtel, v_abuser, v_abname, v_idnbr, v_coname
+        c1_coname into v_app_num, v_coadd, v_hmadd, v_mobile, v_cotel, v_hmare, v_hmtel, v_abuser, v_abname, v_idnbr, v_coname
       from af_request_applicantinfo
       where app_id = app_id_input;
       --调用规则
@@ -100,7 +103,7 @@ create or replace package body AF_HXBCB is
       AF_HXBCB_RULE_PKG.RULE_162(app_id_input, v_hmadd);
       AF_HXBCB_RULE_PKG.RULE_164(app_id_input, v_mobile);
       AF_HXBCB_RULE_PKG.RULE_166(app_id_input, v_cotel);
-      AF_HXBCB_RULE_PKG.RULE_168(app_id_input, v_hmtel);
+      AF_HXBCB_RULE_PKG.RULE_168(app_id_input, v_hmare, v_hmtel);
       AF_HXBCB_RULE_PKG.RULE_232(app_id_input, v_abuser, v_abname);
       --生成规则风险等级结果数据(聚合结果)
       select max(ra.riskcode) into rules_riskcode from af_response_afriskwarning ra where ra.type = 'RULE' and ra.app_id = app_id_input;
