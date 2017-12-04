@@ -315,7 +315,7 @@ create or replace package body AF_HXBCB is
         query_org_1m_sum5,
         result_xm,
         resi_tel,
-        wifimacenenglish,
+        wifimacenenglish
       into
         v_bad_debt_num,
         v_codeaddrenglish,
