@@ -6,156 +6,231 @@
 
 
   v_errors varchar2(500);
-  --联系人1姓名 v_xname1 = c1_xname1
-  v_xname1 af_request_applicantinfo.c1_xname1%type;
-  --主卡申请人证件号码 v_idnbr = c1_idnbr
-  v_idnbr af_request_applicantinfo.c1_idnbr%type;
-  --行业 5  v_industry_type5 = industry_type5
-  v_industry_type5 af_request_applicantinfo.industry_type5%type;
-  --行业 4  v_industry_type4 = industry_type4
-  v_industry_type4 af_request_applicantinfo.industry_type4%type;
-  --行业 3  v_industry_type3 = industry_type3
-  v_industry_type3 af_request_applicantinfo.industry_type3%type;
-  --行业 2  v_industry_type2 = industry_type2
-  v_industry_type2 af_request_applicantinfo.industry_type2%type;
-  --行业 1  v_industry_type1 = industry_type1
-  v_industry_type1 af_request_applicantinfo.industry_type1%type;
-  --缴费状态 v_pboc_gjj_pay_status = pboc_gjj_pay_status
-  v_pboc_gjj_pay_status af_request_applicantinfo.pboc_gjj_pay_status%type;
-  --缴至月份 v_pay_ym = pay_ym
-  v_pay_ym af_request_applicantinfo.pay_ym%type;
-  --初缴月份 v_first_deposit_ym = first_deposit_ym
-  v_first_deposit_ym af_request_applicantinfo.first_deposit_ym%type;
-  -- 主卡申请人家庭电话区号
-  v_hmare af_request_applicantinfo.c1_hmare%type;
-  -- 申请人住宅号码:v_hmtel = c1_hmtel
-  v_hmtel af_request_applicantinfo.c1_hmtel%type;
-  --累计缴费月数  v_cumul_pay_months = cumul_pay_months
-  v_cumul_pay_months af_request_applicantinfo.cumul_pay_months%type;
-  --缴费状态  v_pboc_yl_pay_status = pboc_yl_pay_status
-  v_pboc_yl_pay_status af_request_applicantinfo.pboc_yl_pay_status%type;
-  --联系人1手机 v_xmobil1 = c1_xmobil1
-  v_xmobil1 af_request_applicantinfo.c1_xmobil1%type;
-  --住宅电话  v_resi_tel = resi_tel
-  v_resi_tel af_request_applicantinfo.resi_tel%type;
-  --直系亲属姓名  v_rename = c1_rename
-  v_rename  af_request_applicantinfo.c1_rename%type;
-  --配偶_姓名  v_mate_name = mate_name
-  v_mate_name  af_request_applicantinfo.mate_name%type;
-  --直系亲属电话区号 v_retelar = c1_retelar
-  v_retelar af_request_applicantinfo.c1_retelar%type;
-  --直系亲属电话  v_retel = c1_retel
-  v_retel af_request_applicantinfo.c1_retel%type;
-  -- 单位电话  v_comp_phone = c_comp_phone
-  v_comp_phone af_request_applicantinfo.c_comp_phone%type;
-  -- 联系人1电话区号 v_xtelar1 = c1_xtelar1
-  v_xtelar1 af_request_applicantinfo.c1_xtelar1%type;
-  -- 联系人1电话号码:v_xtel1 = c1_xtel1
-  v_xtel1 af_request_applicantinfo.c1_xtel1%type;
-  -- 逾期天数  v_overdue_day = overdue_day
-  v_overdue_day af_request_applicantinfo.overdue_day%type;
-  --家庭房屋状况 v_hmst = c1_hmst
-  v_hmst af_request_applicantinfo.c1_hmst%type;
-  --手机号码 v_cell_phone = cell_phone
-  v_cell_phone af_request_applicantinfo.cell_phone%type;
-  --申请人贷记卡逾期_最长逾期月数/最长透支月数 v_debit_co_due_longest_over =debit_co_due_longest_over_due
-  v_debit_co_due_longest_over af_request_applicantinfo.debit_co_due_longest_over_due%type;
-  --申请人贷记卡逾期_月份数v_debit_card_over_due_month = debit_card_over_due_month_num
-  v_debit_card_over_due_month af_request_applicantinfo.debit_card_over_due_month_num%type;
-  --申请人贷记卡逾期_笔数/账户数 v_debit_card_over_due_acct_num = debit_card_over_due_acct_num
-  v_debit_card_over_due_acct_num af_request_applicantinfo.debit_card_over_due_acct_num%type;
-  --申请人贷款逾期_月份数 v_loan_overdue_month_num = loan_overdue_month_num
-  v_loan_overdue_month_num af_request_applicantinfo.loan_overdue_month_num%type;
-  --申请人呆帐_笔数 v_bad_debt_num = bad_debt_num
-  v_bad_debt_num af_request_applicantinfo.bad_debt_num%type;
-  --主附卡标识  v1v2_flag = c1c2_flag
-  v1v2_flag af_request_applicantinfo.c1c2_flag%type;
-  --附卡申请人性别 v2_gender = c2_gender
-  v2_gender af_request_applicantinfo.c2_gender%type;
-  --附卡申请人证件号码 v2_idnbr = c2_idnbr
-  v2_idnbr af_request_applicantinfo.c2_idnbr%type;
-  --附卡申请人证件类型 v2_idtype = c2_idtype
-  v2_idtype af_request_applicantinfo.c2_idtype%type;
-  --主卡申请人性别 v_gender = c1_gender
-  v_gender af_request_applicantinfo.c1_gender%type;
-  --申请人公司中文全称 v_coname = c1_coname
-  v_coname af_request_applicantinfo.c1_coname%type;
+
   --申请人推广进件来源 v_apsour = c4_apsour
   v_apsour af_request_applicantinfo.c4_apsour%type;
-  --直系亲属关系 v_reship = c1_reship
-  v_reship  af_request_applicantinfo.c1_reship%type;
-  --申请人配偶的联系电话v_mate_contact_te = mate_contact_tel
-  v_mate_contact_tel af_request_applicantinfo.mate_contact_tel%type;
-  --申请人首张贷记卡发卡月份v_frs_cred_crd_issue_mon = frs_cred_crd_issue_mon
-  v_frs_cred_crd_issue_mon af_request_applicantinfo.frs_cred_crd_issue_mon%type;
-  --申请人未销户贷记卡_贷款法人机构数/发卡法人机构数v_no_pd_card_loan_corp_number = no_pd_card_loan_corp_number
-  v_no_pd_card_loan_corp_number af_request_applicantinfo.no_pd_card_loan_corp_number%type;
-  --申请人未销户贷记卡_贷款机构数/发卡机构数v_no_pd_card_loan_org_number = no_pd_card_loan_org_number
-  v_no_pd_card_loan_org_number af_request_applicantinfo.no_pd_card_loan_org_number%type;
-  --申请人未销户贷记卡_笔数/账户数v_no_pin_debit_card_acct_num = no_pin_debit_card_acct_num
-  v_no_pin_debit_card_acct_num af_request_applicantinfo.no_pin_debit_card_acct_num%type;
-  --申请人教育程度v_educationapproach = educationapproach
-  v_educationapproach af_request_applicantinfo.educationapproach%type;
-  --申请人教育程度v_educls = c1_educls
-  v_educls af_request_applicantinfo.c1_educls%type;
-  --申请人直系亲属手机v_remobil = c1_remobil
-  v_remobil af_request_applicantinfo.c1_remobil%type;
-  --申请人公民身份号码核查结果v_result_xm = result_xm
-  v_result_xm af_request_applicantinfo.result_xm%type;
-  --申请人学历v_educationdegree = educationdegree
-  v_educationdegree af_request_applicantinfo.educationdegree%type;
-  --主卡申请人账单邮寄地址v_cycadd1 = c4_cycadd1
-  v_cycadd1 af_request_applicantinfo.c4_cycadd1%type;
-  --申请人准贷记卡60天以上透支_最长逾期月数/最长透支月数v_deb_c60overd_longest_over = deb_c60overd_longest_over_due
-  v_deb_c60overd_longest_over af_request_applicantinfo.deb_c60overd_longest_over_due%type;
-  --申请人准贷记卡60天以上透支_月份数v_deb_c60overd_month_num = deb_c60overd_month_num
-  v_deb_c60overd_month_num af_request_applicantinfo.deb_c60overd_month_num%type;
-  --申请人姓名英文风险描述v_codenameenglish = codenameenglish
-  v_codenameenglish  af_request_applicantinfo.codenameenglish%type;
-  --申请人地址邮件英文风险描述v_codeemailenglish = codeemailenglish
-  v_codeemailenglish  af_request_applicantinfo.codeemailenglish%type;
-  --申请人地址英文风险描述v_codeaddrenglish  = codeaddrenglish
-  v_codeaddrenglish  af_request_applicantinfo.codeaddrenglish%type;
-  --申请人ip地址v_ipenenglish  = ipenenglish
-  v_ipenenglish  af_request_applicantinfo.ipenenglish%type;
-  --申请人国际移动用户识别码v_imsienenglish = imsienenglish
-  v_imsienenglish af_request_applicantinfo.imsienenglish%type;
-  --申请人国际移动设备标志v_imeienenglish = imeienenglish
-  v_imeienenglish af_request_applicantinfo.imeienenglish%type;
-  -- 申请人wifi的物理地址:v_wifimacenenglish = wifimacenenglish
-  v_wifimacenenglish af_request_applicantinfo.wifimacenenglish%type;
-  -- 申请人出生日期:v_birth = c2_birth
-  v_birth af_request_applicantinfo.c2_birth%type;
-  -- 申请人证件有效日期:v_idte1 = c5_idte1
-  v_idte1 af_request_applicantinfo.c5_idte1%type;
-  -- 申请人证件起始日期:v_iddt1 = c2_iddt1
-  v_iddt1 af_request_applicantinfo.c2_iddt1%type;
-  -- 申请人证件类型:v_idtype = c1_idtype
-  v_idtype af_request_applicantinfo.c1_idtype%type;
+
   -- 申请次数
   v_app_num number;
-  -- 申请人单位地址:v_coadd = c1_coadd1 + c1_coadd2 + c1_coadd3 + c1_coadd4
-  v_coadd varchar2(120);
-  -- 申请人住宅地址:v_hmadd = c1_hmadd1 + c1_hmadd2 + c1_hmadd3 + c1_hmadd4
-  v_hmadd varchar2(120);
-  -- 申请人手机号码:v_mobile = c1_mobile
-  v_mobile af_request_applicantinfo.c1_mobile%type;
-  -- 申请人单位号码:v_cotel = c1_cotel
-  v_cotel af_request_applicantinfo.c1_cotel%type;
-  -- 推广员编号:c4_abuser
+
+  -- 推广员编号 c4_abuser
   v_abuser af_request_applicantinfo.c4_abuser%type;
-  -- 推广员姓名:c4_abname
+
+  -- 推广员姓名 c4_abname
   v_abname af_request_applicantinfo.c4_abname%type;
-  --最近30天内的查询机构数_担保资格审查 v_query_org_1m_sum5 = query_org_1m_sum5
-  v_query_org_1m_sum5 af_request_applicantinfo.query_org_1m_sum5%type;
-  --最近30天内的查询机构数_贷后管理 v_query_org_1m_sum1=query_org_1m_sum1
-  v_query_org_1m_sum1 af_request_applicantinfo.query_org_1m_sum1%type;
-  --最近两年内的查询次数_担保资格审查 v_query_rec_2y_sum5=query_rec_2y_sum5
-  v_query_rec_2y_sum5 af_request_applicantinfo.query_rec_2y_sum5%type;
-  --最近两年内的查询次数_贷后管理 v_query_rec_2y_sum1=query_rec_2y_sum1
-  v_query_rec_2y_sum1 af_request_applicantinfo.query_rec_2y_sum1%type;
+
+  --申请人呆帐_笔数 v_bad_debt_num = bad_debt_num
+  v_bad_debt_num af_request_applicantinfo.bad_debt_num%type;
+
+  -- 申请人出生日期 v_birth = c2_birth
+  v_birth af_request_applicantinfo.c2_birth%type;
+
+  --累计缴费月数 v_cumul_pay_months = cumul_pay_months
+  v_cumul_pay_months af_request_applicantinfo.cumul_pay_months%type;
+
+  -- 单位电话 v_comp_phone = c_comp_phone
+  v_comp_phone af_request_applicantinfo.c_comp_phone%type;
+
+  --手机号码 v_cell_phone = cell_phone
+  v_cell_phone af_request_applicantinfo.cell_phone%type;
+
+  --申请人公司中文全称 v_coname = c1_coname
+  v_coname af_request_applicantinfo.c1_coname%type;
+
+  --主卡申请人账单邮寄地址 v_cycadd1 = c4_cycadd1
+  v_cycadd1 af_request_applicantinfo.c4_cycadd1%type;
+
+  --申请人姓名英文风险描述 v_codenameenglish = codenameenglish
+  v_codenameenglish af_request_applicantinfo.codenameenglish%type;
+
+  --申请人地址邮件英文风险描述 v_codeemailenglish = codeemailenglish
+  v_codeemailenglish af_request_applicantinfo.codeemailenglish%type;
+
+  --申请人地址英文风险描述 v_codeaddrenglish  = codeaddrenglish
+  v_codeaddrenglish af_request_applicantinfo.codeaddrenglish%type;
+
+  -- 申请人单位地址 v_coadd = c1_coadd1 + c1_coadd2 + c1_coadd3 + c1_coadd4
+  v_coadd varchar2(120);
+
+  -- 申请人单位号码 v_cotel = c1_cotel
+  v_cotel af_request_applicantinfo.c1_cotel%type;
+
+  --申请人贷记卡逾期_最长逾期月数/最长透支月数 v_debit_co_due_longest_over =debit_co_due_longest_over_due
+  v_debit_co_due_longest_over af_request_applicantinfo.debit_co_due_longest_over_due%type;
+
+  --申请人贷记卡逾期_月份数 v_debit_card_over_due_month = debit_card_over_due_month_num
+  v_debit_card_over_due_month af_request_applicantinfo.debit_card_over_due_month_num%type;
+
+  --申请人贷记卡逾期_笔数/账户数 v_debit_card_over_due_acct_num = debit_card_over_due_acct_num
+  v_debit_card_over_due_acct_num af_request_applicantinfo.debit_card_over_due_acct_num%type;
+
+  --申请人准贷记卡60天以上透支_最长逾期月数/最长透支月数 v_deb_c60overd_longest_over = deb_c60overd_longest_over_due
+  v_deb_c60overd_longest_over af_request_applicantinfo.deb_c60overd_longest_over_due%type;
+
+  --申请人准贷记卡60天以上透支_月份数 v_deb_c60overd_month_num = deb_c60overd_month_num
+  v_deb_c60overd_month_num af_request_applicantinfo.deb_c60overd_month_num%type;
+
+  --申请人教育程度 v_educationapproach = educationapproach
+  v_educationapproach af_request_applicantinfo.educationapproach%type;
+
+  --申请人教育程度 v_educls = c1_educls
+  v_educls af_request_applicantinfo.c1_educls%type;
+
+  --申请人学历 v_educationdegree = educationdegree
+  v_educationdegree af_request_applicantinfo.educationdegree%type;
+
+  --初缴月份 v_first_deposit_ym = first_deposit_ym
+  v_first_deposit_ym af_request_applicantinfo.first_deposit_ym%type;
+
+  --申请人首张贷记卡发卡月份 v_frs_cred_crd_issue_mon = frs_cred_crd_issue_mon
+  v_frs_cred_crd_issue_mon af_request_applicantinfo.frs_cred_crd_issue_mon%type;
+
+  --主卡申请人性别 v_gender = c1_gender
+  v_gender af_request_applicantinfo.c1_gender%type;
+
+  -- 主卡申请人家庭电话区号 v_hmare = c1_hmare
+  v_hmare af_request_applicantinfo.c1_hmare%type;
+
+  -- 申请人住宅号码 v_hmtel = c1_hmtel
+  v_hmtel af_request_applicantinfo.c1_hmtel%type;
+
+  --家庭房屋状况 v_hmst = c1_hmst
+  v_hmst af_request_applicantinfo.c1_hmst%type;
+
+  --申请人住宅地址 v_hmadd = c1_hmadd1 + c1_hmadd2 + c1_hmadd3 + c1_hmadd4
+  v_hmadd varchar2(120);
+
+  --主卡申请人证件号码 v_idnbr = c1_idnbr
+  v_idnbr af_request_applicantinfo.c1_idnbr%type;
+
+  --行业5 v_industry_type5 = industry_type5
+  v_industry_type5 af_request_applicantinfo.industry_type5%type;
+
+  --行业4 v_industry_type4 = industry_type4
+  v_industry_type4 af_request_applicantinfo.industry_type4%type;
+
+  --行业3 v_industry_type3 = industry_type3
+  v_industry_type3 af_request_applicantinfo.industry_type3%type;
+
+  --行业2 v_industry_type2 = industry_type2
+  v_industry_type2 af_request_applicantinfo.industry_type2%type;
+
+  --行业1 v_industry_type1 = industry_type1
+  v_industry_type1 af_request_applicantinfo.industry_type1%type;
+
+  --申请人ip地址 v_ipenenglish  = ipenenglish
+  v_ipenenglish af_request_applicantinfo.ipenenglish%type;
+
+  --申请人国际移动用户识别码 v_imsienenglish = imsienenglish
+  v_imsienenglish af_request_applicantinfo.imsienenglish%type;
+
+  --申请人国际移动设备标志 v_imeienenglish = imeienenglish
+  v_imeienenglish af_request_applicantinfo.imeienenglish%type;
+
+  -- 申请人证件有效日期 v_idte1 = c5_idte1
+  v_idte1 af_request_applicantinfo.c5_idte1%type;
+
+  -- 申请人证件起始日期 v_iddt1 = c2_iddt1
+  v_iddt1 af_request_applicantinfo.c2_iddt1%type;
+
+  -- 申请人证件类型 v_idtype = c1_idtype
+  v_idtype af_request_applicantinfo.c1_idtype%type;
+
+  --申请人贷款逾期_月份数 v_loan_overdue_month_num = loan_overdue_month_num
+  v_loan_overdue_month_num af_request_applicantinfo.loan_overdue_month_num%type;
+
+  --配偶_姓名 v_mate_name = mate_name
+  v_mate_name af_request_applicantinfo.mate_name%type;
+
+  --申请人配偶的联系电话 v_mate_contact_te = mate_contact_tel
+  v_mate_contact_tel af_request_applicantinfo.mate_contact_tel%type;
+
+  -- 申请人手机号码 v_mobile = c1_mobile
+  v_mobile af_request_applicantinfo.c1_mobile%type;
+
+  --申请人未销户贷记卡_贷款法人机构数/发卡法人机构数v_no_pd_card_loan_corp_number = no_pd_card_loan_corp_number
+  v_no_pd_card_loan_corp_number af_request_applicantinfo.no_pd_card_loan_corp_number%type;
+
+  --申请人未销户贷记卡_贷款机构数/发卡机构数v_no_pd_card_loan_org_number = no_pd_card_loan_org_number
+  v_no_pd_card_loan_org_number af_request_applicantinfo.no_pd_card_loan_org_number%type;
+
+  --申请人未销户贷记卡_笔数/账户数v_no_pin_debit_card_acct_num = no_pin_debit_card_acct_num
+  v_no_pin_debit_card_acct_num af_request_applicantinfo.no_pin_debit_card_acct_num%type;
+
+  -- 逾期天数 v_overdue_day = overdue_day
+  v_overdue_day af_request_applicantinfo.overdue_day%type;
+
   --相对位置 v_opposite_position = opposite_position
   v_opposite_position af_request_applicantinfo.opposite_position%type;
+
+  --缴费状态 v_pboc_gjj_pay_status = pboc_gjj_pay_status
+  v_pboc_gjj_pay_status af_request_applicantinfo.pboc_gjj_pay_status%type;
+
+  --缴至月份 v_pay_ym = pay_ym
+  v_pay_ym af_request_applicantinfo.pay_ym%type;
+
+  --缴费状态 v_pboc_yl_pay_status = pboc_yl_pay_status
+  v_pboc_yl_pay_status af_request_applicantinfo.pboc_yl_pay_status%type;
+
+  --最近30天内的查询机构数_担保资格审查 v_query_org_1m_sum5 = query_org_1m_sum5
+  v_query_org_1m_sum5 af_request_applicantinfo.query_org_1m_sum5%type;
+
+  --最近30天内的查询机构数_贷后管理 v_query_org_1m_sum1=query_org_1m_sum1
+  v_query_org_1m_sum1 af_request_applicantinfo.query_org_1m_sum1%type;
+
+  --最近两年内的查询次数_担保资格审查 v_query_rec_2y_sum5=query_rec_2y_sum5
+  v_query_rec_2y_sum5 af_request_applicantinfo.query_rec_2y_sum5%type;
+
+  --最近两年内的查询次数_贷后管理 v_query_rec_2y_sum1=query_rec_2y_sum1
+  v_query_rec_2y_sum1 af_request_applicantinfo.query_rec_2y_sum1%type;
+
+  --住宅电话 v_resi_tel = resi_tel
+  v_resi_tel af_request_applicantinfo.resi_tel%type;
+
+  --直系亲属姓名 v_rename = c1_rename
+  v_rename af_request_applicantinfo.c1_rename%type;
+
+  --直系亲属电话区号 v_retelar = c1_retelar
+  v_retelar af_request_applicantinfo.c1_retelar%type;
+
+  --直系亲属电话 v_retel = c1_retel
+  v_retel af_request_applicantinfo.c1_retel%type;
+
+  --直系亲属关系 v_reship = c1_reship
+  v_reship af_request_applicantinfo.c1_reship%type;
+
+  --申请人直系亲属手机 v_remobil = c1_remobil
+  v_remobil af_request_applicantinfo.c1_remobil%type;
+
+  --申请人公民身份号码核查结果 v_result_xm = result_xm
+  v_result_xm af_request_applicantinfo.result_xm%type;
+
+  -- 申请人wifi的物理地址 v_wifimacenenglish = wifimacenenglish
+  v_wifimacenenglish af_request_applicantinfo.wifimacenenglish%type;
+
+  --联系人1姓名 v_xname1 = c1_xname1
+  v_xname1 af_request_applicantinfo.c1_xname1%type;
+
+  --联系人1手机 v_xmobil1 = c1_xmobil1
+  v_xmobil1 af_request_applicantinfo.c1_xmobil1%type;
+
+  -- 联系人1电话区号 v_xtelar1 = c1_xtelar1
+  v_xtelar1 af_request_applicantinfo.c1_xtelar1%type;
+
+  -- 联系人1电话号码 v_xtel1 = c1_xtel1
+  v_xtel1 af_request_applicantinfo.c1_xtel1%type;
+
+  --主附卡标识 v1v2_flag = c1c2_flag
+  v1v2_flag af_request_applicantinfo.c1c2_flag%type;
+
+  --附卡申请人性别 v2_gender = c2_gender
+  v2_gender af_request_applicantinfo.c2_gender%type;
+
+  --附卡申请人证件号码 v2_idnbr = c2_idnbr
+  v2_idnbr af_request_applicantinfo.c2_idnbr%type;
+
+  --附卡申请人证件类型 v2_idtype = c2_idtype
+  v2_idtype af_request_applicantinfo.c2_idtype%type;
 
   -- 声明入口调用过程
   procedure RT_MAIN(app_id_input in varchar2);
@@ -177,134 +252,134 @@ create or replace package body AF_HXBCB is
     riskcode af_response_afsummary.value%type;
     begin
       --从request_applicantinfo获取全局参数
-      select c1_coadd1 || c1_coadd2 || c1_coadd3 || c1_coadd4,
-        c1_hmadd1 || c1_hmadd2 || c1_hmadd3 || c1_hmadd4,
-        c1_mobile,
-        c1_cotel,
-        c4_abuser,
-        c4_abname,
-        c1_idnbr,
-        c5_idte1,
-        c2_iddt1,
-        c1_idtype,
-        c2_birth,
-        wifimacenenglish,
-        imeienenglish,
-        imsienenglish,
-        ipenenglish,
+            select
+        bad_debt_num,
         codeaddrenglish,
         codeemailenglish,
         codenameenglish,
-        deb_c60overd_month_num,
-        deb_c60overd_longest_over_due,
-        c4_cycadd1,
-        educationdegree,
-        result_xm,
+        cell_phone,
+        c_comp_phone,
+        c1_coadd1 || c1_coadd2 || c1_coadd3 || c1_coadd4,
+        c1_hmadd1 || c1_hmadd2 || c1_hmadd3 || c1_hmadd4,
+        c1_mobile,
+        c1_cotel,
+        c1_idnbr,
+        c1_idtype,
         c1_remobil,
-        no_pd_card_loan_org_number,
-        no_pd_card_loan_corp_number,
-        frs_cred_crd_issue_mon,
         c1_hmare,
         c1_hmtel,
-        c4_apsour,
         c1_coname,
-        c1c2_flag,
-        c2_gender,
-        c2_idnbr,
-        c2_idtype,
-        bad_debt_num,
-        loan_overdue_month_num,
-        debit_card_over_due_acct_num,
-        debit_co_due_longest_over_due,
-        c1_educls,
-        educationapproach,
-        no_pin_debit_card_acct_num,
-        no_pd_card_loan_org_number,
-        opposite_position,
         c1_reship,
-        mate_contact_tel,
-        query_rec_2y_sum1,
-        query_rec_2y_sum5,
-        query_org_1m_sum1,
-        query_org_1m_sum5,
-        cell_phone,
+        c1_educls,
         c1_hmst,
-        overdue_day,
         c1_retel,
         c1_retelar,
         c1_xtel1,
         c1_xtelar1,
-        c_comp_phone,
-        mate_name,
         c1_rename,
-        resi_tel,
+        c1c2_flag,
+        c2_iddt1,
+        c2_birth,
+        c2_gender,
+        c2_idnbr,
+        c2_idtype,
+        c4_abuser,
+        c4_abname,
+        c4_cycadd1,
+        c4_apsour,
+        c5_idte1,
+        deb_c60overd_month_num,
+        deb_c60overd_longest_over_due,
+        debit_card_over_due_acct_num,
+        debit_co_due_longest_over_due,
+        educationdegree,
+        educationapproach,
+        frs_cred_crd_issue_mon,
+        first_deposit_ym,
+        imeienenglish,
+        imsienenglish,
+        ipenenglish,
+        loan_overdue_month_num,
+        mate_contact_tel,
+        mate_name,
+        no_pd_card_loan_org_number,
+        no_pd_card_loan_corp_number,
+        no_pin_debit_card_acct_num,
+        opposite_position,
+        overdue_day,
         pboc_gjj_pay_status,
         pay_ym,
-        first_deposit_ym
-      into v_coadd,
-        v_hmadd,
-        v_mobile,
-        v_cotel,
-        v_abuser,
-        v_abname,
-        v_idnbr,
-        v_idte1,
-        v_iddt1,
-        v_idtype,
-        v_birth,
-        v_wifimacenenglish,
-        v_imeienenglish,
-        v_imsienenglish,
-        v_ipenenglish,
+        query_rec_2y_sum1,
+        query_rec_2y_sum5,
+        query_org_1m_sum1,
+        query_org_1m_sum5,
+        result_xm,
+        resi_tel,
+        wifimacenenglish,
+      into
+        v_bad_debt_num,
         v_codeaddrenglish,
         v_codeemailenglish,
         v_codenameenglish,
-        v_deb_c60overd_month_num,
-        v_deb_c60overd_longest_over,
-        v_cycadd1,
-        v_educationdegree,
-        v_result_xm,
+        v_cell_phone,
+        v_comp_phone,
+        v_coadd,
+        v_hmadd,
+        v_mobile,
+        v_cotel,
+        v_idnbr,
+        v_idtype,
         v_remobil,
-        v_no_pd_card_loan_org_number,
-        v_no_pd_card_loan_corp_number,
-        v_frs_cred_crd_issue_mon,
         v_hmare,
         v_hmtel,
-        v_apsour,
         v_coname,
-        v1v2_flag,
-        v2_gender,
-        v2_idnbr,
-        v2_idtype,
-        v_bad_debt_num,
-        v_loan_overdue_month_num,
-        v_debit_card_over_due_acct_num,
-        v_debit_co_due_longest_over,
-        v_educls,
-        v_educationapproach,
-        v_no_pin_debit_card_acct_num,
-        v_no_pd_card_loan_org_number,
-        v_opposite_position,
         v_reship,
-        v_mate_contact_tel,
-        v_query_rec_2y_sum1,
-        v_query_rec_2y_sum5,
-        v_query_org_1m_sum1,
-        v_query_org_1m_sum5,
-        v_cell_phone,
+        v_educls,
         v_hmst,
-        v_overdue_day,
         v_retel,
         v_retelar,
         v_xtel1,
         v_xtelar1,
-        v_comp_phone,
-        v_mate_name,
         v_rename,
-        v_resi_tel,
+        v1v2_flag,
+        v_iddt1,
+        v_birth,
+        v2_gender,
+        v2_idnbr,
+        v2_idtype,
+        v_abuser,
+        v_abname,
+        v_cycadd1,
+        v_apsour,
+        v_idte1,
+        v_deb_c60overd_month_num,
+        v_deb_c60overd_longest_over,
+        v_debit_card_over_due_acct_num,
+        v_debit_co_due_longest_over,
+        v_educationdegree,
+        v_educationapproach,
+        v_frs_cred_crd_issue_mon,
+        v_first_deposit_ym,
+        v_imeienenglish,
+        v_imsienenglish,
+        v_ipenenglish,
+        v_loan_overdue_month_num,
+        v_mate_contact_tel,
+        v_mate_name,
+        v_no_pd_card_loan_org_number,
+        v_no_pd_card_loan_corp_number,
+        v_no_pin_debit_card_acct_num,
+        v_opposite_position,
+        v_overdue_day,
         v_pboc_gjj_pay_status,
         v_pay_ym,
-        v_first_deposit_ym
+        v_query_rec_2y_sum1,
+        v_query_rec_2y_sum5,
+        v_query_org_1m_sum1,
+        v_query_org_1m_sum5,
+        v_result_xm,
+        v_resi_tel,
+        v_wifimacenenglish
       from af_request_applicantinfo
       where app_id = app_id_input;
 
@@ -372,7 +447,7 @@ create or replace package body AF_HXBCB is
       AF_HXBCB_RULE_PKG.RULE_149(app_id_input, v_query_org_1m_sum5);
       AF_HXBCB_RULE_PKG.RULE_175(app_id_input, v_remobil, v_reship);
       AF_HXBCB_RULE_PKG.RULE_176(app_id_input, v_remobil, v_rename);
-      AF_HXBCB_RULE_PKG.RULE_176(app_id_input, v_xname1, v_xmobil1);
+      AF_HXBCB_RULE_PKG.RULE_178(app_id_input, v_xname1, v_xmobil1);
       -----精确匹配的规则---------------------------
       AF_HXBCB_RULE_PKG.RULE_40(app_id_input,v_bad_debt_num);
       AF_HXBCB_RULE_PKG.RULE_42(app_id_input,v_loan_overdue_month_num);

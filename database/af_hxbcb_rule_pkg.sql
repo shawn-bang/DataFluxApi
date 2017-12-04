@@ -274,7 +274,7 @@ create or replace package AF_HXBCB_RULE_PKG as
   -- rule:80
   -- @author song
   -- @date 2017-12-2 10:30:00
-  procedure RULE_80(app_id_input in varchar2,v_mobile in af_request_applicantinfo.c1_mobile%type,v_idnbr in af_request_applicantinfo.c1_idnbr%type);
+  procedure RULE_80(app_id_input in varchar2,v_mobile in af_request_applicantinfo.c1_mobile%type);
   -- rule:142
   -- @author song
   -- @date 2017-12-2 10:30:00
@@ -1889,7 +1889,7 @@ create or replace package body AF_HXBCB_RULE_PKG as
   -- rule:80
   -- @author song
   -- @date 2017-12-2 10:30:00
-  procedure RULE_80(app_id_input in varchar2, v_mobile in af_request_applicantinfo.c1_mobile%type,v_idnbr in af_request_applicantinfo.c1_idnbr%type) is
+  procedure RULE_80(app_id_input in varchar2, v_mobile in af_request_applicantinfo.c1_mobile%type) is
     flag1 number;
     flag2 number;
     v_error varchar2(500);
@@ -1915,24 +1915,6 @@ create or replace package body AF_HXBCB_RULE_PKG as
       commit;
       -- don't anything
     end RULE_80;
-
--- rule:141
-  -- @author song
-  -- @date 2017-12-2 10:30:00
-  procedure RULE_141(app_id_input in varchar2, v_no_pd_card_loan_corp_number in af_request_applicantinfo.no_pd_card_loan_corp_number%type) is
-    v_error varchar2(500);
-    begin
-      --4为N 未知
-      if nvl(v_no_pd_card_loan_corp_number, 'null') != 'null'and v_no_pd_card_loan_corp_number >= 4 then
-          insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno, type,class) values(app_id_input, 'Z2', 'Z01', 'Z01_4', 'D', '', 'RULE_141', 'RULE','Z');
-          commit;
-      end if;
-      -- handle exceptions
-      exception when others then v_error := 'RULE_141: ' || sqlerrm;
-      insert into af_app_prc_logs(app_id, error_logs) values(app_id_input, v_error);
-      commit;
-      -- don't anything
-    end RULE_141;
 
   -- rule:142
   -- @author song
