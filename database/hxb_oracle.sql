@@ -103,7 +103,7 @@ create table af_app_add_today
   FLOORMC            varchar(255),
   ROOMMC             varchar(255),
   ADDINFO            varchar(255),
-  CITY               varchar(100)
+  CITY               varchar(100),
   CREATE_TIME     timestamp default CURRENT_TIMESTAMP
 );
 
@@ -129,7 +129,7 @@ DROP TABLE AF_APP_RISK_CONF_PARMS cascade constraints;
 create table AF_APP_RISK_CONF_PARMS
 (
   PARM_TYPE        VARCHAR2(20),
-  PARM_LEVEL       VARCHAR2(6),
+  PARM_LEVEL       VARCHAR2(30),
   PARM_VALUE_UP    NUMBER,
   PARM_VALUE_LOWER NUMBER
 );
@@ -319,17 +319,16 @@ create table af_risk_level_settings
   riskdesc     VARCHAR2(200)
 );
 
-comment on table AF_RESPONSE_AFRISKWARNING is '风险提示信息配置表';
-comment on column AF_RESPONSE_AFRISKWARNING.result_type is 'EMPTY(返回NULL),HIT(命中)';
-comment on column AF_RESPONSE_AFRISKWARNING.riskno is '校验规则一级分类编号';
-comment on column AF_RESPONSE_AFRISKWARNING.risktype is '校验规则二级分类编号';
-comment on column AF_RESPONSE_AFRISKWARNING.riskcategory is '校验规则三级分类编号';
-comment on column AF_RESPONSE_AFRISKWARNING.riskdesc is '校验结果详情描述';
-comment on column AF_RESPONSE_AFRISKWARNING.riskcode is '校验结果A,B,C,D,E';
-comment on column AF_RESPONSE_AFRISKWARNING.ruleno is '校验规则编号';
-comment on column AF_RESPONSE_AFRISKWARNING.type is '反欺诈结果类型(AF_ALL,RULE,MODEL,SNA)';
-comment on column AF_RESPONSE_AFRISKWARNING.class is 'TYPE 二级分类';
-
+comment on table af_risk_level_settings is '风险提示信息配置表';
+comment on column af_risk_level_settings.result_type is 'EMPTY(返回NULL),HIT(命中)';
+comment on column af_risk_level_settings.riskno is '校验规则一级分类编号';
+comment on column af_risk_level_settings.risktype is '校验规则二级分类编号';
+comment on column af_risk_level_settings.riskcategory is '校验规则三级分类编号';
+comment on column af_risk_level_settings.riskdesc is '校验结果详情描述';
+comment on column af_risk_level_settings.riskcode is '校验结果A,B,C,D,E';
+comment on column af_risk_level_settings.ruleno is '校验规则编号';
+comment on column af_risk_level_settings.type is '反欺诈结果类型(AF_ALL,RULE,MODEL,SNA)';
+comment on column af_risk_level_settings.class is 'TYPE 二级分类';
 -- if exist table af_request_appinfo_zmivsinfo
 DROP TABLE af_request_appinfo_zmivsinfo cascade constraints;
 -- create table af_request_appinfo_zmivsinfo
@@ -2346,6 +2345,8 @@ comment on column  af_request_appinfo_his_cold.vehicle_value is '车辆价值';
 comment on column  af_request_appinfo_his_cold.vehicle_age is '车龄';
 
 -----------------------------------------------------------------------------------------
+--创建表空间的sql
+--create tablespace index_ts datafile 'D:\test.ora' size 1000m;
 -- DDL comment: create index
 create unique index idx_appinfo_appid on af_request_applicantinfo(app_id) tablespace index_ts;
 create index idx_sum_appid_type on af_response_afsummary(app_id,type) tablespace index_ts;
