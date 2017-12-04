@@ -2358,8 +2358,6 @@ insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, ris
 commit;
 
 -----------------------------------------------------------------------------------------
---创建表空间的sql
---create tablespace index_ts datafile 'D:\test.ora' size 1000m;
 -- DDL comment: create index
 create unique index idx_appinfo_appid on af_request_applicantinfo(app_id) tablespace index_ts;
 create index idx_sum_appid_type on af_response_afsummary(app_id,type) tablespace index_ts;

@@ -1,4 +1,4 @@
-﻿﻿-- hxb api business rules package and procedure
+﻿-- hxb api business rules package and procedure
 create or replace package AF_HXBCB_RULE_PKG as
   -- Created : 2017/11/3 17:22:15
   -- Purpose : Rule
@@ -558,8 +558,7 @@ create or replace package body AF_HXBCB_RULE_PKG as
       select count(distinct(t.c1_cotel))
       into flag
       from af_request_appinfo_his_hot t
-      where 1 = 1
-            and t.c1_idnbr = v_idnbr
+      where t.c1_idnbr = v_idnbr
             and t.c1_cotel is not null;
       if flag >= 2 then
         -- update result data
@@ -871,8 +870,7 @@ create or replace package body AF_HXBCB_RULE_PKG as
         select count(1)
         into flag
         from af_request_appinfo_his_hot t
-        where 1 = 1
-              and t.c1_remobil = v_remobil
+        where t.c1_remobil = v_remobil
               and t.c1_rename != v_rename;
         if flag > 'N' then
           -- update result data
