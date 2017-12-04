@@ -533,8 +533,7 @@ create or replace package body AF_HXBCB_RULE_PKG as
       select count(distinct(t.c1_mobile))
       into flag
       from af_request_appinfo_his_hot t
-      where 1 = 1
-            and t.c1_idnbr = v_idnbr
+      where t.c1_idnbr = v_idnbr
             and t.c1_mobile is not null;
       if flag >= 2 then
         -- update result data
