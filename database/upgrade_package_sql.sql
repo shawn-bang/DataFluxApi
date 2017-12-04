@@ -1,4 +1,4 @@
-﻿﻿create or replace package AF_HXBCB is
+﻿create or replace package AF_HXBCB is
 
   -- Created : 2017/11/3 17:15:27
   -- Purpose : Package for Antifraud
