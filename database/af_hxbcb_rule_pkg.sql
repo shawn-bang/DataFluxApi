@@ -2035,7 +2035,7 @@ create or replace package body AF_HXBCB_RULE_PKG as
       -- don't anything
     end RULE_149;
 
-  -- rule:175
+ -- rule:175
   -- @author song
   -- @date 2017-12-2 10:30:00
   procedure RULE_175(app_id_input in varchar2, v_remobil in af_request_applicantinfo.c1_remobil%type,v_reship in af_request_applicantinfo.c1_reship%type) is
@@ -2046,11 +2046,15 @@ create or replace package body AF_HXBCB_RULE_PKG as
     begin
       if nvl(v_remobil, 'null') != 'null' and nvl(v_reship, 'null') != 'null' then
         select count(1) into flag1
-        from af_request_applicantinfo t
-         where v_remobil = t.c1_remobil and v_reship != t.c1_reship;
-        if flag1 > N then
+        from (select t.app_id from af_request_applicantinfo t
+              where v_remobil = t.c1_remobil and v_reship != t.c1_reship
+              union all
+              select t.app_id from af_request_appinfo_his_hot t
+              where v_remobil = t.c1_remobil and v_reship != t.c1_reship
+              );
+        if flag1 > 2 then
           -- update result data
-          insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno, type) values(app_id_input, 'Z2', 'Z01', 'Z01_2', '', '', 'RULE_175', 'RULE');
+          insert into af_response_afriskwarning(app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,type,class) select app_id_input as app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,type,class  from af_risk_level_settings  where ruleno = 'RULE_175';
           commit;
         end if;
       end if;
@@ -2072,11 +2076,15 @@ create or replace package body AF_HXBCB_RULE_PKG as
     begin
       if nvl(v_remobil, 'null') != 'null' and nvl(v_rename, 'null') != 'null' then
         select count(1) into flag
-        from af_request_applicantinfo t
-         where v_rename = t.c1_xname1 and v_remobil = t.c1_xmobil1;
+        from (select t.app_id from af_request_applicantinfo
+              where v_remobil = t.c1_xname1 and v_remobil = t.c1_xmobil1
+              union all
+              select t.app_id from af_request_appinfo_his_hot
+              where v_remobil = t.c1_xname1 and v_remobil = t.c1_xmobil1
+              )
         if flag > N then
           -- update result data
-          insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno, type) values(app_id_input, 'Z2', 'Z01', 'Z01_2', '', '', 'RULE_176', 'RULE');
+          insert into af_response_afriskwarning(app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,type,class) select app_id_input as app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,type,class  from af_risk_level_settings  where ruleno = 'RULE_176';
           commit;
         end if;
       end if;
@@ -2098,11 +2106,15 @@ create or replace package body AF_HXBCB_RULE_PKG as
     begin
       if nvl(v_xname1, 'null') != 'null' and nvl(v_xmobil1, 'null') != 'null' then
         select count(1) into flag
-        from af_request_applicantinfo t
-         where t.c1_remobil = v_xmobil1 and t.c1_rename = v_xname1 ;
-        if flag > N then
+        from (select t.app_id from af_request_applicantinfo t
+              where t.c1_remobil = v_xmobil1 and t.c1_rename = v_xname1
+              union all
+              select t.app_id from af_request_appinfo_his_hot t
+              where t.c1_remobil = v_xmobil1 and t.c1_rename = v_xname1
+              );
+        if flag > 2 then
           -- update result data
-          insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno, type) values(app_id_input, 'Z2', 'Z01', 'Z01_1', '', '', 'RULE_178', 'RULE');
+          insert into af_response_afriskwarning(app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,type,class) select app_id_input as app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,type,class  from af_risk_level_settings  where ruleno = 'RULE_178';
           commit;
         end if;
       end if;
