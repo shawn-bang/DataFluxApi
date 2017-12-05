@@ -313,6 +313,7 @@ end AF_HXBCB_RULE_PKG;
 /
 create or replace package body AF_HXBCB_RULE_PKG as
 
+
   -- rule:40
   -- @author chen
   -- @date 2017-12-1 18:52:00
@@ -321,11 +322,11 @@ create or replace package body AF_HXBCB_RULE_PKG as
     begin
       if nvl(v_bad_debt_num,'null') = 'null' then
         -- update result data
-        insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno,type,class) values(app_id_input, 'Z2', 'Z03', 'Z03_1', 'NULL', 'NULL', 'RULE_40', 'RULE','Z');
+        insert  into af_response_afriskwarning(app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,type,class) select app_id_input as app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,type,class  from af_risk_level_settings  where ruleno = 'RULE_PBOC_40' and result_type = 'EMPTY';
         commit;
       elsif v_bad_debt_num >= 2 then
         -- update result data
-        insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno,type,class) values(app_id_input, 'Z2', 'Z03', 'Z03_1', '', '', 'RULE_40', 'RULE','Z');
+        insert  into af_response_afriskwarning(app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,type,class) select app_id_input as app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,type,class  from af_risk_level_settings  where ruleno = 'RULE_PBOC_40' and result_type = 'HIT';
         commit;
       end if;
       -- handle exceptions
@@ -343,11 +344,11 @@ create or replace package body AF_HXBCB_RULE_PKG as
     begin
       if nvl(v_loan_overdue_month_num,'null') = 'null' then
         -- update result data
-        insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno,type,class) values(app_id_input, 'Z2', 'Z03', 'Z03_1', 'NULL', 'NULL', 'RULE_42', 'RULE','Z');
+        insert  into af_response_afriskwarning(app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,type,class) select app_id_input as app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,type,class  from af_risk_level_settings  where ruleno = 'RULE_PBOC_42' and result_type = 'EMPTY';
         commit;
       elsif v_loan_overdue_month_num >= 2 then
         -- update result data
-        insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno,type,class) values(app_id_input, 'Z2', 'Z03', 'Z03_1', '', '', 'RULE_42', 'RULE','Z');
+        insert  into af_response_afriskwarning(app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,type,class) select app_id_input as app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,type,class  from af_risk_level_settings  where ruleno = 'RULE_PBOC_42' and result_type = 'HIT';
         commit;
       end if;
       -- handle exceptions
@@ -365,11 +366,11 @@ create or replace package body AF_HXBCB_RULE_PKG as
     begin
       if nvl(v_debit_card_over_due_acct_num,'null') = 'null' then
         -- update result data
-        insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno,type,class) values(app_id_input, 'Z2', 'Z03', 'Z03_1', 'NULL', 'NULL', 'RULE_44', 'RULE','Z');
+        insert  into af_response_afriskwarning(app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,type,class) select app_id_input as app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,type,class  from af_risk_level_settings  where ruleno = 'RULE_PBOC_44' and result_type = 'EMPTY';
         commit;
       elsif v_debit_card_over_due_acct_num >= 2 then
         -- update result data
-        insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno,type,class) values(app_id_input, 'Z2', 'Z03', 'Z03_1', '', '', 'RULE_44', 'RULE','Z');
+        insert  into af_response_afriskwarning(app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,type,class) select app_id_input as app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,type,class  from af_risk_level_settings  where ruleno = 'RULE_PBOC_44' and result_type = 'HIT';
         commit;
       end if;
       -- handle exceptions
@@ -387,11 +388,11 @@ create or replace package body AF_HXBCB_RULE_PKG as
     begin
       if nvl(v_debit_card_over_due_month,'null') = 'null' then
         -- update result data
-        insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno,type,class) values(app_id_input, 'Z2', 'Z03', 'Z03_1', 'NULL', 'NULL', 'RULE_45', 'RULE','Z');
+        insert  into af_response_afriskwarning(app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,type,class) select app_id_input as app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,type,class  from af_risk_level_settings  where ruleno = 'RULE_PBOC_45' and result_type = 'EMPTY';
         commit;
       elsif v_debit_card_over_due_month >= 2 then
         -- update result data
-        insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno,type,class) values(app_id_input, 'Z2', 'Z03', 'Z03_1', '', '', 'RULE_45', 'RULE','Z');
+        insert  into af_response_afriskwarning(app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,type,class) select app_id_input as app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,type,class  from af_risk_level_settings  where ruleno = 'RULE_PBOC_45' and result_type = 'HIT';
         commit;
       end if;
       -- handle exceptions
@@ -409,11 +410,11 @@ create or replace package body AF_HXBCB_RULE_PKG as
     begin
       if nvl(v_debit_co_due_longest_over,'null') = 'null' then
         -- update result data
-        insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno,type,class) values(app_id_input, 'Z2', 'Z03', 'Z03_1', 'NULL', 'NULL', 'RULE_46', 'RULE','Z');
+        insert  into af_response_afriskwarning(app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,type,class) select app_id_input as app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,type,class  from af_risk_level_settings  where ruleno = 'RULE_PBOC_46' and result_type = 'EMPTY';
         commit;
       elsif v_debit_co_due_longest_over >= 2 then
         -- update result data
-        insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno,type,class) values(app_id_input, 'Z2', 'Z03', 'Z03_1', '', '', 'RULE_46', 'RULE','Z');
+        insert  into af_response_afriskwarning(app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,type,class) select app_id_input as app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,type,class  from af_risk_level_settings  where ruleno = 'RULE_PBOC_46' and result_type = 'HIT';
         commit;
       end if;
       -- handle exceptions
@@ -431,11 +432,11 @@ create or replace package body AF_HXBCB_RULE_PKG as
     begin
       if nvl(v_deb_c60overd_month_num,'null') = 'null' then
         -- update result data
-        insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno,type,class) values(app_id_input, 'Z2', 'Z03', 'Z03_1', 'NULL', 'NULL', 'RULE_48', 'RULE','Z');
+        insert  into af_response_afriskwarning(app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,type,class) select app_id_input as app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,type,class  from af_risk_level_settings  where ruleno = 'RULE_PBOC_48' and result_type = 'EMPTY';
         commit;
       elsif v_deb_c60overd_month_num >= 2 then
         -- update result data
-        insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno,type,class) values(app_id_input, 'Z2', 'Z03', 'Z03_1', '', '', 'RULE_48', 'RULE','Z');
+        insert  into af_response_afriskwarning(app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,type,class) select app_id_input as app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,type,class  from af_risk_level_settings  where ruleno = 'RULE_PBOC_48' and result_type = 'HIT';
         commit;
       end if;
       -- handle exceptions
@@ -453,11 +454,11 @@ create or replace package body AF_HXBCB_RULE_PKG as
     begin
       if nvl(v_deb_c60overd_longest_over,'null') = 'null' then
         -- update result data
-        insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno,type,class) values(app_id_input, 'Z2', 'Z03', 'Z03_1', 'NULL', 'NULL', 'RULE_49', 'RULE','Z');
+        insert  into af_response_afriskwarning(app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,type,class) select app_id_input as app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,type,class  from af_risk_level_settings  where ruleno = 'RULE_PBOC_49' and result_type = 'EMPTY';
         commit;
       elsif v_deb_c60overd_longest_over >= 2  then
         -- update result data
-        insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno,type,class) values(app_id_input, 'Z2', 'Z03', 'Z03_1', '', '', 'RULE_49', 'RULE','Z');
+        insert  into af_response_afriskwarning(app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,type,class) select app_id_input as app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,type,class  from af_risk_level_settings  where ruleno = 'RULE_PBOC_49' and result_type = 'HIT';
         commit;
       end if;
       -- handle exceptions
@@ -475,7 +476,7 @@ create or replace package body AF_HXBCB_RULE_PKG as
     begin
       if nvl(v_hmare,'null') != 'null' and nvl(v_hmtel,'null') != 'null' and nvl(v_cotel,'null') != 'null' and v_hmare || v_hmtel = v_cotel then
         -- update result data
-        insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno,type,class) values(app_id_input, 'Z2', 'Z03', 'Z03_2', '', '', 'RULE_65', 'RULE','Z');
+        insert  into af_response_afriskwarning(app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,type,class) select app_id_input as app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,type,class  from af_risk_level_settings  where ruleno = 'RULE_65' and result_type = 'HIT';
         commit;
       end if;
       -- handle exceptions
@@ -494,7 +495,7 @@ create or replace package body AF_HXBCB_RULE_PKG as
       -- 假设码值是5,后面还需要根据具体的码表更改
       if nvl(v_cycadd1,'null') != 'null' and v_cycadd1 = 'B' then
         -- update result data
-        insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno,type,class) values(app_id_input, 'Z2', 'Z03', 'Z03_3', '', '', 'RULE_67', 'RULE','Z');
+        insert  into af_response_afriskwarning(app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,type,class) select app_id_input as app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,type,class  from af_risk_level_settings  where ruleno = 'RULE_67' and result_type = 'HIT';
         commit;
       end if;
       -- handle exceptions
@@ -513,7 +514,7 @@ create or replace package body AF_HXBCB_RULE_PKG as
       -- 动态码值,后面还需要根据具体的需求更改
       if nvl(v_cycadd1,'null') != 'null' and v_cycadd1 = 'H' then
         -- update result data
-        insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno,type,class) values(app_id_input, 'Z2', 'Z03', 'Z03_3', '', '', 'RULE_68', 'RULE','Z');
+        insert  into af_response_afriskwarning(app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,type,class) select app_id_input as app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,type,class  from af_risk_level_settings  where ruleno = 'RULE_68' and result_type = 'HIT';
         commit;
       end if;
       -- handle exceptions
@@ -530,14 +531,20 @@ create or replace package body AF_HXBCB_RULE_PKG as
     flag number;
     v_error varchar2(500);
     begin
-      select count(distinct(t.c1_mobile))
+      select count(1)
       into flag
-      from af_request_appinfo_his_hot t
-      where t.c1_idnbr = v_idnbr
-            and t.c1_mobile is not null;
+      from (select t.c1_mobile
+            from af_request_applicantinfo t
+            where t.c1_idnbr = v_idnbr
+                  and t.c1_mobile is not null
+            union
+            select t.c1_mobile
+            from af_request_appinfo_his_hot t
+            where t.c1_idnbr = v_idnbr
+                  and t.c1_mobile is not null) t;
       if flag >= 2 then
         -- update result data
-        insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno,type,class) values(app_id_input, 'Z2', 'Z01', 'Z01_2', '', '', 'RULE_70', 'RULE','Z');
+        insert  into af_response_afriskwarning(app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,type,class) select app_id_input as app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,type,class  from af_risk_level_settings  where ruleno = 'RULE_70' and result_type = 'HIT';
         commit;
       end if;
       -- handle exceptions
@@ -554,14 +561,20 @@ create or replace package body AF_HXBCB_RULE_PKG as
     flag number;
     v_error varchar2(500);
     begin
-      select count(distinct(t.c1_cotel))
+      select count(1)
       into flag
-      from af_request_appinfo_his_hot t
-      where t.c1_idnbr = v_idnbr
-            and t.c1_cotel is not null;
+      from (select t.c1_cotel
+            from af_request_applicantinfo t
+            where t.c1_idnbr = v_idnbr
+                  and t.c1_cotel is not null
+            union
+            select t.c1_cotel
+            from af_request_appinfo_his_hot t
+            where t.c1_idnbr = v_idnbr
+                  and t.c1_cotel is not null) t ;
       if flag >= 2 then
         -- update result data
-        insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno,type,class) values(app_id_input, 'Z2', 'Z01', 'Z01_2', '', '', 'RULE_71', 'RULE','Z');
+        insert  into af_response_afriskwarning(app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,type,class) select app_id_input as app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,type,class  from af_risk_level_settings  where ruleno = 'RULE_71' and result_type = 'HIT';
         commit;
       end if;
       -- handle exceptions
@@ -580,7 +593,7 @@ create or replace package body AF_HXBCB_RULE_PKG as
       if nvl(v_educationdegree,'null') != 'null' then
         -- educationdegree学历对应码值判断学位是否高于大专
         -- update result data
-        insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno,type,class) values(app_id_input, 'Z2', 'Z03', 'Z03_1', '', '', 'RULE_96', 'RULE','Z');
+        insert  into af_response_afriskwarning(app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,type,class) select app_id_input as app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,type,class  from af_risk_level_settings  where ruleno = 'RULE_96' and result_type = 'HIT';
         commit;
       end if;
       -- handle exceptions
@@ -599,7 +612,7 @@ create or replace package body AF_HXBCB_RULE_PKG as
       if nvl(v_result_xm,'null') != 'null' then
         -- result_xm公民身份号码核查结果码值需要确定
         -- update result data
-        insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno,type,class) values(app_id_input, 'Z2', 'Z03', 'Z03_1', '', '', 'RULE_98', 'RULE','Z');
+        insert  into af_response_afriskwarning(app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,type,class) select app_id_input as app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,type,class  from af_risk_level_settings  where ruleno = 'RULE_98' and result_type = 'HIT';
         commit;
       end if;
       -- handle exceptions
@@ -617,7 +630,7 @@ create or replace package body AF_HXBCB_RULE_PKG as
     begin
       if nvl(v_remobil,'null') != 'null' and nvl(v_mobile,'null') != 'null' and v_remobil = v_mobile  then
         -- update result data
-        insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno,type,class) values(app_id_input, 'Z2', 'Z03', 'Z03_2', '', '', 'RULE_118', 'RULE','Z');
+        insert  into af_response_afriskwarning(app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,type,class) select app_id_input as app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,type,class  from af_risk_level_settings  where ruleno = 'RULE_118' and result_type = 'HIT';
         commit;
       end if;
       -- handle exceptions
@@ -635,7 +648,7 @@ create or replace package body AF_HXBCB_RULE_PKG as
     begin
       if nvl(v_educls,'null') != 'null' and nvl(v_educationapproach,'null') != 'null'  and v_educls = v_educationapproach then
         -- update result data
-        insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno,type,class) values(app_id_input, 'Z2', 'Z03', 'Z03_1', '', '', 'RULE_138', 'RULE','Z');
+        insert  into af_response_afriskwarning(app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,type,class) select app_id_input as app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,type,class  from af_risk_level_settings  where ruleno = 'RULE_138' and result_type = 'HIT';
         commit;
       end if;
       -- handle exceptions
@@ -654,11 +667,11 @@ create or replace package body AF_HXBCB_RULE_PKG as
       --N的值不确定
       if nvl(v_no_pin_debit_card_acct_num,'null') = 'null'  then
         -- update result data
-        insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno,type,class) values(app_id_input, 'Z2', 'Z03', 'Z03_1', 'NULL', 'NULL', 'RULE_139', 'RULE','Z');
+        insert  into af_response_afriskwarning(app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,type,class) select app_id_input as app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,type,class  from af_risk_level_settings  where ruleno = 'RULE_PBOC_139' and result_type = 'EMPTY';
         commit;
-      elsif v_no_pin_debit_card_acct_num >= 'N' then
+      elsif v_no_pin_debit_card_acct_num >= '5' then
         -- update result data
-        insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno,type,class) values(app_id_input, 'Z2', 'Z03', 'Z03_1', '', '', 'RULE_139', 'RULE','Z');
+        insert  into af_response_afriskwarning(app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,type,class) select app_id_input as app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,type,class  from af_risk_level_settings  where ruleno = 'RULE_PBOC_139' and result_type = 'HIT';
         commit;
       end if;
       -- handle exceptions
@@ -677,11 +690,11 @@ create or replace package body AF_HXBCB_RULE_PKG as
       --N的值不确定
       if nvl(v_no_pd_card_loan_org_number,'null') = 'null' then
         -- update result data
-        insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno,type,class) values(app_id_input, 'Z2', 'Z03', 'Z03_1', 'NULL', 'NULL', 'RULE_140', 'RULE','Z');
+        insert  into af_response_afriskwarning(app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,type,class) select app_id_input as app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,type,class  from af_risk_level_settings  where ruleno = 'RULE_PBOC_140' and result_type = 'EMPTY';
         commit;
-      elsif  v_no_pd_card_loan_org_number >= 'N'  then
+      elsif  v_no_pd_card_loan_org_number >= '5'  then
         -- update result data
-        insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno,type,class) values(app_id_input, 'Z2', 'Z03', 'Z03_1', '', '', 'RULE_140', 'RULE','Z');
+        insert  into af_response_afriskwarning(app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,type,class) select app_id_input as app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,type,class  from af_risk_level_settings  where ruleno = 'RULE_PBOC_140' and result_type = 'HIT';
         commit;
       end if;
       -- handle exceptions
@@ -700,11 +713,11 @@ create or replace package body AF_HXBCB_RULE_PKG as
       --N的值不确定
       if nvl(v_no_pd_card_loan_corp_number,'null') = 'null'then
         -- update result data
-        insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno,type,class) values(app_id_input, 'Z2', 'Z03', 'Z03_1', 'NULL', 'NULL', 'RULE_141', 'RULE','Z');
+        insert  into af_response_afriskwarning(app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,type,class) select app_id_input as app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,type,class  from af_risk_level_settings  where ruleno = 'RULE_PBOC_141' and result_type = 'EMPTY';
         commit;
-      elsif  v_no_pd_card_loan_corp_number >= 'N'  then
+      elsif  v_no_pd_card_loan_corp_number >= '5'  then
         -- update result data
-        insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno,type,class) values(app_id_input, 'Z2', 'Z03', 'Z03_1', '', '', 'RULE_141', 'RULE','Z');
+        insert  into af_response_afriskwarning(app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,type,class) select app_id_input as app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,type,class  from af_risk_level_settings  where ruleno = 'RULE_PBOC_141' and result_type = 'HIT';
         commit;
       end if;
       -- handle exceptions
@@ -723,11 +736,11 @@ create or replace package body AF_HXBCB_RULE_PKG as
       --N的值不确定
       if nvl(v_frs_cred_crd_issue_mon,'null') = 'null'  then
         -- update result data
-        insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno,type,class) values(app_id_input, 'Z2', 'Z03', 'Z03_1', 'NULL', 'NULL', 'RULE_143', 'RULE','Z');
+        insert  into af_response_afriskwarning(app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,type,class) select app_id_input as app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,type,class  from af_risk_level_settings  where ruleno = 'RULE_PBOC_143' and result_type = 'EMPTY';
         commit;
-      elsif  v_frs_cred_crd_issue_mon <= 'N' then
+      elsif  v_frs_cred_crd_issue_mon <= '5' then
         -- update result data
-        insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno,type,class) values(app_id_input, 'Z2', 'Z03', 'Z03_1', '', '', 'RULE_143', 'RULE','Z');
+        insert  into af_response_afriskwarning(app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,type,class) select app_id_input as app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,type,class  from af_risk_level_settings  where ruleno = 'RULE_PBOC_143' and result_type = 'HIT';
         commit;
       end if;
       -- handle exceptions
@@ -747,11 +760,11 @@ create or replace package body AF_HXBCB_RULE_PKG as
       if v_reship = '配偶' and nvl(v_remobil,'null') != 'null' then
         if nvl(v_mate_contact_tel,'null') = 'null' then
           -- update result data
-          insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno,type,class) values(app_id_input, 'Z2', 'Z03', 'Z03_2', 'NULL', 'NULL', 'RULE_145', 'RULE','Z');
+          insert  into af_response_afriskwarning(app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,type,class) select app_id_input as app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,type,class  from af_risk_level_settings  where ruleno = 'RULE_PBOC_145' and result_type = 'EMPTY';
           commit;
-        elsif v_remobil = v_mate_contact_tel then
+        elsif v_remobil != v_mate_contact_tel then
           -- update result data
-          insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno,type,class) values(app_id_input, 'Z2', 'Z03', 'Z03_2', '', '', 'RULE_145', 'RULE','Z');
+          insert  into af_response_afriskwarning(app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,type,class) select app_id_input as app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,type,class  from af_risk_level_settings  where ruleno = 'RULE_PBOC_145' and result_type = 'HIT';
           commit;
         end if;
       end if;
@@ -770,9 +783,11 @@ create or replace package body AF_HXBCB_RULE_PKG as
     begin
       -- c4_apsour推广进件来源的码值还需要根据具体的码表更改判断码值是否等于 (我行客户 or 陌生拜访 or 电话营销 or 信函营销)
       if nvl(v_apsour,'null') != 'null' then
-        -- update result data
-        insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno,type,class) values(app_id_input, 'Z2', 'Z03', 'Z03_1', '', '', 'RULE_152_1', 'RULE','Z');
-        commit;
+        if v_apsour = '1' then
+          -- update result data
+          insert  into af_response_afriskwarning(app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,type,class) select app_id_input as app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,type,class  from af_risk_level_settings  where ruleno = 'RULE_152_1' and result_type = 'HIT';
+          commit;
+        end if;
       end if;
       -- handle exceptions
       exception when others then v_error := 'RULE_152_1: ' || sqlerrm;
@@ -789,9 +804,11 @@ create or replace package body AF_HXBCB_RULE_PKG as
     begin
       -- c4_apsour推广进件来源的码值还需要根据具体的码表更改判断码值是否等于 (我行客户 or 陌生拜访 or 电话营销 or 信函营销)
       if nvl(v_apsour,'null') != 'null' then
-        -- update result data
-        insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno,type,class) values(app_id_input, 'Z2', 'Z03', 'Z03_1', '', '', 'RULE_152_2', 'RULE','Z');
-        commit;
+        if v_apsour = '1' then
+          -- update result data
+          insert  into af_response_afriskwarning(app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,type,class) select app_id_input as app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,type,class  from af_risk_level_settings  where ruleno = 'RULE_152_2' and result_type = 'HIT';
+          commit;
+        end if;
       end if;
       -- handle exceptions
       exception when others then v_error := 'RULE_152_2: ' || sqlerrm;
@@ -808,9 +825,11 @@ create or replace package body AF_HXBCB_RULE_PKG as
     begin
       -- c4_apsour推广进件来源的码值还需要根据具体的码表更改判断码值是否等于 (我行客户 or 陌生拜访 or 电话营销 or 信函营销)
       if nvl(v_apsour,'null') != 'null' then
-        -- update result data
-        insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno,type,class) values(app_id_input, 'Z2', 'Z03', 'Z03_1', '', '', 'RULE_152_4', 'RULE','Z');
-        commit;
+        if v_apsour = '1' then
+          -- update result data
+          insert  into af_response_afriskwarning(app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,type,class) select app_id_input as app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,type,class  from af_risk_level_settings  where ruleno = 'RULE_152_4' and result_type = 'HIT';
+          commit;
+        end if;
       end if;
       -- handle exceptions
       exception when others then v_error := 'RULE_152_4: ' || sqlerrm;
@@ -827,9 +846,11 @@ create or replace package body AF_HXBCB_RULE_PKG as
     begin
       -- c4_apsour推广进件来源的码值还需要判断码值是否等于 (他人转介 or 设点营销 or 熟人介绍 or 自进件)
       if nvl(v_apsour,'null') != 'null' then
-        -- update result data
-        insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno,type,class) values(app_id_input, 'Z2', 'Z03', 'Z03_1', '', '', 'RULE_153_2', 'RULE','Z');
-        commit;
+        if v_apsour = '1' then
+          -- update result data
+          insert  into af_response_afriskwarning(app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,type,class) select app_id_input as app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,type,class  from af_risk_level_settings  where ruleno = 'RULE_153_2' and result_type = 'HIT';
+          commit;
+        end if;
       end if;
       -- handle exceptions
       exception when others then v_error := 'RULE_153_2: ' || sqlerrm;
@@ -846,9 +867,11 @@ create or replace package body AF_HXBCB_RULE_PKG as
     begin
       -- c4_apsour推广进件来源的码值还需要判断码值是否等于 (他人转介 or 设点营销 or 熟人介绍 or 自进件)
       if nvl(v_apsour,'null') != 'null' then
-        -- update result data
-        insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno,type,class) values(app_id_input, 'Z2', 'Z03', 'Z03_1', '', '', 'RULE_153_3', 'RULE','Z');
-        commit;
+        if v_apsour = '1' then
+          -- update result data
+          insert  into af_response_afriskwarning(app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,type,class) select app_id_input as app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,type,class  from af_risk_level_settings  where ruleno = 'RULE_153_3' and result_type = 'HIT';
+          commit;
+        end if;
       end if;
       -- handle exceptions
       exception when others then v_error := 'RULE_153_3: ' || sqlerrm;
@@ -867,13 +890,18 @@ create or replace package body AF_HXBCB_RULE_PKG as
     begin
       if nvl(v_remobil,'null') != 'null' and nvl(v_remobil,'null') != 'null' then
         select count(1)
-        into flag
-        from af_request_appinfo_his_hot t
-        where t.c1_remobil = v_remobil
-              and t.c1_rename != v_rename;
-        if flag > 'N' then
+        into flag from(select app_id
+                       from af_request_appinfo_his_hot t
+                       where t.c1_remobil = v_remobil
+                             and t.c1_rename != v_rename
+                       union all
+                       select app_id
+                       from af_request_appinfo_his_hot t
+                       where t.c1_remobil = v_remobil
+                             and t.c1_rename != v_rename) t;
+        if flag > '2' then
           -- update result data
-          insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno,type,class) values(app_id_input, 'Z2', 'Z01', 'Z01_2', '', '', 'RULE_179', 'RULE','Z');
+          insert  into af_response_afriskwarning(app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,type,class) select app_id_input as app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,type,class  from af_risk_level_settings  where ruleno = 'RULE_179' and result_type = 'HIT';
           commit;
         end if;
       end if;
@@ -892,7 +920,7 @@ create or replace package body AF_HXBCB_RULE_PKG as
     begin
       if nvl(v_coname,'null') != 'null' and instr(v_coname,'投资') != '0' then
         -- update result data
-        insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno,type,class) values(app_id_input, 'Z2', 'Z03', 'Z03_4', '', '', 'RULE_182', 'RULE','Z');
+        insert  into af_response_afriskwarning(app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,type,class) select app_id_input as app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,type,class  from af_risk_level_settings  where ruleno = 'RULE_182' and result_type = 'HIT';
         commit;
       end if;
       -- handle exceptions
@@ -912,23 +940,23 @@ create or replace package body AF_HXBCB_RULE_PKG as
       if v1v2_flag = '主卡' and nvl(v_gender,'null') != 'null' and v_idtype = '身份证' then
         if mod(substr(v_idnbr,-2,1),2) = 0 and v_gender = '女' then
           -- update result data
-          insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno,type,class) values(app_id_input, 'W2', 'W01', 'W01_4', '', '', 'RULE_198', 'RULE','Z');
+          insert  into af_response_afriskwarning(app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,type,class) select app_id_input as app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,type,class  from af_risk_level_settings  where ruleno = 'RULE_198' and result_type = 'HIT';
           commit;
         end if;
         if mod(substr(v_idnbr,-2,1),2) = 1 and  v_gender = '男' then
           -- update result data
-          insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno,type,class) values(app_id_input, 'W2', 'W01', 'W01_4', '', '', 'RULE_198', 'RULE','Z');
+          insert  into af_response_afriskwarning(app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,type,class) select app_id_input as app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,type,class  from af_risk_level_settings  where ruleno = 'RULE_198' and result_type = 'HIT';
           commit;
         end if;
       elsif  nvl(v2_gender,'null') != 'null' and v2_idtype = '身份证'  then
         if mod(substr(v2_idnbr,-2,1),2) = 0 and v2_gender = '女' then
           -- update result data
-          insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno,type,class) values(app_id_input, 'W2', 'W01', 'W01_4', '', '', 'RULE_198', 'RULE','Z');
+          insert  into af_response_afriskwarning(app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,type,class) select app_id_input as app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,type,class  from af_risk_level_settings  where ruleno = 'RULE_198' and result_type = 'HIT';
           commit;
         end if;
         if mod(substr(v2_idnbr,-2,1),2) = 1 and  v2_gender = '男' then
           -- update result data
-          insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno,type,class) values(app_id_input, 'W2', 'W01', 'W01_4', '', '', 'RULE_198', 'RULE','Z');
+          insert  into af_response_afriskwarning(app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,type,class) select app_id_input as app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,type,class  from af_risk_level_settings  where ruleno = 'RULE_198' and result_type = 'HIT';
           commit;
         end if;
       end if;
@@ -947,7 +975,7 @@ create or replace package body AF_HXBCB_RULE_PKG as
     begin
       if substr(app_id_input,11,1) = 'V' then
         -- update result data
-        insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno,type,class) values(app_id_input, 'Z2', 'Z03', 'Z03_1', '', '', 'RULE_236', 'RULE','Z');
+        insert  into af_response_afriskwarning(app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,type,class) select app_id_input as app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,type,class  from af_risk_level_settings  where ruleno = 'RULE_236' and result_type = 'HIT';
         commit;
       end if;
       -- handle exceptions
