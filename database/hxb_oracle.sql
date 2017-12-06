@@ -330,7 +330,7 @@ comment on column af_risk_level_settings.riskcode is '校验结果A,B,C,D,E';
 comment on column af_risk_level_settings.ruleno is '校验规则编号';
 comment on column af_risk_level_settings.type is '反欺诈结果类型(AF_ALL,RULE,MODEL,SNA)';
 comment on column af_risk_level_settings.class is 'TYPE 二级分类';
-comment on column  af_risk_level_settings.riskvalue is '风险等级依据结果值(1:命中,0:未命中[不会纳入集合计算],-1:NULL)';
+comment on column  af_risk_level_settings.riskvalue is '风险等级依据结果值(1:命中,0:未命中[不会纳入聚合计算],-1:NULL)';
 
 -- if exist table af_request_appinfo_zmivsinfo
 DROP TABLE af_request_appinfo_zmivsinfo cascade constraints;
@@ -406,7 +406,7 @@ comment on column  af_response_afriskwarning.riskcode is '校验结果A,B,C,D,E'
 comment on column  af_response_afriskwarning.ruleno is '校验规则编号';
 comment on column  af_response_afriskwarning.type is '反欺诈结果类型(AF_ALL,RULE,MODEL,SNA)';
 comment on column  af_response_afriskwarning.class is 'TYPE 二级分类';
-comment on column  af_response_afriskwarning.riskvalue is '风险等级依据结果值(1:命中,0:未命中[不会纳入集合计算],-1:NULL)';
+comment on column  af_response_afriskwarning.riskvalue is '风险等级依据结果值(1:命中,0:未命中[不会纳入聚合计算],-1:NULL)';
 comment on column  af_response_afriskwarning.calculatenum is '规则命中依据中间变量值';
 
 -- if exist table af_request_applicantinfo
