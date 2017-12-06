@@ -303,6 +303,11 @@ create or replace package body AF_HXBCB is
         first_deposit_ym,
         imeienenglish,
         imsienenglish,
+        industry_type1，
+        industry_type2，
+        industry_type3，
+        industry_type4，
+        industry_type5，
         ipenenglish,
         loan_overdue_month_num,
         mate_contact_tel,
@@ -373,6 +378,11 @@ create or replace package body AF_HXBCB is
         v_first_deposit_ym,
         v_imeienenglish,
         v_imsienenglish,
+        v_industry_type1，
+        v_industry_type2，
+        v_industry_type3，
+        v_industry_type4，
+        v_industry_type5，
         v_ipenenglish,
         v_loan_overdue_month_num,
         v_mate_contact_tel,
@@ -452,6 +462,7 @@ create or replace package body AF_HXBCB is
       AF_HXBCB_RULE_PKG.RULE_36(app_id_input, v_xmobil1,v_comp_phone);
       AF_HXBCB_RULE_PKG.RULE_37(app_id_input, v_cumul_pay_months,v_pboc_yl_pay_status);
       AF_HXBCB_RULE_PKG.RULE_38(app_id_input, v_pboc_gjj_pay_status ,v_pay_ym, v_first_deposit_ym);
+      AF_HXBCB_RULE_PKG.RULE_39(app_id_input, v_industry_type1 ,v_industry_type2 ,v_industry_type3 ,v_industry_type4 ,v_industry_type5);
       AF_HXBCB_RULE_PKG.RULE_80(app_id_input, v_mobile);
       AF_HXBCB_RULE_PKG.RULE_146(app_id_input, v_query_rec_2y_sum1);
       AF_HXBCB_RULE_PKG.RULE_147(app_id_input, v_query_rec_2y_sum5);
