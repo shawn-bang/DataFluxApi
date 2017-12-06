@@ -83,8 +83,7 @@ create table af_app_add_ext_his
   ROOMMC             varchar(256),
   STREETMC           varchar(256),
   TOWNMC             varchar(256),
-  UNITMC             varchar(256),
-  CITY               varchar(100)
+  UNITMC             varchar(256)
 );
 
 -- if exist table af_app_add_today
@@ -92,6 +91,7 @@ drop table af_app_add_today cascade constraints;
 create table af_app_add_today
 (
   APP_ID             varchar(20),
+  DATA_SOURCE        varchar(32),
   DATA_TYPE          varchar(30),
   DATA_VALUE         varchar(255),
   DISTRICTMC         varchar(255),
@@ -388,7 +388,9 @@ create table af_response_afriskwarning(
       riskcode VARCHAR2(6),
       ruleno VARCHAR2(20),
       type VARCHAR2(10),
-      class VARCHAR2(6)
+      class VARCHAR2(6),
+      riskvalue NUMBER(2),
+      calculatenum NUMBER(10)
 );
 
 comment on table af_response_afriskwarning is '响应报文中风险提示信息表';
@@ -399,8 +401,10 @@ comment on column  af_response_afriskwarning.riskcategory is '校验规则三级
 comment on column  af_response_afriskwarning.riskdesc is '校验结果详情描述';
 comment on column  af_response_afriskwarning.riskcode is '校验结果A,B,C,D,E';
 comment on column  af_response_afriskwarning.ruleno is '校验规则编号';
-comment on column af_response_afriskwarning.type is '反欺诈结果类型(AF_ALL,RULE,MODEL,SNA)';
-comment on column af_response_afriskwarning.class is 'TYPE 二级分类';
+comment on column  af_response_afriskwarning.type is '反欺诈结果类型(AF_ALL,RULE,MODEL,SNA)';
+comment on column  af_response_afriskwarning.class is 'TYPE 二级分类';
+comment on column  af_response_afriskwarning.riskvalue is '风险等级依据结果值';
+comment on column  af_response_afriskwarning.calculatenum is '规则命中依据中间变量值';
 
 -- if exist table af_request_applicantinfo
 DROP TABLE af_request_applicantinfo cascade constraints;

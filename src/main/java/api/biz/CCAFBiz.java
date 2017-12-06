@@ -17,6 +17,7 @@ import com.alibaba.fastjson.JSONObject;
 import com.dataflux.DMService_ServiceLocator;
 import com.dataflux.Row__in;
 import com.dataflux.Row__out;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.log4j.Logger;
 
@@ -217,7 +218,6 @@ public class CCAFBiz {
 		
 		if (dfouttab != null && dfouttab.length > 0) {
 			for (int i = 0; i < dfouttab.length; i++) {
-
 				HashMap<String, Object> mtrstmp = new HashMap<String, Object>();
 				mtrstmp.put("app_id", appId);
 				mtrstmp.put("app_entity_type", dfouttab[i].getAPP_entity_type());
@@ -233,22 +233,28 @@ public class CCAFBiz {
 				mtrstmp.put("simulation_cluster", new java.math.BigDecimal(dfouttab[i].getSimulation_cluster()));
 				mtRstTab.add(mtrstmp);
 
-				if (dfouttab[i].getAPP_entity_type().equals("ADD")) {
-					HashMap<String, Object> addmp = new HashMap<String, Object>();
-					addmp.put("app_id", dfouttab[i].getAPP_app_id());
-					addmp.put("data_type", dfouttab[i].getAPP_data_type());
-					addmp.put("data_value", dfouttab[i].getAPP_data_value());
-					addmp.put("districtmc", dfouttab[i].getAPP_DistrictMC());
-					addmp.put("townmc", dfouttab[i].getAPP_TownMC());
-					addmp.put("streetmc", dfouttab[i].getAPP_StreetMC());
-					addmp.put("blockmc", dfouttab[i].getAPP_BlockMC());
-					addmp.put("buildingmc", dfouttab[i].getAPP_BuildingMC());
-					addmp.put("unitmc", dfouttab[i].getAPP_UnitMC());
-					addmp.put("floormc", dfouttab[i].getAPP_FloorMC());
-					addmp.put("roommc", dfouttab[i].getAPP_RoomMC());
-					addmp.put("addinfo", dfouttab[i].getAPP_AddInfo());
-					addMCInfos.add(addmp);
-				}
+                if (dfouttab[i].getAPP_entity_type().equals("ADD") && StringUtils.isNotBlank(dfouttab[i].getAPP_data_source())) {
+                    HashMap<String, Object> addmp = new HashMap<String, Object>();
+                    addmp.put("app_id", dfouttab[i].getAPP_app_id());
+                    if (StringUtils.isNotBlank(dfouttab[i].getAPP_data_source())){
+                        addmp.put("data_source", dfouttab[i].getAPP_data_source());
+                    }else {
+                        addmp.put("data_source", dfouttab[i].getEXT_data_source());
+                    }
+                    addmp.put("data_type", dfouttab[i].getAPP_data_type());
+                    addmp.put("data_value", dfouttab[i].getAPP_data_value());
+                    addmp.put("districtmc", dfouttab[i].getAPP_DistrictMC());
+                    addmp.put("townmc", dfouttab[i].getAPP_TownMC());
+                    addmp.put("streetmc", dfouttab[i].getAPP_StreetMC());
+                    addmp.put("blockmc", dfouttab[i].getAPP_BlockMC());
+                    addmp.put("buildingmc", dfouttab[i].getAPP_BuildingMC());
+                    addmp.put("unitmc", dfouttab[i].getAPP_UnitMC());
+                    addmp.put("floormc", dfouttab[i].getAPP_FloorMC());
+                    addmp.put("roommc", dfouttab[i].getAPP_RoomMC());
+                    addmp.put("addinfo", dfouttab[i].getAPP_AddInfo());
+                    addmp.put("city", dfouttab[i].getAPP_City());
+                    addMCInfos.add(addmp);
+                }
 				if (dfouttab[i].getAPP_entity_type().equals("CMP")) {
 					HashMap<String, Object> cmpmp = new HashMap<String, Object>();
 					cmpmp.put("app_id", dfouttab[i].getAPP_app_id());
@@ -265,7 +271,10 @@ public class CCAFBiz {
             HxbDao hxbDao = HxbDao.getInstance();
 			hxbDao.deleteMatchrstInfosByAppid(sqlSession, appId);
 			hxbDao.deleteAddMCInfosByAppid(sqlSession, appId);
+			hxbDao.deleteAddMCHisInfosByAppid(sqlSession, appId);
+			hxbDao.deleteAddMCExtHisInfosByAppid(sqlSession, appId);
 			hxbDao.deleteCmpMCInfosByAppid(sqlSession, appId);
+			hxbDao.deleteCmpMCHisInfosByAppid(sqlSession, appId);
 			if (mtRstTab.size() > 0){
                 hxbDao.saveMatchrstInfos(sqlSession, mtRstTab);
             }

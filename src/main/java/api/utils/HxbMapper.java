@@ -24,7 +24,10 @@ public interface HxbMapper {
 	void saveAddMCInfos(List<Map<String, Object>> list);
 	void saveCmpMCInfos(List<Map<String, Object>> list);
 	void deleteAddMCInfosByAppid(String appId);
+	void deleteAddMCHisInfosByAppid(String appId);
+	void deleteAddMCExtHisInfosByAppid(String appId);
 	void deleteCmpMCInfosByAppid(String appId);
+	void deleteCmpMCHisInfosByAppid(String appId);
 	void deleteMatchrstInfosByAppid(String appId);
 
 }

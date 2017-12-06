@@ -117,10 +117,25 @@ public class HxbDao {
         mapper.deleteAddMCInfosByAppid(appId);
     }
 
+	public void deleteAddMCHisInfosByAppid(SqlSession sqlSession,String appId){
+		HxbMapper mapper = sqlSession.getMapper(HxbMapper.class);
+		mapper.deleteAddMCHisInfosByAppid(appId);
+	}
+
+	public void deleteAddMCExtHisInfosByAppid(SqlSession sqlSession,String appId){
+		HxbMapper mapper = sqlSession.getMapper(HxbMapper.class);
+		mapper.deleteAddMCExtHisInfosByAppid(appId);
+	}
+
     public void deleteCmpMCInfosByAppid(SqlSession sqlSession,String appId){
         HxbMapper mapper = sqlSession.getMapper(HxbMapper.class);
         mapper.deleteCmpMCInfosByAppid(appId);
     }
+
+	public void deleteCmpMCHisInfosByAppid(SqlSession sqlSession,String appId){
+		HxbMapper mapper = sqlSession.getMapper(HxbMapper.class);
+		mapper.deleteCmpMCHisInfosByAppid(appId);
+	}
 
 	public void deleteMatchrstInfosByAppid(SqlSession sqlSession,String appId){
 		HxbMapper mapper = sqlSession.getMapper(HxbMapper.class);

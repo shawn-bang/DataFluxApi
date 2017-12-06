@@ -180,9 +180,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<foreach item="item" index="index" collection="list">
 			into af_app_add_today
 			(
-				app_id, data_type, data_value, districtmc, townmc, streetmc, blockmc, buildingmc, unitmc, floormc, roommc, addinfo
+				app_id, data_source, data_type, data_value, districtmc, townmc, streetmc, blockmc, buildingmc, unitmc, floormc, roommc, addinfo, city
 			) values
-			(#{item.app_id, jdbcType = VARCHAR}, #{item.data_type, jdbcType = VARCHAR}, #{item.data_value, jdbcType = VARCHAR}, #{item.districtmc, jdbcType = VARCHAR}, #{item.townmc, jdbcType = VARCHAR}, #{item.streetmc, jdbcType = VARCHAR}, #{item.blockmc, jdbcType = VARCHAR}, #{item.buildingmc, jdbcType = VARCHAR}, #{item.unitmc, jdbcType = VARCHAR}, #{item.floormc, jdbcType = VARCHAR}, #{item.roommc, jdbcType = VARCHAR}, #{item.addinfo, jdbcType = VARCHAR})
+			(#{item.app_id, jdbcType = VARCHAR}, #{item.data_source, jdbcType = VARCHAR}, #{item.data_type, jdbcType = VARCHAR}, #{item.data_value, jdbcType = VARCHAR}, #{item.districtmc, jdbcType = VARCHAR}, #{item.townmc, jdbcType = VARCHAR}, #{item.streetmc, jdbcType = VARCHAR}, #{item.blockmc, jdbcType = VARCHAR}, #{item.buildingmc, jdbcType = VARCHAR}, #{item.unitmc, jdbcType = VARCHAR}, #{item.floormc, jdbcType = VARCHAR}, #{item.roommc, jdbcType = VARCHAR}, #{item.addinfo, jdbcType = VARCHAR}, #{item.city, jdbcType = VARCHAR})
 		</foreach>
 		SELECT 1 FROM DUAL
 	</insert>
@@ -204,10 +204,25 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		where app_id = #{appId,jdbcType =VARCHAR}
 	</delete>
 
+    <delete id="deleteAddMCHisInfosByAppid" parameterType="String" statementType="PREPARED">
+        delete from af_app_add_his
+        where app_id = #{appId,jdbcType =VARCHAR}
+    </delete>
+
+    <delete id="deleteAddMCExtHisInfosByAppid" parameterType="String" statementType="PREPARED">
+        delete from af_app_add_ext_his
+        where app_id = #{appId,jdbcType =VARCHAR}
+    </delete>
+
 	<delete id="deleteCmpMCInfosByAppid" parameterType="String" statementType="PREPARED">
 		delete from af_app_cmp_today
 		where app_id = #{appId,jdbcType =VARCHAR}
 	</delete>
+
+    <delete id="deleteCmpMCHisInfosByAppid" parameterType="String" statementType="PREPARED">
+        delete from af_app_cmp_his
+        where app_id = #{appId,jdbcType =VARCHAR}
+    </delete>
 
 	<delete id="deleteMatchrstInfosByAppid" parameterType="String" statementType="PREPARED">
 		delete from af_app_matchrst
