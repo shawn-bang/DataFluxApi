@@ -271,6 +271,11 @@ create or replace package AF_HXBCB_RULE_PKG as
   -- @author song
   -- @date 2017-12-2 10:30:00
   procedure RULE_38(app_id_input in varchar2,v_pboc_gjj_pay_status in af_request_applicantinfo.pboc_gjj_pay_status%type,v_pay_ym in af_request_applicantinfo.pay_ym%type, v_first_deposit_ym in af_request_applicantinfo.first_deposit_ym%type);
+  -- rule:39
+  -- @author song
+  -- @date 2017-12-6 18:15:00
+  procedure RULE_39(app_id_input in varchar2,v_industry_type1 in af_request_applicantinfo.industry_type1%type,v_industry_type2 in af_request_applicantinfo.industry_type2%type,v_industry_type3 in af_request_applicantinfo.industry_type3%type,
+   v_industry_type4 in af_request_applicantinfo.industry_type4%type,v_industry_type5 in af_request_applicantinfo.industry_type5%type);
   -- rule:80
   -- @author song
   -- @date 2017-12-2 10:30:00
@@ -1912,6 +1917,44 @@ create or replace package body AF_HXBCB_RULE_PKG as
       commit;
       -- don't anything
     end RULE_38;
+
+  -- rule:39
+  -- @author song
+  -- @date 2017-12-6 18:15:00
+  procedure RULE_39(app_id_input in varchar2,v_industry_type1 in af_request_applicantinfo.industry_type1%type,v_industry_type2 in af_request_applicantinfo.industry_type2%type,v_industry_type3 in af_request_applicantinfo.industry_type3%type,
+   v_industry_type4 in af_request_applicantinfo.industry_type4%type,v_industry_type5 in af_request_applicantinfo.industry_type5%type) is
+    flag number;
+    v_error varchar2(500);
+    begin
+      if nvl(v_industry_type1,'null') = 'null' and nvl(v_industry_type2,'null') = 'null' and nvl(v_industry_type3,'null') = 'null' and nvl(v_industry_type4,'null') = 'null' and nvl(v_industry_type5,'null') = 'null' then
+        insert into af_response_afriskwarning(app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,type,class) select app_id_input as app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,type,class  from af_risk_level_settings  where ruleno = 'RULE_PBOC_39' and result_type = 'EMPTY';
+      else  select count(n) into flag from
+         (select t.industry_type1 as n from af_request_applicantinfo t
+          where app_id = t.app_id and t.industry_type1<>t.industry_type2 and t.industry_type1<>t.industry_type3 and t.industry_type1<>t.industry_type4 and t.industry_type1<>t.industry_type5
+          union
+          select t.industry_type2 as n from af_request_applicantinfo t
+          where app_id = t.app_id and t.industry_type2<>t.industry_type1 and t.industry_type2<>t.industry_type3 and t.industry_type2<>t.industry_type4 and t.industry_type2<>t.industry_type5
+          union
+          select t.industry_type3 as n from af_request_applicantinfo t
+          where app_id = t.app_id and t.industry_type3<>t.industry_type1 and t.industry_type3<>t.industry_type2 and t.industry_type3<>t.industry_type4 and t.industry_type3<>t.industry_type5
+          union
+          select t.industry_type4 as n from af_request_applicantinfo t
+          where app_id = t.app_id and t.industry_type4<>t.industry_type1 and t.industry_type4<>t.industry_type2 and t.industry_type3<>t.industry_type4 and t.industry_type4<>t.industry_type5
+          union
+          select t.industry_type5 as n from af_request_applicantinfo t
+          where app_id = t.app_id and t.industry_type5<>t.industry_type1 and t.industry_type5<>t.industry_type2 and t.industry_type5<>t.industry_type3 and t.industry_type5<>t.industry_type4
+          );
+        if flag >= 3 then
+          insert into af_response_afriskwarning(app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,type,class) select app_id_input as app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,type,class  from af_risk_level_settings  where ruleno = 'RULE_PBOC_39' and result_type = 'HIT';
+          commit;
+        end if;
+      end if;
+      -- handle exceptions
+      exception when others then v_error := 'RULE_39: ' || sqlerrm;
+      insert into af_app_prc_logs(app_id, error_logs) values(app_id_input, v_error);
+      commit;
+      -- don't anything
+    end RULE_39;
 
   -- rule:80
   -- @author song
