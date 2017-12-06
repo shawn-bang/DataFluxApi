@@ -2052,7 +2052,7 @@ create or replace package body AF_HXBCB_RULE_PKG as
               select t.app_id from af_request_appinfo_his_hot t
               where v_remobil = t.c1_remobil and v_reship != t.c1_reship
               );
-        if flag1 > 2 then
+        if flag1 > N then
           -- update result data
           insert into af_response_afriskwarning(app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,type,class) select app_id_input as app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,type,class  from af_risk_level_settings  where ruleno = 'RULE_175';
           commit;
@@ -2112,7 +2112,7 @@ create or replace package body AF_HXBCB_RULE_PKG as
               select t.app_id from af_request_appinfo_his_hot t
               where t.c1_remobil = v_xmobil1 and t.c1_rename = v_xname1
               );
-        if flag > 2 then
+        if flag > N then
           -- update result data
           insert into af_response_afriskwarning(app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,type,class) select app_id_input as app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,type,class  from af_risk_level_settings  where ruleno = 'RULE_178';
           commit;
