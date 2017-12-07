@@ -35,7 +35,7 @@ public class CCAFBiz {
 			while ((line = reader.readLine()) != null) {
 				buffer.append(line);
 			}
-			log.debug("getInputJson:" + buffer.toString());
+			log.info("getInputJson:" + buffer.toString());
 			String tmpstr=buffer.toString();
 			if (!tmpstr.substring(0, 1).equals("{")){
 					tmpstr=tmpstr.substring(1);
@@ -192,7 +192,8 @@ public class CCAFBiz {
 			throw new RuntimeException(appId + " : haven't found any SNAInputParams rows.");
 		}
 		for (Map<String, Object> map : params) {
-			String columnName = map.get("SRC_TYPE").toString();
+			// must be lowercase
+			String columnName = map.get("SRC_TYPE").toString().toLowerCase();
 			String snaColumnName = map.get("TO_TYPE").toString();
 			String link_type = map.get("LINK_TYPE").toString();
 			String ifcluster = map.get("IFCLUSTER").toString();

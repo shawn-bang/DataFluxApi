@@ -3,8 +3,6 @@
   -- Created : 2017/11/3 17:15:27
   -- Purpose : Package for Antifraud
   -- 全局变量声明
-
-
   v_errors varchar2(500);
 
   --申请人推广进件来源 v_apsour = c4_apsour
@@ -253,6 +251,7 @@ create or replace package body AF_HXBCB is
     begin
       --从request_applicantinfo获取全局参数
       select
+        req_app_num,
         bad_debt_num,
         codeaddrenglish,
         codeemailenglish,
@@ -328,6 +327,7 @@ create or replace package body AF_HXBCB is
         resi_tel,
         wifimacenenglish
       into
+        v_app_num,
         v_bad_debt_num,
         v_codeaddrenglish,
         v_codeemailenglish,
@@ -434,6 +434,9 @@ create or replace package body AF_HXBCB is
       -- TODO W&H             
     end RT_MAIN;
   --规则存储过程
+
+
+
   procedure AF_HXBCB_RULE(app_id_input in varchar2) is
     rules_riskcode af_response_afriskwarning.riskcode%type;
     begin

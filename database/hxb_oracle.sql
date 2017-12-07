@@ -283,16 +283,6 @@ insert into af_app_snainput_conf(src_type, to_type, link_type, ifcluster) values
 insert into af_app_snainput_conf(src_type, to_type, link_type, ifcluster) values('C1_CARDNBR','CARDNBR','1','1');
 commit;
 
-insert into af_app_sna_input(clusterid,to_node,to_type,net_score)values('1','2','mob',300);
-insert into af_app_sna_input(clusterid,to_node,to_type,net_score)values('2','3','idcard',400);
-commit;
-
-insert into af_app_model_input_parms(model_var,model_var_value)values('intercept',600);
-insert into af_app_model_input_parms(model_var,model_var_value)values('c1_credpct',20);
-insert into af_app_model_input_parms(model_var,model_var_value) values ('c6_rel_flag1',-30);
-insert into af_app_model_input_parms(model_var,model_var_value) values('paymt_yn',70);
-commit;
-
 insert into af_app_risk_conf_parms(parm_type,parm_level,parm_value_up,parm_value_lower) values ('SNA','D中高风险',9999,600);
 insert into af_app_risk_conf_parms(parm_type,parm_level,parm_value_up,parm_value_lower) values ('SNA','C中风险',600,300);
 insert into af_app_risk_conf_parms(parm_type,parm_level,parm_value_up,parm_value_lower) values ('SNA','B中低风险',300,0);
@@ -427,7 +417,7 @@ create table af_request_applicantinfo(
       c1_carst VARCHAR2(1),
       c1_class VARCHAR2(3),
       c1_cname VARCHAR2(30),
-      c1_coadd1 VARCHAR2(30),
+      c1_coadd1 VARCHAR2(60),
       c1_coadd2 VARCHAR2(60),
       c1_coadd3 VARCHAR2(60),
       c1_coadd4 VARCHAR2(60),
@@ -442,7 +432,7 @@ create table af_request_applicantinfo(
       c1_copost VARCHAR2(6),
       c1_cotel VARCHAR2(17),
       c1_coyr NUMBER(2),
-      c1_earn NUMBER(5,1),
+      c1_earn NUMBER(6,1),
       c1_educls VARCHAR2(1),
       c1_email VARCHAR2(40),
       c1_ename VARCHAR2(30),
@@ -585,7 +575,7 @@ create table af_request_applicantinfo(
       c2_coname VARCHAR2(30),
       c2_cotel VARCHAR2(17),
       c2_coyr NUMBER(2),
-      c2_earn NUMBER(5,1),
+      c2_earn NUMBER(6,1),
       c2_email VARCHAR2(40),
       c2_ename VARCHAR2(30),
       c2_gender VARCHAR2(1),
@@ -2699,6 +2689,4 @@ create unique index idx_snaresult_appid on af_app_sna_result(app_id) tablespace 
 create index idx_movinput_appid_varname on af_app_model_var_input(app_id,var_name) tablespace index_ts;
 create index idx_snainput_nodes on af_app_snainput(from_node,to_node,to_type) tablespace index_ts;
 create index idx_sna_input_node_type on af_app_sna_input(to_node,to_type) tablespace index_ts;
-create unique index idx_risklevel_ruleno on af_risk_level_settings(ruleno) tablespace index_ts;
-
 
