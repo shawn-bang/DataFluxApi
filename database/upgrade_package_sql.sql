@@ -8,25 +8,25 @@
   --申请人推广进件来源 v_apsour = c4_apsour
   v_apsour af_request_applicantinfo.c4_apsour%type;
 
-  -- 申请次数
+  --申请次数
   v_app_num number;
 
-  -- 推广员编号 c4_abuser
+  --推广员编号 c4_abuser
   v_abuser af_request_applicantinfo.c4_abuser%type;
 
-  -- 推广员姓名 c4_abname
+  --推广员姓名 c4_abname
   v_abname af_request_applicantinfo.c4_abname%type;
 
   --申请人呆帐_笔数 v_bad_debt_num = bad_debt_num
   v_bad_debt_num af_request_applicantinfo.bad_debt_num%type;
 
-  -- 申请人出生日期 v_birth = c2_birth
+  --申请人出生日期 v_birth = c2_birth
   v_birth af_request_applicantinfo.c2_birth%type;
 
   --累计缴费月数 v_cumul_pay_months = cumul_pay_months
   v_cumul_pay_months af_request_applicantinfo.cumul_pay_months%type;
 
-  -- 单位电话 v_comp_phone = c_comp_phone
+  --单位电话 v_comp_phone = c_comp_phone
   v_comp_phone af_request_applicantinfo.c_comp_phone%type;
 
   --手机号码 v_cell_phone = cell_phone
@@ -47,10 +47,10 @@
   --申请人地址英文风险描述 v_codeaddrenglish  = codeaddrenglish
   v_codeaddrenglish af_request_applicantinfo.codeaddrenglish%type;
 
-  -- 申请人单位地址 v_coadd = c1_coadd1 + c1_coadd2 + c1_coadd3 + c1_coadd4
+  --申请人单位地址 v_coadd = c1_coadd1 + c1_coadd2 + c1_coadd3 + c1_coadd4
   v_coadd varchar2(120);
 
-  -- 申请人单位号码 v_cotel = c1_cotel
+  --申请人单位号码 v_cotel = c1_cotel
   v_cotel af_request_applicantinfo.c1_cotel%type;
 
   --申请人贷记卡逾期_最长逾期月数/最长透支月数 v_debit_co_due_longest_over =debit_co_due_longest_over_due
@@ -86,10 +86,10 @@
   --主卡申请人性别 v_gender = c1_gender
   v_gender af_request_applicantinfo.c1_gender%type;
 
-  -- 主卡申请人家庭电话区号 v_hmare = c1_hmare
+  --主卡申请人家庭电话区号 v_hmare = c1_hmare
   v_hmare af_request_applicantinfo.c1_hmare%type;
 
-  -- 申请人住宅号码 v_hmtel = c1_hmtel
+  --申请人住宅号码 v_hmtel = c1_hmtel
   v_hmtel af_request_applicantinfo.c1_hmtel%type;
 
   --家庭房屋状况 v_hmst = c1_hmst
@@ -125,13 +125,13 @@
   --申请人国际移动设备标志 v_imeienenglish = imeienenglish
   v_imeienenglish af_request_applicantinfo.imeienenglish%type;
 
-  -- 申请人证件有效日期 v_idte1 = c5_idte1
+  --申请人证件有效日期 v_idte1 = c5_idte1
   v_idte1 af_request_applicantinfo.c5_idte1%type;
 
-  -- 申请人证件起始日期 v_iddt1 = c2_iddt1
+  --申请人证件起始日期 v_iddt1 = c2_iddt1
   v_iddt1 af_request_applicantinfo.c2_iddt1%type;
 
-  -- 申请人证件类型 v_idtype = c1_idtype
+  --申请人证件类型 v_idtype = c1_idtype
   v_idtype af_request_applicantinfo.c1_idtype%type;
 
   --申请人贷款逾期_月份数 v_loan_overdue_month_num = loan_overdue_month_num
@@ -143,7 +143,7 @@
   --申请人配偶的联系电话 v_mate_contact_te = mate_contact_tel
   v_mate_contact_tel af_request_applicantinfo.mate_contact_tel%type;
 
-  -- 申请人手机号码 v_mobile = c1_mobile
+  --申请人手机号码 v_mobile = c1_mobile
   v_mobile af_request_applicantinfo.c1_mobile%type;
 
   --申请人未销户贷记卡_贷款法人机构数/发卡法人机构数v_no_pd_card_loan_corp_number = no_pd_card_loan_corp_number
@@ -155,7 +155,7 @@
   --申请人未销户贷记卡_笔数/账户数v_no_pin_debit_card_acct_num = no_pin_debit_card_acct_num
   v_no_pin_debit_card_acct_num af_request_applicantinfo.no_pin_debit_card_acct_num%type;
 
-  -- 逾期天数 v_overdue_day = overdue_day
+  --逾期天数 v_overdue_day = overdue_day
   v_overdue_day af_request_applicantinfo.overdue_day%type;
 
   --相对位置 v_opposite_position = opposite_position
@@ -203,7 +203,7 @@
   --申请人公民身份号码核查结果 v_result_xm = result_xm
   v_result_xm af_request_applicantinfo.result_xm%type;
 
-  -- 申请人wifi的物理地址 v_wifimacenenglish = wifimacenenglish
+  --申请人wifi的物理地址 v_wifimacenenglish = wifimacenenglish
   v_wifimacenenglish af_request_applicantinfo.wifimacenenglish%type;
 
   --联系人1姓名 v_xname1 = c1_xname1
@@ -212,10 +212,10 @@
   --联系人1手机 v_xmobil1 = c1_xmobil1
   v_xmobil1 af_request_applicantinfo.c1_xmobil1%type;
 
-  -- 联系人1电话区号 v_xtelar1 = c1_xtelar1
+  --联系人1电话区号 v_xtelar1 = c1_xtelar1
   v_xtelar1 af_request_applicantinfo.c1_xtelar1%type;
 
-  -- 联系人1电话号码 v_xtel1 = c1_xtel1
+  --联系人1电话号码 v_xtel1 = c1_xtel1
   v_xtel1 af_request_applicantinfo.c1_xtel1%type;
 
   --主附卡标识 v1v2_flag = c1c2_flag
@@ -230,9 +230,9 @@
   --附卡申请人证件类型 v2_idtype = c2_idtype
   v2_idtype af_request_applicantinfo.c2_idtype%type;
 
-  -- 声明入口调用过程
+  --声明入口调用过程
   procedure RT_MAIN(app_id_input in varchar2);
-  -- 规则调用过程
+  --规则调用过程
   procedure AF_HXBCB_RULE(app_id_input in varchar2);
 
   procedure AF_HXBCB_MODEL(app_id_model in varchar2);
