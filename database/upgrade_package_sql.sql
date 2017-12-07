@@ -498,7 +498,7 @@ create or replace package body AF_HXBCB is
       AF_HXBCB_RULE_PKG.RULE_162(app_id_input, v_hmadd);
       AF_HXBCB_RULE_PKG.RULE_164(app_id_input, v_mobile);
       AF_HXBCB_RULE_PKG.RULE_166(app_id_input, v_cotel);
-      AF_HXBCB_RULE_PKG.RULE_168(app_id_input, v_hmtel);
+      AF_HXBCB_RULE_PKG.RULE_168(app_id_input, v_hmare, v_hmtel);
       AF_HXBCB_RULE_PKG.RULE_232(app_id_input, v_abuser, v_abname);
 
 
