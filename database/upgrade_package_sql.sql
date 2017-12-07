@@ -481,15 +481,6 @@ create or replace package body AF_HXBCB is
       AF_HXBCB_RULE_PKG.RULE_182(app_id_input,v_coname);
       AF_HXBCB_RULE_PKG.RULE_198(app_id_input,v1v2_flag,v2_gender,v2_idnbr,v2_idtype,v_gender,v_idtype,v_idnbr);
       AF_HXBCB_RULE_PKG.RULE_236(app_id_input);
-      AF_HXBCB_RULE_PKG.RULE_121(app_id_input,v_idtype, v_idnbr,v_iddt1,v_idte1,v_birth);
-      AF_HXBCB_RULE_PKG.RULE_122(app_id_input,v_idte1,v_iddt1);
-      AF_HXBCB_RULE_PKG.RULE_125(app_id_input,v_wifimacenenglish);
-      AF_HXBCB_RULE_PKG.RULE_126(app_id_input,v_imeienenglish);
-      AF_HXBCB_RULE_PKG.RULE_127(app_id_input,v_imsienenglish);
-      AF_HXBCB_RULE_PKG.RULE_128(app_id_input,v_ipenenglish);
-      AF_HXBCB_RULE_PKG.RULE_129(app_id_input,v_codeaddrenglish);
-      AF_HXBCB_RULE_PKG.RULE_130(app_id_input,v_codeemailenglish);
-      AF_HXBCB_RULE_PKG.RULE_131(app_id_input,v_codenameenglish);
       --调用规则包中的黑名单规则编号160
       AF_HXBCB_RULE_PKG.RULE_155(app_id_input, v_idnbr);
       AF_HXBCB_RULE_PKG.RULE_156(app_id_input, v_idnbr);
@@ -521,6 +512,15 @@ create or replace package body AF_HXBCB is
       AF_HXBCB_RULE_PKG.RULE_49(app_id_input,v_deb_c60overd_longest_over);
       AF_HXBCB_RULE_PKG.RULE_96(app_id_input,v_educationdegree);
       AF_HXBCB_RULE_PKG.RULE_118(app_id_input,v_remobil,v_mobile);
+      AF_HXBCB_RULE_PKG.RULE_121(app_id_input,v_idtype, v_idnbr,v_iddt1,v_idte1,v_birth);
+      AF_HXBCB_RULE_PKG.RULE_122(app_id_input,v_idte1,v_iddt1);
+      AF_HXBCB_RULE_PKG.RULE_125(app_id_input,v_wifimacenenglish);
+      AF_HXBCB_RULE_PKG.RULE_126(app_id_input,v_imeienenglish);
+      AF_HXBCB_RULE_PKG.RULE_127(app_id_input,v_imsienenglish);
+      AF_HXBCB_RULE_PKG.RULE_128(app_id_input,v_ipenenglish);
+      AF_HXBCB_RULE_PKG.RULE_129(app_id_input,v_codeaddrenglish);
+      AF_HXBCB_RULE_PKG.RULE_130(app_id_input,v_codeemailenglish);
+      AF_HXBCB_RULE_PKG.RULE_131(app_id_input,v_codenameenglish);
       AF_HXBCB_RULE_PKG.RULE_139(app_id_input,v_no_pin_debit_card_acct_num);
       AF_HXBCB_RULE_PKG.RULE_140(app_id_input,v_no_pd_card_loan_org_number);
       AF_HXBCB_RULE_PKG.RULE_141(app_id_input,v_no_pd_card_loan_corp_number);
