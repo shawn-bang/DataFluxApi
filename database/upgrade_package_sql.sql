@@ -441,33 +441,16 @@ create or replace package body AF_HXBCB is
       -- @date 2017-12-2 10:30:00
       AF_HXBCB_RULE_PKG.RULE_1(app_id_input, v_mate_name,v_reship,v_rename);
       AF_HXBCB_RULE_PKG.RULE_2(app_id_input, v_mobile,v_cell_phone);
-      AF_HXBCB_RULE_PKG.RULE_18(app_id_input,v_mobile,v_comp_phone);
-      AF_HXBCB_RULE_PKG.RULE_19(app_id_input,v_cotel,v_cell_phone);
       AF_HXBCB_RULE_PKG.RULE_20(app_id_input,v_cotel,v_resi_tel);
       AF_HXBCB_RULE_PKG.RULE_21(app_id_input,v_cotel,v_comp_phone);
-      AF_HXBCB_RULE_PKG.RULE_22(app_id_input, v_hmtel,v_hmare,v_cell_phone);
       AF_HXBCB_RULE_PKG.RULE_23(app_id_input, v_hmtel,v_hmare,v_resi_tel);
       AF_HXBCB_RULE_PKG.RULE_24(app_id_input, v_hmtel,v_hmare,v_comp_phone);
-      AF_HXBCB_RULE_PKG.RULE_25(app_id_input, v_retel ,v_retelar ,v_cell_phone);
       AF_HXBCB_RULE_PKG.RULE_26(app_id_input, v_remobil,v_cell_phone);
-      AF_HXBCB_RULE_PKG.RULE_27(app_id_input, v_retel ,v_retelar ,v_resi_tel);
-      AF_HXBCB_RULE_PKG.RULE_28(app_id_input, v_remobil,v_resi_tel);
-      AF_HXBCB_RULE_PKG.RULE_29(app_id_input, v_retel ,v_retelar ,v_comp_phone);
-      AF_HXBCB_RULE_PKG.RULE_30(app_id_input, v_remobil,v_comp_phone);
-      AF_HXBCB_RULE_PKG.RULE_31(app_id_input, v_xtel1,v_xtelar1,v_cell_phone);
       AF_HXBCB_RULE_PKG.RULE_32(app_id_input, v_xmobil1,v_cell_phone);
-      AF_HXBCB_RULE_PKG.RULE_33(app_id_input, v_xtel1,v_xtelar1,v_resi_tel);
-      AF_HXBCB_RULE_PKG.RULE_34(app_id_input, v_xmobil1,v_resi_tel);
-      AF_HXBCB_RULE_PKG.RULE_35(app_id_input, v_xtel1,v_xtelar1,v_comp_phone);
-      AF_HXBCB_RULE_PKG.RULE_36(app_id_input, v_xmobil1,v_comp_phone);
       AF_HXBCB_RULE_PKG.RULE_37(app_id_input, v_cumul_pay_months,v_pboc_yl_pay_status);
       AF_HXBCB_RULE_PKG.RULE_38(app_id_input, v_pboc_gjj_pay_status ,v_pay_ym, v_first_deposit_ym);
       AF_HXBCB_RULE_PKG.RULE_39(app_id_input, v_industry_type1 ,v_industry_type2 ,v_industry_type3 ,v_industry_type4 ,v_industry_type5);
       AF_HXBCB_RULE_PKG.RULE_80(app_id_input, v_mobile);
-      AF_HXBCB_RULE_PKG.RULE_146(app_id_input, v_query_rec_2y_sum1);
-      AF_HXBCB_RULE_PKG.RULE_147(app_id_input, v_query_rec_2y_sum5);
-      AF_HXBCB_RULE_PKG.RULE_148(app_id_input, v_query_org_1m_sum1);
-      AF_HXBCB_RULE_PKG.RULE_149(app_id_input, v_query_org_1m_sum5);
       AF_HXBCB_RULE_PKG.RULE_175(app_id_input, v_remobil, v_reship);
       AF_HXBCB_RULE_PKG.RULE_176(app_id_input, v_remobil, v_rename);
       AF_HXBCB_RULE_PKG.RULE_178(app_id_input, v_xname1, v_xmobil1);
@@ -477,20 +460,13 @@ create or replace package body AF_HXBCB is
       AF_HXBCB_RULE_PKG.RULE_44(app_id_input,v_debit_card_over_due_acct_num);
       AF_HXBCB_RULE_PKG.RULE_45(app_id_input,v_debit_card_over_due_month);
       AF_HXBCB_RULE_PKG.RULE_46(app_id_input,v_debit_co_due_longest_over);
-      AF_HXBCB_RULE_PKG.RULE_48(app_id_input,v_deb_c60overd_month_num);
-      AF_HXBCB_RULE_PKG.RULE_49(app_id_input,v_deb_c60overd_longest_over);
       AF_HXBCB_RULE_PKG.RULE_65(app_id_input,v_cotel,v_hmare,v_hmtel);
       AF_HXBCB_RULE_PKG.RULE_67(app_id_input,v_cycadd1);
       AF_HXBCB_RULE_PKG.RULE_68(app_id_input,v_cycadd1);
       AF_HXBCB_RULE_PKG.RULE_70(app_id_input,v_idnbr);
       AF_HXBCB_RULE_PKG.RULE_71(app_id_input,v_idnbr);
-      AF_HXBCB_RULE_PKG.RULE_96(app_id_input,v_educationdegree);
       AF_HXBCB_RULE_PKG.RULE_98(app_id_input,v_result_xm);
-      AF_HXBCB_RULE_PKG.RULE_118(app_id_input,v_remobil,v_mobile);
       AF_HXBCB_RULE_PKG.RULE_138(app_id_input,v_educls,v_educationapproach);
-      AF_HXBCB_RULE_PKG.RULE_139(app_id_input,v_no_pin_debit_card_acct_num);
-      AF_HXBCB_RULE_PKG.RULE_140(app_id_input,v_no_pd_card_loan_org_number);
-      AF_HXBCB_RULE_PKG.RULE_141(app_id_input,v_no_pd_card_loan_corp_number);
       AF_HXBCB_RULE_PKG.RULE_143(app_id_input,v_frs_cred_crd_issue_mon);
       AF_HXBCB_RULE_PKG.RULE_145(app_id_input,v_reship,v_mate_contact_tel,v_remobil);
       AF_HXBCB_RULE_PKG.RULE_152_1(app_id_input,v_apsour);
@@ -521,7 +497,37 @@ create or replace package body AF_HXBCB is
       AF_HXBCB_RULE_PKG.RULE_166(app_id_input, v_cotel);
       AF_HXBCB_RULE_PKG.RULE_168(app_id_input, v_hmtel);
       AF_HXBCB_RULE_PKG.RULE_232(app_id_input, v_abuser, v_abname);
+
+
+      --------Not at this stage
+
+      /*AF_HXBCB_RULE_PKG.RULE_18(app_id_input,v_mobile,v_comp_phone);
+      AF_HXBCB_RULE_PKG.RULE_19(app_id_input,v_cotel,v_cell_phone);
+      AF_HXBCB_RULE_PKG.RULE_22(app_id_input, v_hmtel,v_hmare,v_cell_phone);
+      AF_HXBCB_RULE_PKG.RULE_25(app_id_input, v_retel ,v_retelar ,v_cell_phone);
+      AF_HXBCB_RULE_PKG.RULE_27(app_id_input, v_retel ,v_retelar ,v_resi_tel);
+      AF_HXBCB_RULE_PKG.RULE_28(app_id_input, v_remobil,v_resi_tel);
+      AF_HXBCB_RULE_PKG.RULE_29(app_id_input, v_retel ,v_retelar ,v_comp_phone);
+      AF_HXBCB_RULE_PKG.RULE_30(app_id_input, v_remobil,v_comp_phone);
+      AF_HXBCB_RULE_PKG.RULE_31(app_id_input, v_xtel1,v_xtelar1,v_cell_phone);
+      AF_HXBCB_RULE_PKG.RULE_33(app_id_input, v_xtel1,v_xtelar1,v_resi_tel);
+      AF_HXBCB_RULE_PKG.RULE_34(app_id_input, v_xmobil1,v_resi_tel);
+      AF_HXBCB_RULE_PKG.RULE_35(app_id_input, v_xtel1,v_xtelar1,v_comp_phone);
+      AF_HXBCB_RULE_PKG.RULE_36(app_id_input, v_xmobil1,v_comp_phone);
+      AF_HXBCB_RULE_PKG.RULE_48(app_id_input,v_deb_c60overd_month_num);
+      AF_HXBCB_RULE_PKG.RULE_49(app_id_input,v_deb_c60overd_longest_over);
+      AF_HXBCB_RULE_PKG.RULE_96(app_id_input,v_educationdegree);
+      AF_HXBCB_RULE_PKG.RULE_118(app_id_input,v_remobil,v_mobile);
+      AF_HXBCB_RULE_PKG.RULE_139(app_id_input,v_no_pin_debit_card_acct_num);
+      AF_HXBCB_RULE_PKG.RULE_140(app_id_input,v_no_pd_card_loan_org_number);
+      AF_HXBCB_RULE_PKG.RULE_141(app_id_input,v_no_pd_card_loan_corp_number);
       AF_HXBCB_RULE_PKG.RULE_142(app_id_input, v_opposite_position);
+      AF_HXBCB_RULE_PKG.RULE_146(app_id_input, v_query_rec_2y_sum1);
+      AF_HXBCB_RULE_PKG.RULE_147(app_id_input, v_query_rec_2y_sum5);
+      AF_HXBCB_RULE_PKG.RULE_148(app_id_input, v_query_org_1m_sum1);
+      AF_HXBCB_RULE_PKG.RULE_149(app_id_input, v_query_org_1m_sum5);
+      */
+
       --生成规则风险等级结果数据(聚合结果)
       select max(ra.riskcode) into rules_riskcode from af_response_afriskwarning ra where ra.type = 'RULE' and ra.app_id = app_id_input;
       if nvl(rules_riskcode, 'null') != 'null' then
