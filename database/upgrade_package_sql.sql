@@ -232,13 +232,13 @@
 
   --声明入口调用过程
   procedure RT_MAIN(app_id_input in varchar2);
-  --规则调用过程
+  --声明规则调用过程
   procedure AF_HXBCB_RULE(app_id_input in varchar2);
-
+  --声明Model调用过程
   procedure AF_HXBCB_MODEL(app_id_model in varchar2);
-  --调用SNA
+  --声明SNA调用过程
   procedure AF_HXBCB_SNA(app_id_sna in varchar2);
-  --ToRes
+  --声明Model and SNA结果转换过程
   procedure AF_HXBCB_ToResponse(app_id_res in varchar2);
 
 end AF_HXBCB;
