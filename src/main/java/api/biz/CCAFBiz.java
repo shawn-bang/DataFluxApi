@@ -10,6 +10,7 @@ import java.util.*;
 import javax.servlet.http.HttpServletRequest;
 import javax.xml.rpc.ServiceException;
 
+import api.constants.DataFluxEntityTypeEnum;
 import api.utils.HxbDao;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
@@ -215,71 +216,52 @@ public class CCAFBiz {
 		Long starttime = System.currentTimeMillis();
         List<Map<String, Object>> addMCInfos = new ArrayList<Map<String, Object>>();
         List<Map<String, Object>> cmpMCInfos = new ArrayList<Map<String, Object>>();
-		List<Map<String, Object>> mtRstTab = new ArrayList<Map<String, Object>>();
 		
 		if (dfouttab != null && dfouttab.length > 0) {
-			for (int i = 0; i < dfouttab.length; i++) {
-				HashMap<String, Object> mtrstmp = new HashMap<String, Object>();
-				mtrstmp.put("app_id", appId);
-				mtrstmp.put("app_entity_type", dfouttab[i].getAPP_entity_type());
-				mtrstmp.put("app_data_type", dfouttab[i].getAPP_data_type());
-				mtrstmp.put("app_data_value", dfouttab[i].getAPP_data_value());
-				mtrstmp.put("app_data_source", dfouttab[i].getAPP_data_source());
-				mtrstmp.put("ext_entity_type", dfouttab[i].getEXT_entity_type());
-				mtrstmp.put("ext_data_type", dfouttab[i].getEXT_data_type());
-				mtrstmp.put("ext_data_value", dfouttab[i].getEXT_data_value());
-				mtrstmp.put("ext_data_source", dfouttab[i].getEXT_data_source());
-				mtrstmp.put("simulation_parsing", new java.math.BigDecimal(dfouttab[i].getSimulation_parsing()));
-				mtrstmp.put("simulation_char", new java.math.BigDecimal(dfouttab[i].getSimulation_char()));
-				mtrstmp.put("simulation_cluster", new java.math.BigDecimal(dfouttab[i].getSimulation_cluster()));
-				mtRstTab.add(mtrstmp);
-
-				// TODO 有问题，ext的mc信息没有处理
-                if (dfouttab[i].getAPP_entity_type().equals("ADD") && StringUtils.isNotBlank(dfouttab[i].getAPP_data_source())) {
+            for (Row__out aDfouttab : dfouttab) {
+                if (aDfouttab.getEntity_type().equals(DataFluxEntityTypeEnum.ADD.name())) {
                     HashMap<String, Object> addmp = new HashMap<String, Object>();
-                    addmp.put("app_id", dfouttab[i].getAPP_app_id());
-                    if (StringUtils.isNotBlank(dfouttab[i].getAPP_data_source())){
-                        addmp.put("data_source", dfouttab[i].getAPP_data_source());
-                    }else {
-                        addmp.put("data_source", dfouttab[i].getEXT_data_source());
-                    }
-                    addmp.put("data_type", dfouttab[i].getAPP_data_type());
-                    addmp.put("data_value", dfouttab[i].getAPP_data_value());
-                    addmp.put("districtmc", dfouttab[i].getAPP_DistrictMC());
-                    addmp.put("townmc", dfouttab[i].getAPP_TownMC());
-                    addmp.put("streetmc", dfouttab[i].getAPP_StreetMC());
-                    addmp.put("blockmc", dfouttab[i].getAPP_BlockMC());
-                    addmp.put("buildingmc", dfouttab[i].getAPP_BuildingMC());
-                    addmp.put("unitmc", dfouttab[i].getAPP_UnitMC());
-                    addmp.put("floormc", dfouttab[i].getAPP_FloorMC());
-                    addmp.put("roommc", dfouttab[i].getAPP_RoomMC());
-                    addmp.put("addinfo", dfouttab[i].getAPP_AddInfo());
-                    addmp.put("city", dfouttab[i].getAPP_City());
+                    addmp.put("app_id", aDfouttab.getApp_id());
+                    addmp.put("cid", aDfouttab.getCid());
+                    addmp.put("data_source", aDfouttab.getData_source());
+                    addmp.put("data_type", aDfouttab.getData_type());
+                    addmp.put("data_value", aDfouttab.getData_value());
+                    addmp.put("districtmc", aDfouttab.getDistrictMC());
+                    addmp.put("townmc", aDfouttab.getTownMC());
+                    addmp.put("streetmc", aDfouttab.getStreetMC());
+                    addmp.put("blockmc", aDfouttab.getBlockMC());
+                    addmp.put("buildingmc", aDfouttab.getBuildingMC());
+                    addmp.put("unitmc", aDfouttab.getUnitMC());
+                    addmp.put("floormc", aDfouttab.getFloorMC());
+                    addmp.put("roommc", aDfouttab.getRoomMC());
+                    addmp.put("addinfomc", aDfouttab.getAddInfoMC());
+                    addmp.put("city", aDfouttab.getCity());
                     addMCInfos.add(addmp);
+                } else {
+                    // Do nothing.
                 }
-				if (dfouttab[i].getAPP_entity_type().equals("CMP")) {
-					HashMap<String, Object> cmpmp = new HashMap<String, Object>();
-					cmpmp.put("app_id", dfouttab[i].getAPP_app_id());
-					cmpmp.put("data_type", dfouttab[i].getAPP_data_type());
-					cmpmp.put("data_value", dfouttab[i].getAPP_data_value());
-					cmpmp.put("namemc", dfouttab[i].getAPP_NameMC());
-					cmpmp.put("legalformmc", dfouttab[i].getAPP_LegalFormMC());
-					cmpmp.put("sitemc", dfouttab[i].getAPP_SiteMC());
-					cmpmp.put("addmc", dfouttab[i].getAPP_AddMC());
-					cmpMCInfos.add(cmpmp);
-				}
-			}
+                if (aDfouttab.getEntity_type().equals(DataFluxEntityTypeEnum.CMP.name())) {
+                    HashMap<String, Object> cmpmp = new HashMap<String, Object>();
+                    cmpmp.put("app_id", aDfouttab.getApp_id());
+                    cmpmp.put("cid", aDfouttab.getCid());
+                    cmpmp.put("data_type", aDfouttab.getData_type());
+                    cmpmp.put("data_value", aDfouttab.getData_value());
+                    cmpmp.put("namemc", aDfouttab.getNameMC());
+                    cmpmp.put("legalformmc", aDfouttab.getLegalFormMC());
+                    cmpmp.put("sitemc", aDfouttab.getSiteMC());
+                    cmpmp.put("addmc", aDfouttab.getAddMC());
+                    cmpMCInfos.add(cmpmp);
+                } else {
+                    // Do nothing.
+                }
+            }
 
             HxbDao hxbDao = HxbDao.getInstance();
-			hxbDao.deleteMatchrstInfosByAppid(sqlSession, appId);
 			hxbDao.deleteAddMCInfosByAppid(sqlSession, appId);
 			hxbDao.deleteAddMCHisInfosByAppid(sqlSession, appId);
 			hxbDao.deleteAddMCExtHisInfosByAppid(sqlSession, appId);
 			hxbDao.deleteCmpMCInfosByAppid(sqlSession, appId);
 			hxbDao.deleteCmpMCHisInfosByAppid(sqlSession, appId);
-			if (mtRstTab.size() > 0){
-                hxbDao.saveMatchrstInfos(sqlSession, mtRstTab);
-            }
             if (addMCInfos.size() > 0){
                 hxbDao.saveAddMCInfos(sqlSession, addMCInfos);
             }
@@ -290,17 +272,6 @@ public class CCAFBiz {
 		}
 		Long endtime = System.currentTimeMillis();
 		log.info(appId + ":saveMatchCode:" + (endtime - starttime));
-	}
-
-	private boolean checkCmpValue(String cmpvalue) {
-		boolean flag = false;
-//		if (cmpvalue != null && !cmpvalue.equals("") && cmpvalue.length() > 3) {
-//			flag = true;
-//		}
-		if (cmpvalue != null && !cmpvalue.equals("") && cmpvalue.length() > 0) {
-			flag = true;
-		}
-		return flag;
 	}
 
 	private boolean checkAddValue(String addvalue) {
@@ -320,17 +291,39 @@ public class CCAFBiz {
 		ArrayList<Row__in> list = new ArrayList<Row__in>();
 		String tmpcmpvalue = null;
 
-		String coadd = applicantinfo.get("c1_coadd1").toString() + applicantinfo.get("c1_coadd2").toString() + applicantinfo.get("c1_coadd3").toString() + applicantinfo.get("c1_coadd4").toString();
-		tmpcmpvalue = coadd.trim();
-		if (this.checkCmpValue(tmpcmpvalue)) {
+		String c1_coadd = applicantinfo.get("c1_coadd1").toString() + applicantinfo.get("c1_coadd2").toString() + applicantinfo.get("c1_coadd3").toString() + applicantinfo.get("c1_coadd4").toString();
+		tmpcmpvalue = c1_coadd.trim();
+		if (StringUtils.isNotBlank(tmpcmpvalue)) {
 			Row__in row = new Row__in();
 			row.setData_source("APP");
-			row.setData_type("company");
+			row.setData_type("c1_coadd");
 			row.setData_value(tmpcmpvalue);
-			row.setEntity_type("CMP");
+			row.setEntity_type("ADD");
 			row.setApp_id(appId);
 			list.add(row);
 		}
+
+        String c1_hmadd = applicantinfo.get("c1_hmadd1").toString() + applicantinfo.get("c1_hmadd2").toString() + applicantinfo.get("c1_hmadd3").toString() + applicantinfo.get("c1_hmadd4").toString();
+        tmpcmpvalue = c1_hmadd.trim();
+		if (StringUtils.isNotBlank(tmpcmpvalue)) {
+            Row__in row = new Row__in();
+            row.setData_source("PBOC");
+            row.setData_type("c1_coadd");
+            row.setData_value(tmpcmpvalue);
+            row.setEntity_type("ADD");
+            row.setApp_id(appId);
+            list.add(row);
+        }
+
+		if (StringUtils.isNotBlank(applicantinfo.get("c1_coname").toString())) {
+            Row__in row = new Row__in();
+            row.setData_source("APP");
+            row.setData_type("c1_coname");
+            row.setData_value(tmpcmpvalue);
+            row.setEntity_type("CMP");
+            row.setApp_id(appId);
+            list.add(row);
+        }
 
 		Row__in[] intab = new Row__in[list.size()];
 		for (int i = 0; i < intab.length; i++) {

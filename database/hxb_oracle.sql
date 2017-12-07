@@ -35,7 +35,7 @@ create table af_app_add_his
   APP_ID             varchar(20),
   DATA_TYPE          varchar(50),
   CID                NUMBER(10),
-  ADDINFO            varchar(256),
+  ADDINFOMC          varchar(256),
   BLOCKMC            varchar(256),
   BUILDINGMC         varchar(256),
   DISTRICTMC         varchar(256),
@@ -54,7 +54,7 @@ create table af_app_add_ext_his
   APP_ID             varchar(20),
   DATA_TYPE          varchar(50),
   CID                NUMBER(10),
-  ADDINFO            varchar(256),
+  ADDINFOMC          varchar(256),
   BLOCKMC            varchar(256),
   BUILDINGMC         varchar(256),
   DISTRICTMC         varchar(256),
@@ -82,7 +82,7 @@ create table af_app_add_today
   UNITMC             varchar(255),
   FLOORMC            varchar(255),
   ROOMMC             varchar(255),
-  ADDINFO            varchar(255),
+  ADDINFOMC          varchar(255),
   CITY               varchar(100),
   CREATE_TIME     timestamp default CURRENT_TIMESTAMP
 );

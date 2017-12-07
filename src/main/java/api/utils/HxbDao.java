@@ -97,11 +97,6 @@ public class HxbDao {
 		mapper.deleteAfriskwarningByAppid(appId);
 	}
 
-	public void saveMatchrstInfos(SqlSession sqlSession,List<Map<String, Object>> list){
-		HxbMapper mapper = sqlSession.getMapper(HxbMapper.class);
-		mapper.saveMatchrstInfos(list);
-	}
-
     public void saveAddMCInfos(SqlSession sqlSession,List<Map<String, Object>> list){
         HxbMapper mapper = sqlSession.getMapper(HxbMapper.class);
         mapper.saveAddMCInfos(list);
@@ -135,11 +130,6 @@ public class HxbDao {
 	public void deleteCmpMCHisInfosByAppid(SqlSession sqlSession,String appId){
 		HxbMapper mapper = sqlSession.getMapper(HxbMapper.class);
 		mapper.deleteCmpMCHisInfosByAppid(appId);
-	}
-
-	public void deleteMatchrstInfosByAppid(SqlSession sqlSession,String appId){
-		HxbMapper mapper = sqlSession.getMapper(HxbMapper.class);
-		mapper.deleteMatchrstInfosByAppid(appId);
 	}
 	
 }

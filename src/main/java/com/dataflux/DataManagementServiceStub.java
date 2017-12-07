@@ -318,6 +318,11 @@ public class DataManagementServiceStub extends org.apache.axis.client.Stub imple
                 String key = (String) keys.nextElement();
                 _call.setProperty(key, super.cachedProperties.get(key));
             }
+
+            // Auth settings
+            _call.setUsername("sas");
+            _call.setPassword("sas@123456");
+
             // All the type mapping information is registered
             // when the first call is made.
             // The type mapping information is actually registered in

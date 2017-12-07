@@ -71,88 +71,42 @@
 
   <complexType name="row__out">
    <sequence>
-    <element name="APP_app_id">
+    <element name="app_id">
      <simpleType>
       <restriction base="string">
        <maxLength value="20"/>
       </restriction>
      </simpleType>
     </element>
-    <element name="APP_entity_type">
+    <element name="entity_type">
      <simpleType>
       <restriction base="string">
        <maxLength value="3"/>
       </restriction>
      </simpleType>
     </element>
-    <element name="APP_data_type">
+    <element name="data_type">
      <simpleType>
       <restriction base="string">
        <maxLength value="30"/>
       </restriction>
      </simpleType>
     </element>
-    <element name="APP_data_value">
+    <element name="data_value">
      <simpleType>
       <restriction base="string">
        <maxLength value="255"/>
       </restriction>
      </simpleType>
     </element>
-    <element name="APP_data_source">
+    <element name="data_source">
      <simpleType>
       <restriction base="string">
        <maxLength value="5"/>
       </restriction>
      </simpleType>
     </element>
-    <element name="EXT_entity_type">
-     <simpleType>
-      <restriction base="string">
-       <maxLength value="3"/>
-      </restriction>
-     </simpleType>
-    </element>
-    <element name="EXT_data_type">
-     <simpleType>
-      <restriction base="string">
-       <maxLength value="30"/>
-      </restriction>
-     </simpleType>
-    </element>
-    <element name="EXT_data_value">
-     <simpleType>
-      <restriction base="string">
-       <maxLength value="255"/>
-      </restriction>
-     </simpleType>
-    </element>
-    <element name="EXT_data_source">
-     <simpleType>
-      <restriction base="string">
-       <maxLength value="5"/>
-      </restriction>
-     </simpleType>
-    </element>
-    <element name="simulation_parsing">
-     <annotation>
-      <documentation>decimal</documentation>
-     </annotation>
-     <simpleType>
-      <restriction base="string">
-      </restriction>
-     </simpleType>
-    </element>
-    <element name="simulation_char">
-     <annotation>
-      <documentation>decimal</documentation>
-     </annotation>
-     <simpleType>
-      <restriction base="string">
-      </restriction>
-     </simpleType>
-    </element>
-    <element name="simulation_cluster">
+    <element name="cid">
      <annotation>
       <documentation>integer</documentation>
      </annotation>
@@ -161,192 +115,115 @@
       </restriction>
      </simpleType>
     </element>
-    <element name="APP_AddInfo">
+    <element name="NameMC">
+     <simpleType>
+      <restriction base="string">
+       <maxLength value="400"/>
+      </restriction>
+     </simpleType>
+    </element>
+    <element name="LegalFormMC">
+     <simpleType>
+      <restriction base="string">
+       <maxLength value="400"/>
+      </restriction>
+     </simpleType>
+    </element>
+    <element name="SiteMC">
+     <simpleType>
+      <restriction base="string">
+       <maxLength value="400"/>
+      </restriction>
+     </simpleType>
+    </element>
+    <element name="AddMC">
+     <simpleType>
+      <restriction base="string">
+       <maxLength value="400"/>
+      </restriction>
+     </simpleType>
+    </element>
+    <element name="City">
      <simpleType>
       <restriction base="string">
        <maxLength value="256"/>
       </restriction>
      </simpleType>
     </element>
-    <element name="APP_DistrictMC">
+    <element name="ProvinceMC">
      <simpleType>
       <restriction base="string">
        <maxLength value="892"/>
       </restriction>
      </simpleType>
     </element>
-    <element name="APP_TownMC">
+    <element name="CityMC">
      <simpleType>
       <restriction base="string">
        <maxLength value="892"/>
       </restriction>
      </simpleType>
     </element>
-    <element name="APP_StreetMC">
+    <element name="DistrictMC">
      <simpleType>
       <restriction base="string">
        <maxLength value="892"/>
       </restriction>
      </simpleType>
     </element>
-    <element name="APP_BlockMC">
+    <element name="TownMC">
      <simpleType>
       <restriction base="string">
        <maxLength value="892"/>
       </restriction>
      </simpleType>
     </element>
-    <element name="APP_BuildingMC">
+    <element name="StreetMC">
      <simpleType>
       <restriction base="string">
        <maxLength value="892"/>
       </restriction>
      </simpleType>
     </element>
-    <element name="APP_UnitMC">
+    <element name="BlockMC">
      <simpleType>
       <restriction base="string">
        <maxLength value="892"/>
       </restriction>
      </simpleType>
     </element>
-    <element name="APP_FloorMC">
+    <element name="BuildingMC">
      <simpleType>
       <restriction base="string">
        <maxLength value="892"/>
       </restriction>
      </simpleType>
     </element>
-    <element name="APP_RoomMC">
+    <element name="UnitMC">
      <simpleType>
       <restriction base="string">
        <maxLength value="892"/>
       </restriction>
      </simpleType>
     </element>
-    <element name="EXT_AddInfo">
-     <simpleType>
-      <restriction base="string">
-       <maxLength value="256"/>
-      </restriction>
-     </simpleType>
-    </element>
-    <element name="EXT_DistrictMC">
+    <element name="FloorMC">
      <simpleType>
       <restriction base="string">
        <maxLength value="892"/>
       </restriction>
      </simpleType>
     </element>
-    <element name="EXT_TownMC">
+    <element name="RoomMC">
      <simpleType>
       <restriction base="string">
        <maxLength value="892"/>
       </restriction>
      </simpleType>
     </element>
-    <element name="EXT_StreetMC">
+    <element name="AddInfoMC">
      <simpleType>
       <restriction base="string">
        <maxLength value="892"/>
-      </restriction>
-     </simpleType>
-    </element>
-    <element name="EXT_BlockMC">
-     <simpleType>
-      <restriction base="string">
-       <maxLength value="892"/>
-      </restriction>
-     </simpleType>
-    </element>
-    <element name="EXT_BuildingMC">
-     <simpleType>
-      <restriction base="string">
-       <maxLength value="892"/>
-      </restriction>
-     </simpleType>
-    </element>
-    <element name="EXT_UnitMC">
-     <simpleType>
-      <restriction base="string">
-       <maxLength value="892"/>
-      </restriction>
-     </simpleType>
-    </element>
-    <element name="EXT_FloorMC">
-     <simpleType>
-      <restriction base="string">
-       <maxLength value="892"/>
-      </restriction>
-     </simpleType>
-    </element>
-    <element name="EXT_RoomMC">
-     <simpleType>
-      <restriction base="string">
-       <maxLength value="892"/>
-      </restriction>
-     </simpleType>
-    </element>
-    <element name="APP_NameMC">
-     <simpleType>
-      <restriction base="string">
-       <maxLength value="400"/>
-      </restriction>
-     </simpleType>
-    </element>
-    <element name="APP_LegalFormMC">
-     <simpleType>
-      <restriction base="string">
-       <maxLength value="400"/>
-      </restriction>
-     </simpleType>
-    </element>
-    <element name="APP_SiteMC">
-     <simpleType>
-      <restriction base="string">
-       <maxLength value="400"/>
-      </restriction>
-     </simpleType>
-    </element>
-    <element name="APP_AddMC">
-     <simpleType>
-      <restriction base="string">
-       <maxLength value="400"/>
-      </restriction>
-     </simpleType>
-    </element>
-    <element name="EXT_NameMC">
-     <simpleType>
-      <restriction base="string">
-       <maxLength value="400"/>
-      </restriction>
-     </simpleType>
-    </element>
-    <element name="EXT_LegalFormMC">
-     <simpleType>
-      <restriction base="string">
-       <maxLength value="400"/>
-      </restriction>
-     </simpleType>
-    </element>
-    <element name="EXT_SiteMC">
-     <simpleType>
-      <restriction base="string">
-       <maxLength value="400"/>
-      </restriction>
-     </simpleType>
-    </element>
-    <element name="EXT_AddMC">
-     <simpleType>
-      <restriction base="string">
-       <maxLength value="400"/>
-      </restriction>
-     </simpleType>
-    </element>
-    <element name="APP_City">
-     <simpleType>
-      <restriction base="string">
-       <maxLength value="256"/>
       </restriction>
      </simpleType>
     </element>
@@ -398,7 +275,7 @@
 <binding name="DataManagementService" type="tns:DataManagementServicePortType">
  <SOAP:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
  <operation name="datasvc_hxbcb__rt__match.ddf_in">
-  <SOAP:operation soapAction="hxbcb_rt_match.ddf*1*5A1573BDD3F008AC"/>
+  <SOAP:operation soapAction="hxbcb_rt_match.ddf*1*5A2880EF7E5E6F86"/>
   <input>
    <SOAP:body use="literal"/>
   </input>
