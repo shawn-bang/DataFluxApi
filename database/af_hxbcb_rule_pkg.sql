@@ -1206,375 +1206,399 @@
         -- don't anything
       end RULE_232;
 
-    -- rule:1
-    -- @author song
-    -- @date 2017-12-2 10:30:00
-    procedure RULE_1(app_id_input in varchar2,v_mate_name in af_request_applicantinfo.mate_name%type,v_reship in af_request_applicantinfo.c1_reship%type,v_rename in af_request_applicantinfo.c1_rename%type) is
-      v_error varchar(500);
-      begin
-        if v_reship = '配偶'  then
-          if nvl(v_rename,'null') = 'null' then
-            insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno, type,class) values(app_id_input, 'Z2', 'Z03', 'Z03_1', 'NULL', 'NULL', 'RULE_1', 'RULE','Z');
-          elsif v_rename = v_mate_name then
-            insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno, type,class) values(app_id_input, 'Z2', 'Z03', 'Z03_1', '', '', 'RULE_1', 'RULE','Z');
-            commit;
-          end if;
+     -- rule:1
+  -- @author song
+  -- @date 2017-12-2 10:30:00
+  procedure RULE_1(app_id_input in varchar2,v_mate_name in af_request_applicantinfo.mate_name%type,v_reship in af_request_applicantinfo.c1_reship%type,v_rename in af_request_applicantinfo.c1_rename%type) is
+    v_error varchar(500);
+    begin
+      if v_reship = '配偶'  then
+        if nvl(v_rename,'null') = 'null' then
+          insert into af_response_afriskwarning(app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,riskvalue,type,class) select app_id_input as app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,riskvalue,type,class  from af_risk_level_settings  where ruleno = 'RULE_1' and result_type = 'EMPTY';
+        elsif v_rename = v_mate_name then
+		      insert into af_response_afriskwarning(app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,riskvalue,type,class) select app_id_input as app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,riskvalue,type,class  from af_risk_level_settings  where ruleno = 'RULE_1' and result_type = 'HIT';
+        else
+          insert into af_response_afriskwarning(app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,riskvalue,type,class) select app_id_input as app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,riskvalue,type,class  from af_risk_level_settings  where ruleno = 'RULE_1' and result_type = 'UNHIT';
+          commit;
         end if;
-        -- handle exceptions
-        exception when others then v_error := 'RULE_1: ' || sqlerrm;
-        insert into af_app_prc_logs(app_id, error_logs) values(app_id_input, v_error);
-        commit;
-        -- don't anything
-      end RULE_1;
+      end if;
+      -- handle exceptions
+      exception when others then v_error := 'RULE_1: ' || sqlerrm;
+      insert into af_app_prc_logs(app_id, error_logs) values(app_id_input, v_error);
+      commit;
+      -- don't anything
+    end RULE_1;
 
-    -- rule:2
-    -- @author song
-    -- @date 2017-12-2 10:30:00
-    procedure RULE_2(app_id_input in varchar2,v_mobile in af_request_applicantinfo.c1_mobile%type,v_cell_phone in af_request_applicantinfo.cell_phone%type) is
-      v_error varchar(500);
-      begin
-        if nvl(v_mobile,'null') != 'null'  then
-          if nvl(v_cell_phone,'null') = 'null' then
-            insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno, type,class) values(app_id_input, 'Z2', 'Z03', 'Z03_3', 'NULL', 'NULL', 'RULE_2', 'RULE','Z');
-          elsif v_mobile = v_cell_phone then
-            insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno, type,class) values(app_id_input, 'Z2', 'Z03', 'Z03_3', '', '', 'RULE_2', 'RULE','Z');
-            commit;
-          end if;
+  -- rule:2
+  -- @author song
+  -- @date 2017-12-2 10:30:00
+  procedure RULE_2(app_id_input in varchar2,v_mobile in af_request_applicantinfo.c1_mobile%type,v_cell_phone in af_request_applicantinfo.cell_phone%type) is
+    v_error varchar(500);
+    begin
+      if nvl(v_mobile,'null') != 'null'  then
+        if nvl(v_cell_phone,'null') = 'null' then
+          insert into af_response_afriskwarning(app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,riskvalue,type,class) select app_id_input as app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,riskvalue,type,class  from af_risk_level_settings  where ruleno = 'RULE_2' and result_type = 'EMPTY';
+        elsif v_mobile = v_cell_phone then
+          insert into af_response_afriskwarning(app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,riskvalue,type,class) select app_id_input as app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,riskvalue,type,class  from af_risk_level_settings  where ruleno = 'RULE_2' and result_type = 'HIT';
+        else
+          insert into af_response_afriskwarning(app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,riskvalue,type,class) select app_id_input as app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,riskvalue,type,class  from af_risk_level_settings  where ruleno = 'RULE_2' and result_type = 'UNHIT';
+          commit;
         end if;
-        -- handle exceptions
-        exception when others then v_error := 'RULE_2: ' || sqlerrm;
-        insert into af_app_prc_logs(app_id, error_logs) values(app_id_input, v_error);
-        commit;
-        -- don't anything
-      end RULE_2;
+      end if;
+      -- handle exceptions
+      exception when others then v_error := 'RULE_2: ' || sqlerrm;
+      insert into af_app_prc_logs(app_id, error_logs) values(app_id_input, v_error);
+      commit;
+      -- don't anything
+    end RULE_2;
 
-    -- rule:20
-    -- @author song
-    -- @date 2017-12-2 10:30:00
-    procedure RULE_20(app_id_input in varchar2,v_cotel in af_request_applicantinfo.c1_cotel%type,v_resi_tel in af_request_applicantinfo.resi_tel%type) is
-      v_error varchar(500);
-      begin
-        if nvl(v_cotel,'null') != 'null'  then
-          if nvl(v_resi_tel,'null') = 'null' then
-            insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno, type,class) values(app_id_input, 'Z2', 'Z03', 'Z03_2', 'NULL', 'NULL', 'RULE_20', 'RULE','Z');
-          elsif v_cotel = v_resi_tel then
-            insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno, type,class) values(app_id_input, 'Z2', 'Z03', 'Z03_2', '', '', 'RULE_20', 'RULE','Z');
-            commit;
-          end if;
+  -- rule:20
+  -- @author song
+  -- @date 2017-12-2 10:30:00
+  procedure RULE_20(app_id_input in varchar2,v_cotel in af_request_applicantinfo.c1_cotel%type,v_resi_tel in af_request_applicantinfo.resi_tel%type) is
+    v_error varchar(500);
+    begin
+      if nvl(v_cotel,'null') != 'null'  then
+        if nvl(v_resi_tel,'null') = 'null' then
+          insert into af_response_afriskwarning(app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,riskvalue,type,class) select app_id_input as app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,riskvalue,type,class  from af_risk_level_settings  where ruleno = 'RULE_20' and result_type = 'EMPTY';
+        elsif v_cotel = v_resi_tel then
+          insert into af_response_afriskwarning(app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,riskvalue,type,class) select app_id_input as app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,riskvalue,type,class  from af_risk_level_settings  where ruleno = 'RULE_20' and result_type = 'HIT';
+        else
+          insert into af_response_afriskwarning(app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,riskvalue,type,class) select app_id_input as app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,riskvalue,type,class  from af_risk_level_settings  where ruleno = 'RULE_20' and result_type = 'UNHIT';
+          commit;
         end if;
-        -- handle exceptions
-        exception when others then v_error := 'RULE_20: ' || sqlerrm;
-        insert into af_app_prc_logs(app_id, error_logs) values(app_id_input, v_error);
-        commit;
-        -- don't anything
-      end RULE_20;
+      end if;
+      -- handle exceptions
+      exception when others then v_error := 'RULE_20: ' || sqlerrm;
+      insert into af_app_prc_logs(app_id, error_logs) values(app_id_input, v_error);
+      commit;
+      -- don't anything
+    end RULE_20;
 
-    -- rule:21
-    -- @author song
-    -- @date 2017-12-2 10:30:00
-    procedure RULE_21(app_id_input in varchar2,v_cotel in af_request_applicantinfo.c1_cotel%type,v_comp_phone in af_request_applicantinfo.c_comp_phone%type) is
-      v_error varchar(500);
-      begin
-        if nvl(v_cotel,'null') != 'null'  then
-          if nvl(v_comp_phone,'null') = 'null' then
-            insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno, type,class) values(app_id_input, 'Z2', 'Z03', 'Z03_2', 'NULL', 'NULL', 'RULE_21', 'RULE','Z');
-          elsif v_cotel = v_comp_phone then
-            insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno, type,class) values(app_id_input, 'Z2', 'Z03', 'Z03_2', '', '', 'RULE_21', 'RULE','Z');
-            commit;
-          end if;
+  -- rule:21
+  -- @author song
+  -- @date 2017-12-2 10:30:00
+  procedure RULE_21(app_id_input in varchar2,v_cotel in af_request_applicantinfo.c1_cotel%type,v_comp_phone in af_request_applicantinfo.c_comp_phone%type) is
+    v_error varchar(500);
+    begin
+      if nvl(v_cotel,'null') != 'null'  then
+        if nvl(v_comp_phone,'null') = 'null' then
+          insert into af_response_afriskwarning(app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,riskvalue,type,class) select app_id_input as app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,riskvalue,type,class  from af_risk_level_settings  where ruleno = 'RULE_21' and result_type = 'EMPTY';
+        elsif v_cotel = v_comp_phone then
+          insert into af_response_afriskwarning(app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,riskvalue,type,class) select app_id_input as app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,riskvalue,type,class  from af_risk_level_settings  where ruleno = 'RULE_21' and result_type = 'HIT';
+        else
+          insert into af_response_afriskwarning(app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,riskvalue,type,class) select app_id_input as app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,riskvalue,type,class  from af_risk_level_settings  where ruleno = 'RULE_21' and result_type = 'UNHIT';
+          commit;
         end if;
-        -- handle exceptions
-        exception when others then v_error := 'RULE_21: ' || sqlerrm;
-        insert into af_app_prc_logs(app_id, error_logs) values(app_id_input, v_error);
-        commit;
-        -- don't anything
-      end RULE_21;
+      end if;
+      -- handle exceptions
+      exception when others then v_error := 'RULE_21: ' || sqlerrm;
+      insert into af_app_prc_logs(app_id, error_logs) values(app_id_input, v_error);
+      commit;
+      -- don't anything
+    end RULE_21;
 
-    -- rule:23
-    -- @author song
-    -- @date 2017-12-2 10:30:00
-    procedure RULE_23(app_id_input in varchar2,v_hmtel af_request_applicantinfo.c1_hmtel%type,v_hmare af_request_applicantinfo.c1_hmare%type, v_resi_tel in af_request_applicantinfo.resi_tel%type) is
-      v_error varchar(500);
-      begin
-        if nvl(v_hmtel,'null') != 'null' and nvl(v_hmare,'null') != 'null' then
-          if nvl(v_resi_tel,'null') = 'null' then
-            insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno, type,class) values(app_id_input, 'Z2', 'Z03', 'Z03_2', 'NULL', 'NULL', 'RULE_23', 'RULE','Z');
-          elsif  v_hmtel || v_hmare = v_resi_tel then
-            insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno, type,class) values(app_id_input, 'Z2', 'Z03', 'Z03_2', '', '', 'RULE_23', 'RULE','Z');
-            commit;
-          end if;
+  -- rule:23
+  -- @author song
+  -- @date 2017-12-2 10:30:00
+  procedure RULE_23(app_id_input in varchar2,v_hmtel af_request_applicantinfo.c1_hmtel%type,v_hmare af_request_applicantinfo.c1_hmare%type, v_resi_tel in af_request_applicantinfo.resi_tel%type) is
+    v_error varchar(500);
+    begin
+      if nvl(v_hmtel,'null') != 'null' and nvl(v_hmare,'null') != 'null' then
+        if nvl(v_resi_tel,'null') = 'null' then
+          insert into af_response_afriskwarning(app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,riskvalue,type,class) select app_id_input as app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,riskvalue,type,class  from af_risk_level_settings  where ruleno = 'RULE_23' and result_type = 'EMPTY';
+        elsif  v_hmtel || v_hmare = v_resi_tel then
+          insert into af_response_afriskwarning(app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,riskvalue,type,class) select app_id_input as app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,riskvalue,type,class  from af_risk_level_settings  where ruleno = 'RULE_23' and result_type = 'HIT';
+        else
+          insert into af_response_afriskwarning(app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,riskvalue,type,class) select app_id_input as app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,riskvalue,type,class  from af_risk_level_settings  where ruleno = 'RULE_23' and result_type = 'UNHIT';
+          commit;
         end if;
-        -- handle exceptions
-        exception when others then v_error := 'RULE_23: ' || sqlerrm;
-        insert into af_app_prc_logs(app_id, error_logs) values(app_id_input, v_error);
-        commit;
-        -- don't anything
-      end RULE_23;
+      end if;
+      -- handle exceptions
+      exception when others then v_error := 'RULE_23: ' || sqlerrm;
+      insert into af_app_prc_logs(app_id, error_logs) values(app_id_input, v_error);
+      commit;
+      -- don't anything
+    end RULE_23;
 
-    -- rule:24
-    -- @author song
-    -- @date 2017-12-2 10:30:00
-    procedure RULE_24(app_id_input in varchar2,v_hmtel af_request_applicantinfo.c1_hmtel%type,v_hmare af_request_applicantinfo.c1_hmare%type, v_comp_phone in af_request_applicantinfo.c_comp_phone%type) is
-      v_error varchar(500);
-      begin
-        if nvl(v_hmtel,'null') != 'null' and nvl(v_hmare,'null') != 'null' then
-          if nvl(v_comp_phone,'null') = 'null' then
-            insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno, type,class) values(app_id_input, 'Z2', 'Z03', 'Z03_2', 'NULL', 'NULL', 'RULE_24', 'RULE','Z');
-          elsif  v_hmtel || v_hmare = v_comp_phone then
-            insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno, type,class) values(app_id_input, 'Z2', 'Z03', 'Z03_2', '', '', 'RULE_24', 'RULE','Z');
-            commit;
-          end if;
+  -- rule:24
+  -- @author song
+  -- @date 2017-12-2 10:30:00
+  procedure RULE_24(app_id_input in varchar2,v_hmtel af_request_applicantinfo.c1_hmtel%type,v_hmare af_request_applicantinfo.c1_hmare%type, v_comp_phone in af_request_applicantinfo.c_comp_phone%type) is
+    v_error varchar(500);
+    begin
+      if nvl(v_hmtel,'null') != 'null' and nvl(v_hmare,'null') != 'null' then
+        if nvl(v_comp_phone,'null') = 'null' then
+          insert into af_response_afriskwarning(app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,riskvalue,type,class) select app_id_input as app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,riskvalue,type,class  from af_risk_level_settings  where ruleno = 'RULE_24' and result_type = 'EMPTY';
+        elsif  v_hmtel || v_hmare = v_comp_phone then
+          insert into af_response_afriskwarning(app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,riskvalue,type,class) select app_id_input as app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,riskvalue,type,class  from af_risk_level_settings  where ruleno = 'RULE_24' and result_type = 'HIT';
+        else
+          insert into af_response_afriskwarning(app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,riskvalue,type,class) select app_id_input as app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,riskvalue,type,class  from af_risk_level_settings  where ruleno = 'RULE_24' and result_type = 'UNHIT';
+          commit;
         end if;
-        -- handle exceptions
-        exception when others then v_error := 'RULE_24: ' || sqlerrm;
-        insert into af_app_prc_logs(app_id, error_logs) values(app_id_input, v_error);
-        commit;
-        -- don't anything
-      end RULE_24;
+      end if;
+      -- handle exceptions
+      exception when others then v_error := 'RULE_24: ' || sqlerrm;
+      insert into af_app_prc_logs(app_id, error_logs) values(app_id_input, v_error);
+      commit;
+      -- don't anything
+    end RULE_24;
 
-    -- rule:26
-    -- @author song
-    -- @date 2017-12-2 10:30:00
-    procedure RULE_26(app_id_input in varchar2,v_remobil in af_request_applicantinfo.c1_remobil%type,v_cell_phone in af_request_applicantinfo.cell_phone%type) is
-      v_error varchar(500);
-      begin
-        if nvl(v_remobil,'null') != 'null' then
-          if nvl(v_cell_phone,'null') = 'null' then
-            insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno, type,class) values(app_id_input, 'Z2', 'Z03', 'Z03_2', 'NULL', 'NULL', 'RULE_26', 'RULE','Z');
-          elsif  v_remobil = v_cell_phone then
-            insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno, type,class) values(app_id_input, 'Z2', 'Z03', 'Z03_2', '', '', 'RULE_26', 'RULE','Z');
-            commit;
-          end if;
+  -- rule:26
+  -- @author song
+  -- @date 2017-12-2 10:30:00
+  procedure RULE_26(app_id_input in varchar2,v_remobil in af_request_applicantinfo.c1_remobil%type,v_cell_phone in af_request_applicantinfo.cell_phone%type) is
+    v_error varchar(500);
+    begin
+      if nvl(v_remobil,'null') != 'null' then
+        if nvl(v_cell_phone,'null') = 'null' then
+          insert into af_response_afriskwarning(app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,riskvalue,type,class) select app_id_input as app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,riskvalue,type,class  from af_risk_level_settings  where ruleno = 'RULE_26' and result_type = 'EMPTY';
+        elsif  v_remobil = v_cell_phone then
+          insert into af_response_afriskwarning(app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,riskvalue,type,class) select app_id_input as app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,riskvalue,type,class  from af_risk_level_settings  where ruleno = 'RULE_26' and result_type = 'HIT';
+        else
+          insert into af_response_afriskwarning(app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,riskvalue,type,class) select app_id_input as app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,riskvalue,type,class  from af_risk_level_settings  where ruleno = 'RULE_26' and result_type = 'UNHIT';
+          commit;
         end if;
-        -- handle exceptions
-        exception when others then v_error := 'RULE_26: ' || sqlerrm;
-        insert into af_app_prc_logs(app_id, error_logs) values(app_id_input, v_error);
-        commit;
-        -- don't anything
-      end RULE_26;
+      end if;
+      -- handle exceptions
+      exception when others then v_error := 'RULE_26: ' || sqlerrm;
+      insert into af_app_prc_logs(app_id, error_logs) values(app_id_input, v_error);
+      commit;
+      -- don't anything
+    end RULE_26;
 
-    -- rule:32
-    -- @author song
-    -- @date 2017-12-2 10:30:00
-    procedure RULE_32(app_id_input in varchar2,v_xmobil1 in af_request_applicantinfo.c1_xmobil1%type,v_cell_phone in af_request_applicantinfo.cell_phone%type) is
-      v_error varchar(500);
-      begin
-        if nvl(v_xmobil1,'null') != 'null'  then
-          if nvl(v_cell_phone,'null') = 'null' then
-            insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno, type,class) values(app_id_input, 'Z2', 'Z03', 'Z03_2', 'NULL', 'NULL', 'RULE_32', 'RULE','Z');
-          elsif  v_xmobil1 = v_cell_phone then
-            insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno, type,class) values(app_id_input, 'Z2', 'Z03', 'Z03_2', '', '', 'RULE_32', 'RULE','Z');
-            commit;
-          end if;
+  -- rule:32
+  -- @author song
+  -- @date 2017-12-2 10:30:00
+  procedure RULE_32(app_id_input in varchar2,v_xmobil1 in af_request_applicantinfo.c1_xmobil1%type,v_cell_phone in af_request_applicantinfo.cell_phone%type) is
+    v_error varchar(500);
+    begin
+      if nvl(v_xmobil1,'null') != 'null'  then
+        if nvl(v_cell_phone,'null') = 'null' then
+          insert into af_response_afriskwarning(app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,riskvalue,type,class) select app_id_input as app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,riskvalue,type,class  from af_risk_level_settings  where ruleno = 'RULE_32' and result_type = 'EMPTY';
+        elsif  v_xmobil1 = v_cell_phone then
+          insert into af_response_afriskwarning(app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,riskvalue,type,class) select app_id_input as app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,riskvalue,type,class  from af_risk_level_settings  where ruleno = 'RULE_32' and result_type = 'HIT';
+        else
+          insert into af_response_afriskwarning(app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,riskvalue,type,class) select app_id_input as app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,riskvalue,type,class  from af_risk_level_settings  where ruleno = 'RULE_32' and result_type = 'UNHIT';
+          commit;
         end if;
-        -- handle exceptions
-        exception when others then v_error := 'RULE_32: ' || sqlerrm;
-        insert into af_app_prc_logs(app_id, error_logs) values(app_id_input, v_error);
-        commit;
-        -- don't anything
-      end RULE_32;
+      end if;
+      -- handle exceptions
+      exception when others then v_error := 'RULE_32: ' || sqlerrm;
+      insert into af_app_prc_logs(app_id, error_logs) values(app_id_input, v_error);
+      commit;
+      -- don't anything
+    end RULE_32;
 
-      -- rule:37
-    -- @author song
-    -- @date 2017-12-2 10:30:00
-    procedure RULE_37(app_id_input in varchar2,v_cumul_pay_months in af_request_applicantinfo.cumul_pay_months%type, v_pboc_yl_pay_status in af_request_applicantinfo.pboc_yl_pay_status%type) is
-      v_error varchar(500);
-      begin
-        if v_pboc_yl_pay_status = '缴交状态' then
-          if nvl(v_cumul_pay_months,'null') = 'null' then
-            insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno, type,class) values(app_id_input, 'Z2', 'Z03', 'Z03_1', 'NULL', 'NULL', 'RULE_37', 'RULE','Z');
-          elsif  v_cumul_pay_months >= 6 then
-            insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno, type,class) values(app_id_input, 'Z2', 'Z03', 'Z03_1', '', '', 'RULE_37', 'RULE','Z');
-            commit;
-          end if;
+    -- rule:37
+  -- @author song
+  -- @date 2017-12-2 10:30:00
+  procedure RULE_37(app_id_input in varchar2,v_cumul_pay_months in af_request_applicantinfo.cumul_pay_months%type, v_pboc_yl_pay_status in af_request_applicantinfo.pboc_yl_pay_status%type) is
+    v_error varchar(500);
+    begin
+      if v_pboc_yl_pay_status = '缴交状态' then
+        if nvl(v_cumul_pay_months,'null') = 'null' then
+          insert into af_response_afriskwarning(app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,riskvalue,type,class) select app_id_input as app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,riskvalue,type,class  from af_risk_level_settings  where ruleno = 'RULE_37' and result_type = 'EMPTY';
+        elsif  v_cumul_pay_months >= 6 then
+          insert into af_response_afriskwarning(app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,riskvalue,type,class) select app_id_input as app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,riskvalue,type,class  from af_risk_level_settings  where ruleno = 'RULE_37' and result_type = 'HIT';
+        else
+          insert into af_response_afriskwarning(app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,riskvalue,type,class) select app_id_input as app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,riskvalue,type,class  from af_risk_level_settings  where ruleno = 'RULE_37' and result_type = 'UNHIT';
+          commit;
         end if;
-        -- handle exceptions
-        exception when others then v_error := 'RULE_37: ' || sqlerrm;
-        insert into af_app_prc_logs(app_id, error_logs) values(app_id_input, v_error);
-        commit;
-        -- don't anything
-      end RULE_37;
+      end if;
+      -- handle exceptions
+      exception when others then v_error := 'RULE_37: ' || sqlerrm;
+      insert into af_app_prc_logs(app_id, error_logs) values(app_id_input, v_error);
+      commit;
+      -- don't anything
+    end RULE_37;
 
-    -- rule:38
-    -- @author song
-    -- @date 2017-12-2 10:30:00
-    procedure RULE_38(app_id_input in varchar2,v_pboc_gjj_pay_status in af_request_applicantinfo.pboc_gjj_pay_status%type,v_pay_ym in af_request_applicantinfo.pay_ym%type, v_first_deposit_ym in af_request_applicantinfo.first_deposit_ym%type) is
-      b_date varchar2(10);
-      v_error varchar(500);
-      begin
-        if v_pboc_gjj_pay_status = '缴交状态' then
-          b_date := trunc(months_between(to_date(v_pay_ym,'yyyy-mm-dd'),to_date(v_first_deposit_ym,'yyyy-mm-dd')),2);
-          if nvl(v_first_deposit_ym,'null') = 'null' and nvl(v_pay_ym,'null') = 'null'  then
-            insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno, type,class) values(app_id_input, 'Z2', 'Z03', 'Z03_1', 'NULL', 'NULL', 'RULE_38', 'RULE','Z');
-          elsif  b_date >= 6 then
-            insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno, type,class) values(app_id_input, 'Z2', 'Z03', 'Z03_1', '', '', 'RULE_38', 'RULE','Z');
-            commit;
-          end if;
+  -- rule:38
+  -- @author song
+  -- @date 2017-12-2 10:30:00
+  procedure RULE_38(app_id_input in varchar2,v_pboc_gjj_pay_status in af_request_applicantinfo.pboc_gjj_pay_status%type,v_pay_ym in af_request_applicantinfo.pay_ym%type, v_first_deposit_ym in af_request_applicantinfo.first_deposit_ym%type) is
+    b_date varchar2(10);
+    v_error varchar(500);
+    begin
+      if v_pboc_gjj_pay_status = '缴交状态' then
+        b_date := trunc(months_between(to_date(v_pay_ym,'yyyy-mm-dd'),to_date(v_first_deposit_ym,'yyyy-mm-dd')),2);
+        if nvl(v_first_deposit_ym,'null') = 'null' and nvl(v_pay_ym,'null') = 'null'  then
+          insert  into af_response_afriskwarning(app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,riskvalue,type,class) select app_id_input as app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,riskvalue,type,class  from af_risk_level_settings  where ruleno = 'RULE_38' and result_type = 'EMPTY';
+        elsif  b_date >= 6 then
+          insert  into af_response_afriskwarning(app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,riskvalue,type,class) select app_id_input as app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,riskvalue,type,class  from af_risk_level_settings  where ruleno = 'RULE_38' and result_type = 'HIT';
+        else
+          insert  into af_response_afriskwarning(app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,riskvalue,type,class) select app_id_input as app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,riskvalue,type,class  from af_risk_level_settings  where ruleno = 'RULE_38' and result_type = 'UNHIT';
+          commit;
         end if;
-        -- handle exceptions
-        exception when others then v_error := 'RULE_38: ' || sqlerrm;
-        insert into af_app_prc_logs(app_id, error_logs) values(app_id_input, v_error);
-        commit;
-        -- don't anything
-      end RULE_38;
+      end if;
+      -- handle exceptions
+      exception when others then v_error := 'RULE_38: ' || sqlerrm;
+      insert into af_app_prc_logs(app_id, error_logs) values(app_id_input, v_error);
+      commit;
+      -- don't anything
+    end RULE_38;
 
-    -- rule:39
-    -- @author song
-    -- @date 2017-12-6 18:15:00
-    procedure RULE_39(app_id_input in varchar2,v_industry_type1 in af_request_applicantinfo.industry_type1%type,v_industry_type2 in af_request_applicantinfo.industry_type2%type,v_industry_type3 in af_request_applicantinfo.industry_type3%type,
-     v_industry_type4 in af_request_applicantinfo.industry_type4%type,v_industry_type5 in af_request_applicantinfo.industry_type5%type) is
-      flag number;
-      v_error varchar2(500);
-      begin
-        if nvl(v_industry_type1,'null') = 'null' and nvl(v_industry_type2,'null') = 'null' and nvl(v_industry_type3,'null') = 'null' and nvl(v_industry_type4,'null') = 'null' and nvl(v_industry_type5,'null') = 'null' then
-          insert into af_response_afriskwarning(app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,type,class) select app_id_input as app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,type,class  from af_risk_level_settings  where ruleno = 'RULE_PBOC_39' and result_type = 'EMPTY';
-        else  select count(n) into flag from
-           (select t.industry_type1 as n from af_request_applicantinfo t
-            where app_id = t.app_id and t.industry_type1<>t.industry_type2 and t.industry_type1<>t.industry_type3 and t.industry_type1<>t.industry_type4 and t.industry_type1<>t.industry_type5
-            union
-            select t.industry_type2 as n from af_request_applicantinfo t
-            where app_id = t.app_id and t.industry_type2<>t.industry_type1 and t.industry_type2<>t.industry_type3 and t.industry_type2<>t.industry_type4 and t.industry_type2<>t.industry_type5
-            union
-            select t.industry_type3 as n from af_request_applicantinfo t
-            where app_id = t.app_id and t.industry_type3<>t.industry_type1 and t.industry_type3<>t.industry_type2 and t.industry_type3<>t.industry_type4 and t.industry_type3<>t.industry_type5
-            union
-            select t.industry_type4 as n from af_request_applicantinfo t
-            where app_id = t.app_id and t.industry_type4<>t.industry_type1 and t.industry_type4<>t.industry_type2 and t.industry_type3<>t.industry_type4 and t.industry_type4<>t.industry_type5
-            union
-            select t.industry_type5 as n from af_request_applicantinfo t
-            where app_id = t.app_id and t.industry_type5<>t.industry_type1 and t.industry_type5<>t.industry_type2 and t.industry_type5<>t.industry_type3 and t.industry_type5<>t.industry_type4
-            );
-          if flag >= 3 then
-            insert into af_response_afriskwarning(app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,type,class) select app_id_input as app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,type,class  from af_risk_level_settings  where ruleno = 'RULE_PBOC_39' and result_type = 'HIT';
-            commit;
-          end if;
+  -- rule:39
+  -- @author song
+  -- @date 2017-12-6 18:15:00
+  procedure RULE_39(app_id_input in varchar2,v_industry_type1 in af_request_applicantinfo.industry_type1%type,v_industry_type2 in af_request_applicantinfo.industry_type2%type,v_industry_type3 in af_request_applicantinfo.industry_type3%type,
+   v_industry_type4 in af_request_applicantinfo.industry_type4%type,v_industry_type5 in af_request_applicantinfo.industry_type5%type) is
+    flag number;
+    v_error varchar2(500);
+    begin
+      if nvl(v_industry_type1,'null') = 'null' and nvl(v_industry_type2,'null') = 'null' and nvl(v_industry_type3,'null') = 'null' and nvl(v_industry_type4,'null') = 'null' and nvl(v_industry_type5,'null') = 'null' then
+        insert  into af_response_afriskwarning(app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,riskvalue,type,class) select app_id_input as app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,riskvalue,type,class  from af_risk_level_settings  where ruleno = 'RULE_39' and result_type = 'EMPTY';
+      else  select count(n) into flag from
+         (select t.industry_type1 as n from af_request_applicantinfo t
+          where app_id = t.app_id and t.industry_type1<>t.industry_type2 and t.industry_type1<>t.industry_type3 and t.industry_type1<>t.industry_type4 and t.industry_type1<>t.industry_type5
+          union
+          select t.industry_type2 as n from af_request_applicantinfo t
+          where app_id = t.app_id and t.industry_type2<>t.industry_type1 and t.industry_type2<>t.industry_type3 and t.industry_type2<>t.industry_type4 and t.industry_type2<>t.industry_type5
+          union
+          select t.industry_type3 as n from af_request_applicantinfo t
+          where app_id = t.app_id and t.industry_type3<>t.industry_type1 and t.industry_type3<>t.industry_type2 and t.industry_type3<>t.industry_type4 and t.industry_type3<>t.industry_type5
+          union
+          select t.industry_type4 as n from af_request_applicantinfo t
+          where app_id = t.app_id and t.industry_type4<>t.industry_type1 and t.industry_type4<>t.industry_type2 and t.industry_type3<>t.industry_type4 and t.industry_type4<>t.industry_type5
+          union
+          select t.industry_type5 as n from af_request_applicantinfo t
+          where app_id = t.app_id and t.industry_type5<>t.industry_type1 and t.industry_type5<>t.industry_type2 and t.industry_type5<>t.industry_type3 and t.industry_type5<>t.industry_type4
+          );
+        if flag >= 3 then
+          insert  into af_response_afriskwarning(app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,riskvalue,type,class) select app_id_input as app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,riskvalue,type,class  from af_risk_level_settings  where ruleno = 'RULE_39' and result_type = 'HIT';
+        else
+          insert  into af_response_afriskwarning(app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,riskvalue,type,class) select app_id_input as app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,riskvalue,type,class  from af_risk_level_settings  where ruleno = 'RULE_39' and result_type = 'UNHIT';
+          commit;
         end if;
-        -- handle exceptions
-        exception when others then v_error := 'RULE_39: ' || sqlerrm;
-        insert into af_app_prc_logs(app_id, error_logs) values(app_id_input, v_error);
-        commit;
-        -- don't anything
-      end RULE_39;
+      end if;
+      -- handle exceptions
+      exception when others then v_error := 'RULE_39: ' || sqlerrm;
+      insert into af_app_prc_logs(app_id, error_logs) values(app_id_input, v_error);
+      commit;
+      -- don't anything
+    end RULE_39;
 
-    -- rule:80
-    -- @author song
-    -- @date 2017-12-2 10:30:00
-    procedure RULE_80(app_id_input in varchar2, v_mobile in af_request_applicantinfo.c1_mobile%type) is
-      flag1 number;
-      flag2 number;
-      v_error varchar2(500);
-      begin
-        if nvl(v_mobile, 'null') != 'null' then
-          select count(1) into flag1
+  -- rule:80
+  -- @author song
+  -- @date 2017-12-2 10:30:00
+  procedure RULE_80(app_id_input in varchar2, v_mobile in af_request_applicantinfo.c1_mobile%type) is
+    flag1 number;
+    flag2 number;
+    v_error varchar2(500);
+    begin
+      if nvl(v_mobile, 'null') != 'null' then
+        select count(1) into flag1
+        from af_request_applicantinfo t
+         where v_mobile = t.c1_mobile ;
+        if flag1 > 1 then
+          select count(distinct c1_idnbr) into flag2
           from af_request_applicantinfo t
            where v_mobile = t.c1_mobile ;
-          if flag1 > 1 then
-            select count(distinct c1_idnbr) into flag2
-            from af_request_applicantinfo t
-             where v_mobile = t.c1_mobile ;
-            if flag2 > 3 then
-            -- update result data
-              insert into af_response_afriskwarning(app_id, riskno, risktype, riskcategory, riskcode, riskdesc, ruleno, type) values(app_id_input, 'Z2', 'Z01', 'Z01_2', '', '', 'RULE_80', 'RULE');
-              commit;
-            end if;
-          end if;
-        end if;
-        -- handle exceptions
-        exception when others then v_error := 'RULE_80: ' || sqlerrm;
-        insert into af_app_prc_logs(app_id, error_logs) values(app_id_input, v_error);
-        commit;
-        -- don't anything
-      end RULE_80;
-
-   -- rule:175
-    -- @author song
-    -- @date 2017-12-2 10:30:00
-    procedure RULE_175(app_id_input in varchar2, v_remobil in af_request_applicantinfo.c1_remobil%type,v_reship in af_request_applicantinfo.c1_reship%type) is
-      flag1 number;
-      N number;
-      v_error varchar2(500);
-      --N 未知
-      begin
-        if nvl(v_remobil, 'null') != 'null' and nvl(v_reship, 'null') != 'null' then
-          select count(1) into flag1
-          from (select t.app_id from af_request_applicantinfo t
-                where v_remobil = t.c1_remobil and v_reship != t.c1_reship
-                union all
-                select t.app_id from af_request_appinfo_his_hot t
-                where v_remobil = t.c1_remobil and v_reship != t.c1_reship
-                );
-          if flag1 > N then
-            -- update result data
-            insert into af_response_afriskwarning(app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,type,class) select app_id_input as app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,type,class  from af_risk_level_settings  where ruleno = 'RULE_175';
+          if flag2 > 3 then
+          -- update result data
+          	insert  into af_response_afriskwarning(app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,riskvalue,calculatenum,type,class) select app_id_input as app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,riskvalue,flag2 as calculatenum ,type,class  from af_risk_level_settings  where ruleno = 'RULE_80' and result_type = 'HIT';
+          else
+            insert  into af_response_afriskwarning(app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,riskvalue,calculatenum,type,class) select app_id_input as app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,riskvalue,flag2 as calculatenum ,type,class  from af_risk_level_settings  where ruleno = 'RULE_80' and result_type = 'UNHIT';
             commit;
           end if;
         end if;
-        -- handle exceptions
-        exception when others then v_error := 'RULE_175: ' || sqlerrm;
-        insert into af_app_prc_logs(app_id, error_logs) values(app_id_input, v_error);
-        commit;
-        -- don't anything
-      end RULE_175;
+      end if;
+      -- handle exceptions
+      exception when others then v_error := 'RULE_80: ' || sqlerrm;
+      insert into af_app_prc_logs(app_id, error_logs) values(app_id_input, v_error);
+      commit;
+      -- don't anything
+    end RULE_80;
 
-    -- rule:176
-    -- @author song
-    -- @date 2017-12-2 10:30:00
-    procedure RULE_176(app_id_input in varchar2, v_remobil in af_request_applicantinfo.c1_remobil%type,v_rename in af_request_applicantinfo.c1_rename%type) is
-      flag number;
-      N number;
-      v_error varchar2(500);
-      --N 未知
-      begin
-        if nvl(v_remobil, 'null') != 'null' and nvl(v_rename, 'null') != 'null' then
-          select count(1) into flag
-          from (select t.app_id from af_request_applicantinfo t
-                where v_remobil = t.c1_xname1 and v_remobil = t.c1_xmobil1
-                union all
-                select t.app_id from af_request_appinfo_his_hot t
-                where v_remobil = t.c1_xname1 and v_remobil = t.c1_xmobil1
-                );
-          if flag > N then
-            -- update result data
-            insert into af_response_afriskwarning(app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,type,class) select app_id_input as app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,type,class  from af_risk_level_settings  where ruleno = 'RULE_176';
-            commit;
-          end if;
+ -- rule:175
+  -- @author song
+  -- @date 2017-12-2 10:30:00
+  procedure RULE_175(app_id_input in varchar2, v_remobil in af_request_applicantinfo.c1_remobil%type,v_reship in af_request_applicantinfo.c1_reship%type) is
+    flag number;
+    v_error varchar2(500);
+    begin
+      if nvl(v_remobil, 'null') != 'null' and nvl(v_reship, 'null') != 'null' then
+        select count(1) into flag
+        from (select t.app_id from af_request_applicantinfo t
+              where v_remobil = t.c1_remobil and v_reship != t.c1_reship
+              union all
+              select t.app_id from af_request_appinfo_his_hot t
+              where v_remobil = t.c1_remobil and v_reship != t.c1_reship
+              );
+        if flag > 2 then
+          -- update result data
+          insert  into af_response_afriskwarning(app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,riskvalue,calculatenum,type,class) select app_id_input as app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,riskvalue,flag as calculatenum ,type,class  from af_risk_level_settings  where ruleno = 'RULE_175' and result_type = 'HIT';
+        else
+          insert into af_response_afriskwarning(app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,riskvalue,calculatenum,type,class) select app_id_input as app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,riskvalue,flag as calculatenum ,type,class  from af_risk_level_settings  where ruleno = 'RULE_175' and result_type = 'UNHIT';
+          commit;
         end if;
-        -- handle exceptions
-        exception when others then v_error := 'RULE_176: ' || sqlerrm;
-        insert into af_app_prc_logs(app_id, error_logs) values(app_id_input, v_error);
-        commit;
-        -- don't anything
-      end RULE_176;
+      end if;
+      -- handle exceptions
+      exception when others then v_error := 'RULE_175: ' || sqlerrm;
+      insert into af_app_prc_logs(app_id, error_logs) values(app_id_input, v_error);
+      commit;
+      -- don't anything
+    end RULE_175;
 
-    -- rule:178
-    -- @author song
-    -- @date 2017-12-2 10:30:00
-    procedure RULE_178(app_id_input in varchar2,v_xname1 in af_request_applicantinfo.c1_xname1%type,v_xmobil1 in af_request_applicantinfo.c1_xmobil1%type) is
-      flag number;
-      N number;
-      v_error varchar2(500);
-      --N 未知
-      begin
-        if nvl(v_xname1, 'null') != 'null' and nvl(v_xmobil1, 'null') != 'null' then
-          select count(1) into flag
-          from (select t.app_id from af_request_applicantinfo t
-                where t.c1_remobil = v_xmobil1 and t.c1_rename = v_xname1
-                union all
-                select t.app_id from af_request_appinfo_his_hot t
-                where t.c1_remobil = v_xmobil1 and t.c1_rename = v_xname1
-                );
-          if flag > N then
-            -- update result data
-            insert into af_response_afriskwarning(app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,type,class) select app_id_input as app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,type,class  from af_risk_level_settings  where ruleno = 'RULE_178';
-            commit;
-          end if;
+  -- rule:176
+  -- @author song
+  -- @date 2017-12-2 10:30:00
+  procedure RULE_176(app_id_input in varchar2, v_remobil in af_request_applicantinfo.c1_remobil%type,v_rename in af_request_applicantinfo.c1_rename%type) is
+    flag number;
+    v_error varchar2(500);
+    --N 未知
+    begin
+      if nvl(v_remobil, 'null') != 'null' and nvl(v_rename, 'null') != 'null' then
+        select count(1) into flag
+        from (select t.app_id from af_request_applicantinfo t
+              where v_remobil = t.c1_xname1 and v_remobil = t.c1_xmobil1
+              union all
+              select t.app_id from af_request_appinfo_his_hot t
+              where v_remobil = t.c1_xname1 and v_remobil = t.c1_xmobil1
+              );
+        if flag > 2 then
+          -- update result data
+          insert into af_response_afriskwarning(app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,riskvalue,calculatenum,type,class) select app_id_input as app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,riskvalue,flag as calculatenum ,type,class  from af_risk_level_settings  where ruleno = 'RULE_176' and result_type = 'HIT';
+        else
+          insert into af_response_afriskwarning(app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,riskvalue,calculatenum,type,class) select app_id_input as app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,riskvalue,flag as calculatenum ,type,class  from af_risk_level_settings  where ruleno = 'RULE_176' and result_type = 'UNHIT';
+          commit;
         end if;
-        -- handle exceptions
-        exception when others then v_error := 'RULE_178: ' || sqlerrm;
-        insert into af_app_prc_logs(app_id, error_logs) values(app_id_input, v_error);
-        commit;
-        -- don't anything
-      end RULE_178;
+      end if;
+      -- handle exceptions
+      exception when others then v_error := 'RULE_176: ' || sqlerrm;
+      insert into af_app_prc_logs(app_id, error_logs) values(app_id_input, v_error);
+      commit;
+      -- don't anything
+    end RULE_176;
+
+  -- rule:178
+  -- @author song
+  -- @date 2017-12-2 10:30:00
+  procedure RULE_178(app_id_input in varchar2,v_xname1 in af_request_applicantinfo.c1_xname1%type,v_xmobil1 in af_request_applicantinfo.c1_xmobil1%type) is
+    flag number;
+    v_error varchar2(500);
+    --N 未知
+    begin
+      if nvl(v_xname1, 'null') != 'null' and nvl(v_xmobil1, 'null') != 'null' then
+        select count(1) into flag
+        from (select t.app_id from af_request_applicantinfo t
+              where t.c1_remobil = v_xmobil1 and t.c1_rename = v_xname1
+              union all
+              select t.app_id from af_request_appinfo_his_hot t
+              where t.c1_remobil = v_xmobil1 and t.c1_rename = v_xname1
+              );
+        if flag > 2 then
+          -- update result data
+          insert into af_response_afriskwarning(app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,riskvalue,type,class) select app_id_input as app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,riskvalue,type,class  from af_risk_level_settings  where ruleno = 'RULE_178';
+          commit;
+        end if;
+      end if;
+      -- handle exceptions
+      exception when others then v_error := 'RULE_178: ' || sqlerrm;
+      insert into af_app_prc_logs(app_id, error_logs) values(app_id_input, v_error);
+      commit;
+      -- don't anything
+    end RULE_178;
 
   -----Not at this stage
 
