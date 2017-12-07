@@ -2349,217 +2349,453 @@ comment on column  af_request_appinfo_his_cold.vehicle_age is '车龄';
 
 
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_PBOC_1','EMPTY','RULE','Z','Z2','Z03','Z03_1','NULL','NULL');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_PBOC_1','EMPTY','RULE','Z','Z2','Z03','Z03_1','-1','NULL','NULL');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_PBOC_1','HIT','RULE','Z','Z2','Z03','Z03_1','','');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_PBOC_1','HIT','RULE','Z','Z2','Z03','Z03_1','1','','');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_PBOC_2','EMPTY','RULE','Z','Z2','Z03','Z03_3','NULL','NULL');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_PBOC_1','UNHIT','RULE','Z','Z2','Z03','Z03_1','0','','');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_PBOC_2','HIT','RULE','Z','Z2','Z03','Z03_3','','');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_PBOC_2','EMPTY','RULE','Z','Z2','Z03','Z03_3','-1','NULL','NULL');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_PBOC_3','EMPTY','RULE','Z','Z2','Z03','Z03_4','NULL','NULL');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_PBOC_2','HIT','RULE','Z','Z2','Z03','Z03_3','1','','');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_PBOC_3','HIT','RULE','Z','Z2','Z03','Z03_4','','');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_PBOC_2','UNHIT','RULE','Z','Z2','Z03','Z03_3','0','','');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_PBOC_6','EMPTY','RULE','Z','Z2','Z03','Z03_4','NULL','NULL');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_PBOC_3','EMPTY','RULE','Z','Z2','Z03','Z03_4','-1','NULL','NULL');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_PBOC_6','HIT','RULE','Z','Z2','Z03','Z03_4','','');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_PBOC_3','HIT','RULE','Z','Z2','Z03','Z03_4','1','','');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_PBOC_8_2','EMPTY','RULE','Z','Z2','Z03','Z03_3','NULL','NULL');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_PBOC_3','UNHIT','RULE','Z','Z2','Z03','Z03_4','0','','');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_PBOC_8_2','HIT','RULE','Z','Z2','Z03','Z03_3','','');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_PBOC_6','EMPTY','RULE','Z','Z2','Z03','Z03_4','-1','NULL','NULL');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_PBOC_8_3','EMPTY','RULE','Z','Z2','Z03','Z03_3','NULL','NULL');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_PBOC_6','HIT','RULE','Z','Z2','Z03','Z03_4','1','','');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_PBOC_8_3','HIT','RULE','Z','Z2','Z03','Z03_3','','');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_PBOC_6','UNHIT','RULE','Z','Z2','Z03','Z03_4','0','','');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_PBOC_13','EMPTY','RULE','Z','Z2','Z03','Z03_3','NULL','NULL');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_PBOC_8_2','EMPTY','RULE','Z','Z2','Z03','Z03_3','-1','NULL','NULL');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_PBOC_13','HIT','RULE','Z','Z2','Z03','Z03_3','','');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_PBOC_8_2','HIT','RULE','Z','Z2','Z03','Z03_3','1','','');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_PBOC_14_3','EMPTY','RULE','Z','Z2','Z03','Z03_3','NULL','NULL');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_PBOC_8_2','UNHIT','RULE','Z','Z2','Z03','Z03_3','0','','');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_PBOC_14_3','HIT','RULE','Z','Z2','Z03','Z03_3','','');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_PBOC_8_3','EMPTY','RULE','Z','Z2','Z03','Z03_3','-1','NULL','NULL');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_PBOC_14_5','EMPTY','RULE','Z','Z2','Z03','Z03_3','NULL','NULL');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_PBOC_8_3','HIT','RULE','Z','Z2','Z03','Z03_3','1','','');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_PBOC_14_5','HIT','RULE','Z','Z2','Z03','Z03_3','','');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_PBOC_8_3','UNHIT','RULE','Z','Z2','Z03','Z03_3','0','','');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_PBOC_15_4','EMPTY','RULE','Z','Z2','Z03','Z03_3','NULL','NULL');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_PBOC_13','EMPTY','RULE','Z','Z2','Z03','Z03_3','-1','NULL','NULL');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_PBOC_15_4','HIT','RULE','Z','Z2','Z03','Z03_3','','');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_PBOC_13','HIT','RULE','Z','Z2','Z03','Z03_3','1','','');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_PBOC_15_5','EMPTY','RULE','Z','Z2','Z03','Z03_3','NULL','NULL');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_PBOC_13','UNHIT','RULE','Z','Z2','Z03','Z03_3','0','','');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_PBOC_15_5','HIT','RULE','Z','Z2','Z03','Z03_3','','');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_PBOC_14_3','EMPTY','RULE','Z','Z2','Z03','Z03_3','-1','NULL','NULL');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_PBOC_16','EMPTY','RULE','Z','Z2','Z03','Z03_3','NULL','NULL');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_PBOC_14_3','HIT','RULE','Z','Z2','Z03','Z03_3','1','','');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_PBOC_16','HIT','RULE','Z','Z2','Z03','Z03_3','','');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_PBOC_14_3','UNHIT','RULE','Z','Z2','Z03','Z03_3','0','','');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_PBOC_21','EMPTY','RULE','Z','Z2','Z03','Z03_2','NULL','NULL');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_PBOC_14_5','EMPTY','RULE','Z','Z2','Z03','Z03_3','-1','NULL','NULL');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_PBOC_21','HIT','RULE','Z','Z2','Z03','Z03_2','','');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_PBOC_14_5','HIT','RULE','Z','Z2','Z03','Z03_3','1','','');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_PBOC_23','EMPTY','RULE','Z','Z2','Z03','Z03_2','NULL','NULL');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_PBOC_14_5','UNHIT','RULE','Z','Z2','Z03','Z03_3','0','','');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_PBOC_23','HIT','RULE','Z','Z2','Z03','Z03_2','','');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_PBOC_15_4','EMPTY','RULE','Z','Z2','Z03','Z03_3','-1','NULL','NULL');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_PBOC_24','EMPTY','RULE','Z','Z2','Z03','Z03_2','NULL','NULL');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_PBOC_15_4','HIT','RULE','Z','Z2','Z03','Z03_3','1','','');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_PBOC_24','HIT','RULE','Z','Z2','Z03','Z03_2','','');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_PBOC_15_4','UNHIT','RULE','Z','Z2','Z03','Z03_3','0','','');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_PBOC_26','EMPTY','RULE','Z','Z2','Z03','Z03_2','NULL','NULL');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_PBOC_15_5','EMPTY','RULE','Z','Z2','Z03','Z03_3','-1','NULL','NULL');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_PBOC_26','HIT','RULE','Z','Z2','Z03','Z03_2','','');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_PBOC_15_5','HIT','RULE','Z','Z2','Z03','Z03_3','1','','');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_PBOC_32','EMPTY','RULE','Z','Z2','Z03','Z03_2','NULL','NULL');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_PBOC_15_5','UNHIT','RULE','Z','Z2','Z03','Z03_3','0','','');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_PBOC_32','HIT','RULE','Z','Z2','Z03','Z03_2','','');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_PBOC_16','EMPTY','RULE','Z','Z2','Z03','Z03_3','-1','NULL','NULL');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_PBOC_37','EMPTY','RULE','Z','Z2','Z03','Z03_1','NULL','NULL');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_PBOC_16','HIT','RULE','Z','Z2','Z03','Z03_3','1','','');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_PBOC_37','HIT','RULE','Z','Z2','Z03','Z03_1','','');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_PBOC_16','UNHIT','RULE','Z','Z2','Z03','Z03_3','0','','');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_PBOC_38','EMPTY','RULE','Z','Z2','Z03','Z03_1','NULL','NULL');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_PBOC_21','EMPTY','RULE','Z','Z2','Z03','Z03_2','-1','NULL','NULL');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_PBOC_38','HIT','RULE','Z','Z2','Z03','Z03_1','','');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_PBOC_21','HIT','RULE','Z','Z2','Z03','Z03_2','1','','');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_PBOC_39','EMPTY','RULE','Z','Z2','Z03','Z03_4','NULL','NULL');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_PBOC_21','UNHIT','RULE','Z','Z2','Z03','Z03_2','0','','');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_PBOC_39','HIT','RULE','Z','Z2','Z03','Z03_4','','');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_PBOC_23','EMPTY','RULE','Z','Z2','Z03','Z03_2','-1','NULL','NULL');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_PBOC_40','EMPTY','RULE','Z','Z2','Z03','Z03_1','NULL','NULL');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_PBOC_23','HIT','RULE','Z','Z2','Z03','Z03_2','1','','');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_PBOC_40','HIT','RULE','Z','Z2','Z03','Z03_1','','');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_PBOC_23','UNHIT','RULE','Z','Z2','Z03','Z03_2','0','','');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_PBOC_42','EMPTY','RULE','Z','Z2','Z03','Z03_1','NULL','NULL');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_PBOC_24','EMPTY','RULE','Z','Z2','Z03','Z03_2','-1','NULL','NULL');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_PBOC_42','HIT','RULE','Z','Z2','Z03','Z03_1','','');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_PBOC_24','HIT','RULE','Z','Z2','Z03','Z03_2','1','','');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_PBOC_44','EMPTY','RULE','Z','Z2','Z03','Z03_1','NULL','NULL');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_PBOC_24','UNHIT','RULE','Z','Z2','Z03','Z03_2','0','','');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_PBOC_44','HIT','RULE','Z','Z2','Z03','Z03_1','','');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_PBOC_26','EMPTY','RULE','Z','Z2','Z03','Z03_2','-1','NULL','NULL');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_PBOC_45','EMPTY','RULE','Z','Z2','Z03','Z03_1','NULL','NULL');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_PBOC_26','HIT','RULE','Z','Z2','Z03','Z03_2','1','','');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_PBOC_45','HIT','RULE','Z','Z2','Z03','Z03_1','','');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_PBOC_26','UNHIT','RULE','Z','Z2','Z03','Z03_2','0','','');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_PBOC_46','EMPTY','RULE','Z','Z2','Z03','Z03_1','NULL','NULL');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_PBOC_32','EMPTY','RULE','Z','Z2','Z03','Z03_2','-1','NULL','NULL');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_PBOC_46','HIT','RULE','Z','Z2','Z03','Z03_1','','');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_PBOC_32','HIT','RULE','Z','Z2','Z03','Z03_2','1','','');
+
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_PBOC_32','UNHIT','RULE','Z','Z2','Z03','Z03_2','0','','');
+
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_PBOC_37','EMPTY','RULE','Z','Z2','Z03','Z03_1','-1','NULL','NULL');
+
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_PBOC_37','HIT','RULE','Z','Z2','Z03','Z03_1','1','','');
+
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_PBOC_37','UNHIT','RULE','Z','Z2','Z03','Z03_1','0','','');
+
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_PBOC_38','EMPTY','RULE','Z','Z2','Z03','Z03_1','-1','NULL','NULL');
+
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_PBOC_38','HIT','RULE','Z','Z2','Z03','Z03_1','1','','');
+
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_PBOC_38','UNHIT','RULE','Z','Z2','Z03','Z03_1','0','','');
+
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_PBOC_39','EMPTY','RULE','Z','Z2','Z03','Z03_4','-1','NULL','NULL');
+
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_PBOC_39','HIT','RULE','Z','Z2','Z03','Z03_4','1','','');
+
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_PBOC_39','UNHIT','RULE','Z','Z2','Z03','Z03_4','0','','');
+
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_PBOC_40','EMPTY','RULE','Z','Z2','Z03','Z03_1','-1','NULL','NULL');
+
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_PBOC_40','HIT','RULE','Z','Z2','Z03','Z03_1','1','','');
+
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_PBOC_40','UNHIT','RULE','Z','Z2','Z03','Z03_1','0','','');
+
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_PBOC_42','EMPTY','RULE','Z','Z2','Z03','Z03_1','-1','NULL','NULL');
+
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_PBOC_42','HIT','RULE','Z','Z2','Z03','Z03_1','1','','');
+
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_PBOC_42','UNHIT','RULE','Z','Z2','Z03','Z03_1','0','','');
+
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_PBOC_44','EMPTY','RULE','Z','Z2','Z03','Z03_1','-1','NULL','NULL');
+
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_PBOC_44','HIT','RULE','Z','Z2','Z03','Z03_1','1','','');
+
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_PBOC_44','UNHIT','RULE','Z','Z2','Z03','Z03_1','0','','');
+
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_PBOC_45','EMPTY','RULE','Z','Z2','Z03','Z03_1','-1','NULL','NULL');
+
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_PBOC_45','HIT','RULE','Z','Z2','Z03','Z03_1','1','','');
+
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_PBOC_45','UNHIT','RULE','Z','Z2','Z03','Z03_1','0','','');
+
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_PBOC_46','EMPTY','RULE','Z','Z2','Z03','Z03_1','-1','NULL','NULL');
+
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_PBOC_46','HIT','RULE','Z','Z2','Z03','Z03_1','1','','');
+
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_PBOC_46','UNHIT','RULE','Z','Z2','Z03','Z03_1','0','','');
 
 --riskcategory Value of the unknown
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_PBOC_53','EMPTY','RULE','Z','Z2','Z03','','NULL','NULL');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_PBOC_53','EMPTY','RULE','Z','Z2','Z03','','-1','NULL','NULL');
 
 --riskcategory Value of the unknown
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_PBOC_53','HIT','RULE','Z','Z2','Z03','','','');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_PBOC_53','HIT','RULE','Z','Z2','Z03','','1','','');
 
 --riskcategory Value of the unknown
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_PBOC_54','EMPTY','RULE','Z','Z2','Z03','','NULL','NULL');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_PBOC_53','UNHIT','RULE','Z','Z2','Z03','','0','','');
 
 --riskcategory Value of the unknown
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_PBOC_54','HIT','RULE','Z','Z2','Z03','','','');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_PBOC_54','EMPTY','RULE','Z','Z2','Z03','','-1','NULL','NULL');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_65','HIT','RULE','Z','Z2','Z03','Z03_2','','');
+--riskcategory Value of the unknown
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_PBOC_54','HIT','RULE','Z','Z2','Z03','','1','','');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_66','HIT','RULE','Z','Z2','Z01','Z03_3','','');
+--riskcategory Value of the unknown
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_PBOC_54','UNHIT','RULE','Z','Z2','Z03','','0','','');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_67','HIT','RULE','Z','Z2','Z03','Z03_3','','');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_65','HIT','RULE','Z','Z2','Z03','Z03_2','1','','');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_68','HIT','RULE','Z','Z2','Z03','Z03_3','','');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_65','UNHIT','RULE','Z','Z2','Z03','Z03_2','0','','');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_70','HIT','RULE','Z','Z2','Z01','Z01_2','','');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_65','EMPTY','RULE','Z','Z2','Z03','Z03_2','-1','','');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_71','HIT','RULE','Z','Z2','Z01','Z01_2','','');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_66','HIT','RULE','Z','Z2','Z01','Z03_3','1','','');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_73','HIT','RULE','Z','Z2','Z01','Z01_3','','');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_66','UNHIT','RULE','Z','Z2','Z01','Z03_3','0','','');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_75','HIT','RULE','Z','Z2','Z01','Z01_3','','');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_66','EMPTY','RULE','Z','Z2','Z01','Z03_3','-1','','');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_80','HIT','RULE','Z','Z2','Z01','Z01_2','','');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_67','HIT','RULE','Z','Z2','Z03','Z03_3','1','','');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_82','HIT','RULE','Z','Z2','Z01','Z01_2','','');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_67','UNHIT','RULE','Z','Z2','Z03','Z03_3','0','','');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_83','HIT','RULE','Z','Z2','Z01','Z01_3','','');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_67','EMPTY','RULE','Z','Z2','Z03','Z03_3','-1','','');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_85','HIT','RULE','Z','Z2','Z01','Z01_4','','');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_68','HIT','RULE','Z','Z2','Z03','Z03_3','1','','');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_98','HIT','RULE','Z','Z2','Z03','Z03_1','','');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_68','UNHIT','RULE','Z','Z2','Z03','Z03_3','0','','');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_115','HIT','RULE','Z','Z2','Z03','Z03_3','','');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_68','EMPTY','RULE','Z','Z2','Z03','Z03_3','-1','','');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_117','HIT','RULE','Z','Z2','Z03','Z03_3','','');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_70','HIT','RULE','Z','Z2','Z01','Z01_2','1','','');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_123','HIT','RULE','Z','Z2','Z03','Z03_3','','');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_70','EMPTY','RULE','Z','Z2','Z01','Z01_2','-1','','');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_135','HIT','RULE','Z','Z2','Z03','Z03_3','','');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_70','UNHIT','RULE','Z','Z2','Z01','Z01_2','0','','');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_138','HIT','RULE','Z','Z2','Z03','Z03_1','','');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_71','HIT','RULE','Z','Z2','Z01','Z01_2','1','','');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_PBOC_143','EMPTY','RULE','Z','Z2','Z03','Z03_1','NULL','NULL');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_71','EMPTY','RULE','Z','Z2','Z01','Z01_2','-1','','');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_PBOC_143','HIT','RULE','Z','Z2','Z03','Z03_1','','');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_71','UNHIT','RULE','Z','Z2','Z01','Z01_2','0','','');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_PBOC_145','EMPTY','RULE','Z','Z2','Z03','Z03_2','NULL','NULL');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_73','EMPTY','RULE','Z','Z2','Z01','Z01_3','-1','','');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_PBOC_145','HIT','RULE','Z','Z2','Z03','Z03_2','','');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_73','UNHIT','RULE','Z','Z2','Z01','Z01_3','0','','');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_152_1','HIT','RULE','Z','Z2','Z03','Z03_1','','');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_75','HIT','RULE','Z','Z2','Z01','Z01_3','1','','');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_152_2','HIT','RULE','Z','Z2','Z03','Z03_1','','');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_75','EMPTY','RULE','Z','Z2','Z01','Z01_3','-1','','');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_152_4','HIT','RULE','Z','Z2','Z03','Z03_1','','');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_75','UNHIT','RULE','Z','Z2','Z01','Z01_3','0','','');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_153_2','HIT','RULE','Z','Z2','Z03','Z03_1','','');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_80','HIT','RULE','Z','Z2','Z01','Z01_2','1','','');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_153_3','HIT','RULE','Z','Z2','Z03','Z03_1','','');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_80','EMPTY','RULE','Z','Z2','Z01','Z01_2','-1','','');
+
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_80','UNHIT','RULE','Z','Z2','Z01','Z01_2','0','','');
+
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_82','HIT','RULE','Z','Z2','Z01','Z01_2','1','','');
+
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_82','EMPTY','RULE','Z','Z2','Z01','Z01_2','-1','','');
+
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_82','UNHIT','RULE','Z','Z2','Z01','Z01_2','0','','');
+
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_83','HIT','RULE','Z','Z2','Z01','Z01_3','1','','');
+
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_83','EMPTY','RULE','Z','Z2','Z01','Z01_3','-1','','');
+
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_83','UNHIT','RULE','Z','Z2','Z01','Z01_3','0','','');
+
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_85','HIT','RULE','Z','Z2','Z01','Z01_4','1','','');
+
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_85','EMPTY','RULE','Z','Z2','Z01','Z01_4','-1','','');
+
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_85','UNHIT','RULE','Z','Z2','Z01','Z01_4','0','','');
+
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_98','HIT','RULE','Z','Z2','Z03','Z03_1','1','','');
+
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_98','EMPTY','RULE','Z','Z2','Z03','Z03_1','-1','','');
+
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_98','UNHIT','RULE','Z','Z2','Z03','Z03_1','0','','');
+
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_115','HIT','RULE','Z','Z2','Z03','Z03_3','1','','');
+
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_115','EMPTY','RULE','Z','Z2','Z03','Z03_3','-1','','');
+
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_115','UNHIT','RULE','Z','Z2','Z03','Z03_3','0','','');
+
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_117','HIT','RULE','Z','Z2','Z03','Z03_3','1','','');
+
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_117','EMPTY','RULE','Z','Z2','Z03','Z03_3','-1','','');
+
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_117','UNHIT','RULE','Z','Z2','Z03','Z03_3','0','','');
+
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_123','HIT','RULE','Z','Z2','Z03','Z03_3','1','','');
+
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_123','EMPTY','RULE','Z','Z2','Z03','Z03_3','-1','','');
+
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_135','UNHIT','RULE','Z','Z2','Z03','Z03_3','0','','');
+
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_135','EMPTY','RULE','Z','Z2','Z03','Z03_3','-1','','');
+
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_135','UNHIT','RULE','Z','Z2','Z03','Z03_3','0','','');
+
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_138','HIT','RULE','Z','Z2','Z03','Z03_1','1','','');
+
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_138','EMPTY','RULE','Z','Z2','Z03','Z03_1','-1','','');
+
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_138','UNHIT','RULE','Z','Z2','Z03','Z03_1','0','','');
+
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_PBOC_143','EMPTY','RULE','Z','Z2','Z03','Z03_1','-1','NULL','NULL');
+
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_PBOC_143','HIT','RULE','Z','Z2','Z03','Z03_1','1','','');
+
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_PBOC_143','UNHIT','RULE','Z','Z2','Z03','Z03_1','0','','');
+
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_PBOC_145','EMPTY','RULE','Z','Z2','Z03','Z03_2','-1','NULL','NULL');
+
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_PBOC_145','HIT','RULE','Z','Z2','Z03','Z03_2','1','','');
+
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_PBOC_145','UNHIT','RULE','Z','Z2','Z03','Z03_2','0','','');
+
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_152_1','HIT','RULE','Z','Z2','Z03','Z03_1','1','','');
+
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_152_1','EMPTY','RULE','Z','Z2','Z03','Z03_1','-1','','');
+
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_152_1','UNHIT','RULE','Z','Z2','Z03','Z03_1','0','','');
+
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_152_2','HIT','RULE','Z','Z2','Z03','Z03_1','1','','');
+
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_152_2','EMPTY','RULE','Z','Z2','Z03','Z03_1','-1','','');
+
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_152_2','UNHIT','RULE','Z','Z2','Z03','Z03_1','0','','');
+
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_152_4','HIT','RULE','Z','Z2','Z03','Z03_1','1','','');
+
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_152_4','EMPTY','RULE','Z','Z2','Z03','Z03_1','-1','','');
+
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_152_4','UNHIT','RULE','Z','Z2','Z03','Z03_1','0','','');
+
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_153_2','HIT','RULE','Z','Z2','Z03','Z03_1','1','','');
+
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_153_2','EMPTY','RULE','Z','Z2','Z03','Z03_1','-1','','');
+
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_153_2','UNHIT','RULE','Z','Z2','Z03','Z03_1','0','','');
+
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_153_3','HIT','RULE','Z','Z2','Z03','Z03_1','1','','');
+
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_153_3','EMPTY','RULE','Z','Z2','Z03','Z03_1','-1','','');
+
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_153_3','UNHIT','RULE','Z','Z2','Z03','Z03_1','0','','');
 
 --TODO RULE_154
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_155','HIT','RULE','Z','Z2','Z01','Z01_1','E','高风险');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_155','HIT','RULE','Z','Z2','Z01','Z01_1','1','E','高风险');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc)values('RULE_156','HIT','RULE','Z','Z2','Z01','Z01_5','D','中高风险');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_155','EMPTY','RULE','Z','Z2','Z01','Z01_1','-1','E','高风险');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_157','HIT','RULE','Z','Z2','Z01','Z01_1','','');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_155','UNHIT','RULE','Z','Z2','Z01','Z01_1','0','E','高风险');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_159','HIT','RULE','Z','Z2','Z01','Z01_4','','');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc)values('RULE_156','HIT','RULE','Z','Z2','Z01','Z01_5','1','D','中高风险');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc)values('RULE_160','HIT','RULE','Z','Z2','Z01','Z01_3','D','中高风险');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc)values('RULE_156','EMPTY','RULE','Z','Z2','Z01','Z01_5','-1','D','中高风险');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc)values('RULE_162','HIT','RULE','Z','Z2','Z01','Z01_3','D','中高风险');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc)values('RULE_156','UNHIT','RULE','Z','Z2','Z01','Z01_5','0','D','中高风险');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc)values('RULE_164','HIT','RULE','Z','Z2','Z01','Z01_2','E','高风险');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_157','HIT','RULE','Z','Z2','Z01','Z01_1','1','','');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc)values('RULE_166','HIT','RULE','Z','Z2','Z01','Z01_2','E','高风险');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_157','EMPTY','RULE','Z','Z2','Z01','Z01_1','-1','','');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_167','HIT','RULE','Z','Z2','Z01','Z01_2','','');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_157','UNHIT','RULE','Z','Z2','Z01','Z01_1','0','','');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc)values('RULE_168','HIT','RULE','Z','Z2','Z01','Z01_2','E','中高风险');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_159','HIT','RULE','Z','Z2','Z01','Z01_4','1','','');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_169','HIT','RULE','Z','Z2','Z01','Z01_2','','');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_159','EMPTY','RULE','Z','Z2','Z01','Z01_4','-1','','');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_173','HIT','RULE','Z','Z2','Z01','Z01_3','','');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_159','UNHIT','RULE','Z','Z2','Z01','Z01_4','0','','');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_174','HIT','RULE','Z','Z2','Z01','Z01_3','','');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc)values('RULE_160','HIT','RULE','Z','Z2','Z01','Z01_3','1','D','中高风险');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_175','HIT','RULE','Z','Z2','Z01','Z01_2','','');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc)values('RULE_160','EMPTY','RULE','Z','Z2','Z01','Z01_3','-1','D','中高风险');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_176','HIT','RULE','Z','Z2','Z01','Z01_2','','');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc)values('RULE_160','UNHIT','RULE','Z','Z2','Z01','Z01_3','0','D','中高风险');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_178','HIT','RULE','Z','Z2','Z01','Z01_1','','');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc)values('RULE_162','HIT','RULE','Z','Z2','Z01','Z01_3','1','D','中高风险');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_179','HIT','RULE','Z','Z2','Z01','Z01_2','','');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc)values('RULE_162','EMPTY','RULE','Z','Z2','Z01','Z01_3','-1','D','中高风险');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_182','HIT','RULE','Z','Z2','Z01','Z03_4','','');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc)values('RULE_162','UNHIT','RULE','Z','Z2','Z01','Z01_3','0','D','中高风险');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_198','HIT','RULE','W','W2','W01','W01_4','','');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc)values('RULE_164','HIT','RULE','Z','Z2','Z01','Z01_2','1','E','高风险');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc)values('RULE_232','HIT','RULE','Z','Z2','Z01','Z01_6','D','中高风险');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc)values('RULE_164','EMPTY','RULE','Z','Z2','Z01','Z01_2','-1','E','高风险');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_234','HIT','RULE','Z','Z2','Z02','Z02_1','','');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc)values('RULE_164','UNHIT','RULE','Z','Z2','Z01','Z01_2','0','E','高风险');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_236','HIT','RULE','Z','Z2','Z03','Z03_1','','');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc)values('RULE_166','HIT','RULE','Z','Z2','Z01','Z01_2','1','E','高风险');
+
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc)values('RULE_166','EMPTY','RULE','Z','Z2','Z01','Z01_2','-1','E','高风险');
+
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc)values('RULE_166','UNHIT','RULE','Z','Z2','Z01','Z01_2','0','E','高风险');
+
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_167','HIT','RULE','Z','Z2','Z01','Z01_2','1','','');
+
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_167','EMPTY','RULE','Z','Z2','Z01','Z01_2','-1','','');
+
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_167','UNHIT','RULE','Z','Z2','Z01','Z01_2','0','','');
+
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc)values('RULE_168','HIT','RULE','Z','Z2','Z01','Z01_2','1','E','中高风险');
+
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc)values('RULE_168','EMPTY','RULE','Z','Z2','Z01','Z01_2','-1','E','中高风险');
+
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc)values('RULE_168','UNHIT','RULE','Z','Z2','Z01','Z01_2','0','E','中高风险');
+
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_169','HIT','RULE','Z','Z2','Z01','Z01_2','1','','');
+
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_169','EMPTY','RULE','Z','Z2','Z01','Z01_2','-1','','');
+
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_169','UNHIT','RULE','Z','Z2','Z01','Z01_2','0','','');
+
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_173','HIT','RULE','Z','Z2','Z01','Z01_3','1','','');
+
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_173','EMPTY','RULE','Z','Z2','Z01','Z01_3','-1','','');
+
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_173','UNHIT','RULE','Z','Z2','Z01','Z01_3','0','','');
+
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_174','HIT','RULE','Z','Z2','Z01','Z01_3','1','','');
+
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_174','EMPTY','RULE','Z','Z2','Z01','Z01_3','-1','','');
+
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_174','UNHIT','RULE','Z','Z2','Z01','Z01_3','0','','');
+
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_175','HIT','RULE','Z','Z2','Z01','Z01_2','1','','');
+
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_175','EMPTY','RULE','Z','Z2','Z01','Z01_2','-1','','');
+
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_175','UNHIT','RULE','Z','Z2','Z01','Z01_2','0','','');
+
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_176','HIT','RULE','Z','Z2','Z01','Z01_2','1','','');
+
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_176','HIT','RULE','Z','Z2','Z01','Z01_2','-1','','');
+
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_176','HIT','RULE','Z','Z2','Z01','Z01_2','0','','');
+
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_178','HIT','RULE','Z','Z2','Z01','Z01_1','1','','');
+
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_178','EMPTY','RULE','Z','Z2','Z01','Z01_1','-1','','');
+
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_178','UNHIT','RULE','Z','Z2','Z01','Z01_1','0','','');
+
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_179','HIT','RULE','Z','Z2','Z01','Z01_2','1','','');
+
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_179','EMPTY','RULE','Z','Z2','Z01','Z01_2','-1','','');
+
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_179','UNHIT','RULE','Z','Z2','Z01','Z01_2','0','','');
+
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_182','HIT','RULE','Z','Z2','Z01','Z03_4','1','','');
+
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_182','EMPTY','RULE','Z','Z2','Z01','Z03_4','-1','','');
+
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_182','UNHIT','RULE','Z','Z2','Z01','Z03_4','0','','');
+
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_198','HIT','RULE','W','W2','W01','W01_4','1','','');
+
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_198','EMPTY','RULE','W','W2','W01','W01_4','-1','','');
+
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_198','UNHIT','RULE','W','W2','W01','W01_4','0','','');
+
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc)values('RULE_232','HIT','RULE','Z','Z2','Z01','Z01_6','1','D','中高风险');
+
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc)values('RULE_232','EMPTY','RULE','Z','Z2','Z01','Z01_6','-1','D','中高风险');
+
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc)values('RULE_232','UNHIT','RULE','Z','Z2','Z01','Z01_6','0','D','中高风险');
+
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_234','HIT','RULE','Z','Z2','Z02','Z02_1','1','','');
+
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_234','UNHIT','RULE','Z','Z2','Z02','Z02_1','-1','','');
+
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_234','EMPTY','RULE','Z','Z2','Z02','Z02_1','0','','');
+
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_236','HIT','RULE','Z','Z2','Z03','Z03_1','1','','');
+
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_236','EMPTY','RULE','Z','Z2','Z03','Z03_1','-1','','');
+
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_236','UNHIT','RULE','Z','Z2','Z03','Z03_1','0','','');
 
 commit;
 /*
