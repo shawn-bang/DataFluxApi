@@ -233,6 +233,7 @@ public class CCAFBiz {
 				mtrstmp.put("simulation_cluster", new java.math.BigDecimal(dfouttab[i].getSimulation_cluster()));
 				mtRstTab.add(mtrstmp);
 
+				// TODO 有问题，ext的mc信息没有处理
                 if (dfouttab[i].getAPP_entity_type().equals("ADD") && StringUtils.isNotBlank(dfouttab[i].getAPP_data_source())) {
                     HashMap<String, Object> addmp = new HashMap<String, Object>();
                     addmp.put("app_id", dfouttab[i].getAPP_app_id());

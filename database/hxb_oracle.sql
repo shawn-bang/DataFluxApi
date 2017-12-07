@@ -37,6 +37,7 @@ drop table af_app_cmp_today cascade constraints;
 create table af_app_cmp_today
 (
   APP_ID             varchar(20),
+  CID                varchar(30),
   DATA_TYPE          varchar(30),
   DATA_VALUE         varchar(255),
   NAMEMC             varchar(255),
@@ -58,12 +59,10 @@ create table af_app_add_his
   BUILDINGMC         varchar(256),
   DISTRICTMC         varchar(256),
   FLOORMC            varchar(256),
-  POSTALCODEMC       varchar(256),
   ROOMMC             varchar(256),
   STREETMC           varchar(256),
   TOWNMC             varchar(256),
-  UNITMC             varchar(256),
-  CITY               varchar(100)
+  UNITMC             varchar(256)
 );
 
 -- if exist table af_app_add_ext_his
@@ -79,7 +78,6 @@ create table af_app_add_ext_his
   BUILDINGMC         varchar(256),
   DISTRICTMC         varchar(256),
   FLOORMC            varchar(256),
-  POSTALCODEMC       varchar(256),
   ROOMMC             varchar(256),
   STREETMC           varchar(256),
   TOWNMC             varchar(256),
@@ -91,6 +89,7 @@ drop table af_app_add_today cascade constraints;
 create table af_app_add_today
 (
   APP_ID             varchar(20),
+  CID                varchar(30),
   DATA_SOURCE        varchar(32),
   DATA_TYPE          varchar(30),
   DATA_VALUE         varchar(255),
@@ -370,7 +369,8 @@ create table af_response_afsummary(
       app_id VARCHAR2(20) NOT NUll,
       type VARCHAR2(20),
       value VARCHAR2(6),
-      remarks VARCHAR2(200)
+      remarks VARCHAR2(200),
+      modify_time date default sysdate not null
 );
 
 comment on table af_response_afsummary is '响应报文中风险概要信息表';
@@ -378,6 +378,7 @@ comment on column  af_response_afsummary.app_id is '申请件编号';
 comment on column  af_response_afsummary.type is 'AF_ALL,RULE,MODEL,SNA';
 comment on column  af_response_afsummary.value is '反欺诈决策结果';
 comment on column  af_response_afsummary.remarks is '反欺诈决策结果描述';
+comment on column  af_response_afsummary.modify_time is '更新时间';
 
 -- if exist table af_response_afriskwarning
 DROP TABLE af_response_afriskwarning cascade constraints;
@@ -393,7 +394,8 @@ create table af_response_afriskwarning(
       type VARCHAR2(10),
       class VARCHAR2(6),
       riskvalue NUMBER(2),
-      calculatenum NUMBER(10)
+      calculatenum NUMBER(10),
+      modify_time date default sysdate not null
 );
 
 comment on table af_response_afriskwarning is '响应报文中风险提示信息表';
@@ -408,6 +410,7 @@ comment on column  af_response_afriskwarning.type is '反欺诈结果类型(AF_A
 comment on column  af_response_afriskwarning.class is 'TYPE 二级分类';
 comment on column  af_response_afriskwarning.riskvalue is '风险等级依据结果值(1:命中,0:未命中[不会纳入聚合计算],-1:NULL)';
 comment on column  af_response_afriskwarning.calculatenum is '规则命中依据中间变量值';
+comment on column  af_response_afriskwarning.modify_time is '更新时间';
 
 -- if exist table af_request_applicantinfo
 DROP TABLE af_request_applicantinfo cascade constraints;
