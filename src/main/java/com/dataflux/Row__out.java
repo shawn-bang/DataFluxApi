@@ -8,949 +8,539 @@
 package com.dataflux;
 
 public class Row__out  implements java.io.Serializable {
-    private String APP_app_id;
+    private String app_id;
 
-    private String APP_entity_type;
+    private String entity_type;
 
-    private String APP_data_type;
+    private String data_type;
 
-    private String APP_data_value;
+    private String data_value;
 
-    private String APP_data_source;
-
-    private String EXT_entity_type;
-
-    private String EXT_data_type;
-
-    private String EXT_data_value;
-
-    private String EXT_data_source;
-
-    /* decimal */
-    private String simulation_parsing;
-
-    /* decimal */
-    private String simulation_char;
+    private String data_source;
 
     /* integer */
-    private String simulation_cluster;
+    private String cid;
 
-    private String APP_AddInfo;
+    private String nameMC;
 
-    private String APP_DistrictMC;
+    private String legalFormMC;
 
-    private String APP_TownMC;
+    private String siteMC;
 
-    private String APP_StreetMC;
+    private String addMC;
 
-    private String APP_BlockMC;
+    private String city;
 
-    private String APP_BuildingMC;
+    private String provinceMC;
 
-    private String APP_UnitMC;
+    private String cityMC;
 
-    private String APP_FloorMC;
+    private String districtMC;
 
-    private String APP_RoomMC;
+    private String townMC;
 
-    private String EXT_AddInfo;
+    private String streetMC;
 
-    private String EXT_DistrictMC;
+    private String blockMC;
 
-    private String EXT_TownMC;
+    private String buildingMC;
 
-    private String EXT_StreetMC;
+    private String unitMC;
 
-    private String EXT_BlockMC;
+    private String floorMC;
 
-    private String EXT_BuildingMC;
+    private String roomMC;
 
-    private String EXT_UnitMC;
-
-    private String EXT_FloorMC;
-
-    private String EXT_RoomMC;
-
-    private String APP_NameMC;
-
-    private String APP_LegalFormMC;
-
-    private String APP_SiteMC;
-
-    private String APP_AddMC;
-
-    private String EXT_NameMC;
-
-    private String EXT_LegalFormMC;
-
-    private String EXT_SiteMC;
-
-    private String EXT_AddMC;
-
-    private String APP_City;
+    private String addInfoMC;
 
     public Row__out() {
     }
 
     public Row__out(
-           String APP_app_id,
-           String APP_entity_type,
-           String APP_data_type,
-           String APP_data_value,
-           String APP_data_source,
-           String EXT_entity_type,
-           String EXT_data_type,
-           String EXT_data_value,
-           String EXT_data_source,
-           String simulation_parsing,
-           String simulation_char,
-           String simulation_cluster,
-           String APP_AddInfo,
-           String APP_DistrictMC,
-           String APP_TownMC,
-           String APP_StreetMC,
-           String APP_BlockMC,
-           String APP_BuildingMC,
-           String APP_UnitMC,
-           String APP_FloorMC,
-           String APP_RoomMC,
-           String EXT_AddInfo,
-           String EXT_DistrictMC,
-           String EXT_TownMC,
-           String EXT_StreetMC,
-           String EXT_BlockMC,
-           String EXT_BuildingMC,
-           String EXT_UnitMC,
-           String EXT_FloorMC,
-           String EXT_RoomMC,
-           String APP_NameMC,
-           String APP_LegalFormMC,
-           String APP_SiteMC,
-           String APP_AddMC,
-           String EXT_NameMC,
-           String EXT_LegalFormMC,
-           String EXT_SiteMC,
-           String EXT_AddMC,
-           String APP_City) {
-           this.APP_app_id = APP_app_id;
-           this.APP_entity_type = APP_entity_type;
-           this.APP_data_type = APP_data_type;
-           this.APP_data_value = APP_data_value;
-           this.APP_data_source = APP_data_source;
-           this.EXT_entity_type = EXT_entity_type;
-           this.EXT_data_type = EXT_data_type;
-           this.EXT_data_value = EXT_data_value;
-           this.EXT_data_source = EXT_data_source;
-           this.simulation_parsing = simulation_parsing;
-           this.simulation_char = simulation_char;
-           this.simulation_cluster = simulation_cluster;
-           this.APP_AddInfo = APP_AddInfo;
-           this.APP_DistrictMC = APP_DistrictMC;
-           this.APP_TownMC = APP_TownMC;
-           this.APP_StreetMC = APP_StreetMC;
-           this.APP_BlockMC = APP_BlockMC;
-           this.APP_BuildingMC = APP_BuildingMC;
-           this.APP_UnitMC = APP_UnitMC;
-           this.APP_FloorMC = APP_FloorMC;
-           this.APP_RoomMC = APP_RoomMC;
-           this.EXT_AddInfo = EXT_AddInfo;
-           this.EXT_DistrictMC = EXT_DistrictMC;
-           this.EXT_TownMC = EXT_TownMC;
-           this.EXT_StreetMC = EXT_StreetMC;
-           this.EXT_BlockMC = EXT_BlockMC;
-           this.EXT_BuildingMC = EXT_BuildingMC;
-           this.EXT_UnitMC = EXT_UnitMC;
-           this.EXT_FloorMC = EXT_FloorMC;
-           this.EXT_RoomMC = EXT_RoomMC;
-           this.APP_NameMC = APP_NameMC;
-           this.APP_LegalFormMC = APP_LegalFormMC;
-           this.APP_SiteMC = APP_SiteMC;
-           this.APP_AddMC = APP_AddMC;
-           this.EXT_NameMC = EXT_NameMC;
-           this.EXT_LegalFormMC = EXT_LegalFormMC;
-           this.EXT_SiteMC = EXT_SiteMC;
-           this.EXT_AddMC = EXT_AddMC;
-           this.APP_City = APP_City;
+           String app_id,
+           String entity_type,
+           String data_type,
+           String data_value,
+           String data_source,
+           String cid,
+           String nameMC,
+           String legalFormMC,
+           String siteMC,
+           String addMC,
+           String city,
+           String provinceMC,
+           String cityMC,
+           String districtMC,
+           String townMC,
+           String streetMC,
+           String blockMC,
+           String buildingMC,
+           String unitMC,
+           String floorMC,
+           String roomMC,
+           String addInfoMC) {
+           this.app_id = app_id;
+           this.entity_type = entity_type;
+           this.data_type = data_type;
+           this.data_value = data_value;
+           this.data_source = data_source;
+           this.cid = cid;
+           this.nameMC = nameMC;
+           this.legalFormMC = legalFormMC;
+           this.siteMC = siteMC;
+           this.addMC = addMC;
+           this.city = city;
+           this.provinceMC = provinceMC;
+           this.cityMC = cityMC;
+           this.districtMC = districtMC;
+           this.townMC = townMC;
+           this.streetMC = streetMC;
+           this.blockMC = blockMC;
+           this.buildingMC = buildingMC;
+           this.unitMC = unitMC;
+           this.floorMC = floorMC;
+           this.roomMC = roomMC;
+           this.addInfoMC = addInfoMC;
     }
 
 
     /**
-     * Gets the APP_app_id value for this Row__out.
+     * Gets the app_id value for this Row__out.
      * 
-     * @return APP_app_id
+     * @return app_id
      */
-    public String getAPP_app_id() {
-        return APP_app_id;
+    public String getApp_id() {
+        return app_id;
     }
 
 
     /**
-     * Sets the APP_app_id value for this Row__out.
+     * Sets the app_id value for this Row__out.
      * 
-     * @param APP_app_id
+     * @param app_id
      */
-    public void setAPP_app_id(String APP_app_id) {
-        this.APP_app_id = APP_app_id;
+    public void setApp_id(String app_id) {
+        this.app_id = app_id;
     }
 
 
     /**
-     * Gets the APP_entity_type value for this Row__out.
+     * Gets the entity_type value for this Row__out.
      * 
-     * @return APP_entity_type
+     * @return entity_type
      */
-    public String getAPP_entity_type() {
-        return APP_entity_type;
+    public String getEntity_type() {
+        return entity_type;
     }
 
 
     /**
-     * Sets the APP_entity_type value for this Row__out.
+     * Sets the entity_type value for this Row__out.
      * 
-     * @param APP_entity_type
+     * @param entity_type
      */
-    public void setAPP_entity_type(String APP_entity_type) {
-        this.APP_entity_type = APP_entity_type;
+    public void setEntity_type(String entity_type) {
+        this.entity_type = entity_type;
     }
 
 
     /**
-     * Gets the APP_data_type value for this Row__out.
+     * Gets the data_type value for this Row__out.
      * 
-     * @return APP_data_type
+     * @return data_type
      */
-    public String getAPP_data_type() {
-        return APP_data_type;
+    public String getData_type() {
+        return data_type;
     }
 
 
     /**
-     * Sets the APP_data_type value for this Row__out.
+     * Sets the data_type value for this Row__out.
      * 
-     * @param APP_data_type
+     * @param data_type
      */
-    public void setAPP_data_type(String APP_data_type) {
-        this.APP_data_type = APP_data_type;
+    public void setData_type(String data_type) {
+        this.data_type = data_type;
     }
 
 
     /**
-     * Gets the APP_data_value value for this Row__out.
+     * Gets the data_value value for this Row__out.
      * 
-     * @return APP_data_value
+     * @return data_value
      */
-    public String getAPP_data_value() {
-        return APP_data_value;
+    public String getData_value() {
+        return data_value;
     }
 
 
     /**
-     * Sets the APP_data_value value for this Row__out.
+     * Sets the data_value value for this Row__out.
      * 
-     * @param APP_data_value
+     * @param data_value
      */
-    public void setAPP_data_value(String APP_data_value) {
-        this.APP_data_value = APP_data_value;
+    public void setData_value(String data_value) {
+        this.data_value = data_value;
     }
 
 
     /**
-     * Gets the APP_data_source value for this Row__out.
+     * Gets the data_source value for this Row__out.
      * 
-     * @return APP_data_source
+     * @return data_source
      */
-    public String getAPP_data_source() {
-        return APP_data_source;
+    public String getData_source() {
+        return data_source;
     }
 
 
     /**
-     * Sets the APP_data_source value for this Row__out.
+     * Sets the data_source value for this Row__out.
      * 
-     * @param APP_data_source
+     * @param data_source
      */
-    public void setAPP_data_source(String APP_data_source) {
-        this.APP_data_source = APP_data_source;
+    public void setData_source(String data_source) {
+        this.data_source = data_source;
     }
 
 
     /**
-     * Gets the EXT_entity_type value for this Row__out.
+     * Gets the cid value for this Row__out.
      * 
-     * @return EXT_entity_type
+     * @return cid   * integer
      */
-    public String getEXT_entity_type() {
-        return EXT_entity_type;
+    public String getCid() {
+        return cid;
     }
 
 
     /**
-     * Sets the EXT_entity_type value for this Row__out.
+     * Sets the cid value for this Row__out.
      * 
-     * @param EXT_entity_type
+     * @param cid   * integer
      */
-    public void setEXT_entity_type(String EXT_entity_type) {
-        this.EXT_entity_type = EXT_entity_type;
+    public void setCid(String cid) {
+        this.cid = cid;
     }
 
 
     /**
-     * Gets the EXT_data_type value for this Row__out.
+     * Gets the nameMC value for this Row__out.
      * 
-     * @return EXT_data_type
+     * @return nameMC
      */
-    public String getEXT_data_type() {
-        return EXT_data_type;
+    public String getNameMC() {
+        return nameMC;
     }
 
 
     /**
-     * Sets the EXT_data_type value for this Row__out.
+     * Sets the nameMC value for this Row__out.
      * 
-     * @param EXT_data_type
+     * @param nameMC
      */
-    public void setEXT_data_type(String EXT_data_type) {
-        this.EXT_data_type = EXT_data_type;
+    public void setNameMC(String nameMC) {
+        this.nameMC = nameMC;
     }
 
 
     /**
-     * Gets the EXT_data_value value for this Row__out.
+     * Gets the legalFormMC value for this Row__out.
      * 
-     * @return EXT_data_value
+     * @return legalFormMC
      */
-    public String getEXT_data_value() {
-        return EXT_data_value;
+    public String getLegalFormMC() {
+        return legalFormMC;
     }
 
 
     /**
-     * Sets the EXT_data_value value for this Row__out.
+     * Sets the legalFormMC value for this Row__out.
      * 
-     * @param EXT_data_value
+     * @param legalFormMC
      */
-    public void setEXT_data_value(String EXT_data_value) {
-        this.EXT_data_value = EXT_data_value;
+    public void setLegalFormMC(String legalFormMC) {
+        this.legalFormMC = legalFormMC;
     }
 
 
     /**
-     * Gets the EXT_data_source value for this Row__out.
+     * Gets the siteMC value for this Row__out.
      * 
-     * @return EXT_data_source
+     * @return siteMC
      */
-    public String getEXT_data_source() {
-        return EXT_data_source;
+    public String getSiteMC() {
+        return siteMC;
     }
 
 
     /**
-     * Sets the EXT_data_source value for this Row__out.
+     * Sets the siteMC value for this Row__out.
      * 
-     * @param EXT_data_source
+     * @param siteMC
      */
-    public void setEXT_data_source(String EXT_data_source) {
-        this.EXT_data_source = EXT_data_source;
+    public void setSiteMC(String siteMC) {
+        this.siteMC = siteMC;
     }
 
 
     /**
-     * Gets the simulation_parsing value for this Row__out.
+     * Gets the addMC value for this Row__out.
      * 
-     * @return simulation_parsing   * decimal
+     * @return addMC
      */
-    public String getSimulation_parsing() {
-        return simulation_parsing;
+    public String getAddMC() {
+        return addMC;
     }
 
 
     /**
-     * Sets the simulation_parsing value for this Row__out.
+     * Sets the addMC value for this Row__out.
      * 
-     * @param simulation_parsing   * decimal
+     * @param addMC
      */
-    public void setSimulation_parsing(String simulation_parsing) {
-        this.simulation_parsing = simulation_parsing;
+    public void setAddMC(String addMC) {
+        this.addMC = addMC;
     }
 
 
     /**
-     * Gets the simulation_char value for this Row__out.
+     * Gets the city value for this Row__out.
      * 
-     * @return simulation_char   * decimal
+     * @return city
      */
-    public String getSimulation_char() {
-        return simulation_char;
+    public String getCity() {
+        return city;
     }
 
 
     /**
-     * Sets the simulation_char value for this Row__out.
+     * Sets the city value for this Row__out.
      * 
-     * @param simulation_char   * decimal
+     * @param city
      */
-    public void setSimulation_char(String simulation_char) {
-        this.simulation_char = simulation_char;
+    public void setCity(String city) {
+        this.city = city;
     }
 
 
     /**
-     * Gets the simulation_cluster value for this Row__out.
+     * Gets the provinceMC value for this Row__out.
      * 
-     * @return simulation_cluster   * integer
+     * @return provinceMC
      */
-    public String getSimulation_cluster() {
-        return simulation_cluster;
+    public String getProvinceMC() {
+        return provinceMC;
     }
 
 
     /**
-     * Sets the simulation_cluster value for this Row__out.
+     * Sets the provinceMC value for this Row__out.
      * 
-     * @param simulation_cluster   * integer
+     * @param provinceMC
      */
-    public void setSimulation_cluster(String simulation_cluster) {
-        this.simulation_cluster = simulation_cluster;
+    public void setProvinceMC(String provinceMC) {
+        this.provinceMC = provinceMC;
     }
 
 
     /**
-     * Gets the APP_AddInfo value for this Row__out.
+     * Gets the cityMC value for this Row__out.
      * 
-     * @return APP_AddInfo
+     * @return cityMC
      */
-    public String getAPP_AddInfo() {
-        return APP_AddInfo;
+    public String getCityMC() {
+        return cityMC;
     }
 
 
     /**
-     * Sets the APP_AddInfo value for this Row__out.
+     * Sets the cityMC value for this Row__out.
      * 
-     * @param APP_AddInfo
+     * @param cityMC
      */
-    public void setAPP_AddInfo(String APP_AddInfo) {
-        this.APP_AddInfo = APP_AddInfo;
+    public void setCityMC(String cityMC) {
+        this.cityMC = cityMC;
     }
 
 
     /**
-     * Gets the APP_DistrictMC value for this Row__out.
+     * Gets the districtMC value for this Row__out.
      * 
-     * @return APP_DistrictMC
+     * @return districtMC
      */
-    public String getAPP_DistrictMC() {
-        return APP_DistrictMC;
+    public String getDistrictMC() {
+        return districtMC;
     }
 
 
     /**
-     * Sets the APP_DistrictMC value for this Row__out.
+     * Sets the districtMC value for this Row__out.
      * 
-     * @param APP_DistrictMC
+     * @param districtMC
      */
-    public void setAPP_DistrictMC(String APP_DistrictMC) {
-        this.APP_DistrictMC = APP_DistrictMC;
+    public void setDistrictMC(String districtMC) {
+        this.districtMC = districtMC;
     }
 
 
     /**
-     * Gets the APP_TownMC value for this Row__out.
+     * Gets the townMC value for this Row__out.
      * 
-     * @return APP_TownMC
+     * @return townMC
      */
-    public String getAPP_TownMC() {
-        return APP_TownMC;
+    public String getTownMC() {
+        return townMC;
     }
 
 
     /**
-     * Sets the APP_TownMC value for this Row__out.
+     * Sets the townMC value for this Row__out.
      * 
-     * @param APP_TownMC
+     * @param townMC
      */
-    public void setAPP_TownMC(String APP_TownMC) {
-        this.APP_TownMC = APP_TownMC;
+    public void setTownMC(String townMC) {
+        this.townMC = townMC;
     }
 
 
     /**
-     * Gets the APP_StreetMC value for this Row__out.
+     * Gets the streetMC value for this Row__out.
      * 
-     * @return APP_StreetMC
+     * @return streetMC
      */
-    public String getAPP_StreetMC() {
-        return APP_StreetMC;
+    public String getStreetMC() {
+        return streetMC;
     }
 
 
     /**
-     * Sets the APP_StreetMC value for this Row__out.
+     * Sets the streetMC value for this Row__out.
      * 
-     * @param APP_StreetMC
+     * @param streetMC
      */
-    public void setAPP_StreetMC(String APP_StreetMC) {
-        this.APP_StreetMC = APP_StreetMC;
+    public void setStreetMC(String streetMC) {
+        this.streetMC = streetMC;
     }
 
 
     /**
-     * Gets the APP_BlockMC value for this Row__out.
+     * Gets the blockMC value for this Row__out.
      * 
-     * @return APP_BlockMC
+     * @return blockMC
      */
-    public String getAPP_BlockMC() {
-        return APP_BlockMC;
+    public String getBlockMC() {
+        return blockMC;
     }
 
 
     /**
-     * Sets the APP_BlockMC value for this Row__out.
+     * Sets the blockMC value for this Row__out.
      * 
-     * @param APP_BlockMC
+     * @param blockMC
      */
-    public void setAPP_BlockMC(String APP_BlockMC) {
-        this.APP_BlockMC = APP_BlockMC;
+    public void setBlockMC(String blockMC) {
+        this.blockMC = blockMC;
     }
 
 
     /**
-     * Gets the APP_BuildingMC value for this Row__out.
+     * Gets the buildingMC value for this Row__out.
      * 
-     * @return APP_BuildingMC
+     * @return buildingMC
      */
-    public String getAPP_BuildingMC() {
-        return APP_BuildingMC;
+    public String getBuildingMC() {
+        return buildingMC;
     }
 
 
     /**
-     * Sets the APP_BuildingMC value for this Row__out.
+     * Sets the buildingMC value for this Row__out.
      * 
-     * @param APP_BuildingMC
+     * @param buildingMC
      */
-    public void setAPP_BuildingMC(String APP_BuildingMC) {
-        this.APP_BuildingMC = APP_BuildingMC;
+    public void setBuildingMC(String buildingMC) {
+        this.buildingMC = buildingMC;
     }
 
 
     /**
-     * Gets the APP_UnitMC value for this Row__out.
+     * Gets the unitMC value for this Row__out.
      * 
-     * @return APP_UnitMC
+     * @return unitMC
      */
-    public String getAPP_UnitMC() {
-        return APP_UnitMC;
+    public String getUnitMC() {
+        return unitMC;
     }
 
 
     /**
-     * Sets the APP_UnitMC value for this Row__out.
+     * Sets the unitMC value for this Row__out.
      * 
-     * @param APP_UnitMC
+     * @param unitMC
      */
-    public void setAPP_UnitMC(String APP_UnitMC) {
-        this.APP_UnitMC = APP_UnitMC;
+    public void setUnitMC(String unitMC) {
+        this.unitMC = unitMC;
     }
 
 
     /**
-     * Gets the APP_FloorMC value for this Row__out.
+     * Gets the floorMC value for this Row__out.
      * 
-     * @return APP_FloorMC
+     * @return floorMC
      */
-    public String getAPP_FloorMC() {
-        return APP_FloorMC;
+    public String getFloorMC() {
+        return floorMC;
     }
 
 
     /**
-     * Sets the APP_FloorMC value for this Row__out.
+     * Sets the floorMC value for this Row__out.
      * 
-     * @param APP_FloorMC
+     * @param floorMC
      */
-    public void setAPP_FloorMC(String APP_FloorMC) {
-        this.APP_FloorMC = APP_FloorMC;
+    public void setFloorMC(String floorMC) {
+        this.floorMC = floorMC;
     }
 
 
     /**
-     * Gets the APP_RoomMC value for this Row__out.
+     * Gets the roomMC value for this Row__out.
      * 
-     * @return APP_RoomMC
+     * @return roomMC
      */
-    public String getAPP_RoomMC() {
-        return APP_RoomMC;
+    public String getRoomMC() {
+        return roomMC;
     }
 
 
     /**
-     * Sets the APP_RoomMC value for this Row__out.
+     * Sets the roomMC value for this Row__out.
      * 
-     * @param APP_RoomMC
+     * @param roomMC
      */
-    public void setAPP_RoomMC(String APP_RoomMC) {
-        this.APP_RoomMC = APP_RoomMC;
+    public void setRoomMC(String roomMC) {
+        this.roomMC = roomMC;
     }
 
 
     /**
-     * Gets the EXT_AddInfo value for this Row__out.
+     * Gets the addInfoMC value for this Row__out.
      * 
-     * @return EXT_AddInfo
+     * @return addInfoMC
      */
-    public String getEXT_AddInfo() {
-        return EXT_AddInfo;
+    public String getAddInfoMC() {
+        return addInfoMC;
     }
 
 
     /**
-     * Sets the EXT_AddInfo value for this Row__out.
+     * Sets the addInfoMC value for this Row__out.
      * 
-     * @param EXT_AddInfo
+     * @param addInfoMC
      */
-    public void setEXT_AddInfo(String EXT_AddInfo) {
-        this.EXT_AddInfo = EXT_AddInfo;
-    }
-
-
-    /**
-     * Gets the EXT_DistrictMC value for this Row__out.
-     * 
-     * @return EXT_DistrictMC
-     */
-    public String getEXT_DistrictMC() {
-        return EXT_DistrictMC;
-    }
-
-
-    /**
-     * Sets the EXT_DistrictMC value for this Row__out.
-     * 
-     * @param EXT_DistrictMC
-     */
-    public void setEXT_DistrictMC(String EXT_DistrictMC) {
-        this.EXT_DistrictMC = EXT_DistrictMC;
-    }
-
-
-    /**
-     * Gets the EXT_TownMC value for this Row__out.
-     * 
-     * @return EXT_TownMC
-     */
-    public String getEXT_TownMC() {
-        return EXT_TownMC;
-    }
-
-
-    /**
-     * Sets the EXT_TownMC value for this Row__out.
-     * 
-     * @param EXT_TownMC
-     */
-    public void setEXT_TownMC(String EXT_TownMC) {
-        this.EXT_TownMC = EXT_TownMC;
-    }
-
-
-    /**
-     * Gets the EXT_StreetMC value for this Row__out.
-     * 
-     * @return EXT_StreetMC
-     */
-    public String getEXT_StreetMC() {
-        return EXT_StreetMC;
-    }
-
-
-    /**
-     * Sets the EXT_StreetMC value for this Row__out.
-     * 
-     * @param EXT_StreetMC
-     */
-    public void setEXT_StreetMC(String EXT_StreetMC) {
-        this.EXT_StreetMC = EXT_StreetMC;
-    }
-
-
-    /**
-     * Gets the EXT_BlockMC value for this Row__out.
-     * 
-     * @return EXT_BlockMC
-     */
-    public String getEXT_BlockMC() {
-        return EXT_BlockMC;
-    }
-
-
-    /**
-     * Sets the EXT_BlockMC value for this Row__out.
-     * 
-     * @param EXT_BlockMC
-     */
-    public void setEXT_BlockMC(String EXT_BlockMC) {
-        this.EXT_BlockMC = EXT_BlockMC;
-    }
-
-
-    /**
-     * Gets the EXT_BuildingMC value for this Row__out.
-     * 
-     * @return EXT_BuildingMC
-     */
-    public String getEXT_BuildingMC() {
-        return EXT_BuildingMC;
-    }
-
-
-    /**
-     * Sets the EXT_BuildingMC value for this Row__out.
-     * 
-     * @param EXT_BuildingMC
-     */
-    public void setEXT_BuildingMC(String EXT_BuildingMC) {
-        this.EXT_BuildingMC = EXT_BuildingMC;
-    }
-
-
-    /**
-     * Gets the EXT_UnitMC value for this Row__out.
-     * 
-     * @return EXT_UnitMC
-     */
-    public String getEXT_UnitMC() {
-        return EXT_UnitMC;
-    }
-
-
-    /**
-     * Sets the EXT_UnitMC value for this Row__out.
-     * 
-     * @param EXT_UnitMC
-     */
-    public void setEXT_UnitMC(String EXT_UnitMC) {
-        this.EXT_UnitMC = EXT_UnitMC;
-    }
-
-
-    /**
-     * Gets the EXT_FloorMC value for this Row__out.
-     * 
-     * @return EXT_FloorMC
-     */
-    public String getEXT_FloorMC() {
-        return EXT_FloorMC;
-    }
-
-
-    /**
-     * Sets the EXT_FloorMC value for this Row__out.
-     * 
-     * @param EXT_FloorMC
-     */
-    public void setEXT_FloorMC(String EXT_FloorMC) {
-        this.EXT_FloorMC = EXT_FloorMC;
-    }
-
-
-    /**
-     * Gets the EXT_RoomMC value for this Row__out.
-     * 
-     * @return EXT_RoomMC
-     */
-    public String getEXT_RoomMC() {
-        return EXT_RoomMC;
-    }
-
-
-    /**
-     * Sets the EXT_RoomMC value for this Row__out.
-     * 
-     * @param EXT_RoomMC
-     */
-    public void setEXT_RoomMC(String EXT_RoomMC) {
-        this.EXT_RoomMC = EXT_RoomMC;
-    }
-
-
-    /**
-     * Gets the APP_NameMC value for this Row__out.
-     * 
-     * @return APP_NameMC
-     */
-    public String getAPP_NameMC() {
-        return APP_NameMC;
-    }
-
-
-    /**
-     * Sets the APP_NameMC value for this Row__out.
-     * 
-     * @param APP_NameMC
-     */
-    public void setAPP_NameMC(String APP_NameMC) {
-        this.APP_NameMC = APP_NameMC;
-    }
-
-
-    /**
-     * Gets the APP_LegalFormMC value for this Row__out.
-     * 
-     * @return APP_LegalFormMC
-     */
-    public String getAPP_LegalFormMC() {
-        return APP_LegalFormMC;
-    }
-
-
-    /**
-     * Sets the APP_LegalFormMC value for this Row__out.
-     * 
-     * @param APP_LegalFormMC
-     */
-    public void setAPP_LegalFormMC(String APP_LegalFormMC) {
-        this.APP_LegalFormMC = APP_LegalFormMC;
-    }
-
-
-    /**
-     * Gets the APP_SiteMC value for this Row__out.
-     * 
-     * @return APP_SiteMC
-     */
-    public String getAPP_SiteMC() {
-        return APP_SiteMC;
-    }
-
-
-    /**
-     * Sets the APP_SiteMC value for this Row__out.
-     * 
-     * @param APP_SiteMC
-     */
-    public void setAPP_SiteMC(String APP_SiteMC) {
-        this.APP_SiteMC = APP_SiteMC;
-    }
-
-
-    /**
-     * Gets the APP_AddMC value for this Row__out.
-     * 
-     * @return APP_AddMC
-     */
-    public String getAPP_AddMC() {
-        return APP_AddMC;
-    }
-
-
-    /**
-     * Sets the APP_AddMC value for this Row__out.
-     * 
-     * @param APP_AddMC
-     */
-    public void setAPP_AddMC(String APP_AddMC) {
-        this.APP_AddMC = APP_AddMC;
-    }
-
-
-    /**
-     * Gets the EXT_NameMC value for this Row__out.
-     * 
-     * @return EXT_NameMC
-     */
-    public String getEXT_NameMC() {
-        return EXT_NameMC;
-    }
-
-
-    /**
-     * Sets the EXT_NameMC value for this Row__out.
-     * 
-     * @param EXT_NameMC
-     */
-    public void setEXT_NameMC(String EXT_NameMC) {
-        this.EXT_NameMC = EXT_NameMC;
-    }
-
-
-    /**
-     * Gets the EXT_LegalFormMC value for this Row__out.
-     * 
-     * @return EXT_LegalFormMC
-     */
-    public String getEXT_LegalFormMC() {
-        return EXT_LegalFormMC;
-    }
-
-
-    /**
-     * Sets the EXT_LegalFormMC value for this Row__out.
-     * 
-     * @param EXT_LegalFormMC
-     */
-    public void setEXT_LegalFormMC(String EXT_LegalFormMC) {
-        this.EXT_LegalFormMC = EXT_LegalFormMC;
-    }
-
-
-    /**
-     * Gets the EXT_SiteMC value for this Row__out.
-     * 
-     * @return EXT_SiteMC
-     */
-    public String getEXT_SiteMC() {
-        return EXT_SiteMC;
-    }
-
-
-    /**
-     * Sets the EXT_SiteMC value for this Row__out.
-     * 
-     * @param EXT_SiteMC
-     */
-    public void setEXT_SiteMC(String EXT_SiteMC) {
-        this.EXT_SiteMC = EXT_SiteMC;
-    }
-
-
-    /**
-     * Gets the EXT_AddMC value for this Row__out.
-     * 
-     * @return EXT_AddMC
-     */
-    public String getEXT_AddMC() {
-        return EXT_AddMC;
-    }
-
-
-    /**
-     * Sets the EXT_AddMC value for this Row__out.
-     * 
-     * @param EXT_AddMC
-     */
-    public void setEXT_AddMC(String EXT_AddMC) {
-        this.EXT_AddMC = EXT_AddMC;
-    }
-
-
-    /**
-     * Gets the APP_City value for this Row__out.
-     * 
-     * @return APP_City
-     */
-    public String getAPP_City() {
-        return APP_City;
-    }
-
-
-    /**
-     * Sets the APP_City value for this Row__out.
-     * 
-     * @param APP_City
-     */
-    public void setAPP_City(String APP_City) {
-        this.APP_City = APP_City;
+    public void setAddInfoMC(String addInfoMC) {
+        this.addInfoMC = addInfoMC;
     }
 
     private Object __equalsCalc = null;
@@ -965,123 +555,72 @@ public class Row__out  implements java.io.Serializable {
         __equalsCalc = obj;
         boolean _equals;
         _equals = true && 
-            ((this.APP_app_id==null && other.getAPP_app_id()==null) || 
-             (this.APP_app_id!=null &&
-              this.APP_app_id.equals(other.getAPP_app_id()))) &&
-            ((this.APP_entity_type==null && other.getAPP_entity_type()==null) || 
-             (this.APP_entity_type!=null &&
-              this.APP_entity_type.equals(other.getAPP_entity_type()))) &&
-            ((this.APP_data_type==null && other.getAPP_data_type()==null) || 
-             (this.APP_data_type!=null &&
-              this.APP_data_type.equals(other.getAPP_data_type()))) &&
-            ((this.APP_data_value==null && other.getAPP_data_value()==null) || 
-             (this.APP_data_value!=null &&
-              this.APP_data_value.equals(other.getAPP_data_value()))) &&
-            ((this.APP_data_source==null && other.getAPP_data_source()==null) || 
-             (this.APP_data_source!=null &&
-              this.APP_data_source.equals(other.getAPP_data_source()))) &&
-            ((this.EXT_entity_type==null && other.getEXT_entity_type()==null) || 
-             (this.EXT_entity_type!=null &&
-              this.EXT_entity_type.equals(other.getEXT_entity_type()))) &&
-            ((this.EXT_data_type==null && other.getEXT_data_type()==null) || 
-             (this.EXT_data_type!=null &&
-              this.EXT_data_type.equals(other.getEXT_data_type()))) &&
-            ((this.EXT_data_value==null && other.getEXT_data_value()==null) || 
-             (this.EXT_data_value!=null &&
-              this.EXT_data_value.equals(other.getEXT_data_value()))) &&
-            ((this.EXT_data_source==null && other.getEXT_data_source()==null) || 
-             (this.EXT_data_source!=null &&
-              this.EXT_data_source.equals(other.getEXT_data_source()))) &&
-            ((this.simulation_parsing==null && other.getSimulation_parsing()==null) || 
-             (this.simulation_parsing!=null &&
-              this.simulation_parsing.equals(other.getSimulation_parsing()))) &&
-            ((this.simulation_char==null && other.getSimulation_char()==null) || 
-             (this.simulation_char!=null &&
-              this.simulation_char.equals(other.getSimulation_char()))) &&
-            ((this.simulation_cluster==null && other.getSimulation_cluster()==null) || 
-             (this.simulation_cluster!=null &&
-              this.simulation_cluster.equals(other.getSimulation_cluster()))) &&
-            ((this.APP_AddInfo==null && other.getAPP_AddInfo()==null) || 
-             (this.APP_AddInfo!=null &&
-              this.APP_AddInfo.equals(other.getAPP_AddInfo()))) &&
-            ((this.APP_DistrictMC==null && other.getAPP_DistrictMC()==null) || 
-             (this.APP_DistrictMC!=null &&
-              this.APP_DistrictMC.equals(other.getAPP_DistrictMC()))) &&
-            ((this.APP_TownMC==null && other.getAPP_TownMC()==null) || 
-             (this.APP_TownMC!=null &&
-              this.APP_TownMC.equals(other.getAPP_TownMC()))) &&
-            ((this.APP_StreetMC==null && other.getAPP_StreetMC()==null) || 
-             (this.APP_StreetMC!=null &&
-              this.APP_StreetMC.equals(other.getAPP_StreetMC()))) &&
-            ((this.APP_BlockMC==null && other.getAPP_BlockMC()==null) || 
-             (this.APP_BlockMC!=null &&
-              this.APP_BlockMC.equals(other.getAPP_BlockMC()))) &&
-            ((this.APP_BuildingMC==null && other.getAPP_BuildingMC()==null) || 
-             (this.APP_BuildingMC!=null &&
-              this.APP_BuildingMC.equals(other.getAPP_BuildingMC()))) &&
-            ((this.APP_UnitMC==null && other.getAPP_UnitMC()==null) || 
-             (this.APP_UnitMC!=null &&
-              this.APP_UnitMC.equals(other.getAPP_UnitMC()))) &&
-            ((this.APP_FloorMC==null && other.getAPP_FloorMC()==null) || 
-             (this.APP_FloorMC!=null &&
-              this.APP_FloorMC.equals(other.getAPP_FloorMC()))) &&
-            ((this.APP_RoomMC==null && other.getAPP_RoomMC()==null) || 
-             (this.APP_RoomMC!=null &&
-              this.APP_RoomMC.equals(other.getAPP_RoomMC()))) &&
-            ((this.EXT_AddInfo==null && other.getEXT_AddInfo()==null) || 
-             (this.EXT_AddInfo!=null &&
-              this.EXT_AddInfo.equals(other.getEXT_AddInfo()))) &&
-            ((this.EXT_DistrictMC==null && other.getEXT_DistrictMC()==null) || 
-             (this.EXT_DistrictMC!=null &&
-              this.EXT_DistrictMC.equals(other.getEXT_DistrictMC()))) &&
-            ((this.EXT_TownMC==null && other.getEXT_TownMC()==null) || 
-             (this.EXT_TownMC!=null &&
-              this.EXT_TownMC.equals(other.getEXT_TownMC()))) &&
-            ((this.EXT_StreetMC==null && other.getEXT_StreetMC()==null) || 
-             (this.EXT_StreetMC!=null &&
-              this.EXT_StreetMC.equals(other.getEXT_StreetMC()))) &&
-            ((this.EXT_BlockMC==null && other.getEXT_BlockMC()==null) || 
-             (this.EXT_BlockMC!=null &&
-              this.EXT_BlockMC.equals(other.getEXT_BlockMC()))) &&
-            ((this.EXT_BuildingMC==null && other.getEXT_BuildingMC()==null) || 
-             (this.EXT_BuildingMC!=null &&
-              this.EXT_BuildingMC.equals(other.getEXT_BuildingMC()))) &&
-            ((this.EXT_UnitMC==null && other.getEXT_UnitMC()==null) || 
-             (this.EXT_UnitMC!=null &&
-              this.EXT_UnitMC.equals(other.getEXT_UnitMC()))) &&
-            ((this.EXT_FloorMC==null && other.getEXT_FloorMC()==null) || 
-             (this.EXT_FloorMC!=null &&
-              this.EXT_FloorMC.equals(other.getEXT_FloorMC()))) &&
-            ((this.EXT_RoomMC==null && other.getEXT_RoomMC()==null) || 
-             (this.EXT_RoomMC!=null &&
-              this.EXT_RoomMC.equals(other.getEXT_RoomMC()))) &&
-            ((this.APP_NameMC==null && other.getAPP_NameMC()==null) || 
-             (this.APP_NameMC!=null &&
-              this.APP_NameMC.equals(other.getAPP_NameMC()))) &&
-            ((this.APP_LegalFormMC==null && other.getAPP_LegalFormMC()==null) || 
-             (this.APP_LegalFormMC!=null &&
-              this.APP_LegalFormMC.equals(other.getAPP_LegalFormMC()))) &&
-            ((this.APP_SiteMC==null && other.getAPP_SiteMC()==null) || 
-             (this.APP_SiteMC!=null &&
-              this.APP_SiteMC.equals(other.getAPP_SiteMC()))) &&
-            ((this.APP_AddMC==null && other.getAPP_AddMC()==null) || 
-             (this.APP_AddMC!=null &&
-              this.APP_AddMC.equals(other.getAPP_AddMC()))) &&
-            ((this.EXT_NameMC==null && other.getEXT_NameMC()==null) || 
-             (this.EXT_NameMC!=null &&
-              this.EXT_NameMC.equals(other.getEXT_NameMC()))) &&
-            ((this.EXT_LegalFormMC==null && other.getEXT_LegalFormMC()==null) || 
-             (this.EXT_LegalFormMC!=null &&
-              this.EXT_LegalFormMC.equals(other.getEXT_LegalFormMC()))) &&
-            ((this.EXT_SiteMC==null && other.getEXT_SiteMC()==null) || 
-             (this.EXT_SiteMC!=null &&
-              this.EXT_SiteMC.equals(other.getEXT_SiteMC()))) &&
-            ((this.EXT_AddMC==null && other.getEXT_AddMC()==null) || 
-             (this.EXT_AddMC!=null &&
-              this.EXT_AddMC.equals(other.getEXT_AddMC()))) &&
-            ((this.APP_City==null && other.getAPP_City()==null) || 
-             (this.APP_City!=null &&
-              this.APP_City.equals(other.getAPP_City())));
+            ((this.app_id==null && other.getApp_id()==null) || 
+             (this.app_id!=null &&
+              this.app_id.equals(other.getApp_id()))) &&
+            ((this.entity_type==null && other.getEntity_type()==null) || 
+             (this.entity_type!=null &&
+              this.entity_type.equals(other.getEntity_type()))) &&
+            ((this.data_type==null && other.getData_type()==null) || 
+             (this.data_type!=null &&
+              this.data_type.equals(other.getData_type()))) &&
+            ((this.data_value==null && other.getData_value()==null) || 
+             (this.data_value!=null &&
+              this.data_value.equals(other.getData_value()))) &&
+            ((this.data_source==null && other.getData_source()==null) || 
+             (this.data_source!=null &&
+              this.data_source.equals(other.getData_source()))) &&
+            ((this.cid==null && other.getCid()==null) || 
+             (this.cid!=null &&
+              this.cid.equals(other.getCid()))) &&
+            ((this.nameMC==null && other.getNameMC()==null) || 
+             (this.nameMC!=null &&
+              this.nameMC.equals(other.getNameMC()))) &&
+            ((this.legalFormMC==null && other.getLegalFormMC()==null) || 
+             (this.legalFormMC!=null &&
+              this.legalFormMC.equals(other.getLegalFormMC()))) &&
+            ((this.siteMC==null && other.getSiteMC()==null) || 
+             (this.siteMC!=null &&
+              this.siteMC.equals(other.getSiteMC()))) &&
+            ((this.addMC==null && other.getAddMC()==null) || 
+             (this.addMC!=null &&
+              this.addMC.equals(other.getAddMC()))) &&
+            ((this.city==null && other.getCity()==null) || 
+             (this.city!=null &&
+              this.city.equals(other.getCity()))) &&
+            ((this.provinceMC==null && other.getProvinceMC()==null) || 
+             (this.provinceMC!=null &&
+              this.provinceMC.equals(other.getProvinceMC()))) &&
+            ((this.cityMC==null && other.getCityMC()==null) || 
+             (this.cityMC!=null &&
+              this.cityMC.equals(other.getCityMC()))) &&
+            ((this.districtMC==null && other.getDistrictMC()==null) || 
+             (this.districtMC!=null &&
+              this.districtMC.equals(other.getDistrictMC()))) &&
+            ((this.townMC==null && other.getTownMC()==null) || 
+             (this.townMC!=null &&
+              this.townMC.equals(other.getTownMC()))) &&
+            ((this.streetMC==null && other.getStreetMC()==null) || 
+             (this.streetMC!=null &&
+              this.streetMC.equals(other.getStreetMC()))) &&
+            ((this.blockMC==null && other.getBlockMC()==null) || 
+             (this.blockMC!=null &&
+              this.blockMC.equals(other.getBlockMC()))) &&
+            ((this.buildingMC==null && other.getBuildingMC()==null) || 
+             (this.buildingMC!=null &&
+              this.buildingMC.equals(other.getBuildingMC()))) &&
+            ((this.unitMC==null && other.getUnitMC()==null) || 
+             (this.unitMC!=null &&
+              this.unitMC.equals(other.getUnitMC()))) &&
+            ((this.floorMC==null && other.getFloorMC()==null) || 
+             (this.floorMC!=null &&
+              this.floorMC.equals(other.getFloorMC()))) &&
+            ((this.roomMC==null && other.getRoomMC()==null) || 
+             (this.roomMC!=null &&
+              this.roomMC.equals(other.getRoomMC()))) &&
+            ((this.addInfoMC==null && other.getAddInfoMC()==null) || 
+             (this.addInfoMC!=null &&
+              this.addInfoMC.equals(other.getAddInfoMC())));
         __equalsCalc = null;
         return _equals;
     }
@@ -1093,122 +632,71 @@ public class Row__out  implements java.io.Serializable {
         }
         __hashCodeCalc = true;
         int _hashCode = 1;
-        if (getAPP_app_id() != null) {
-            _hashCode += getAPP_app_id().hashCode();
+        if (getApp_id() != null) {
+            _hashCode += getApp_id().hashCode();
         }
-        if (getAPP_entity_type() != null) {
-            _hashCode += getAPP_entity_type().hashCode();
+        if (getEntity_type() != null) {
+            _hashCode += getEntity_type().hashCode();
         }
-        if (getAPP_data_type() != null) {
-            _hashCode += getAPP_data_type().hashCode();
+        if (getData_type() != null) {
+            _hashCode += getData_type().hashCode();
         }
-        if (getAPP_data_value() != null) {
-            _hashCode += getAPP_data_value().hashCode();
+        if (getData_value() != null) {
+            _hashCode += getData_value().hashCode();
         }
-        if (getAPP_data_source() != null) {
-            _hashCode += getAPP_data_source().hashCode();
+        if (getData_source() != null) {
+            _hashCode += getData_source().hashCode();
         }
-        if (getEXT_entity_type() != null) {
-            _hashCode += getEXT_entity_type().hashCode();
+        if (getCid() != null) {
+            _hashCode += getCid().hashCode();
         }
-        if (getEXT_data_type() != null) {
-            _hashCode += getEXT_data_type().hashCode();
+        if (getNameMC() != null) {
+            _hashCode += getNameMC().hashCode();
         }
-        if (getEXT_data_value() != null) {
-            _hashCode += getEXT_data_value().hashCode();
+        if (getLegalFormMC() != null) {
+            _hashCode += getLegalFormMC().hashCode();
         }
-        if (getEXT_data_source() != null) {
-            _hashCode += getEXT_data_source().hashCode();
+        if (getSiteMC() != null) {
+            _hashCode += getSiteMC().hashCode();
         }
-        if (getSimulation_parsing() != null) {
-            _hashCode += getSimulation_parsing().hashCode();
+        if (getAddMC() != null) {
+            _hashCode += getAddMC().hashCode();
         }
-        if (getSimulation_char() != null) {
-            _hashCode += getSimulation_char().hashCode();
+        if (getCity() != null) {
+            _hashCode += getCity().hashCode();
         }
-        if (getSimulation_cluster() != null) {
-            _hashCode += getSimulation_cluster().hashCode();
+        if (getProvinceMC() != null) {
+            _hashCode += getProvinceMC().hashCode();
         }
-        if (getAPP_AddInfo() != null) {
-            _hashCode += getAPP_AddInfo().hashCode();
+        if (getCityMC() != null) {
+            _hashCode += getCityMC().hashCode();
         }
-        if (getAPP_DistrictMC() != null) {
-            _hashCode += getAPP_DistrictMC().hashCode();
+        if (getDistrictMC() != null) {
+            _hashCode += getDistrictMC().hashCode();
         }
-        if (getAPP_TownMC() != null) {
-            _hashCode += getAPP_TownMC().hashCode();
+        if (getTownMC() != null) {
+            _hashCode += getTownMC().hashCode();
         }
-        if (getAPP_StreetMC() != null) {
-            _hashCode += getAPP_StreetMC().hashCode();
+        if (getStreetMC() != null) {
+            _hashCode += getStreetMC().hashCode();
         }
-        if (getAPP_BlockMC() != null) {
-            _hashCode += getAPP_BlockMC().hashCode();
+        if (getBlockMC() != null) {
+            _hashCode += getBlockMC().hashCode();
         }
-        if (getAPP_BuildingMC() != null) {
-            _hashCode += getAPP_BuildingMC().hashCode();
+        if (getBuildingMC() != null) {
+            _hashCode += getBuildingMC().hashCode();
         }
-        if (getAPP_UnitMC() != null) {
-            _hashCode += getAPP_UnitMC().hashCode();
+        if (getUnitMC() != null) {
+            _hashCode += getUnitMC().hashCode();
         }
-        if (getAPP_FloorMC() != null) {
-            _hashCode += getAPP_FloorMC().hashCode();
+        if (getFloorMC() != null) {
+            _hashCode += getFloorMC().hashCode();
         }
-        if (getAPP_RoomMC() != null) {
-            _hashCode += getAPP_RoomMC().hashCode();
+        if (getRoomMC() != null) {
+            _hashCode += getRoomMC().hashCode();
         }
-        if (getEXT_AddInfo() != null) {
-            _hashCode += getEXT_AddInfo().hashCode();
-        }
-        if (getEXT_DistrictMC() != null) {
-            _hashCode += getEXT_DistrictMC().hashCode();
-        }
-        if (getEXT_TownMC() != null) {
-            _hashCode += getEXT_TownMC().hashCode();
-        }
-        if (getEXT_StreetMC() != null) {
-            _hashCode += getEXT_StreetMC().hashCode();
-        }
-        if (getEXT_BlockMC() != null) {
-            _hashCode += getEXT_BlockMC().hashCode();
-        }
-        if (getEXT_BuildingMC() != null) {
-            _hashCode += getEXT_BuildingMC().hashCode();
-        }
-        if (getEXT_UnitMC() != null) {
-            _hashCode += getEXT_UnitMC().hashCode();
-        }
-        if (getEXT_FloorMC() != null) {
-            _hashCode += getEXT_FloorMC().hashCode();
-        }
-        if (getEXT_RoomMC() != null) {
-            _hashCode += getEXT_RoomMC().hashCode();
-        }
-        if (getAPP_NameMC() != null) {
-            _hashCode += getAPP_NameMC().hashCode();
-        }
-        if (getAPP_LegalFormMC() != null) {
-            _hashCode += getAPP_LegalFormMC().hashCode();
-        }
-        if (getAPP_SiteMC() != null) {
-            _hashCode += getAPP_SiteMC().hashCode();
-        }
-        if (getAPP_AddMC() != null) {
-            _hashCode += getAPP_AddMC().hashCode();
-        }
-        if (getEXT_NameMC() != null) {
-            _hashCode += getEXT_NameMC().hashCode();
-        }
-        if (getEXT_LegalFormMC() != null) {
-            _hashCode += getEXT_LegalFormMC().hashCode();
-        }
-        if (getEXT_SiteMC() != null) {
-            _hashCode += getEXT_SiteMC().hashCode();
-        }
-        if (getEXT_AddMC() != null) {
-            _hashCode += getEXT_AddMC().hashCode();
-        }
-        if (getAPP_City() != null) {
-            _hashCode += getAPP_City().hashCode();
+        if (getAddInfoMC() != null) {
+            _hashCode += getAddInfoMC().hashCode();
         }
         __hashCodeCalc = false;
         return _hashCode;
@@ -1221,236 +709,134 @@ public class Row__out  implements java.io.Serializable {
     static {
         typeDesc.setXmlType(new javax.xml.namespace.QName("archserver.xsd.dataflux.com", "row__out"));
         org.apache.axis.description.ElementDesc elemField = new org.apache.axis.description.ElementDesc();
-        elemField.setFieldName("APP_app_id");
-        elemField.setXmlName(new javax.xml.namespace.QName("", "APP_app_id"));
+        elemField.setFieldName("app_id");
+        elemField.setXmlName(new javax.xml.namespace.QName("", "app_id"));
         elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
         elemField.setNillable(false);
         typeDesc.addFieldDesc(elemField);
         elemField = new org.apache.axis.description.ElementDesc();
-        elemField.setFieldName("APP_entity_type");
-        elemField.setXmlName(new javax.xml.namespace.QName("", "APP_entity_type"));
+        elemField.setFieldName("entity_type");
+        elemField.setXmlName(new javax.xml.namespace.QName("", "entity_type"));
         elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
         elemField.setNillable(false);
         typeDesc.addFieldDesc(elemField);
         elemField = new org.apache.axis.description.ElementDesc();
-        elemField.setFieldName("APP_data_type");
-        elemField.setXmlName(new javax.xml.namespace.QName("", "APP_data_type"));
+        elemField.setFieldName("data_type");
+        elemField.setXmlName(new javax.xml.namespace.QName("", "data_type"));
         elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
         elemField.setNillable(false);
         typeDesc.addFieldDesc(elemField);
         elemField = new org.apache.axis.description.ElementDesc();
-        elemField.setFieldName("APP_data_value");
-        elemField.setXmlName(new javax.xml.namespace.QName("", "APP_data_value"));
+        elemField.setFieldName("data_value");
+        elemField.setXmlName(new javax.xml.namespace.QName("", "data_value"));
         elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
         elemField.setNillable(false);
         typeDesc.addFieldDesc(elemField);
         elemField = new org.apache.axis.description.ElementDesc();
-        elemField.setFieldName("APP_data_source");
-        elemField.setXmlName(new javax.xml.namespace.QName("", "APP_data_source"));
+        elemField.setFieldName("data_source");
+        elemField.setXmlName(new javax.xml.namespace.QName("", "data_source"));
         elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
         elemField.setNillable(false);
         typeDesc.addFieldDesc(elemField);
         elemField = new org.apache.axis.description.ElementDesc();
-        elemField.setFieldName("EXT_entity_type");
-        elemField.setXmlName(new javax.xml.namespace.QName("", "EXT_entity_type"));
+        elemField.setFieldName("cid");
+        elemField.setXmlName(new javax.xml.namespace.QName("", "cid"));
         elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
         elemField.setNillable(false);
         typeDesc.addFieldDesc(elemField);
         elemField = new org.apache.axis.description.ElementDesc();
-        elemField.setFieldName("EXT_data_type");
-        elemField.setXmlName(new javax.xml.namespace.QName("", "EXT_data_type"));
+        elemField.setFieldName("nameMC");
+        elemField.setXmlName(new javax.xml.namespace.QName("", "NameMC"));
         elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
         elemField.setNillable(false);
         typeDesc.addFieldDesc(elemField);
         elemField = new org.apache.axis.description.ElementDesc();
-        elemField.setFieldName("EXT_data_value");
-        elemField.setXmlName(new javax.xml.namespace.QName("", "EXT_data_value"));
+        elemField.setFieldName("legalFormMC");
+        elemField.setXmlName(new javax.xml.namespace.QName("", "LegalFormMC"));
         elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
         elemField.setNillable(false);
         typeDesc.addFieldDesc(elemField);
         elemField = new org.apache.axis.description.ElementDesc();
-        elemField.setFieldName("EXT_data_source");
-        elemField.setXmlName(new javax.xml.namespace.QName("", "EXT_data_source"));
+        elemField.setFieldName("siteMC");
+        elemField.setXmlName(new javax.xml.namespace.QName("", "SiteMC"));
         elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
         elemField.setNillable(false);
         typeDesc.addFieldDesc(elemField);
         elemField = new org.apache.axis.description.ElementDesc();
-        elemField.setFieldName("simulation_parsing");
-        elemField.setXmlName(new javax.xml.namespace.QName("", "simulation_parsing"));
+        elemField.setFieldName("addMC");
+        elemField.setXmlName(new javax.xml.namespace.QName("", "AddMC"));
         elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
         elemField.setNillable(false);
         typeDesc.addFieldDesc(elemField);
         elemField = new org.apache.axis.description.ElementDesc();
-        elemField.setFieldName("simulation_char");
-        elemField.setXmlName(new javax.xml.namespace.QName("", "simulation_char"));
+        elemField.setFieldName("city");
+        elemField.setXmlName(new javax.xml.namespace.QName("", "City"));
         elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
         elemField.setNillable(false);
         typeDesc.addFieldDesc(elemField);
         elemField = new org.apache.axis.description.ElementDesc();
-        elemField.setFieldName("simulation_cluster");
-        elemField.setXmlName(new javax.xml.namespace.QName("", "simulation_cluster"));
+        elemField.setFieldName("provinceMC");
+        elemField.setXmlName(new javax.xml.namespace.QName("", "ProvinceMC"));
         elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
         elemField.setNillable(false);
         typeDesc.addFieldDesc(elemField);
         elemField = new org.apache.axis.description.ElementDesc();
-        elemField.setFieldName("APP_AddInfo");
-        elemField.setXmlName(new javax.xml.namespace.QName("", "APP_AddInfo"));
+        elemField.setFieldName("cityMC");
+        elemField.setXmlName(new javax.xml.namespace.QName("", "CityMC"));
         elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
         elemField.setNillable(false);
         typeDesc.addFieldDesc(elemField);
         elemField = new org.apache.axis.description.ElementDesc();
-        elemField.setFieldName("APP_DistrictMC");
-        elemField.setXmlName(new javax.xml.namespace.QName("", "APP_DistrictMC"));
+        elemField.setFieldName("districtMC");
+        elemField.setXmlName(new javax.xml.namespace.QName("", "DistrictMC"));
         elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
         elemField.setNillable(false);
         typeDesc.addFieldDesc(elemField);
         elemField = new org.apache.axis.description.ElementDesc();
-        elemField.setFieldName("APP_TownMC");
-        elemField.setXmlName(new javax.xml.namespace.QName("", "APP_TownMC"));
+        elemField.setFieldName("townMC");
+        elemField.setXmlName(new javax.xml.namespace.QName("", "TownMC"));
         elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
         elemField.setNillable(false);
         typeDesc.addFieldDesc(elemField);
         elemField = new org.apache.axis.description.ElementDesc();
-        elemField.setFieldName("APP_StreetMC");
-        elemField.setXmlName(new javax.xml.namespace.QName("", "APP_StreetMC"));
+        elemField.setFieldName("streetMC");
+        elemField.setXmlName(new javax.xml.namespace.QName("", "StreetMC"));
         elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
         elemField.setNillable(false);
         typeDesc.addFieldDesc(elemField);
         elemField = new org.apache.axis.description.ElementDesc();
-        elemField.setFieldName("APP_BlockMC");
-        elemField.setXmlName(new javax.xml.namespace.QName("", "APP_BlockMC"));
+        elemField.setFieldName("blockMC");
+        elemField.setXmlName(new javax.xml.namespace.QName("", "BlockMC"));
         elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
         elemField.setNillable(false);
         typeDesc.addFieldDesc(elemField);
         elemField = new org.apache.axis.description.ElementDesc();
-        elemField.setFieldName("APP_BuildingMC");
-        elemField.setXmlName(new javax.xml.namespace.QName("", "APP_BuildingMC"));
+        elemField.setFieldName("buildingMC");
+        elemField.setXmlName(new javax.xml.namespace.QName("", "BuildingMC"));
         elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
         elemField.setNillable(false);
         typeDesc.addFieldDesc(elemField);
         elemField = new org.apache.axis.description.ElementDesc();
-        elemField.setFieldName("APP_UnitMC");
-        elemField.setXmlName(new javax.xml.namespace.QName("", "APP_UnitMC"));
+        elemField.setFieldName("unitMC");
+        elemField.setXmlName(new javax.xml.namespace.QName("", "UnitMC"));
         elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
         elemField.setNillable(false);
         typeDesc.addFieldDesc(elemField);
         elemField = new org.apache.axis.description.ElementDesc();
-        elemField.setFieldName("APP_FloorMC");
-        elemField.setXmlName(new javax.xml.namespace.QName("", "APP_FloorMC"));
+        elemField.setFieldName("floorMC");
+        elemField.setXmlName(new javax.xml.namespace.QName("", "FloorMC"));
         elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
         elemField.setNillable(false);
         typeDesc.addFieldDesc(elemField);
         elemField = new org.apache.axis.description.ElementDesc();
-        elemField.setFieldName("APP_RoomMC");
-        elemField.setXmlName(new javax.xml.namespace.QName("", "APP_RoomMC"));
+        elemField.setFieldName("roomMC");
+        elemField.setXmlName(new javax.xml.namespace.QName("", "RoomMC"));
         elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
         elemField.setNillable(false);
         typeDesc.addFieldDesc(elemField);
         elemField = new org.apache.axis.description.ElementDesc();
-        elemField.setFieldName("EXT_AddInfo");
-        elemField.setXmlName(new javax.xml.namespace.QName("", "EXT_AddInfo"));
-        elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
-        elemField.setNillable(false);
-        typeDesc.addFieldDesc(elemField);
-        elemField = new org.apache.axis.description.ElementDesc();
-        elemField.setFieldName("EXT_DistrictMC");
-        elemField.setXmlName(new javax.xml.namespace.QName("", "EXT_DistrictMC"));
-        elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
-        elemField.setNillable(false);
-        typeDesc.addFieldDesc(elemField);
-        elemField = new org.apache.axis.description.ElementDesc();
-        elemField.setFieldName("EXT_TownMC");
-        elemField.setXmlName(new javax.xml.namespace.QName("", "EXT_TownMC"));
-        elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
-        elemField.setNillable(false);
-        typeDesc.addFieldDesc(elemField);
-        elemField = new org.apache.axis.description.ElementDesc();
-        elemField.setFieldName("EXT_StreetMC");
-        elemField.setXmlName(new javax.xml.namespace.QName("", "EXT_StreetMC"));
-        elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
-        elemField.setNillable(false);
-        typeDesc.addFieldDesc(elemField);
-        elemField = new org.apache.axis.description.ElementDesc();
-        elemField.setFieldName("EXT_BlockMC");
-        elemField.setXmlName(new javax.xml.namespace.QName("", "EXT_BlockMC"));
-        elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
-        elemField.setNillable(false);
-        typeDesc.addFieldDesc(elemField);
-        elemField = new org.apache.axis.description.ElementDesc();
-        elemField.setFieldName("EXT_BuildingMC");
-        elemField.setXmlName(new javax.xml.namespace.QName("", "EXT_BuildingMC"));
-        elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
-        elemField.setNillable(false);
-        typeDesc.addFieldDesc(elemField);
-        elemField = new org.apache.axis.description.ElementDesc();
-        elemField.setFieldName("EXT_UnitMC");
-        elemField.setXmlName(new javax.xml.namespace.QName("", "EXT_UnitMC"));
-        elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
-        elemField.setNillable(false);
-        typeDesc.addFieldDesc(elemField);
-        elemField = new org.apache.axis.description.ElementDesc();
-        elemField.setFieldName("EXT_FloorMC");
-        elemField.setXmlName(new javax.xml.namespace.QName("", "EXT_FloorMC"));
-        elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
-        elemField.setNillable(false);
-        typeDesc.addFieldDesc(elemField);
-        elemField = new org.apache.axis.description.ElementDesc();
-        elemField.setFieldName("EXT_RoomMC");
-        elemField.setXmlName(new javax.xml.namespace.QName("", "EXT_RoomMC"));
-        elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
-        elemField.setNillable(false);
-        typeDesc.addFieldDesc(elemField);
-        elemField = new org.apache.axis.description.ElementDesc();
-        elemField.setFieldName("APP_NameMC");
-        elemField.setXmlName(new javax.xml.namespace.QName("", "APP_NameMC"));
-        elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
-        elemField.setNillable(false);
-        typeDesc.addFieldDesc(elemField);
-        elemField = new org.apache.axis.description.ElementDesc();
-        elemField.setFieldName("APP_LegalFormMC");
-        elemField.setXmlName(new javax.xml.namespace.QName("", "APP_LegalFormMC"));
-        elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
-        elemField.setNillable(false);
-        typeDesc.addFieldDesc(elemField);
-        elemField = new org.apache.axis.description.ElementDesc();
-        elemField.setFieldName("APP_SiteMC");
-        elemField.setXmlName(new javax.xml.namespace.QName("", "APP_SiteMC"));
-        elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
-        elemField.setNillable(false);
-        typeDesc.addFieldDesc(elemField);
-        elemField = new org.apache.axis.description.ElementDesc();
-        elemField.setFieldName("APP_AddMC");
-        elemField.setXmlName(new javax.xml.namespace.QName("", "APP_AddMC"));
-        elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
-        elemField.setNillable(false);
-        typeDesc.addFieldDesc(elemField);
-        elemField = new org.apache.axis.description.ElementDesc();
-        elemField.setFieldName("EXT_NameMC");
-        elemField.setXmlName(new javax.xml.namespace.QName("", "EXT_NameMC"));
-        elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
-        elemField.setNillable(false);
-        typeDesc.addFieldDesc(elemField);
-        elemField = new org.apache.axis.description.ElementDesc();
-        elemField.setFieldName("EXT_LegalFormMC");
-        elemField.setXmlName(new javax.xml.namespace.QName("", "EXT_LegalFormMC"));
-        elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
-        elemField.setNillable(false);
-        typeDesc.addFieldDesc(elemField);
-        elemField = new org.apache.axis.description.ElementDesc();
-        elemField.setFieldName("EXT_SiteMC");
-        elemField.setXmlName(new javax.xml.namespace.QName("", "EXT_SiteMC"));
-        elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
-        elemField.setNillable(false);
-        typeDesc.addFieldDesc(elemField);
-        elemField = new org.apache.axis.description.ElementDesc();
-        elemField.setFieldName("EXT_AddMC");
-        elemField.setXmlName(new javax.xml.namespace.QName("", "EXT_AddMC"));
-        elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
-        elemField.setNillable(false);
-        typeDesc.addFieldDesc(elemField);
-        elemField = new org.apache.axis.description.ElementDesc();
-        elemField.setFieldName("APP_City");
-        elemField.setXmlName(new javax.xml.namespace.QName("", "APP_City"));
+        elemField.setFieldName("addInfoMC");
+        elemField.setXmlName(new javax.xml.namespace.QName("", "AddInfoMC"));
         elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
         elemField.setNillable(false);
         typeDesc.addFieldDesc(elemField);

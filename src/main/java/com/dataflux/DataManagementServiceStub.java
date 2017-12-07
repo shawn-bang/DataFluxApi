@@ -25,7 +25,7 @@ public class DataManagementServiceStub extends org.apache.axis.client.Stub imple
         org.apache.axis.description.ParameterDesc param;
         oper = new org.apache.axis.description.OperationDesc();
         oper.setName("datasvc_hxbcb__rt__match.ddf_in");
-        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("", "table_"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("archserver.xsd.dataflux.com", "table__in"), com.dataflux.Row__in[].class, false, false);
+        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("", "table_"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("archserver.xsd.dataflux.com", "table__in"), Row__in[].class, false, false);
         param.setItemQName(new javax.xml.namespace.QName("", "row"));
         param.setOmittable(true);
         oper.addParameter(param);
@@ -104,273 +104,154 @@ public class DataManagementServiceStub extends org.apache.axis.client.Stub imple
             cachedSerFactories.add(org.apache.axis.encoding.ser.BaseSerializerFactory.createFactory(org.apache.axis.encoding.ser.SimpleSerializerFactory.class, cls, qName));
             cachedDeserFactories.add(org.apache.axis.encoding.ser.BaseDeserializerFactory.createFactory(org.apache.axis.encoding.ser.SimpleDeserializerFactory.class, cls, qName));
 
-            qName = new javax.xml.namespace.QName("archserver.xsd.dataflux.com", ">row__out>APP_AddInfo");
+            qName = new javax.xml.namespace.QName("archserver.xsd.dataflux.com", ">row__out>AddInfoMC");
             cachedSerQNames.add(qName);
             cls = String.class;
             cachedSerClasses.add(cls);
             cachedSerFactories.add(org.apache.axis.encoding.ser.BaseSerializerFactory.createFactory(org.apache.axis.encoding.ser.SimpleSerializerFactory.class, cls, qName));
             cachedDeserFactories.add(org.apache.axis.encoding.ser.BaseDeserializerFactory.createFactory(org.apache.axis.encoding.ser.SimpleDeserializerFactory.class, cls, qName));
 
-            qName = new javax.xml.namespace.QName("archserver.xsd.dataflux.com", ">row__out>APP_AddMC");
+            qName = new javax.xml.namespace.QName("archserver.xsd.dataflux.com", ">row__out>AddMC");
             cachedSerQNames.add(qName);
             cls = String.class;
             cachedSerClasses.add(cls);
             cachedSerFactories.add(org.apache.axis.encoding.ser.BaseSerializerFactory.createFactory(org.apache.axis.encoding.ser.SimpleSerializerFactory.class, cls, qName));
             cachedDeserFactories.add(org.apache.axis.encoding.ser.BaseDeserializerFactory.createFactory(org.apache.axis.encoding.ser.SimpleDeserializerFactory.class, cls, qName));
 
-            qName = new javax.xml.namespace.QName("archserver.xsd.dataflux.com", ">row__out>APP_app_id");
+            qName = new javax.xml.namespace.QName("archserver.xsd.dataflux.com", ">row__out>app_id");
             cachedSerQNames.add(qName);
             cls = String.class;
             cachedSerClasses.add(cls);
             cachedSerFactories.add(org.apache.axis.encoding.ser.BaseSerializerFactory.createFactory(org.apache.axis.encoding.ser.SimpleSerializerFactory.class, cls, qName));
             cachedDeserFactories.add(org.apache.axis.encoding.ser.BaseDeserializerFactory.createFactory(org.apache.axis.encoding.ser.SimpleDeserializerFactory.class, cls, qName));
 
-            qName = new javax.xml.namespace.QName("archserver.xsd.dataflux.com", ">row__out>APP_BlockMC");
+            qName = new javax.xml.namespace.QName("archserver.xsd.dataflux.com", ">row__out>BlockMC");
             cachedSerQNames.add(qName);
             cls = String.class;
             cachedSerClasses.add(cls);
             cachedSerFactories.add(org.apache.axis.encoding.ser.BaseSerializerFactory.createFactory(org.apache.axis.encoding.ser.SimpleSerializerFactory.class, cls, qName));
             cachedDeserFactories.add(org.apache.axis.encoding.ser.BaseDeserializerFactory.createFactory(org.apache.axis.encoding.ser.SimpleDeserializerFactory.class, cls, qName));
 
-            qName = new javax.xml.namespace.QName("archserver.xsd.dataflux.com", ">row__out>APP_BuildingMC");
+            qName = new javax.xml.namespace.QName("archserver.xsd.dataflux.com", ">row__out>BuildingMC");
             cachedSerQNames.add(qName);
             cls = String.class;
             cachedSerClasses.add(cls);
             cachedSerFactories.add(org.apache.axis.encoding.ser.BaseSerializerFactory.createFactory(org.apache.axis.encoding.ser.SimpleSerializerFactory.class, cls, qName));
             cachedDeserFactories.add(org.apache.axis.encoding.ser.BaseDeserializerFactory.createFactory(org.apache.axis.encoding.ser.SimpleDeserializerFactory.class, cls, qName));
 
-            qName = new javax.xml.namespace.QName("archserver.xsd.dataflux.com", ">row__out>APP_City");
+            qName = new javax.xml.namespace.QName("archserver.xsd.dataflux.com", ">row__out>cid");
             cachedSerQNames.add(qName);
             cls = String.class;
             cachedSerClasses.add(cls);
             cachedSerFactories.add(org.apache.axis.encoding.ser.BaseSerializerFactory.createFactory(org.apache.axis.encoding.ser.SimpleSerializerFactory.class, cls, qName));
             cachedDeserFactories.add(org.apache.axis.encoding.ser.BaseDeserializerFactory.createFactory(org.apache.axis.encoding.ser.SimpleDeserializerFactory.class, cls, qName));
 
-            qName = new javax.xml.namespace.QName("archserver.xsd.dataflux.com", ">row__out>APP_data_source");
+            qName = new javax.xml.namespace.QName("archserver.xsd.dataflux.com", ">row__out>City");
             cachedSerQNames.add(qName);
             cls = String.class;
             cachedSerClasses.add(cls);
             cachedSerFactories.add(org.apache.axis.encoding.ser.BaseSerializerFactory.createFactory(org.apache.axis.encoding.ser.SimpleSerializerFactory.class, cls, qName));
             cachedDeserFactories.add(org.apache.axis.encoding.ser.BaseDeserializerFactory.createFactory(org.apache.axis.encoding.ser.SimpleDeserializerFactory.class, cls, qName));
 
-            qName = new javax.xml.namespace.QName("archserver.xsd.dataflux.com", ">row__out>APP_data_type");
+            qName = new javax.xml.namespace.QName("archserver.xsd.dataflux.com", ">row__out>CityMC");
             cachedSerQNames.add(qName);
             cls = String.class;
             cachedSerClasses.add(cls);
             cachedSerFactories.add(org.apache.axis.encoding.ser.BaseSerializerFactory.createFactory(org.apache.axis.encoding.ser.SimpleSerializerFactory.class, cls, qName));
             cachedDeserFactories.add(org.apache.axis.encoding.ser.BaseDeserializerFactory.createFactory(org.apache.axis.encoding.ser.SimpleDeserializerFactory.class, cls, qName));
 
-            qName = new javax.xml.namespace.QName("archserver.xsd.dataflux.com", ">row__out>APP_data_value");
+            qName = new javax.xml.namespace.QName("archserver.xsd.dataflux.com", ">row__out>data_source");
             cachedSerQNames.add(qName);
             cls = String.class;
             cachedSerClasses.add(cls);
             cachedSerFactories.add(org.apache.axis.encoding.ser.BaseSerializerFactory.createFactory(org.apache.axis.encoding.ser.SimpleSerializerFactory.class, cls, qName));
             cachedDeserFactories.add(org.apache.axis.encoding.ser.BaseDeserializerFactory.createFactory(org.apache.axis.encoding.ser.SimpleDeserializerFactory.class, cls, qName));
 
-            qName = new javax.xml.namespace.QName("archserver.xsd.dataflux.com", ">row__out>APP_DistrictMC");
+            qName = new javax.xml.namespace.QName("archserver.xsd.dataflux.com", ">row__out>data_type");
             cachedSerQNames.add(qName);
             cls = String.class;
             cachedSerClasses.add(cls);
             cachedSerFactories.add(org.apache.axis.encoding.ser.BaseSerializerFactory.createFactory(org.apache.axis.encoding.ser.SimpleSerializerFactory.class, cls, qName));
             cachedDeserFactories.add(org.apache.axis.encoding.ser.BaseDeserializerFactory.createFactory(org.apache.axis.encoding.ser.SimpleDeserializerFactory.class, cls, qName));
 
-            qName = new javax.xml.namespace.QName("archserver.xsd.dataflux.com", ">row__out>APP_entity_type");
+            qName = new javax.xml.namespace.QName("archserver.xsd.dataflux.com", ">row__out>data_value");
             cachedSerQNames.add(qName);
             cls = String.class;
             cachedSerClasses.add(cls);
             cachedSerFactories.add(org.apache.axis.encoding.ser.BaseSerializerFactory.createFactory(org.apache.axis.encoding.ser.SimpleSerializerFactory.class, cls, qName));
             cachedDeserFactories.add(org.apache.axis.encoding.ser.BaseDeserializerFactory.createFactory(org.apache.axis.encoding.ser.SimpleDeserializerFactory.class, cls, qName));
 
-            qName = new javax.xml.namespace.QName("archserver.xsd.dataflux.com", ">row__out>APP_FloorMC");
+            qName = new javax.xml.namespace.QName("archserver.xsd.dataflux.com", ">row__out>DistrictMC");
             cachedSerQNames.add(qName);
             cls = String.class;
             cachedSerClasses.add(cls);
             cachedSerFactories.add(org.apache.axis.encoding.ser.BaseSerializerFactory.createFactory(org.apache.axis.encoding.ser.SimpleSerializerFactory.class, cls, qName));
             cachedDeserFactories.add(org.apache.axis.encoding.ser.BaseDeserializerFactory.createFactory(org.apache.axis.encoding.ser.SimpleDeserializerFactory.class, cls, qName));
 
-            qName = new javax.xml.namespace.QName("archserver.xsd.dataflux.com", ">row__out>APP_LegalFormMC");
+            qName = new javax.xml.namespace.QName("archserver.xsd.dataflux.com", ">row__out>entity_type");
             cachedSerQNames.add(qName);
             cls = String.class;
             cachedSerClasses.add(cls);
             cachedSerFactories.add(org.apache.axis.encoding.ser.BaseSerializerFactory.createFactory(org.apache.axis.encoding.ser.SimpleSerializerFactory.class, cls, qName));
             cachedDeserFactories.add(org.apache.axis.encoding.ser.BaseDeserializerFactory.createFactory(org.apache.axis.encoding.ser.SimpleDeserializerFactory.class, cls, qName));
 
-            qName = new javax.xml.namespace.QName("archserver.xsd.dataflux.com", ">row__out>APP_NameMC");
+            qName = new javax.xml.namespace.QName("archserver.xsd.dataflux.com", ">row__out>FloorMC");
             cachedSerQNames.add(qName);
             cls = String.class;
             cachedSerClasses.add(cls);
             cachedSerFactories.add(org.apache.axis.encoding.ser.BaseSerializerFactory.createFactory(org.apache.axis.encoding.ser.SimpleSerializerFactory.class, cls, qName));
             cachedDeserFactories.add(org.apache.axis.encoding.ser.BaseDeserializerFactory.createFactory(org.apache.axis.encoding.ser.SimpleDeserializerFactory.class, cls, qName));
 
-            qName = new javax.xml.namespace.QName("archserver.xsd.dataflux.com", ">row__out>APP_RoomMC");
+            qName = new javax.xml.namespace.QName("archserver.xsd.dataflux.com", ">row__out>LegalFormMC");
             cachedSerQNames.add(qName);
             cls = String.class;
             cachedSerClasses.add(cls);
             cachedSerFactories.add(org.apache.axis.encoding.ser.BaseSerializerFactory.createFactory(org.apache.axis.encoding.ser.SimpleSerializerFactory.class, cls, qName));
             cachedDeserFactories.add(org.apache.axis.encoding.ser.BaseDeserializerFactory.createFactory(org.apache.axis.encoding.ser.SimpleDeserializerFactory.class, cls, qName));
 
-            qName = new javax.xml.namespace.QName("archserver.xsd.dataflux.com", ">row__out>APP_SiteMC");
+            qName = new javax.xml.namespace.QName("archserver.xsd.dataflux.com", ">row__out>NameMC");
             cachedSerQNames.add(qName);
             cls = String.class;
             cachedSerClasses.add(cls);
             cachedSerFactories.add(org.apache.axis.encoding.ser.BaseSerializerFactory.createFactory(org.apache.axis.encoding.ser.SimpleSerializerFactory.class, cls, qName));
             cachedDeserFactories.add(org.apache.axis.encoding.ser.BaseDeserializerFactory.createFactory(org.apache.axis.encoding.ser.SimpleDeserializerFactory.class, cls, qName));
 
-            qName = new javax.xml.namespace.QName("archserver.xsd.dataflux.com", ">row__out>APP_StreetMC");
+            qName = new javax.xml.namespace.QName("archserver.xsd.dataflux.com", ">row__out>ProvinceMC");
             cachedSerQNames.add(qName);
             cls = String.class;
             cachedSerClasses.add(cls);
             cachedSerFactories.add(org.apache.axis.encoding.ser.BaseSerializerFactory.createFactory(org.apache.axis.encoding.ser.SimpleSerializerFactory.class, cls, qName));
             cachedDeserFactories.add(org.apache.axis.encoding.ser.BaseDeserializerFactory.createFactory(org.apache.axis.encoding.ser.SimpleDeserializerFactory.class, cls, qName));
 
-            qName = new javax.xml.namespace.QName("archserver.xsd.dataflux.com", ">row__out>APP_TownMC");
+            qName = new javax.xml.namespace.QName("archserver.xsd.dataflux.com", ">row__out>RoomMC");
             cachedSerQNames.add(qName);
             cls = String.class;
             cachedSerClasses.add(cls);
             cachedSerFactories.add(org.apache.axis.encoding.ser.BaseSerializerFactory.createFactory(org.apache.axis.encoding.ser.SimpleSerializerFactory.class, cls, qName));
             cachedDeserFactories.add(org.apache.axis.encoding.ser.BaseDeserializerFactory.createFactory(org.apache.axis.encoding.ser.SimpleDeserializerFactory.class, cls, qName));
 
-            qName = new javax.xml.namespace.QName("archserver.xsd.dataflux.com", ">row__out>APP_UnitMC");
+            qName = new javax.xml.namespace.QName("archserver.xsd.dataflux.com", ">row__out>SiteMC");
             cachedSerQNames.add(qName);
             cls = String.class;
             cachedSerClasses.add(cls);
             cachedSerFactories.add(org.apache.axis.encoding.ser.BaseSerializerFactory.createFactory(org.apache.axis.encoding.ser.SimpleSerializerFactory.class, cls, qName));
             cachedDeserFactories.add(org.apache.axis.encoding.ser.BaseDeserializerFactory.createFactory(org.apache.axis.encoding.ser.SimpleDeserializerFactory.class, cls, qName));
 
-            qName = new javax.xml.namespace.QName("archserver.xsd.dataflux.com", ">row__out>EXT_AddInfo");
+            qName = new javax.xml.namespace.QName("archserver.xsd.dataflux.com", ">row__out>StreetMC");
             cachedSerQNames.add(qName);
             cls = String.class;
             cachedSerClasses.add(cls);
             cachedSerFactories.add(org.apache.axis.encoding.ser.BaseSerializerFactory.createFactory(org.apache.axis.encoding.ser.SimpleSerializerFactory.class, cls, qName));
             cachedDeserFactories.add(org.apache.axis.encoding.ser.BaseDeserializerFactory.createFactory(org.apache.axis.encoding.ser.SimpleDeserializerFactory.class, cls, qName));
 
-            qName = new javax.xml.namespace.QName("archserver.xsd.dataflux.com", ">row__out>EXT_AddMC");
+            qName = new javax.xml.namespace.QName("archserver.xsd.dataflux.com", ">row__out>TownMC");
             cachedSerQNames.add(qName);
             cls = String.class;
             cachedSerClasses.add(cls);
             cachedSerFactories.add(org.apache.axis.encoding.ser.BaseSerializerFactory.createFactory(org.apache.axis.encoding.ser.SimpleSerializerFactory.class, cls, qName));
             cachedDeserFactories.add(org.apache.axis.encoding.ser.BaseDeserializerFactory.createFactory(org.apache.axis.encoding.ser.SimpleDeserializerFactory.class, cls, qName));
 
-            qName = new javax.xml.namespace.QName("archserver.xsd.dataflux.com", ">row__out>EXT_BlockMC");
-            cachedSerQNames.add(qName);
-            cls = String.class;
-            cachedSerClasses.add(cls);
-            cachedSerFactories.add(org.apache.axis.encoding.ser.BaseSerializerFactory.createFactory(org.apache.axis.encoding.ser.SimpleSerializerFactory.class, cls, qName));
-            cachedDeserFactories.add(org.apache.axis.encoding.ser.BaseDeserializerFactory.createFactory(org.apache.axis.encoding.ser.SimpleDeserializerFactory.class, cls, qName));
-
-            qName = new javax.xml.namespace.QName("archserver.xsd.dataflux.com", ">row__out>EXT_BuildingMC");
-            cachedSerQNames.add(qName);
-            cls = String.class;
-            cachedSerClasses.add(cls);
-            cachedSerFactories.add(org.apache.axis.encoding.ser.BaseSerializerFactory.createFactory(org.apache.axis.encoding.ser.SimpleSerializerFactory.class, cls, qName));
-            cachedDeserFactories.add(org.apache.axis.encoding.ser.BaseDeserializerFactory.createFactory(org.apache.axis.encoding.ser.SimpleDeserializerFactory.class, cls, qName));
-
-            qName = new javax.xml.namespace.QName("archserver.xsd.dataflux.com", ">row__out>EXT_data_source");
-            cachedSerQNames.add(qName);
-            cls = String.class;
-            cachedSerClasses.add(cls);
-            cachedSerFactories.add(org.apache.axis.encoding.ser.BaseSerializerFactory.createFactory(org.apache.axis.encoding.ser.SimpleSerializerFactory.class, cls, qName));
-            cachedDeserFactories.add(org.apache.axis.encoding.ser.BaseDeserializerFactory.createFactory(org.apache.axis.encoding.ser.SimpleDeserializerFactory.class, cls, qName));
-
-            qName = new javax.xml.namespace.QName("archserver.xsd.dataflux.com", ">row__out>EXT_data_type");
-            cachedSerQNames.add(qName);
-            cls = String.class;
-            cachedSerClasses.add(cls);
-            cachedSerFactories.add(org.apache.axis.encoding.ser.BaseSerializerFactory.createFactory(org.apache.axis.encoding.ser.SimpleSerializerFactory.class, cls, qName));
-            cachedDeserFactories.add(org.apache.axis.encoding.ser.BaseDeserializerFactory.createFactory(org.apache.axis.encoding.ser.SimpleDeserializerFactory.class, cls, qName));
-
-            qName = new javax.xml.namespace.QName("archserver.xsd.dataflux.com", ">row__out>EXT_data_value");
-            cachedSerQNames.add(qName);
-            cls = String.class;
-            cachedSerClasses.add(cls);
-            cachedSerFactories.add(org.apache.axis.encoding.ser.BaseSerializerFactory.createFactory(org.apache.axis.encoding.ser.SimpleSerializerFactory.class, cls, qName));
-            cachedDeserFactories.add(org.apache.axis.encoding.ser.BaseDeserializerFactory.createFactory(org.apache.axis.encoding.ser.SimpleDeserializerFactory.class, cls, qName));
-
-            qName = new javax.xml.namespace.QName("archserver.xsd.dataflux.com", ">row__out>EXT_DistrictMC");
-            cachedSerQNames.add(qName);
-            cls = String.class;
-            cachedSerClasses.add(cls);
-            cachedSerFactories.add(org.apache.axis.encoding.ser.BaseSerializerFactory.createFactory(org.apache.axis.encoding.ser.SimpleSerializerFactory.class, cls, qName));
-            cachedDeserFactories.add(org.apache.axis.encoding.ser.BaseDeserializerFactory.createFactory(org.apache.axis.encoding.ser.SimpleDeserializerFactory.class, cls, qName));
-
-            qName = new javax.xml.namespace.QName("archserver.xsd.dataflux.com", ">row__out>EXT_entity_type");
-            cachedSerQNames.add(qName);
-            cls = String.class;
-            cachedSerClasses.add(cls);
-            cachedSerFactories.add(org.apache.axis.encoding.ser.BaseSerializerFactory.createFactory(org.apache.axis.encoding.ser.SimpleSerializerFactory.class, cls, qName));
-            cachedDeserFactories.add(org.apache.axis.encoding.ser.BaseDeserializerFactory.createFactory(org.apache.axis.encoding.ser.SimpleDeserializerFactory.class, cls, qName));
-
-            qName = new javax.xml.namespace.QName("archserver.xsd.dataflux.com", ">row__out>EXT_FloorMC");
-            cachedSerQNames.add(qName);
-            cls = String.class;
-            cachedSerClasses.add(cls);
-            cachedSerFactories.add(org.apache.axis.encoding.ser.BaseSerializerFactory.createFactory(org.apache.axis.encoding.ser.SimpleSerializerFactory.class, cls, qName));
-            cachedDeserFactories.add(org.apache.axis.encoding.ser.BaseDeserializerFactory.createFactory(org.apache.axis.encoding.ser.SimpleDeserializerFactory.class, cls, qName));
-
-            qName = new javax.xml.namespace.QName("archserver.xsd.dataflux.com", ">row__out>EXT_LegalFormMC");
-            cachedSerQNames.add(qName);
-            cls = String.class;
-            cachedSerClasses.add(cls);
-            cachedSerFactories.add(org.apache.axis.encoding.ser.BaseSerializerFactory.createFactory(org.apache.axis.encoding.ser.SimpleSerializerFactory.class, cls, qName));
-            cachedDeserFactories.add(org.apache.axis.encoding.ser.BaseDeserializerFactory.createFactory(org.apache.axis.encoding.ser.SimpleDeserializerFactory.class, cls, qName));
-
-            qName = new javax.xml.namespace.QName("archserver.xsd.dataflux.com", ">row__out>EXT_NameMC");
-            cachedSerQNames.add(qName);
-            cls = String.class;
-            cachedSerClasses.add(cls);
-            cachedSerFactories.add(org.apache.axis.encoding.ser.BaseSerializerFactory.createFactory(org.apache.axis.encoding.ser.SimpleSerializerFactory.class, cls, qName));
-            cachedDeserFactories.add(org.apache.axis.encoding.ser.BaseDeserializerFactory.createFactory(org.apache.axis.encoding.ser.SimpleDeserializerFactory.class, cls, qName));
-
-            qName = new javax.xml.namespace.QName("archserver.xsd.dataflux.com", ">row__out>EXT_RoomMC");
-            cachedSerQNames.add(qName);
-            cls = String.class;
-            cachedSerClasses.add(cls);
-            cachedSerFactories.add(org.apache.axis.encoding.ser.BaseSerializerFactory.createFactory(org.apache.axis.encoding.ser.SimpleSerializerFactory.class, cls, qName));
-            cachedDeserFactories.add(org.apache.axis.encoding.ser.BaseDeserializerFactory.createFactory(org.apache.axis.encoding.ser.SimpleDeserializerFactory.class, cls, qName));
-
-            qName = new javax.xml.namespace.QName("archserver.xsd.dataflux.com", ">row__out>EXT_SiteMC");
-            cachedSerQNames.add(qName);
-            cls = String.class;
-            cachedSerClasses.add(cls);
-            cachedSerFactories.add(org.apache.axis.encoding.ser.BaseSerializerFactory.createFactory(org.apache.axis.encoding.ser.SimpleSerializerFactory.class, cls, qName));
-            cachedDeserFactories.add(org.apache.axis.encoding.ser.BaseDeserializerFactory.createFactory(org.apache.axis.encoding.ser.SimpleDeserializerFactory.class, cls, qName));
-
-            qName = new javax.xml.namespace.QName("archserver.xsd.dataflux.com", ">row__out>EXT_StreetMC");
-            cachedSerQNames.add(qName);
-            cls = String.class;
-            cachedSerClasses.add(cls);
-            cachedSerFactories.add(org.apache.axis.encoding.ser.BaseSerializerFactory.createFactory(org.apache.axis.encoding.ser.SimpleSerializerFactory.class, cls, qName));
-            cachedDeserFactories.add(org.apache.axis.encoding.ser.BaseDeserializerFactory.createFactory(org.apache.axis.encoding.ser.SimpleDeserializerFactory.class, cls, qName));
-
-            qName = new javax.xml.namespace.QName("archserver.xsd.dataflux.com", ">row__out>EXT_TownMC");
-            cachedSerQNames.add(qName);
-            cls = String.class;
-            cachedSerClasses.add(cls);
-            cachedSerFactories.add(org.apache.axis.encoding.ser.BaseSerializerFactory.createFactory(org.apache.axis.encoding.ser.SimpleSerializerFactory.class, cls, qName));
-            cachedDeserFactories.add(org.apache.axis.encoding.ser.BaseDeserializerFactory.createFactory(org.apache.axis.encoding.ser.SimpleDeserializerFactory.class, cls, qName));
-
-            qName = new javax.xml.namespace.QName("archserver.xsd.dataflux.com", ">row__out>EXT_UnitMC");
-            cachedSerQNames.add(qName);
-            cls = String.class;
-            cachedSerClasses.add(cls);
-            cachedSerFactories.add(org.apache.axis.encoding.ser.BaseSerializerFactory.createFactory(org.apache.axis.encoding.ser.SimpleSerializerFactory.class, cls, qName));
-            cachedDeserFactories.add(org.apache.axis.encoding.ser.BaseDeserializerFactory.createFactory(org.apache.axis.encoding.ser.SimpleDeserializerFactory.class, cls, qName));
-
-            qName = new javax.xml.namespace.QName("archserver.xsd.dataflux.com", ">row__out>simulation_char");
-            cachedSerQNames.add(qName);
-            cls = String.class;
-            cachedSerClasses.add(cls);
-            cachedSerFactories.add(org.apache.axis.encoding.ser.BaseSerializerFactory.createFactory(org.apache.axis.encoding.ser.SimpleSerializerFactory.class, cls, qName));
-            cachedDeserFactories.add(org.apache.axis.encoding.ser.BaseDeserializerFactory.createFactory(org.apache.axis.encoding.ser.SimpleDeserializerFactory.class, cls, qName));
-
-            qName = new javax.xml.namespace.QName("archserver.xsd.dataflux.com", ">row__out>simulation_cluster");
-            cachedSerQNames.add(qName);
-            cls = String.class;
-            cachedSerClasses.add(cls);
-            cachedSerFactories.add(org.apache.axis.encoding.ser.BaseSerializerFactory.createFactory(org.apache.axis.encoding.ser.SimpleSerializerFactory.class, cls, qName));
-            cachedDeserFactories.add(org.apache.axis.encoding.ser.BaseDeserializerFactory.createFactory(org.apache.axis.encoding.ser.SimpleDeserializerFactory.class, cls, qName));
-
-            qName = new javax.xml.namespace.QName("archserver.xsd.dataflux.com", ">row__out>simulation_parsing");
+            qName = new javax.xml.namespace.QName("archserver.xsd.dataflux.com", ">row__out>UnitMC");
             cachedSerQNames.add(qName);
             cls = String.class;
             cachedSerClasses.add(cls);
@@ -379,7 +260,7 @@ public class DataManagementServiceStub extends org.apache.axis.client.Stub imple
 
             qName = new javax.xml.namespace.QName("archserver.xsd.dataflux.com", "row__in");
             cachedSerQNames.add(qName);
-            cls = com.dataflux.Row__in.class;
+            cls = Row__in.class;
             cachedSerClasses.add(cls);
             cachedSerFactories.add(beansf);
             cachedDeserFactories.add(beandf);
@@ -393,7 +274,7 @@ public class DataManagementServiceStub extends org.apache.axis.client.Stub imple
 
             qName = new javax.xml.namespace.QName("archserver.xsd.dataflux.com", "table__in");
             cachedSerQNames.add(qName);
-            cls = com.dataflux.Row__in[].class;
+            cls = Row__in[].class;
             cachedSerClasses.add(cls);
             qName = new javax.xml.namespace.QName("archserver.xsd.dataflux.com", "row__in");
             qName2 = new javax.xml.namespace.QName("", "row");
@@ -437,11 +318,6 @@ public class DataManagementServiceStub extends org.apache.axis.client.Stub imple
                 String key = (String) keys.nextElement();
                 _call.setProperty(key, super.cachedProperties.get(key));
             }
-
-            // Auth:Set Username and Password
-            _call.setUsername("sas");
-            _call.setPassword("sas@123456");
-
             // All the type mapping information is registered
             // when the first call is made.
             // The type mapping information is actually registered in
@@ -480,14 +356,14 @@ public class DataManagementServiceStub extends org.apache.axis.client.Stub imple
         }
     }
 
-    public Row__out[] datasvc_hxbcb__rt__matchDdf_in(com.dataflux.Row__in[] table_) throws java.rmi.RemoteException {
+    public Row__out[] datasvc_hxbcb__rt__matchDdf_in(Row__in[] table_) throws java.rmi.RemoteException {
         if (super.cachedEndpoint == null) {
             throw new org.apache.axis.NoEndPointException();
         }
         org.apache.axis.client.Call _call = createCall();
         _call.setOperation(_operations[0]);
         _call.setUseSOAPAction(true);
-        _call.setSOAPActionURI("hxbcb_rt_match.ddf*1*5A1573BDD3F008AC");
+        _call.setSOAPActionURI("hxbcb_rt_match.ddf*1*5A2880EF7E5E6F86");
         _call.setEncodingStyle(null);
         _call.setProperty(org.apache.axis.client.Call.SEND_TYPE_ATTR, Boolean.FALSE);
         _call.setProperty(org.apache.axis.AxisEngine.PROP_DOMULTIREFS, Boolean.FALSE);

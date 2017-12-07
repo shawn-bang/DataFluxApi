@@ -1,31 +1,12 @@
 ﻿-----------------------------------------------------------------------------------------
 -- DDL comment: dataflux input and output data relation
--- if exist table af_app_matchrst
--- Actually we don't how to use this table?
-drop table af_app_matchrst cascade constraints;
-create table af_app_matchrst
-(
-  app_id               varchar(20),
-  app_entity_type      varchar(32),
-  app_data_type        varchar(32),
-  app_data_value       varchar(100),
-  app_data_source      varchar(32),
-  ext_entity_type      varchar(32),
-  ext_data_type        varchar(32),
-  ext_data_value       varchar(100),
-  ext_data_source      varchar(32),
-  simulation_parsing   number(10),
-  simulation_char      number(10),
-  simulation_cluster   number(10)
-);
-
 -- if exist table af_app_cmp_his
 drop table af_app_cmp_his cascade constraints;
 create table af_app_cmp_his
 (
   APP_ID             varchar(20),
   DATA_TYPE          varchar(50),
-  CID                varchar(30),
+  CID                NUMBER(10),
   ADDMC              varchar(256),
   LEGALFORMMC        varchar(256),
   NAMEMC             varchar(256),
@@ -37,7 +18,7 @@ drop table af_app_cmp_today cascade constraints;
 create table af_app_cmp_today
 (
   APP_ID             varchar(20),
-  CID                varchar(30),
+  CID                NUMBER(10),
   DATA_TYPE          varchar(30),
   DATA_VALUE         varchar(255),
   NAMEMC             varchar(255),
@@ -53,7 +34,7 @@ create table af_app_add_his
 (
   APP_ID             varchar(20),
   DATA_TYPE          varchar(50),
-  CID                varchar(30),
+  CID                NUMBER(10),
   ADDINFO            varchar(256),
   BLOCKMC            varchar(256),
   BUILDINGMC         varchar(256),
@@ -72,7 +53,7 @@ create table af_app_add_ext_his
 (
   APP_ID             varchar(20),
   DATA_TYPE          varchar(50),
-  CID                varchar(30),
+  CID                NUMBER(10),
   ADDINFO            varchar(256),
   BLOCKMC            varchar(256),
   BUILDINGMC         varchar(256),
@@ -89,7 +70,7 @@ drop table af_app_add_today cascade constraints;
 create table af_app_add_today
 (
   APP_ID             varchar(20),
-  CID                varchar(30),
+  CID                NUMBER(10),
   DATA_SOURCE        varchar(32),
   DATA_TYPE          varchar(30),
   DATA_VALUE         varchar(255),

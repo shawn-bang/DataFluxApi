@@ -8,5 +8,5 @@
 package com.dataflux;
 
 public interface DataManagementServicePortType extends java.rmi.Remote {
-    public Row__out[] datasvc_hxbcb__rt__matchDdf_in(com.dataflux.Row__in[] table_) throws java.rmi.RemoteException;
+    public Row__out[] datasvc_hxbcb__rt__matchDdf_in(Row__in[] table_) throws java.rmi.RemoteException;
 }
