@@ -320,6 +320,7 @@ public class DataManagementServiceStub extends org.apache.axis.client.Stub imple
             }
 
             // Auth settings
+            // Local test need
             _call.setUsername("sas");
             _call.setPassword("sas@123456");
 
