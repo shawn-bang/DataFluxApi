@@ -9,6 +9,7 @@ public interface HxbMapper {
 	void updateApplicantinfo(Map<String, Object> map);
 	void saveZmivsinfo(Map<String, Object> map);
 	void deleteZmivsinfoByAppid(String appId);
+	void callHandleCidProcedure(String appId);
 	void callHandleProcedures(String appId);
 	List<Map<String, Object>> selectModelInputParams();
 	void saveModelVarInput(List<Map<String, Object>> list);
