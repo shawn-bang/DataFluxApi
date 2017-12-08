@@ -340,14 +340,14 @@
       begin
         if nvl(v_bad_debt_num,'null') = 'null' then
           -- update result data
-          insert  into af_response_afriskwarning(app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,riskvalue,type,class) select app_id_input as app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,riskvalue,type,class  from af_risk_level_settings  where ruleno = 'RULE_40' and result_type = 'EMPTY';
+          insert  into af_response_afriskwarning(app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,riskvalue,type,class) select app_id_input as app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,riskvalue,type,class  from af_risk_level_settings  where ruleno = 'RULE_PBOC_40' and result_type = 'EMPTY';
           commit;
         elsif v_bad_debt_num >= 2 then
           -- update result data
-          insert  into af_response_afriskwarning(app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,riskvalue,type,class) select app_id_input as app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,riskvalue,type,class  from af_risk_level_settings  where ruleno = 'RULE_40' and result_type = 'HIT';
+          insert  into af_response_afriskwarning(app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,riskvalue,type,class) select app_id_input as app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,riskvalue,type,class  from af_risk_level_settings  where ruleno = 'RULE_PBOC_40' and result_type = 'HIT';
           commit;
         else
-          insert  into af_response_afriskwarning(app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,riskvalue,type,class) select app_id_input as app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,riskvalue,type,class  from af_risk_level_settings  where ruleno = 'RULE_40' and result_type = 'UNHIT';
+          insert  into af_response_afriskwarning(app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,riskvalue,type,class) select app_id_input as app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,riskvalue,type,class  from af_risk_level_settings  where ruleno = 'RULE_PBOC_40' and result_type = 'UNHIT';
           commit;
         end if;
         -- handle exceptions
@@ -365,14 +365,14 @@
       begin
         if nvl(v_loan_overdue_month_num,'null') = 'null' then
           -- update result data
-          insert  into af_response_afriskwarning(app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,riskvalue,type,class) select app_id_input as app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,riskvalue,type,class  from af_risk_level_settings  where ruleno = 'RULE_42' and result_type = 'EMPTY';
+          insert  into af_response_afriskwarning(app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,riskvalue,type,class) select app_id_input as app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,riskvalue,type,class  from af_risk_level_settings  where ruleno = 'RULE_PBOC_42' and result_type = 'EMPTY';
           commit;
         elsif v_loan_overdue_month_num >= 2 then
           -- update result data
-          insert  into af_response_afriskwarning(app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,riskvalue,type,class) select app_id_input as app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,riskvalue,type,class  from af_risk_level_settings  where ruleno = 'RULE_42' and result_type = 'HIT';
+          insert  into af_response_afriskwarning(app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,riskvalue,type,class) select app_id_input as app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,riskvalue,type,class  from af_risk_level_settings  where ruleno = 'RULE_PBOC_42' and result_type = 'HIT';
           commit;
         else
-          insert  into af_response_afriskwarning(app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,riskvalue,type,class) select app_id_input as app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,riskvalue,type,class  from af_risk_level_settings  where ruleno = 'RULE_42' and result_type = 'UNHIT';
+          insert  into af_response_afriskwarning(app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,riskvalue,type,class) select app_id_input as app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,riskvalue,type,class  from af_risk_level_settings  where ruleno = 'RULE_PBOC_42' and result_type = 'UNHIT';
           commit;
         end if;
         -- handle exceptions
@@ -390,14 +390,14 @@
       begin
         if nvl(v_debit_card_over_due_acct_num,'null') = 'null' then
           -- update result data
-          insert  into af_response_afriskwarning(app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,riskvalue,type,class) select app_id_input as app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,riskvalue,type,class  from af_risk_level_settings  where ruleno = 'RULE_44' and result_type = 'EMPTY';
+          insert  into af_response_afriskwarning(app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,riskvalue,type,class) select app_id_input as app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,riskvalue,type,class  from af_risk_level_settings  where ruleno = 'RULE_PBOC_44' and result_type = 'EMPTY';
           commit;
         elsif v_debit_card_over_due_acct_num >= 2 then
           -- update result data
-          insert  into af_response_afriskwarning(app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,riskvalue,type,class) select app_id_input as app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,riskvalue,type,class  from af_risk_level_settings  where ruleno = 'RULE_44' and result_type = 'HIT';
+          insert  into af_response_afriskwarning(app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,riskvalue,type,class) select app_id_input as app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,riskvalue,type,class  from af_risk_level_settings  where ruleno = 'RULE_PBOC_44' and result_type = 'HIT';
           commit;
         else
-          insert  into af_response_afriskwarning(app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,riskvalue,type,class) select app_id_input as app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,riskvalue,type,class  from af_risk_level_settings  where ruleno = 'RULE_44' and result_type = 'UNHIT';
+          insert  into af_response_afriskwarning(app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,riskvalue,type,class) select app_id_input as app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,riskvalue,type,class  from af_risk_level_settings  where ruleno = 'RULE_PBOC_44' and result_type = 'UNHIT';
           commit;
         end if;
         -- handle exceptions
@@ -415,14 +415,14 @@
       begin
         if nvl(v_debit_card_over_due_month,'null') = 'null' then
           -- update result data
-          insert  into af_response_afriskwarning(app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,riskvalue,type,class) select app_id_input as app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,riskvalue,type,class  from af_risk_level_settings  where ruleno = 'RULE_45' and result_type = 'EMPTY';
+          insert  into af_response_afriskwarning(app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,riskvalue,type,class) select app_id_input as app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,riskvalue,type,class  from af_risk_level_settings  where ruleno = 'RULE_PBOC_45' and result_type = 'EMPTY';
           commit;
         elsif v_debit_card_over_due_month >= 2 then
           -- update result data
-          insert  into af_response_afriskwarning(app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,riskvalue,type,class) select app_id_input as app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,riskvalue,type,class  from af_risk_level_settings  where ruleno = 'RULE_45' and result_type = 'HIT';
+          insert  into af_response_afriskwarning(app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,riskvalue,type,class) select app_id_input as app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,riskvalue,type,class  from af_risk_level_settings  where ruleno = 'RULE_PBOC_45' and result_type = 'HIT';
           commit;
         else
-          insert  into af_response_afriskwarning(app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,riskvalue,type,class) select app_id_input as app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,riskvalue,type,class  from af_risk_level_settings  where ruleno = 'RULE_45' and result_type = 'UNHIT';
+          insert  into af_response_afriskwarning(app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,riskvalue,type,class) select app_id_input as app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,riskvalue,type,class  from af_risk_level_settings  where ruleno = 'RULE_PBOC_45' and result_type = 'UNHIT';
           commit;
         end if;
         -- handle exceptions
@@ -440,14 +440,14 @@
       begin
         if nvl(v_debit_co_due_longest_over,'null') = 'null' then
           -- update result data
-          insert  into af_response_afriskwarning(app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,riskvalue,type,class) select app_id_input as app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,riskvalue,type,class  from af_risk_level_settings  where ruleno = 'RULE_46' and result_type = 'EMPTY';
+          insert  into af_response_afriskwarning(app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,riskvalue,type,class) select app_id_input as app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,riskvalue,type,class  from af_risk_level_settings  where ruleno = 'RULE_PBOC_46' and result_type = 'EMPTY';
           commit;
         elsif v_debit_co_due_longest_over >= 2 then
           -- update result data
-          insert  into af_response_afriskwarning(app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,riskvalue,type,class) select app_id_input as app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,riskvalue,type,class  from af_risk_level_settings  where ruleno = 'RULE_46' and result_type = 'HIT';
+          insert  into af_response_afriskwarning(app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,riskvalue,type,class) select app_id_input as app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,riskvalue,type,class  from af_risk_level_settings  where ruleno = 'RULE_PBOC_46' and result_type = 'HIT';
           commit;
         else
-          insert  into af_response_afriskwarning(app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,riskvalue,type,class) select app_id_input as app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,riskvalue,type,class  from af_risk_level_settings  where ruleno = 'RULE_46' and result_type = 'UNHIT';
+          insert  into af_response_afriskwarning(app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,riskvalue,type,class) select app_id_input as app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,riskvalue,type,class  from af_risk_level_settings  where ruleno = 'RULE_PBOC_46' and result_type = 'UNHIT';
           commit;
         end if;
         -- handle exceptions
@@ -652,11 +652,11 @@
         if nvl(v_frs_cred_crd_issue_mon,'null') != 'null'  then
           if  v_frs_cred_crd_issue_mon <= '5' then
             -- update result data
-            insert  into af_response_afriskwarning(app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,riskvalue,type,class) select app_id_input as app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,riskvalue,type,class  from af_risk_level_settings  where ruleno = 'RULE_143' and result_type = 'HIT';
+            insert  into af_response_afriskwarning(app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,riskvalue,type,class) select app_id_input as app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,riskvalue,type,class  from af_risk_level_settings  where ruleno = 'RULE_PBOC_143' and result_type = 'HIT';
             commit;
           else
             -- update result data
-            insert  into af_response_afriskwarning(app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,riskvalue,type,class) select app_id_input as app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,riskvalue,type,class  from af_risk_level_settings  where ruleno = 'RULE_143' and result_type = 'UNHIT';
+            insert  into af_response_afriskwarning(app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,riskvalue,type,class) select app_id_input as app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,riskvalue,type,class  from af_risk_level_settings  where ruleno = 'RULE_PBOC_143' and result_type = 'UNHIT';
             commit;
           end if;
         end if;
@@ -677,15 +677,15 @@
         if v_reship = '配偶' then
           if nvl(v_remobil,'null') = 'null' and nvl(v_mate_contact_tel,'null') = 'null' then
             -- update result data
-            insert  into af_response_afriskwarning(app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,riskvalue,type,class) select app_id_input as app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,riskvalue,type,class  from af_risk_level_settings  where ruleno = 'RULE_145' and result_type = 'EMPTY';
+            insert  into af_response_afriskwarning(app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,riskvalue,type,class) select app_id_input as app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,riskvalue,type,class  from af_risk_level_settings  where ruleno = 'RULE_PBOC_145' and result_type = 'EMPTY';
             commit;
           elsif v_remobil = v_mate_contact_tel then
             -- update result data
-            insert  into af_response_afriskwarning(app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,riskvalue,type,class) select app_id_input as app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,riskvalue,type,class  from af_risk_level_settings  where ruleno = 'RULE_145' and result_type = 'HIT';
+            insert  into af_response_afriskwarning(app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,riskvalue,type,class) select app_id_input as app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,riskvalue,type,class  from af_risk_level_settings  where ruleno = 'RULE_PBOC_145' and result_type = 'HIT';
             commit;
           else
             -- update result data
-            insert  into af_response_afriskwarning(app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,riskvalue,type,class) select app_id_input as app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,riskvalue,type,class  from af_risk_level_settings  where ruleno = 'RULE_145' and result_type = 'UNHIT';
+            insert  into af_response_afriskwarning(app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,riskvalue,type,class) select app_id_input as app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,riskvalue,type,class  from af_risk_level_settings  where ruleno = 'RULE_PBOC_145' and result_type = 'UNHIT';
             commit;
           end if;
         end if;
@@ -1601,7 +1601,7 @@
       -- don't anything
     end RULE_178;
 
-  -----Not at this stage 1
+  -----Not at this stage
 
 
 
