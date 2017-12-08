@@ -1577,7 +1577,6 @@
   procedure RULE_178(app_id_input in varchar2,v_xname1 in af_request_applicantinfo.c1_xname1%type,v_xmobil1 in af_request_applicantinfo.c1_xmobil1%type) is
     flag number;
     v_error varchar2(500);
-    --N 未知
     begin
       if nvl(v_xname1, 'null') != 'null' and nvl(v_xmobil1, 'null') != 'null' then
         select count(1) into flag
@@ -1589,7 +1588,9 @@
               );
         if flag > 2 then
           -- update result data
-          insert into af_response_afriskwarning(app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,riskvalue,type,class) select app_id_input as app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,riskvalue,type,class  from af_risk_level_settings  where ruleno = 'RULE_178';
+          insert into af_response_afriskwarning(app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,riskvalue,calculatenum,type,class) select app_id_input as app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,riskvalue,flag as calculatenum,type,class  from af_risk_level_settings  where ruleno = 'RULE_178' and result_type = 'HIT';
+        else
+          insert into af_response_afriskwarning(app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,riskvalue,calculatenum,type,class) select app_id_input as app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,riskvalue,flag as calculatenum,type,class  from af_risk_level_settings  where ruleno = 'RULE_178' and result_type = 'UNHIT';
           commit;
         end if;
       end if;
