@@ -1354,20 +1354,11 @@ DROP TABLE af_request_appinfo_his_hot cascade constraints;
 -- create table af_request_appinfo_his_hot
 create table af_request_appinfo_his_hot(
   app_id VARCHAR2(20) NOT NULL,
-  c1_coadd1 VARCHAR2(30),
-  c1_coadd2 VARCHAR2(60),
-  c1_coadd3 VARCHAR2(60),
-  c1_coadd4 VARCHAR2(60),
-  c1_coname VARCHAR2(60),
   c1_cotel VARCHAR2(17),
   bad_debt_num VARCHAR2(10),
   c_comp_phone VARCHAR2(70),
   c1_educls VARCHAR2(1),
   c1_gender VARCHAR2(1),
-  c1_hmadd1 VARCHAR2(60),
-  c1_hmadd2 VARCHAR2(60),
-  c1_hmadd3 VARCHAR2(60),
-  c1_hmadd4 VARCHAR2(60),
   c1_hmare VARCHAR2(4),
   c1_hmst VARCHAR2(1),
   c1_hmtel VARCHAR2(17),
@@ -1380,6 +1371,7 @@ create table af_request_appinfo_his_hot(
   c1_retel VARCHAR2(17),
   c1_retelar VARCHAR2(4),
   c1_xmobil1 VARCHAR2(12),
+  c1_xname1 VARCHAR2(30),
   c1_xtel1 VARCHAR2(17),
   c1_xtelar1 VARCHAR2(4),
   c1c2_flag CHAR(1),
@@ -1392,26 +1384,14 @@ create table af_request_appinfo_his_hot(
   c2_idtype VARCHAR2(2),
   cell_phone VARCHAR2(25),
   communication_addr VARCHAR2(100),
-  comp_addr1 VARCHAR2(200),
   deb_c60overd_longest_over_due VARCHAR2(10),
   deb_c60overd_month_num VARCHAR2(10),
   debit_card_over_due_acct_num VARCHAR2(10),
   debit_card_over_due_month_num VARCHAR2(10),
   debit_co_due_longest_over_due VARCHAR2(10),
-  domicile_addr VARCHAR2(100),
-  comp_addr2 VARCHAR2(200),
-  comp_addr3 VARCHAR2(200),
-  comp_addr4 VARCHAR2(200),
-  comp_addr5 VARCHAR2(200),
-  company1 VARCHAR2(100),
-  company2 VARCHAR2(100),
-  company3 VARCHAR2(100),
-  company4 VARCHAR2(100),
-  company5 VARCHAR2(100),
   cumul_pay_months VARCHAR2(10),
   educationapproach VARCHAR2(25),
   educationdegree VARCHAR2(25),
-  homeaddr VARCHAR2(1000),
   frs_cred_crd_issue_mon VARCHAR2(7),
   loan_overdue_month_num VARCHAR2(10),
   mate_contact_tel VARCHAR2(25),
@@ -1427,15 +1407,9 @@ create table af_request_appinfo_his_hot(
   no_padc_contract_amt VARCHAR2(10),
   result_xm VARCHAR2(200),
   resi_tel VARCHAR2(25),
-  pboc_gjj_pay_comp VARCHAR2(100),
   pboc_gjj_pay_status VARCHAR2(50),
   pay_ym VARCHAR2(7),
   pboc_yl_pay_status VARCHAR2(50),
-  resident_addr1 VARCHAR2(100),
-  resident_addr2 VARCHAR2(100),
-  resident_addr3 VARCHAR2(100),
-  resident_addr4 VARCHAR2(100),
-  resident_addr5 VARCHAR2(100),
   no_pin_debit_card_acct_num VARCHAR2(10),
   req_app_num NUMBER(10) default 1,
   modify_time date default sysdate not null
@@ -1443,20 +1417,11 @@ create table af_request_appinfo_his_hot(
 
 comment on table af_request_appinfo_his_hot is '请求报文applicants信息历史数据表(热字段部分)';
 comment on column  af_request_appinfo_his_hot.app_id is '申请件编号';
-comment on column  af_request_appinfo_his_hot.c1_coadd1 is '类型4（公司）地址区段1';
-comment on column  af_request_appinfo_his_hot.c1_coadd2 is '类型4（公司）地址区段2';
-comment on column  af_request_appinfo_his_hot.c1_coadd3 is '类型4（公司）地址区段3';
-comment on column  af_request_appinfo_his_hot.c1_coadd4 is '类型4（公司）地址区段4';
-comment on column  af_request_appinfo_his_hot.c1_coname is '公司中文全称';
 comment on column  af_request_appinfo_his_hot.c1_cotel is '公司电话';
 comment on column  af_request_appinfo_his_hot.bad_debt_num is '呆帐_笔数';
 comment on column  af_request_appinfo_his_hot.c_comp_phone is '单位电话';
 comment on column  af_request_appinfo_his_hot.c1_educls is '主卡申请人教育程度';
 comment on column  af_request_appinfo_his_hot.c1_gender is '主卡申请人性别*';
-comment on column  af_request_appinfo_his_hot.c1_hmadd1 is '类型1（家庭）地址区段1';
-comment on column  af_request_appinfo_his_hot.c1_hmadd2 is '类型1（家庭）地址区段2';
-comment on column  af_request_appinfo_his_hot.c1_hmadd3 is '类型1（家庭）地址区段3';
-comment on column  af_request_appinfo_his_hot.c1_hmadd4 is '类型1（家庭）地址区段4';
 comment on column  af_request_appinfo_his_hot.c1_hmare is '主卡申请人家庭电话区号*';
 comment on column  af_request_appinfo_his_hot.c1_hmst is '家庭房屋状况';
 comment on column  af_request_appinfo_his_hot.c1_hmtel is '主卡申请人家庭电话*';
@@ -1469,6 +1434,7 @@ comment on column  af_request_appinfo_his_hot.c1_reship is '直系亲属关系';
 comment on column  af_request_appinfo_his_hot.c1_retel is '直系亲属电话';
 comment on column  af_request_appinfo_his_hot.c1_retelar is '直系亲属电话区号';
 comment on column  af_request_appinfo_his_hot.c1_xmobil1 is '联系人1手机';
+comment on column  af_request_appinfo_his_hot.c1_xname1 is '联系人1姓名';
 comment on column  af_request_appinfo_his_hot.c1_xtel1 is '联系人1电话';
 comment on column  af_request_appinfo_his_hot.c1_xtelar1 is '联系人1电话区号';
 comment on column  af_request_appinfo_his_hot.c1c2_flag is '主附卡标识';
@@ -1481,26 +1447,14 @@ comment on column  af_request_appinfo_his_hot.c2_idnbr is '附卡申请人证件
 comment on column  af_request_appinfo_his_hot.c2_idtype is '附卡申请人证件类型*';
 comment on column  af_request_appinfo_his_hot.cell_phone is '手机号码';
 comment on column  af_request_appinfo_his_hot.communication_addr is '通讯地址';
-comment on column  af_request_appinfo_his_hot.comp_addr1 is '单位地址1';
 comment on column  af_request_appinfo_his_hot.deb_c60overd_longest_over_due is '准贷记卡60天以上透支_最长逾期月数/最长透支月数';
 comment on column  af_request_appinfo_his_hot.deb_c60overd_month_num is '准贷记卡60天以上透支_月份数';
 comment on column  af_request_appinfo_his_hot.debit_card_over_due_acct_num is '贷记卡逾期_笔数/账户数';
 comment on column  af_request_appinfo_his_hot.debit_card_over_due_month_num is '贷记卡逾期_月份数';
 comment on column  af_request_appinfo_his_hot.debit_co_due_longest_over_due is '贷记卡逾期_最长逾期月数/最长透支月数';
-comment on column  af_request_appinfo_his_hot.domicile_addr is '户籍地址';
-comment on column  af_request_appinfo_his_hot.comp_addr2 is '单位地址2';
-comment on column  af_request_appinfo_his_hot.comp_addr3 is '单位地址3';
-comment on column  af_request_appinfo_his_hot.comp_addr4 is '单位地址4';
-comment on column  af_request_appinfo_his_hot.comp_addr5 is '单位地址5';
-comment on column  af_request_appinfo_his_hot.company1 is '工作单位1';
-comment on column  af_request_appinfo_his_hot.company2 is '工作单位2';
-comment on column  af_request_appinfo_his_hot.company3 is '工作单位3';
-comment on column  af_request_appinfo_his_hot.company4 is '工作单位4';
-comment on column  af_request_appinfo_his_hot.company5 is '工作单位5';
 comment on column  af_request_appinfo_his_hot.cumul_pay_months is '累计缴费月数';
 comment on column  af_request_appinfo_his_hot.educationapproach is '办学形式(全日制、函授等)';
 comment on column  af_request_appinfo_his_hot.educationdegree is '学历';
-comment on column  af_request_appinfo_his_hot.homeaddr is '住宅地址';
 comment on column  af_request_appinfo_his_hot.frs_cred_crd_issue_mon is '首张贷记卡发卡月份';
 comment on column  af_request_appinfo_his_hot.loan_overdue_month_num is '贷款逾期_月份数';
 comment on column  af_request_appinfo_his_hot.mate_contact_tel is '配偶_联系电话';
@@ -1516,15 +1470,9 @@ comment on column  af_request_appinfo_his_hot.no_pd_card_loan_org_number is '未
 comment on column  af_request_appinfo_his_hot.no_padc_contract_amt is '未销户准贷记卡_合同金额/授信总额';
 comment on column  af_request_appinfo_his_hot.result_xm is '姓名核查结果';
 comment on column  af_request_appinfo_his_hot.resi_tel is '住宅电话';
-comment on column  af_request_appinfo_his_hot.pboc_gjj_pay_comp is '缴费单位';
 comment on column  af_request_appinfo_his_hot.pboc_gjj_pay_status is '缴费状态';
 comment on column  af_request_appinfo_his_hot.pay_ym is '缴至月份';
 comment on column  af_request_appinfo_his_hot.pboc_yl_pay_status is '缴费状态';
-comment on column  af_request_appinfo_his_hot.resident_addr1 is '居住地址1';
-comment on column  af_request_appinfo_his_hot.resident_addr2 is '居住地址2';
-comment on column  af_request_appinfo_his_hot.resident_addr3 is '居住地址3';
-comment on column  af_request_appinfo_his_hot.resident_addr4 is '居住地址4';
-comment on column  af_request_appinfo_his_hot.resident_addr5 is '居住地址5';
 comment on column  af_request_appinfo_his_hot.no_pin_debit_card_acct_num is '未销户贷记卡_笔数/账户数';
 comment on column  af_request_appinfo_his_hot.req_app_num is '申请次数';
 comment on column  af_request_appinfo_his_hot.modify_time is '更新时间';
@@ -1544,6 +1492,11 @@ create table af_request_appinfo_his_cold(
   c1_carst VARCHAR2(1),
   c1_class VARCHAR2(3),
   c1_cname VARCHAR2(30),
+  c1_coadd1 VARCHAR2(30),
+  c1_coadd2 VARCHAR2(60),
+  c1_coadd3 VARCHAR2(60),
+  c1_coadd4 VARCHAR2(60),
+  c1_coname VARCHAR2(60),
   c1_cobuscd VARCHAR2(20),
   c1_cocode VARCHAR2(4),
   c1_codept VARCHAR2(20),
@@ -1558,6 +1511,10 @@ create table af_request_appinfo_his_cold(
   c1_ename VARCHAR2(30),
   c1_birth VARCHAR2(10),
   c1_hloan NUMBER(12),
+  c1_hmadd1 VARCHAR2(60),
+  c1_hmadd2 VARCHAR2(60),
+  c1_hmadd3 VARCHAR2(60),
+  c1_hmadd4 VARCHAR2(60),
   c1_hmpost VARCHAR2(6),
   c1_hmyr NUMBER(2),
   c1_idadd1 VARCHAR2(60),
@@ -1647,6 +1604,7 @@ create table af_request_appinfo_his_cold(
   module VARCHAR2(50),
   ip VARCHAR2(30),
   device_id VARCHAR2(30),
+  domicile_addr VARCHAR2(100),
   enroldate VARCHAR2(25),
   graduate VARCHAR2(128),
   graduatetime VARCHAR2(25),
@@ -1859,6 +1817,21 @@ create table af_request_appinfo_his_cold(
   queryed_cert_type VARCHAR2(40),
   queryed_name VARCHAR2(65),
   report_time VARCHAR2(50),
+  resident_addr1 VARCHAR2(100),
+  resident_addr2 VARCHAR2(100),
+  resident_addr3 VARCHAR2(100),
+  resident_addr4 VARCHAR2(100),
+  resident_addr5 VARCHAR2(100),
+  comp_addr1 VARCHAR2(200),
+  comp_addr2 VARCHAR2(200),
+  comp_addr3 VARCHAR2(200),
+  comp_addr4 VARCHAR2(200),
+  comp_addr5 VARCHAR2(200),
+  company1 VARCHAR2(100),
+  company2 VARCHAR2(100),
+  company3 VARCHAR2(100),
+  company4 VARCHAR2(100),
+  company5 VARCHAR2(100),
   cur_comp_work_stat_y1 CHAR(4),
   cur_comp_work_stat_y2 CHAR(4),
   cur_comp_work_stat_y3 CHAR(4),
@@ -1884,6 +1857,7 @@ create table af_request_appinfo_his_cold(
   join_socl_insu_ym VARCHAR2(10),
   pause_pay_reason VARCHAR2(100),
   pboc_yl_pay_comp VARCHAR2(100),
+  pboc_gjj_pay_comp VARCHAR2(100),
   person_pay_base VARCHAR2(20),
   work_months VARCHAR2(7),
   query_org_crt_time VARCHAR2(25),
@@ -1941,6 +1915,11 @@ comment on column  af_request_appinfo_his_cold.c1_carnbr is '自购车辆车牌�
 comment on column  af_request_appinfo_his_cold.c1_carst is '自购车辆情况';
 comment on column  af_request_appinfo_his_cold.c1_class is '主卡申请人客户类别';
 comment on column  af_request_appinfo_his_cold.c1_cname is '主卡申请人中文姓名*';
+comment on column  af_request_appinfo_his_cold.c1_coadd1 is '类型4（公司）地址区段1';
+comment on column  af_request_appinfo_his_cold.c1_coadd2 is '类型4（公司）地址区段2';
+comment on column  af_request_appinfo_his_cold.c1_coadd3 is '类型4（公司）地址区段3';
+comment on column  af_request_appinfo_his_cold.c1_coadd4 is '类型4（公司）地址区段4';
+comment on column  af_request_appinfo_his_cold.c1_coname is '公司中文全称';
 comment on column  af_request_appinfo_his_cold.c1_cobuscd is '公司企业代码';
 comment on column  af_request_appinfo_his_cold.c1_cocode is '公司行业类别码';
 comment on column  af_request_appinfo_his_cold.c1_codept is '公司部门';
@@ -1955,6 +1934,10 @@ comment on column  af_request_appinfo_his_cold.c1_email is '主卡申请人E-mai
 comment on column  af_request_appinfo_his_cold.c1_ename is '主卡申请人英文姓名';
 comment on column  af_request_appinfo_his_cold.c1_birth is '主卡申请人出生日期*';
 comment on column  af_request_appinfo_his_cold.c1_hloan is '月还款额/月租金额';
+comment on column  af_request_appinfo_his_cold.c1_hmadd1 is '类型1（家庭）地址区段1';
+comment on column  af_request_appinfo_his_cold.c1_hmadd2 is '类型1（家庭）地址区段2';
+comment on column  af_request_appinfo_his_cold.c1_hmadd3 is '类型1（家庭）地址区段3';
+comment on column  af_request_appinfo_his_cold.c1_hmadd4 is '类型1（家庭）地址区段4';
 comment on column  af_request_appinfo_his_cold.c1_hmpost is '类型1（家庭）邮政编码';
 comment on column  af_request_appinfo_his_cold.c1_hmyr is '居住年数';
 comment on column  af_request_appinfo_his_cold.c1_idadd1 is '类型2（户籍）地址区段1';
@@ -2044,6 +2027,7 @@ comment on column  af_request_appinfo_his_cold.promote_company is '第三方公�
 comment on column  af_request_appinfo_his_cold.module is '模块名称';
 comment on column  af_request_appinfo_his_cold.ip is '客户端IP';
 comment on column  af_request_appinfo_his_cold.device_id is '设备识别码';
+comment on column  af_request_appinfo_his_cold.domicile_addr is '户籍地址';
 comment on column  af_request_appinfo_his_cold.enroldate is '入学年份';
 comment on column  af_request_appinfo_his_cold.graduate is '毕业院校';
 comment on column  af_request_appinfo_his_cold.graduatetime is '毕业时间';
@@ -2256,6 +2240,16 @@ comment on column  af_request_appinfo_his_cold.queryed_cert_no is '被查询者�
 comment on column  af_request_appinfo_his_cold.queryed_cert_type is '被查询者证件类型';
 comment on column  af_request_appinfo_his_cold.queryed_name is '被查询者姓名';
 comment on column  af_request_appinfo_his_cold.report_time is '报告时间';
+comment on column  af_request_appinfo_his_cold.comp_addr1 is '单位地址1';
+comment on column  af_request_appinfo_his_cold.comp_addr2 is '单位地址2';
+comment on column  af_request_appinfo_his_cold.comp_addr3 is '单位地址3';
+comment on column  af_request_appinfo_his_cold.comp_addr4 is '单位地址4';
+comment on column  af_request_appinfo_his_cold.comp_addr5 is '单位地址5';
+comment on column  af_request_appinfo_his_cold.company1 is '工作单位1';
+comment on column  af_request_appinfo_his_cold.company2 is '工作单位2';
+comment on column  af_request_appinfo_his_cold.company3 is '工作单位3';
+comment on column  af_request_appinfo_his_cold.company4 is '工作单位4';
+comment on column  af_request_appinfo_his_cold.company5 is '工作单位5';
 comment on column  af_request_appinfo_his_cold.cur_comp_work_stat_y1 is '进入本单位年份1';
 comment on column  af_request_appinfo_his_cold.cur_comp_work_stat_y2 is '进入本单位年份2';
 comment on column  af_request_appinfo_his_cold.cur_comp_work_stat_y3 is '进入本单位年份3';
@@ -2281,6 +2275,12 @@ comment on column  af_request_appinfo_his_cold.pboc_yl_join_socl_insu_pl is '参
 comment on column  af_request_appinfo_his_cold.join_socl_insu_ym is '参保年月';
 comment on column  af_request_appinfo_his_cold.pause_pay_reason is '中断或终止缴费原因';
 comment on column  af_request_appinfo_his_cold.pboc_yl_pay_comp is '缴费单位';
+comment on column  af_request_appinfo_his_cold.resident_addr1 is '居住地址1';
+comment on column  af_request_appinfo_his_cold.resident_addr2 is '居住地址2';
+comment on column  af_request_appinfo_his_cold.resident_addr3 is '居住地址3';
+comment on column  af_request_appinfo_his_cold.resident_addr4 is '居住地址4';
+comment on column  af_request_appinfo_his_cold.resident_addr5 is '居住地址5';
+comment on column  af_request_appinfo_his_cold.pboc_gjj_pay_comp is '住房公积缴费单位';
 comment on column  af_request_appinfo_his_cold.person_pay_base is '个人缴费基数';
 comment on column  af_request_appinfo_his_cold.work_months is '参加工作月份';
 comment on column  af_request_appinfo_his_cold.query_org_crt_time is '创建时间';
