@@ -134,6 +134,20 @@ public class CCAFBiz {
 	}
 
 	/**
+	 * 调用数据库可执行对象生成指定app_id对应的模糊匹配字段需要的cid
+	 * @param sqlSession
+	 * @param appId
+	 */
+	public void runHandleCidProcedure(SqlSession sqlSession, String appId) {
+		Long starttime = System.currentTimeMillis();
+		HxbDao hxbDao = HxbDao.getInstance();
+		hxbDao.runHandleCidProcedure(sqlSession, appId);
+		sqlSession.commit();
+		Long endtime = System.currentTimeMillis();
+		log.info(appId + ":runHandleCidProcedure:" + (endtime - starttime));
+	}
+
+	/**
 	 * 调用数据库可执行对象进行业务规则相关逻辑运算并更新结果表数据
 	 * @param sqlSession
 	 * @param appId

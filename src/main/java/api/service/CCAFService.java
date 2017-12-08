@@ -6,6 +6,8 @@ import java.util.Date;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import api.exception.DataFluxServiceErrorException;
+import api.exception.InputDataErrorException;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.dataflux.Row__out;
@@ -35,19 +37,23 @@ public class CCAFService {
 
 				// shawn:app_id is required
 				if (appId == null || appId.equals("")) {
-					throw new Exception("input error: app_id is null but it's required");
+					throw new InputDataErrorException("InputDataErrorException: app_id is null, but it's required.");
 				}
 				// Transaction control
 				bizHandler.prepareModelInput(sqlSession, applicantinfo);
 				bizHandler.prepareSNAInput(sqlSession, applicantinfo);
 				// insert or update request information
 				bizHandler.saveRequestInfos(sqlSession, requestInfoJsonObject);
-				// do we need to recall dataflux when the same appid second request?
+				// TODO do we need to recall dataflux when the same appid second request?
 				// call dataflux for fuzzy matching
 				Row__out[] dfouttab = bizHandler.getDataFluxMatchRst(applicantinfo, appId);
 				// update dataflux result to database
+				if (dfouttab == null || dfouttab.length == 0) {
+                    throw new DataFluxServiceErrorException("DataFluxServiceErrorException: Dataflux Service Exception.");
+                }
                 bizHandler.saveMatchRst(sqlSession, appId, dfouttab);
-                // TODO call database callable process to update the class_id info
+                // call database callable process to update the cid result data tables
+                bizHandler.runHandleCidProcedure(sqlSession, appId);
 
 				// call database callable process to analysis and calculate update result tables
 				bizHandler.runHandleProcedures(sqlSession, appId);

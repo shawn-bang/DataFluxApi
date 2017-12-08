@@ -92,6 +92,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		{call AF_HXBCB.RT_MAIN(#{appId,jdbcType=VARCHAR})}
 	</select>
 
+	<select id="callHandleCidProcedure" parameterType="String" statementType="CALLABLE">
+		{call GENERATE_CID(#{appId,jdbcType=VARCHAR})}
+	</select>
+
 	<!-- prepare Model and SNA input start -->
 	<select id="selectModelInputParams" resultType="java.util.HashMap" statementType="PREPARED">
 		SELECT

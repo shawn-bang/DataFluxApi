@@ -72,6 +72,11 @@ public class HxbDao {
 		return mapper.selectSNAInputConf();
 	}
 
+	public void runHandleCidProcedure(SqlSession sqlSession,String appId){
+		HxbMapper mapper = sqlSession.getMapper(HxbMapper.class);
+		mapper.callHandleCidProcedure(appId);
+	}
+
 	public void runHandleProcedures(SqlSession sqlSession,String appId){
 		HxbMapper mapper = sqlSession.getMapper(HxbMapper.class);
 		mapper.callHandleProcedures(appId);
