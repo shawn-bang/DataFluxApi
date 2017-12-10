@@ -1526,7 +1526,6 @@ create table af_request_appinfo_his_cold(
   c1_nation VARCHAR2(1),
   c1_telvl VARCHAR2(1),
   c1_title VARCHAR2(2),
-  c1_xname1 VARCHAR2(30),
   c1_xship1 VARCHAR2(4),
   c2_iddt1 VARCHAR2(10),
   c2_isdp1 VARCHAR2(6),
@@ -1949,7 +1948,6 @@ comment on column  af_request_appinfo_his_cold.c1_marst is '主卡申请人婚�
 comment on column  af_request_appinfo_his_cold.c1_nation is '主卡申请人国籍';
 comment on column  af_request_appinfo_his_cold.c1_telvl is '主卡申请人职称';
 comment on column  af_request_appinfo_his_cold.c1_title is '主卡申请人岗位';
-comment on column  af_request_appinfo_his_cold.c1_xname1 is '联系人1姓名';
 comment on column  af_request_appinfo_his_cold.c1_xship1 is '联系人1关系';
 comment on column  af_request_appinfo_his_cold.c2_iddt1 is '主卡证件起始日期';
 comment on column  af_request_appinfo_his_cold.c2_isdp1 is '主卡发证机关代码';
