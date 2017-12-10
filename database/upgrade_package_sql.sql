@@ -1,5 +1,6 @@
 ﻿create or replace package AF_HXBCB is
 
+
   -- Created : 2017/11/3 17:15:27
   -- Purpose : Package for Antifraud
   -- 全局变量声明
@@ -83,8 +84,8 @@
   --申请人首张贷记卡发卡月份 v_frs_cred_crd_issue_mon = frs_cred_crd_issue_mon
   v_frs_cred_crd_issue_mon af_request_applicantinfo.frs_cred_crd_issue_mon%type;
 
-  --主卡申请人性别 v_gender = c1_gender
-  v_gender af_request_applicantinfo.c1_gender%type;
+  --主卡申请人性别 v_c1_gender = c1_gender
+  v_c1_gender af_request_applicantinfo.c1_gender%type;
 
   --主卡申请人家庭电话区号 v_hmare = c1_hmare
   v_hmare af_request_applicantinfo.c1_hmare%type;
@@ -98,8 +99,8 @@
   --申请人住宅地址 v_hmadd = c1_hmadd1 + c1_hmadd2 + c1_hmadd3 + c1_hmadd4
   v_hmadd varchar2(120);
 
-  --主卡申请人证件号码 v_idnbr = c1_idnbr
-  v_idnbr af_request_applicantinfo.c1_idnbr%type;
+  --主卡申请人证件号码 v_c1_idnbr = c1_idnbr
+  v_c1_idnbr af_request_applicantinfo.c1_idnbr%type;
 
   --行业5 v_industry_type5 = industry_type5
   v_industry_type5 af_request_applicantinfo.industry_type5%type;
@@ -131,8 +132,8 @@
   --申请人证件起始日期 v_iddt1 = c2_iddt1
   v_iddt1 af_request_applicantinfo.c2_iddt1%type;
 
-  --申请人证件类型 v_idtype = c1_idtype
-  v_idtype af_request_applicantinfo.c1_idtype%type;
+  --申请人证件类型 v_c1_idtype = c1_idtype
+  v_c1_idtype af_request_applicantinfo.c1_idtype%type;
 
   --申请人贷款逾期_月份数 v_loan_overdue_month_num = loan_overdue_month_num
   v_loan_overdue_month_num af_request_applicantinfo.loan_overdue_month_num%type;
@@ -218,17 +219,18 @@
   --联系人1电话号码 v_xtel1 = c1_xtel1
   v_xtel1 af_request_applicantinfo.c1_xtel1%type;
 
-  --主附卡标识 v1v2_flag = c1c2_flag
-  v1v2_flag af_request_applicantinfo.c1c2_flag%type;
+  --主附卡标识 v_c1c2_flag = c1c2_flag
+  v_c1c2_flag af_request_applicantinfo.c1c2_flag%type;
 
-  --附卡申请人性别 v2_gender = c2_gender
-  v2_gender af_request_applicantinfo.c2_gender%type;
+  --附卡申请人性别 v_c2_gender = c2_gender
+  v_c2_gender af_request_applicantinfo.c2_gender%type;
 
-  --附卡申请人证件号码 v2_idnbr = c2_idnbr
-  v2_idnbr af_request_applicantinfo.c2_idnbr%type;
+  --附卡申请人证件号码 v_c2_idnbr = c2_idnbr
+  v_c2_idnbr af_request_applicantinfo.c2_idnbr%type;
 
-  --附卡申请人证件类型 v2_idtype = c2_idtype
-  v2_idtype af_request_applicantinfo.c2_idtype%type;
+  --附卡申请人证件类型 v_c2_idtype = c2_idtype
+  v_c2_idtype af_request_applicantinfo.c2_idtype%type;
+
 
   --声明入口调用过程
   procedure RT_MAIN(app_id_input in varchar2);
@@ -339,8 +341,8 @@ create or replace package body AF_HXBCB is
         v_hmadd,
         v_mobile,
         v_cotel,
-        v_idnbr,
-        v_idtype,
+        v_c1_idnbr,
+        v_c1_idtype,
         v_remobil,
         v_hmare,
         v_hmtel,
@@ -353,15 +355,15 @@ create or replace package body AF_HXBCB is
         v_xtel1,
         v_xtelar1,
         v_rename,
-        v_gender,
+        v_c1_gender,
         v_xname1,
         v_xmobil1,
-        v1v2_flag,
+        v_c1c2_flag,
         v_iddt1,
         v_birth,
-        v2_gender,
-        v2_idnbr,
-        v2_idtype,
+        v_c2_gender,
+        v_c2_idnbr,
+        v_c2_idtype,
         v_abuser,
         v_abname,
         v_cycadd1,
@@ -402,6 +404,7 @@ create or replace package body AF_HXBCB is
         v_result_xm,
         v_resi_tel,
         v_wifimacenenglish
+        
       from af_request_applicantinfo
       where app_id = app_id_input;
 
@@ -466,8 +469,8 @@ create or replace package body AF_HXBCB is
       AF_HXBCB_RULE_PKG.RULE_65(app_id_input,v_cotel,v_hmare,v_hmtel);
       AF_HXBCB_RULE_PKG.RULE_67(app_id_input,v_cycadd1);
       AF_HXBCB_RULE_PKG.RULE_68(app_id_input,v_cycadd1);
-      AF_HXBCB_RULE_PKG.RULE_70(app_id_input,v_idnbr);
-      AF_HXBCB_RULE_PKG.RULE_71(app_id_input,v_idnbr);
+      AF_HXBCB_RULE_PKG.RULE_70(app_id_input,v_c1_idnbr);
+      AF_HXBCB_RULE_PKG.RULE_71(app_id_input,v_c1_idnbr);
       AF_HXBCB_RULE_PKG.RULE_98(app_id_input,v_result_xm);
       AF_HXBCB_RULE_PKG.RULE_138(app_id_input,v_educls,v_educationapproach);
       AF_HXBCB_RULE_PKG.RULE_143(app_id_input,v_frs_cred_crd_issue_mon);
@@ -479,11 +482,11 @@ create or replace package body AF_HXBCB is
       AF_HXBCB_RULE_PKG.RULE_153_3(app_id_input,v_apsour);
       AF_HXBCB_RULE_PKG.RULE_179(app_id_input,v_remobil,v_rename);
       AF_HXBCB_RULE_PKG.RULE_182(app_id_input,v_coname);
-      AF_HXBCB_RULE_PKG.RULE_198(app_id_input,v1v2_flag,v2_gender,v2_idnbr,v2_idtype,v_gender,v_idtype,v_idnbr);
+      AF_HXBCB_RULE_PKG.RULE_198(app_id_input,v_c1c2_flag,v_c2_gender,v_c2_idnbr,v_c2_idtype,v_c1_gender,v_c1_idtype,v_c1_idnbr);
       AF_HXBCB_RULE_PKG.RULE_236(app_id_input);
       --调用规则包中的黑名单规则编号160
-      AF_HXBCB_RULE_PKG.RULE_155(app_id_input, v_idnbr);
-      AF_HXBCB_RULE_PKG.RULE_156(app_id_input, v_idnbr);
+      AF_HXBCB_RULE_PKG.RULE_155(app_id_input, v_c1_idnbr);
+      AF_HXBCB_RULE_PKG.RULE_156(app_id_input, v_c1_idnbr);
       AF_HXBCB_RULE_PKG.RULE_158(app_id_input, v_coname);
       AF_HXBCB_RULE_PKG.RULE_160(app_id_input, v_coadd);
       AF_HXBCB_RULE_PKG.RULE_162(app_id_input, v_hmadd);
