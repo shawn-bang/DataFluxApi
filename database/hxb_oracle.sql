@@ -6,7 +6,7 @@ create table af_app_cmp_his
 (
   APP_ID             varchar(20),
   DATA_TYPE          varchar(50),
-  CID                NUMBER(10),
+  CID                varchar(30),
   ADDMC              varchar(256),
   LEGALFORMMC        varchar(256),
   NAMEMC             varchar(256),
@@ -34,7 +34,7 @@ create table af_app_add_his
 (
   APP_ID             varchar(20),
   DATA_TYPE          varchar(50),
-  CID                NUMBER(10),
+  CID                varchar(30),
   ADDINFOMC          varchar(256),
   BLOCKMC            varchar(256),
   BUILDINGMC         varchar(256),
@@ -53,7 +53,7 @@ create table af_app_add_ext_his
 (
   APP_ID             varchar(20),
   DATA_TYPE          varchar(50),
-  CID                NUMBER(10),
+  CID                varchar(30),
   ADDINFOMC          varchar(256),
   BLOCKMC            varchar(256),
   BUILDINGMC         varchar(256),
