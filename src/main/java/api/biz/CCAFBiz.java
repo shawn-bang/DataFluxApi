@@ -226,6 +226,12 @@ public class CCAFBiz {
 		log.info(appId + ":prepareSNAInput:" + (endtime - starttime));
 	}
 
+	/**
+	 * 保存dataflux分词结果数据
+	 * @param sqlSession
+	 * @param appId
+	 * @param dfouttab
+	 */
 	public void saveMatchRst(SqlSession sqlSession, String appId, Row__out[] dfouttab) {
 		Long starttime = System.currentTimeMillis();
         List<Map<String, Object>> addMCInfos = new ArrayList<Map<String, Object>>();
@@ -288,17 +294,14 @@ public class CCAFBiz {
 		log.info(appId + ":saveMatchCode:" + (endtime - starttime));
 	}
 
-	private boolean checkAddValue(String addvalue) {
-		boolean flag = false;
-//		if (addvalue != null && !addvalue.equals("") && addvalue.length() > 5) {
-//			flag = true;
-//		}
-		if (addvalue != null && !addvalue.equals("") && addvalue.length() > 0) {
-			flag = true;
-		}
-		return flag;
-	}
-
+	/**
+	 * 封装模糊匹配需要的字段数据信息，请求dataflux server webservice api，获取分词结果
+	 * @param applicantinfo
+	 * @param appId
+	 * @return
+	 * @throws RemoteException
+	 * @throws ServiceException
+	 */
 	public Row__out[] getDataFluxMatchRst(Map<String, Object> applicantinfo, String appId)
 			throws RemoteException, ServiceException {
 		Long starttime = System.currentTimeMillis();
@@ -338,6 +341,8 @@ public class CCAFBiz {
             row.setApp_id(appId);
             list.add(row);
         }
+
+        // TODO 剩余模糊匹配字段的输入代码！
 
 		Row__in[] intab = new Row__in[list.size()];
 		for (int i = 0; i < intab.length; i++) {

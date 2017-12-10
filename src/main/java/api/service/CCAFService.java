@@ -6,6 +6,7 @@ import java.util.Date;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import api.exception.ApiInternalErrorException;
 import api.exception.DataFluxServiceErrorException;
 import api.exception.InputDataErrorException;
 import com.alibaba.fastjson.JSONArray;
@@ -68,11 +69,19 @@ public class CCAFService {
 			}
 
 			this.report(response, "1", "request time:" + requestTime + " - report time:" + sdf.format(new Date()), reportJsonObjects);
+		}catch (ApiInternalErrorException e) {
+			sqlSession.rollback();
+			try {
+				this.report(response, "0", e.getMessage(), reportJsonObjects);
+			} catch (Exception ee) {
+				ee.printStackTrace();
+				log.error("HxbDataFluxApi Service down!");
+			}
 		}catch (Exception e) {
 			e.printStackTrace();
 			sqlSession.rollback();
 			try {
-				this.report(response, "0", "request Hxb Service failure.", reportJsonObjects);
+				this.report(response, "0", "ApiInternalErrorException: Request Hxb Service failure.", reportJsonObjects);
 			} catch (Exception e1) {
 				e1.printStackTrace();
 				log.error("HxbDataFluxApi Service down!");
