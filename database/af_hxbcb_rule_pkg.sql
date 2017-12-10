@@ -38,11 +38,11 @@
     --rule:70
     --@author chen
     --@date 2017-12-1 18:52:00
-    procedure RULE_70(app_id_input in varchar2,v_idnbr af_request_applicantinfo.c1_idnbr%type);
+    procedure RULE_70(app_id_input in varchar2,v_c1_idnbr af_request_applicantinfo.c1_idnbr%type);
     --rule:71
     --@author chen
     --@date 2017-12-1 18:52:00
-    procedure RULE_71(app_id_input in varchar2,v_idnbr af_request_applicantinfo.c1_idnbr%type);
+    procedure RULE_71(app_id_input in varchar2,v_c1_idnbr af_request_applicantinfo.c1_idnbr%type);
     --rule:98
     --@author chen
     --@date 2017-12-1 18:52:00
@@ -90,15 +90,15 @@
     --rule:198
     --@author chen
     --@date 2017-12-1 18:52:00
-    procedure RULE_198(app_id_input in varchar2,v1v2_flag in af_request_applicantinfo.c1c2_flag%type,v2_gender  in af_request_applicantinfo.c2_gender%type,v2_idnbr in  af_request_applicantinfo.c2_idnbr%type,v2_idtype in af_request_applicantinfo.c2_idtype%type,v_gender in af_request_applicantinfo.c1_gender%type,v_idtype in  af_request_applicantinfo.c1_idtype%type,v_idnbr in af_request_applicantinfo.c1_idnbr%type);
+    procedure RULE_198(app_id_input in varchar2,v_c1c2_flag in af_request_applicantinfo.c1c2_flag%type,v_c2_gender  in af_request_applicantinfo.c2_gender%type,v_c2_idnbr in  af_request_applicantinfo.c2_idnbr%type,v_c2_idtype in af_request_applicantinfo.c2_idtype%type,v_c1_gender in af_request_applicantinfo.c1_gender%type,v_c1_idtype in  af_request_applicantinfo.c1_idtype%type,v_c1_idnbr in af_request_applicantinfo.c1_idnbr%type);
     --rule:236
     --@author chen
     --@date 2017-12-1 18:52:00
     procedure RULE_236(app_id_input in varchar2);
     -- rule:155
-    procedure RULE_155(app_id_input in varchar2, v_idnbr in varchar2);
+    procedure RULE_155(app_id_input in varchar2, v_c1_idnbr in varchar2);
     -- rule:156
-    procedure RULE_156(app_id_input in varchar2, v_idnbr in varchar2);
+    procedure RULE_156(app_id_input in varchar2, v_c1_idnbr in varchar2);
     -- rule:158
     procedure RULE_158(app_id_input in varchar2, v_coname in af_request_applicantinfo.c1_coname%type);
     -- rule:160
@@ -526,7 +526,7 @@
     -- rule:70
     -- @author chen
     -- @date 2017-12-1 18:52:00
-    procedure RULE_70(app_id_input in varchar2,v_idnbr in af_request_applicantinfo.c1_idnbr%type) is
+    procedure RULE_70(app_id_input in varchar2,v_c1_idnbr in af_request_applicantinfo.c1_idnbr%type) is
       flag number;
       v_error varchar2(500);
       begin
@@ -534,12 +534,12 @@
         into flag
         from (select t.c1_mobile
               from af_request_applicantinfo t
-              where t.c1_idnbr = v_idnbr
+              where t.c1_idnbr = v_c1_idnbr
                     and t.c1_mobile is not null
               union
               select t.c1_mobile
               from af_request_appinfo_his_hot t
-              where t.c1_idnbr = v_idnbr
+              where t.c1_idnbr = v_c1_idnbr
                     and t.c1_mobile is not null) t;
         if flag >= 2 then
           -- update result data
@@ -560,7 +560,7 @@
     -- rule:71
     -- @author chen
     -- @date 2017-12-1 18:52:00
-    procedure RULE_71(app_id_input in varchar2,v_idnbr in af_request_applicantinfo.c1_idnbr%type) is
+    procedure RULE_71(app_id_input in varchar2,v_c1_idnbr in af_request_applicantinfo.c1_idnbr%type) is
       flag number;
       v_error varchar2(500);
       begin
@@ -568,12 +568,12 @@
         into flag
         from (select t.c1_cotel
               from af_request_applicantinfo t
-              where t.c1_idnbr = v_idnbr
+              where t.c1_idnbr = v_c1_idnbr
                     and t.c1_cotel is not null
               union
               select t.c1_cotel
               from af_request_appinfo_his_hot t
-              where t.c1_idnbr = v_idnbr
+              where t.c1_idnbr = v_c1_idnbr
                     and t.c1_cotel is not null) t ;
         if flag >= 2 then
           -- update result data
@@ -881,28 +881,28 @@
     -- rule:198
     -- @author chen
     -- @date 2017-12-1 18:52:00
-    procedure RULE_198(app_id_input in varchar2,v1v2_flag in af_request_applicantinfo.c1c2_flag%type,v2_gender  in af_request_applicantinfo.c2_gender%type,v2_idnbr in  af_request_applicantinfo.c2_idnbr%type,v2_idtype in af_request_applicantinfo.c2_idtype%type,v_gender in af_request_applicantinfo.c1_gender%type,v_idtype in  af_request_applicantinfo.c1_idtype%type,v_idnbr in af_request_applicantinfo.c1_idnbr%type) is
+    procedure RULE_198(app_id_input in varchar2,v_c1c2_flag in af_request_applicantinfo.c1c2_flag%type,v_c2_gender  in af_request_applicantinfo.c2_gender%type,v_c2_idnbr in  af_request_applicantinfo.c2_idnbr%type,v_c2_idtype in af_request_applicantinfo.c2_idtype%type,v_c1_gender in af_request_applicantinfo.c1_gender%type,v_c1_idtype in  af_request_applicantinfo.c1_idtype%type,v_c1_idnbr in af_request_applicantinfo.c1_idnbr%type) is
       v_error varchar2(500);
       begin
-        --'v_idtype码值和v1v2_flag所对应的码值还需要确定,'
-        if v1v2_flag = '主卡' and nvl(v_gender,'null') != 'null' and v_idtype = '身份证' then
-          if mod(substr(v_idnbr,-2,1),2) = 0 and v_gender = '女' then
+        --'v_c1_idtype码值和v_c1c2_flag所对应的码值还需要确定,'
+        if v_c1c2_flag = '主卡' and nvl(v_c1_gender,'null') != 'null' and v_c1_idtype = '身份证' then
+          if mod(substr(v_c1_idnbr,-2,1),2) = 0 and v_c1_gender = '女' then
             -- update result data
             insert  into af_response_afriskwarning(app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,riskvalue,type,class) select app_id_input as app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,riskvalue,type,class  from af_risk_level_settings  where ruleno = 'RULE_198' and result_type = 'HIT';
             commit;
           end if;
-          if mod(substr(v_idnbr,-2,1),2) = 1 and  v_gender = '男' then
+          if mod(substr(v_c1_idnbr,-2,1),2) = 1 and  v_c1_gender = '男' then
             -- update result data
             insert  into af_response_afriskwarning(app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,riskvalue,type,class) select app_id_input as app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,riskvalue,type,class  from af_risk_level_settings  where ruleno = 'RULE_198' and result_type = 'HIT';
             commit;
           end if;
-        elsif  nvl(v2_gender,'null') != 'null' and v2_idtype = '身份证'  then
-          if mod(substr(v2_idnbr,-2,1),2) = 0 and v2_gender = '女' then
+        elsif  nvl(v_c2_gender,'null') != 'null' and v_c2_idtype= '身份证'  then
+          if mod(substr(v_c2_idnbr,-2,1),2) = 0 and v_c2_gender = '女' then
             -- update result data
             insert  into af_response_afriskwarning(app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,riskvalue,type,class) select app_id_input as app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,riskvalue,type,class  from af_risk_level_settings  where ruleno = 'RULE_198' and result_type = 'HIT';
             commit;
           end if;
-          if mod(substr(v2_idnbr,-2,1),2) = 1 and  v2_gender = '男' then
+          if mod(substr(v_c2_idnbr,-2,1),2) = 1 and  v_c2_gender = '男' then
             -- update result data
             insert  into af_response_afriskwarning(app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,riskvalue,type,class) select app_id_input as app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,riskvalue,type,class  from af_risk_level_settings  where ruleno = 'RULE_198' and result_type = 'HIT';
             commit;
@@ -938,15 +938,15 @@
       end RULE_236;
 
     -- rule:155
-    procedure RULE_155(app_id_input in varchar2,v_idnbr in varchar2) is
+    procedure RULE_155(app_id_input in varchar2,v_c1_idnbr in varchar2) is
       flag number;
       v_error varchar2(500);
       begin
-        if nvl(v_idnbr, 'null') != 'null' then
+        if nvl(v_c1_idnbr, 'null') != 'null' then
           -- TODO certifi_type check?
           select count(1) into flag
           from opas_identity_risklist t
-          where v_idnbr = t.certifi_no and t.curr_status = '1';
+          where v_c1_idnbr = t.certifi_no and t.curr_status = '1';
           -- about curr_status column, mybe we need to add a bitmap index
           -- curr_status must hava value for index and order by
           -- check flag status
@@ -964,15 +964,15 @@
       end RULE_155;
 
     -- rule:156
-    procedure RULE_156(app_id_input in varchar2,v_idnbr in varchar2) is
+    procedure RULE_156(app_id_input in varchar2,v_c1_idnbr in varchar2) is
       flag number;
       v_error varchar2(500);
       begin
-        if nvl(v_idnbr, 'null') != 'null' then
+        if nvl(v_c1_idnbr, 'null') != 'null' then
           -- TODO certifi_type check?
           select count(1) into flag
           from opas_sameindustry_risklist t
-          where v_idnbr = t.certifi_no and t.curr_status = '1';
+          where v_c1_idnbr = t.certifi_no and t.curr_status = '1';
           -- about curr_status column, mybe we need to add a bitmap index
           -- curr_status must hava value for index and order by
           -- check flag status
