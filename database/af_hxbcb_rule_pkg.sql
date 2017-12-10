@@ -1450,19 +1450,14 @@ create or replace package body AF_HXBCB_RULE_PKG as
         insert  into af_response_afriskwarning(app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,riskvalue,type,class) select app_id_input as app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,riskvalue,type,class  from af_risk_level_settings  where ruleno = 'RULE_39' and result_type = 'EMPTY';
       else  select count(n) into flag from
         (select t.industry_type1 as n from af_request_applicantinfo t
-        where app_id = t.app_id and t.industry_type1<>t.industry_type2 and t.industry_type1<>t.industry_type3 and t.industry_type1<>t.industry_type4 and t.industry_type1<>t.industry_type5
          union
          select t.industry_type2 as n from af_request_applicantinfo t
-         where app_id = t.app_id and t.industry_type2<>t.industry_type1 and t.industry_type2<>t.industry_type3 and t.industry_type2<>t.industry_type4 and t.industry_type2<>t.industry_type5
          union
          select t.industry_type3 as n from af_request_applicantinfo t
-         where app_id = t.app_id and t.industry_type3<>t.industry_type1 and t.industry_type3<>t.industry_type2 and t.industry_type3<>t.industry_type4 and t.industry_type3<>t.industry_type5
          union
          select t.industry_type4 as n from af_request_applicantinfo t
-         where app_id = t.app_id and t.industry_type4<>t.industry_type1 and t.industry_type4<>t.industry_type2 and t.industry_type3<>t.industry_type4 and t.industry_type4<>t.industry_type5
          union
          select t.industry_type5 as n from af_request_applicantinfo t
-         where app_id = t.app_id and t.industry_type5<>t.industry_type1 and t.industry_type5<>t.industry_type2 and t.industry_type5<>t.industry_type3 and t.industry_type5<>t.industry_type4
         );
         if flag >= 3 then
           insert  into af_response_afriskwarning(app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,riskvalue,type,class) select app_id_input as app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,riskvalue,type,class  from af_risk_level_settings  where ruleno = 'RULE_39' and result_type = 'HIT';
