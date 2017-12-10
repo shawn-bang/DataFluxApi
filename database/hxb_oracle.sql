@@ -90,6 +90,7 @@ create table af_app_add_today
 -- if exist view v_add_all_his
 DROP VIEW v_add_all_his;
 CREATE VIEW v_add_all_his AS
+  -- 索引: 使用 视图前缀修饰表名的方式(VIVE.TABNAME  INDEX_NAME), 否则不走索引
   select app_id, data_type, cid, addinfomc, blockmc, buildingmc, districtmc, floormc, roommc, streetmc, townmc, unitmc from af_app_add_his
   union all
   select app_id, data_type, cid, addinfomc, blockmc, buildingmc, districtmc, floormc, roommc, streetmc, townmc, unitmc from af_app_add_ext_his;
