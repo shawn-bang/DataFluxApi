@@ -1549,7 +1549,6 @@ create table af_request_appinfo_his_cold(
   c1_nation VARCHAR2(1),
   c1_telvl VARCHAR2(1),
   c1_title VARCHAR2(2),
-  c1_xname1 VARCHAR2(30),
   c1_xship1 VARCHAR2(4),
   c2_iddt1 VARCHAR2(10),
   c2_isdp1 VARCHAR2(6),
@@ -1593,6 +1592,7 @@ create table af_request_appinfo_his_cold(
   epay_match CHAR(1),
   exist_card_flag CHAR(1),
   hd_info_matching CHAR(1),
+  homeaddr VARCHAR2(1000),
   input_channel CHAR(1),
   is_special_cust VARCHAR2(50),
   kq VARCHAR2(10),
@@ -1972,7 +1972,6 @@ comment on column  af_request_appinfo_his_cold.c1_marst is '主卡申请人婚�
 comment on column  af_request_appinfo_his_cold.c1_nation is '主卡申请人国籍';
 comment on column  af_request_appinfo_his_cold.c1_telvl is '主卡申请人职称';
 comment on column  af_request_appinfo_his_cold.c1_title is '主卡申请人岗位';
-comment on column  af_request_appinfo_his_cold.c1_xname1 is '联系人1姓名';
 comment on column  af_request_appinfo_his_cold.c1_xship1 is '联系人1关系';
 comment on column  af_request_appinfo_his_cold.c2_iddt1 is '主卡证件起始日期';
 comment on column  af_request_appinfo_his_cold.c2_isdp1 is '主卡发证机关代码';
@@ -2016,6 +2015,7 @@ comment on column  af_request_appinfo_his_cold.czfq_match is '配发财智分期
 comment on column  af_request_appinfo_his_cold.epay_match is '配发epay卡标志';
 comment on column  af_request_appinfo_his_cold.exist_card_flag is '是否存量客户';
 comment on column  af_request_appinfo_his_cold.hd_info_matching is '手机实名验证项均不一致(华道)';
+comment on column  af_request_appinfo_his_cold.homeaddr is '住宅地址';
 comment on column  af_request_appinfo_his_cold.input_channel is '进件渠道';
 comment on column  af_request_appinfo_his_cold.is_special_cust is '是否特殊客户';
 comment on column  af_request_appinfo_his_cold.kq is '费率_客群类别';
