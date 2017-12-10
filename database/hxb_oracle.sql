@@ -6,7 +6,7 @@ create table af_app_cmp_his
 (
   APP_ID             varchar(20),
   DATA_TYPE          varchar(50),
-  CID                NUMBER(10),
+  CID                varchar(30),
   ADDMC              varchar(256),
   LEGALFORMMC        varchar(256),
   NAMEMC             varchar(256),
@@ -34,7 +34,7 @@ create table af_app_add_his
 (
   APP_ID             varchar(20),
   DATA_TYPE          varchar(50),
-  CID                NUMBER(10),
+  CID                varchar(30),
   ADDINFOMC          varchar(256),
   BLOCKMC            varchar(256),
   BUILDINGMC         varchar(256),
@@ -53,7 +53,7 @@ create table af_app_add_ext_his
 (
   APP_ID             varchar(20),
   DATA_TYPE          varchar(50),
-  CID                NUMBER(10),
+  CID                varchar(30),
   ADDINFOMC          varchar(256),
   BLOCKMC            varchar(256),
   BUILDINGMC         varchar(256),
@@ -86,6 +86,14 @@ create table af_app_add_today
   CITY               varchar(100),
   CREATE_TIME     timestamp default CURRENT_TIMESTAMP
 );
+
+-- if exist view v_add_all_his
+DROP VIEW v_add_all_his;
+CREATE VIEW v_add_all_his AS
+  -- 索引: 使用 视图前缀修饰表名的方式(VIVE.TABNAME  INDEX_NAME), 否则不走索引
+  select app_id, data_type, cid, addinfomc, blockmc, buildingmc, districtmc, floormc, roommc, streetmc, townmc, unitmc from af_app_add_his
+  union all
+  select app_id, data_type, cid, addinfomc, blockmc, buildingmc, districtmc, floormc, roommc, streetmc, townmc, unitmc from af_app_add_ext_his;
 
 -----------------------------------------------------------------------------------------
 -- DDL comment: init Mode and SNA input data relation
@@ -153,6 +161,22 @@ comment on column AF_APP_SNA_RESULT.UPDATE_DATE is '更新日期';
 
 -- create sna conf inputs dependence seq
 create sequence af_sna_conf_input_seq
+minvalue 1
+maxvalue 999999999999
+start with 1
+increment by 1
+nocache;
+
+-- create general cmp cid dependence seq
+create sequence af_cmp_cid_seq
+minvalue 1
+maxvalue 999999999999
+start with 1
+increment by 1
+nocache;
+
+-- create general add cid dependence seq
+create sequence af_add_cid_seq
 minvalue 1
 maxvalue 999999999999
 start with 1
