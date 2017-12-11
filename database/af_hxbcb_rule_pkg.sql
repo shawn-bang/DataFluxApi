@@ -38,11 +38,11 @@ create or replace package AF_HXBCB_RULE_PKG as
   --rule:70
   --@author chen
   --@date 2017-12-1 18:52:00
-  procedure RULE_70(app_id_input in varchar2,v_idnbr af_request_applicantinfo.c1_idnbr%type);
+  procedure RULE_70(app_id_input in varchar2,v_idnbr af_request_applicantinfo.c1_idnbr%type,v_mobile in af_request_applicantinfo.c1_mobile%type);
   --rule:71
   --@author chen
   --@date 2017-12-1 18:52:00
-  procedure RULE_71(app_id_input in varchar2,v_idnbr af_request_applicantinfo.c1_idnbr%type);
+  procedure RULE_71(app_id_input in varchar2,v_idnbr af_request_applicantinfo.c1_idnbr%type,v_cotel in af_request_applicantinfo.c1_cotel%type);
   --rule:98
   --@author chen
   --@date 2017-12-1 18:52:00
