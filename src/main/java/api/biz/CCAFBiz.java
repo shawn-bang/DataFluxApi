@@ -308,41 +308,103 @@ public class CCAFBiz {
 		ArrayList<Row__in> list = new ArrayList<Row__in>();
 		String tmpcmpvalue = null;
 
+		/*-----------------------------------------APP relations-----------------------------------------*/
+
+		// 公司地址 = 公司地址区段1+公司地址区段2+公司地址区段3+公司地址区段4
 		String c1_coadd = applicantinfo.get("c1_coadd1").toString() + applicantinfo.get("c1_coadd2").toString() + applicantinfo.get("c1_coadd3").toString() + applicantinfo.get("c1_coadd4").toString();
 		tmpcmpvalue = c1_coadd.trim();
-		if (StringUtils.isNotBlank(tmpcmpvalue)) {
-			Row__in row = new Row__in();
-			row.setData_source("APP");
-			row.setData_type("c1_coadd");
-			row.setData_value(tmpcmpvalue);
-			row.setEntity_type("ADD");
-			row.setApp_id(appId);
-			list.add(row);
-		}
-
+		setDatafluxRowIn(appId, "APP", "app_c1_coadd", tmpcmpvalue, "ADD", list);
+		// 家庭地址 = 家庭地址区段1+家庭地址区段2+家庭地址区段3+家庭地址区段4
         String c1_hmadd = applicantinfo.get("c1_hmadd1").toString() + applicantinfo.get("c1_hmadd2").toString() + applicantinfo.get("c1_hmadd3").toString() + applicantinfo.get("c1_hmadd4").toString();
         tmpcmpvalue = c1_hmadd.trim();
-		if (StringUtils.isNotBlank(tmpcmpvalue)) {
-            Row__in row = new Row__in();
-            row.setData_source("PBOC");
-            row.setData_type("c1_coadd");
-            row.setData_value(tmpcmpvalue);
-            row.setEntity_type("ADD");
-            row.setApp_id(appId);
-            list.add(row);
-        }
+		setDatafluxRowIn(appId, "APP", "app_c1_hmadd", tmpcmpvalue, "ADD", list);
+		// 公司中文全称
+		tmpcmpvalue = applicantinfo.get("c1_coname").toString();
+		setDatafluxRowIn(appId, "APP", "app_c1_coname", tmpcmpvalue, "CMP", list);
 
-		if (StringUtils.isNotBlank(applicantinfo.get("c1_coname").toString())) {
-            Row__in row = new Row__in();
-            row.setData_source("APP");
-            row.setData_type("c1_coname");
-            row.setData_value(tmpcmpvalue);
-            row.setEntity_type("CMP");
-            row.setApp_id(appId);
-            list.add(row);
-        }
+		/*-----------------------------------------PBOC relations-----------------------------------------*/
 
-        // TODO 剩余模糊匹配字段的输入代码！
+		// 单位地址1
+		tmpcmpvalue = applicantinfo.get("comp_addr1").toString();
+		setDatafluxRowIn(appId, "PBOC", "pboc_comp_addr1", tmpcmpvalue, "ADD", list);
+		// 单位地址2
+		tmpcmpvalue = applicantinfo.get("comp_addr2").toString();
+		setDatafluxRowIn(appId, "PBOC", "pboc_comp_addr2", tmpcmpvalue, "ADD", list);
+		// 单位地址3
+		tmpcmpvalue = applicantinfo.get("comp_addr3").toString();
+		setDatafluxRowIn(appId, "PBOC", "pboc_comp_addr3", tmpcmpvalue, "ADD", list);
+		// 单位地址4
+		tmpcmpvalue = applicantinfo.get("comp_addr4").toString();
+		setDatafluxRowIn(appId, "PBOC", "pboc_comp_addr4", tmpcmpvalue, "ADD", list);
+		// 单位地址5
+		tmpcmpvalue = applicantinfo.get("comp_addr5").toString();
+		setDatafluxRowIn(appId, "PBOC", "pboc_comp_addr5", tmpcmpvalue, "ADD", list);
+		// 工作单位1
+		tmpcmpvalue = applicantinfo.get("comp_addr1").toString();
+		setDatafluxRowIn(appId, "PBOC", "pboc_company1", tmpcmpvalue, "CMP", list);
+		// 工作单位2
+		tmpcmpvalue = applicantinfo.get("comp_addr2").toString();
+		setDatafluxRowIn(appId, "PBOC", "pboc_company2", tmpcmpvalue, "CMP", list);
+		// 工作单位3
+		tmpcmpvalue = applicantinfo.get("comp_addr3").toString();
+		setDatafluxRowIn(appId, "PBOC", "pboc_company3", tmpcmpvalue, "CMP", list);
+		// 工作单位4
+		tmpcmpvalue = applicantinfo.get("comp_addr4").toString();
+		setDatafluxRowIn(appId, "PBOC", "pboc_company4", tmpcmpvalue, "CMP", list);
+		// 工作单位5
+		tmpcmpvalue = applicantinfo.get("comp_addr5").toString();
+		setDatafluxRowIn(appId, "PBOC", "pboc_company5", tmpcmpvalue, "CMP", list);
+
+		// 公积金缴费单位
+		tmpcmpvalue = applicantinfo.get("pboc_gjj_pay_comp").toString();
+		setDatafluxRowIn(appId, "PBOC", "pboc_gjj_pay_comp", tmpcmpvalue, "CMP", list);
+		// 养老保险缴费单位
+		tmpcmpvalue = applicantinfo.get("pboc_yl_pay_comp").toString();
+		setDatafluxRowIn(appId, "PBOC", "pboc_yl_pay_comp", tmpcmpvalue, "CMP", list);
+		// 通讯地址
+		tmpcmpvalue = applicantinfo.get("communication_addr").toString();
+		setDatafluxRowIn(appId, "PBOC", "pboc_comm_addr", tmpcmpvalue, "ADD", list);
+		// 户籍地址
+		tmpcmpvalue = applicantinfo.get("domicile_addr").toString();
+		setDatafluxRowIn(appId, "PBOC", "pboc_domi_addr", tmpcmpvalue, "ADD", list);
+
+		// 居住地址1
+		tmpcmpvalue = applicantinfo.get("resident_addr1").toString();
+		setDatafluxRowIn(appId, "PBOC", "pboc_resident_addr1", tmpcmpvalue, "ADD", list);
+		// 居住地址2
+		tmpcmpvalue = applicantinfo.get("resident_addr2").toString();
+		setDatafluxRowIn(appId, "PBOC", "pboc_resident_addr2", tmpcmpvalue, "ADD", list);
+		// 居住地址3
+		tmpcmpvalue = applicantinfo.get("resident_addr3").toString();
+		setDatafluxRowIn(appId, "PBOC", "pboc_resident_addr3", tmpcmpvalue, "ADD", list);
+		// 居住地址4
+		tmpcmpvalue = applicantinfo.get("resident_addr4").toString();
+		setDatafluxRowIn(appId, "PBOC", "pboc_resident_addr4", tmpcmpvalue, "ADD", list);
+		// 居住地址5
+		tmpcmpvalue = applicantinfo.get("resident_addr5").toString();
+		setDatafluxRowIn(appId, "PBOC", "pboc_resident_addr5", tmpcmpvalue, "ADD", list);
+
+		/*-----------------------------------------CRM relations-----------------------------------------*/
+
+		// 工作单位
+		tmpcmpvalue = applicantinfo.get("company").toString();
+		setDatafluxRowIn(appId, "CRM", "crm_company", tmpcmpvalue, "CMP", list);
+
+		// 联系地址
+		tmpcmpvalue = applicantinfo.get("addr").toString();
+		setDatafluxRowIn(appId, "CRM", "crm_addr", tmpcmpvalue, "ADD", list);
+
+		// 单位地址
+		tmpcmpvalue = applicantinfo.get("busaddr").toString();
+		setDatafluxRowIn(appId, "CRM", "crm_busaddr", tmpcmpvalue, "ADD", list);
+
+		// 住宅地址
+		tmpcmpvalue = applicantinfo.get("homeaddr").toString();
+		setDatafluxRowIn(appId, "CRM", "crm_homeaddr", tmpcmpvalue, "ADD", list);
+
+		// 代发单位名称
+		tmpcmpvalue = applicantinfo.get("com_name").toString();
+		setDatafluxRowIn(appId, "CRM", "crm_com_name", tmpcmpvalue, "CMP", list);
 
 		Row__in[] intab = new Row__in[list.size()];
 		for (int i = 0; i < intab.length; i++) {
@@ -354,6 +416,27 @@ public class CCAFBiz {
 		Long endtime = System.currentTimeMillis();
 		log.info(appId + ":runDataFlux:" + (endtime - starttime));
 		return dfouttab;
+	}
+
+	/**
+	 * 设置dataflux输入字段数据信息
+	 * @param appId
+	 * @param dataSource
+	 * @param dataType
+	 * @param dataValue
+	 * @param entityType
+	 * @param list
+	 */
+	private void setDatafluxRowIn(String appId, String dataSource,String dataType, String dataValue, String entityType, List<Row__in> list) {
+		if (StringUtils.isNotBlank(dataValue)) {
+			Row__in row = new Row__in();
+			row.setData_source(dataSource);
+			row.setData_type(dataType);
+			row.setData_value(dataValue);
+			row.setEntity_type(entityType);
+			row.setApp_id(appId);
+			list.add(row);
+		}
 	}
 
 }
