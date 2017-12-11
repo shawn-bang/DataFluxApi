@@ -469,8 +469,8 @@ create or replace package body AF_HXBCB is
       AF_HXBCB_RULE_PKG.RULE_65(app_id_input,v_cotel,v_hmare,v_hmtel);
       AF_HXBCB_RULE_PKG.RULE_67(app_id_input,v_cycadd1);
       AF_HXBCB_RULE_PKG.RULE_68(app_id_input,v_cycadd1);
-      AF_HXBCB_RULE_PKG.RULE_70(app_id_input,v_idnbr);
-      AF_HXBCB_RULE_PKG.RULE_71(app_id_input,v_idnbr);
+      AF_HXBCB_RULE_PKG.RULE_70(app_id_input,v_idnbr,v_mobile);
+      AF_HXBCB_RULE_PKG.RULE_71(app_id_input,v_idnbr,v_cotel);
       AF_HXBCB_RULE_PKG.RULE_98(app_id_input,v_result_xm);
       AF_HXBCB_RULE_PKG.RULE_138(app_id_input,v_educls,v_educationapproach);
       AF_HXBCB_RULE_PKG.RULE_143(app_id_input,v_frs_cred_crd_issue_mon);
