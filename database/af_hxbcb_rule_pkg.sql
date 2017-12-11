@@ -38,11 +38,11 @@ create or replace package AF_HXBCB_RULE_PKG as
   --rule:70
   --@author chen
   --@date 2017-12-1 18:52:00
-  procedure RULE_70(app_id_input in varchar2,v_idnbr af_request_applicantinfo.c1_idnbr%type);
+  procedure RULE_70(app_id_input in varchar2,v_idnbr af_request_applicantinfo.c1_idnbr%type,v_mobile in af_request_applicantinfo.c1_mobile%type);
   --rule:71
   --@author chen
   --@date 2017-12-1 18:52:00
-  procedure RULE_71(app_id_input in varchar2,v_idnbr af_request_applicantinfo.c1_idnbr%type);
+  procedure RULE_71(app_id_input in varchar2,v_idnbr af_request_applicantinfo.c1_idnbr%type,v_cotel in af_request_applicantinfo.c1_cotel%type);
   --rule:98
   --@author chen
   --@date 2017-12-1 18:52:00
@@ -332,6 +332,7 @@ end AF_HXBCB_RULE_PKG;
 create or replace package body AF_HXBCB_RULE_PKG as
 
 
+
   -- rule:40
   -- @author chen
   -- @date 2017-12-1 18:52:00
@@ -463,8 +464,11 @@ create or replace package body AF_HXBCB_RULE_PKG as
   procedure RULE_65(app_id_input in varchar2,v_cotel in af_request_applicantinfo.c1_cotel%type,v_hmare in af_request_applicantinfo.c1_hmare%type,v_hmtel in af_request_applicantinfo.c1_hmtel%type) is
     v_error varchar2(500);
     begin
-      if nvl(v_hmare,'null') != 'null' and nvl(v_hmtel,'null') != 'null' and nvl(v_cotel,'null') != 'null' and v_hmare || v_hmtel = v_cotel then
+      if nvl(v_hmare,'null') = 'null' or nvl(v_hmtel,'null') = 'null' or nvl(v_cotel,'null') = 'null'  then
         -- update result data
+        insert  into af_response_afriskwarning(app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,riskvalue,type,class) select app_id_input as app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,riskvalue,type,class  from af_risk_level_settings  where ruleno = 'RULE_65' and result_type = 'EMPTY';
+        commit;
+      elsif  v_hmare || v_hmtel = v_cotel then
         insert  into af_response_afriskwarning(app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,riskvalue,type,class) select app_id_input as app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,riskvalue,type,class  from af_risk_level_settings  where ruleno = 'RULE_65' and result_type = 'HIT';
         commit;
       else
@@ -485,13 +489,15 @@ create or replace package body AF_HXBCB_RULE_PKG as
     v_error varchar2(500);
     begin
       -- 假设码值是5,后面还需要根据具体的码表更改
-      if nvl(v_cycadd1,'null') != 'null' and v_cycadd1 = 'B' then
-        -- update result data
-        insert  into af_response_afriskwarning(app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,riskvalue,type,class) select app_id_input as app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,riskvalue,type,class  from af_risk_level_settings  where ruleno = 'RULE_67' and result_type = 'HIT';
-        commit;
-      else
-        insert  into af_response_afriskwarning(app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,riskvalue,type,class) select app_id_input as app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,riskvalue,type,class  from af_risk_level_settings  where ruleno = 'RULE_67' and result_type = 'UNHIT';
-        commit;
+      if nvl(v_cycadd1,'null') != 'null' then
+        if v_cycadd1 = 'B' then
+          -- update result data
+          insert  into af_response_afriskwarning(app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,riskvalue,type,class) select app_id_input as app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,riskvalue,type,class  from af_risk_level_settings  where ruleno = 'RULE_67' and result_type = 'HIT';
+          commit;
+        else
+          insert  into af_response_afriskwarning(app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,riskvalue,type,class) select app_id_input as app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,riskvalue,type,class  from af_risk_level_settings  where ruleno = 'RULE_67' and result_type = 'UNHIT';
+          commit;
+        end if;
       end if;
       -- handle exceptions
       exception when others then v_error := 'RULE_67: ' || sqlerrm;
@@ -507,14 +513,16 @@ create or replace package body AF_HXBCB_RULE_PKG as
     v_error varchar2(500);
     begin
       -- 动态码值,后面还需要根据具体的需求更改
-      if nvl(v_cycadd1,'null') != 'null' and v_cycadd1 = 'H' then
-        -- update result data
-        insert  into af_response_afriskwarning(app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,riskvalue,type,class) select app_id_input as app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,riskvalue,type,class  from af_risk_level_settings  where ruleno = 'RULE_68' and result_type = 'HIT';
-        commit;
-      else
-        -- update result data
-        insert  into af_response_afriskwarning(app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,riskvalue,type,class) select app_id_input as app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,riskvalue,type,class  from af_risk_level_settings  where ruleno = 'RULE_68' and result_type = 'UNHIT';
-        commit;
+      if nvl(v_cycadd1,'null') != 'null' then
+        if v_cycadd1 = 'H' then
+          -- update result data
+          insert  into af_response_afriskwarning(app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,riskvalue,type,class) select app_id_input as app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,riskvalue,type,class  from af_risk_level_settings  where ruleno = 'RULE_68' and result_type = 'HIT';
+          commit;
+        else
+          -- update result data
+          insert  into af_response_afriskwarning(app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,riskvalue,type,class) select app_id_input as app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,riskvalue,type,class  from af_risk_level_settings  where ruleno = 'RULE_68' and result_type = 'UNHIT';
+          commit;
+        end if;
       end if;
       -- handle exceptions
       exception when others then v_error := 'RULE_68: ' || sqlerrm;
@@ -522,33 +530,33 @@ create or replace package body AF_HXBCB_RULE_PKG as
       commit;
       -- don't anything
     end RULE_68;
-
+  --TODO 同71问题
   -- rule:70
   -- @author chen
   -- @date 2017-12-1 18:52:00
-  procedure RULE_70(app_id_input in varchar2,v_idnbr in af_request_applicantinfo.c1_idnbr%type) is
+  procedure RULE_70(app_id_input in varchar2,v_idnbr in af_request_applicantinfo.c1_idnbr%type,v_mobile in af_request_applicantinfo.c1_mobile%type) is
     flag number;
     v_error varchar2(500);
     begin
-      select count(1)
-      into flag
-      from (select t.c1_mobile
-            from af_request_applicantinfo t
-            where t.c1_idnbr = v_idnbr
-                  and t.c1_mobile is not null
-            union
-            select t.c1_mobile
-            from af_request_appinfo_his_hot t
-            where t.c1_idnbr = v_idnbr
-                  and t.c1_mobile is not null) t;
-      if flag >= 2 then
-        -- update result data
-        insert  into af_response_afriskwarning(app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,riskvalue,calculatenum,type,class) select app_id_input as app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,riskvalue,flag as calculatenum ,type,class  from af_risk_level_settings  where ruleno = 'RULE_70' and result_type = 'HIT';
-        commit;
-      else
-        -- update result data
-        insert  into af_response_afriskwarning(app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,riskvalue,type,class) select app_id_input as app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,riskvalue,type,class  from af_risk_level_settings  where ruleno = 'RULE_70' and result_type = 'HIT';
-        commit;
+      if nvl(v_mobile,'null') != 'null' then
+        select distinct (count(t.c1_mobile))
+        into flag
+        from (select t.c1_mobile
+              from af_request_applicantinfo t
+              where t.c1_idnbr = v_idnbr
+              union all
+              select t.c1_mobile
+              from af_request_appinfo_his_hot t
+              where t.c1_idnbr = v_idnbr) t;
+        if flag >= 2 then
+          -- update result data
+          insert  into af_response_afriskwarning(app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,riskvalue,calculatenum,type,class) select app_id_input as app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,riskvalue,flag as calculatenum ,type,class  from af_risk_level_settings  where ruleno = 'RULE_70' and result_type = 'HIT';
+          commit;
+        else
+          -- update result data
+          insert  into af_response_afriskwarning(app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,riskvalue,type,class) select app_id_input as app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,riskvalue,type,class  from af_risk_level_settings  where ruleno = 'RULE_70' and result_type = 'HIT';
+          commit;
+        end if;
       end if;
       -- handle exceptions
       exception when others then v_error := 'RULE_70: ' || sqlerrm;
@@ -556,33 +564,33 @@ create or replace package body AF_HXBCB_RULE_PKG as
       commit;
       -- don't anything
     end RULE_70;
-
+  --TODO 大数据量测试union和distinct的效率,is not null 走不了索引?
   -- rule:71
   -- @author chen
   -- @date 2017-12-1 18:52:00
-  procedure RULE_71(app_id_input in varchar2,v_idnbr in af_request_applicantinfo.c1_idnbr%type) is
+  procedure RULE_71(app_id_input in varchar2,v_idnbr in af_request_applicantinfo.c1_idnbr%type,v_cotel in af_request_applicantinfo.c1_cotel%type) is
     flag number;
     v_error varchar2(500);
     begin
-      select count(1)
-      into flag
-      from (select t.c1_cotel
-            from af_request_applicantinfo t
-            where t.c1_idnbr = v_idnbr
-                  and t.c1_cotel is not null
-            union
-            select t.c1_cotel
-            from af_request_appinfo_his_hot t
-            where t.c1_idnbr = v_idnbr
-                  and t.c1_cotel is not null) t ;
-      if flag >= 2 then
-        -- update result data
-        insert  into af_response_afriskwarning(app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,riskvalue,calculatenum,type,class) select app_id_input as app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,riskvalue,flag as calculatenum,type,class  from af_risk_level_settings  where ruleno = 'RULE_71' and result_type = 'HIT';
-        commit;
-      else
-        -- update result data
-        insert  into af_response_afriskwarning(app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,riskvalue,type,class) select app_id_input as app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,riskvalue,type,class  from af_risk_level_settings  where ruleno = 'RULE_71' and result_type = 'UNHIT';
-        commit;
+      if nvl(v_cotel,'null') != 'null' then
+        select distinct (count(t.c1_cotel))
+        into flag
+        from (select t.c1_cotel
+              from af_request_applicantinfo t
+              where t.c1_idnbr = v_idnbr
+              union all
+              select t.c1_cotel
+              from af_request_appinfo_his_hot t
+              where t.c1_idnbr = v_idnbr) t;
+        if flag >= 2 then
+          -- update result data
+          insert  into af_response_afriskwarning(app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,riskvalue,calculatenum,type,class) select app_id_input as app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,riskvalue,flag as calculatenum,type,class  from af_risk_level_settings  where ruleno = 'RULE_71' and result_type = 'HIT';
+          commit;
+        else
+          -- update result data
+          insert  into af_response_afriskwarning(app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,riskvalue,type,class) select app_id_input as app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,riskvalue,type,class  from af_risk_level_settings  where ruleno = 'RULE_71' and result_type = 'UNHIT';
+          commit;
+        end if;
       end if;
       -- handle exceptions
       exception when others then v_error := 'RULE_71: ' || sqlerrm;
@@ -598,14 +606,16 @@ create or replace package body AF_HXBCB_RULE_PKG as
     v_error varchar2(500);
     begin
       if nvl(v_result_xm,'null') != 'null' then
-        -- result_xm公民身份号码核查结果码值需要确定
-        -- update result data
-        insert  into af_response_afriskwarning(app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,riskvalue,type,class) select app_id_input as app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,riskvalue,type,class  from af_risk_level_settings  where ruleno = 'RULE_98' and result_type = 'HIT';
-        commit;
-      else
-        -- update result data
-        insert  into af_response_afriskwarning(app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,riskvalue,type,class) select app_id_input as app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,riskvalue,type,class  from af_risk_level_settings  where ruleno = 'RULE_98' and result_type = 'UNHIT';
-        commit;
+        if 1 = 1 then
+          --TODO result_xm公民身份号码核查结果码值需要确定
+          -- update result data
+          insert  into af_response_afriskwarning(app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,riskvalue,type,class) select app_id_input as app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,riskvalue,type,class  from af_risk_level_settings  where ruleno = 'RULE_98' and result_type = 'HIT';
+          commit;
+        else
+          -- update result data
+          insert  into af_response_afriskwarning(app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,riskvalue,type,class) select app_id_input as app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,riskvalue,type,class  from af_risk_level_settings  where ruleno = 'RULE_98' and result_type = 'UNHIT';
+          commit;
+        end if;
       end if;
       -- handle exceptions
       exception when others then v_error := 'RULE_98: ' || sqlerrm;
@@ -831,7 +841,7 @@ create or replace package body AF_HXBCB_RULE_PKG as
       if nvl(v_remobil,'null') != 'null' and nvl(v_remobil,'null') != 'null' then
         select count(1)
         into flag from(select app_id
-                       from af_request_appinfo_his_hot t
+                       from af_request_applicantinfo t
                        where t.c1_remobil = v_remobil
                              and t.c1_rename != v_rename
                        union all
@@ -862,14 +872,16 @@ create or replace package body AF_HXBCB_RULE_PKG as
   procedure RULE_182(app_id_input in varchar2,v_coname in af_request_applicantinfo.c1_coname%type) is
     v_error varchar2(500);
     begin
-      if nvl(v_coname,'null') != 'null' and instr(v_coname,'投资') != '0' then
-        -- update result data
-        insert  into af_response_afriskwarning(app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,riskvalue,type,class) select app_id_input as app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,riskvalue,type,class  from af_risk_level_settings  where ruleno = 'RULE_182' and result_type = 'HIT';
-        commit;
-      else
-        -- update result data
-        insert  into af_response_afriskwarning(app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,riskvalue,type,class) select app_id_input as app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,riskvalue,type,class  from af_risk_level_settings  where ruleno = 'RULE_182' and result_type = 'UNHIT';
-        commit;
+      if nvl(v_coname,'null') != 'null' then
+        if instr(v_coname,'投资') != '0' then
+          -- update result data
+          insert  into af_response_afriskwarning(app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,riskvalue,type,class) select app_id_input as app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,riskvalue,type,class  from af_risk_level_settings  where ruleno = 'RULE_182' and result_type = 'HIT';
+          commit;
+        else
+          -- update result data
+          insert  into af_response_afriskwarning(app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,riskvalue,type,class) select app_id_input as app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,riskvalue,type,class  from af_risk_level_settings  where ruleno = 'RULE_182' and result_type = 'UNHIT';
+          commit;
+        end if;
       end if;
       -- handle exceptions
       exception when others then v_error := 'RULE_182: ' || sqlerrm;
@@ -884,6 +896,7 @@ create or replace package body AF_HXBCB_RULE_PKG as
   procedure RULE_198(app_id_input in varchar2,v_c1c2_flag in af_request_applicantinfo.c1c2_flag%type,v_c2_gender  in af_request_applicantinfo.c2_gender%type,v_c2_idnbr in  af_request_applicantinfo.c2_idnbr%type,v_c2_idtype in af_request_applicantinfo.c2_idtype%type,v_gender in af_request_applicantinfo.c1_gender%type,v_idtype in  af_request_applicantinfo.c1_idtype%type,v_idnbr in af_request_applicantinfo.c1_idnbr%type) is
     v_error varchar2(500);
     begin
+      -- TODO
       --'v_idtype码值和v_c1c2_flag所对应的码值还需要确定,'
       if v_c1c2_flag = '主卡' and nvl(v_gender,'null') != 'null' and v_idtype = '身份证' then
         if mod(substr(v_idnbr,-2,1),2) = 0 and v_gender = '女' then
@@ -914,6 +927,64 @@ create or replace package body AF_HXBCB_RULE_PKG as
       commit;
       -- don't anything
     end RULE_198;
+
+  -- rule:234
+  -- @author chen
+  -- @date 2017-12-10 11:35:00
+  procedure RULE_234(app_id_input in varchar2) is
+    v_error varchar2(500);
+    v_risk_type VARCHAR2(10);
+    begin
+      select t.risk_type
+      into v_risk_type
+      from (select t.risk_type
+            from af_request_appinfo_zmivsinfo t
+            where t.app_id = app_id_input
+            order by update_time desc) t
+      where rownum = '1';
+      if nvl(v_risk_type,'null') != 'null' then
+
+        case
+          when v_risk_type = 'R010' then
+          -- update result data
+          insert  into af_response_afriskwarning(app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,riskvalue,type,class) select app_id_input as app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,riskvalue, type,class  from af_risk_level_settings  where ruleno = 'RULE_234' and result_type = 'HIT';
+          commit;
+          when v_risk_type = 'R012' then
+          -- update result data
+          insert  into af_response_afriskwarning(app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,riskvalue,type,class) select app_id_input as app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,riskvalue,type,class  from af_risk_level_settings  where ruleno = 'RULE_234' and result_type = 'HIT';
+          commit;
+          when v_risk_type = 'R013' then
+          -- update result data
+          insert  into af_response_afriskwarning(app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,riskvalue,type,class) select app_id_input as app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,riskvalue,type,class  from af_risk_level_settings  where ruleno = 'RULE_234' and result_type = 'HIT';
+          commit;
+          when v_risk_type = 'R014' then
+          -- update result data
+          insert  into af_response_afriskwarning(app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,riskvalue,type,class) select app_id_input as app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,riskvalue,type,class  from af_risk_level_settings  where ruleno = 'RULE_234' and result_type = 'HIT';
+          commit;
+          when v_risk_type = 'R015' then
+          -- update result data
+          insert  into af_response_afriskwarning(app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,riskvalue,type,class) select app_id_input as app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,riskvalue,type,class  from af_risk_level_settings  where ruleno = 'RULE_234' and result_type = 'HIT';
+          commit;
+          when v_risk_type = 'R019' then
+          -- update result data
+          insert  into af_response_afriskwarning(app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,riskvalue,type,class) select app_id_input as app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,riskvalue,type,class  from af_risk_level_settings  where ruleno = 'RULE_234' and result_type = 'HIT';
+          commit;
+          when v_risk_type = 'R021' then
+          -- update result data
+          insert  into af_response_afriskwarning(app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,riskvalue,type,class) select app_id_input as app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,riskvalue,type,class  from af_risk_level_settings  where ruleno = 'RULE_234' and result_type = 'HIT';
+          commit;
+        else
+          -- update result data
+          insert  into af_response_afriskwarning(app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,riskvalue,type,class) select app_id_input as app_id,riskno,risktype,riskcategory,riskcode,riskdesc,ruleno,riskvalue,type,class  from af_risk_level_settings  where ruleno = 'RULE_234' and result_type = 'UNHIT';
+          commit;
+        end case;
+      end if;
+      -- handle exceptions
+      exception when others then v_error := 'RULE_234: ' || sqlerrm;
+      insert into af_app_prc_logs(app_id, error_logs) values(app_id_input, v_error);
+      commit;
+      -- don't anything
+    end RULE_234;
 
   -- rule:236
   -- @author chen
