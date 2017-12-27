@@ -24,7 +24,7 @@ public class DataManagementServiceStub extends org.apache.axis.client.Stub imple
         org.apache.axis.description.OperationDesc oper;
         org.apache.axis.description.ParameterDesc param;
         oper = new org.apache.axis.description.OperationDesc();
-        oper.setName("datasvc_hxbcb__rt__match.ddf_in");
+        oper.setName("datasvc_hxbcb__dataflux__realtime.ddf_in");
         param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("", "table_"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("archserver.xsd.dataflux.com", "table__in"), Row__in[].class, false, false);
         param.setItemQName(new javax.xml.namespace.QName("", "row"));
         param.setOmittable(true);
@@ -181,6 +181,13 @@ public class DataManagementServiceStub extends org.apache.axis.client.Stub imple
             cachedSerFactories.add(org.apache.axis.encoding.ser.BaseSerializerFactory.createFactory(org.apache.axis.encoding.ser.SimpleSerializerFactory.class, cls, qName));
             cachedDeserFactories.add(org.apache.axis.encoding.ser.BaseDeserializerFactory.createFactory(org.apache.axis.encoding.ser.SimpleDeserializerFactory.class, cls, qName));
 
+            qName = new javax.xml.namespace.QName("archserver.xsd.dataflux.com", ">row__out>datavalueMC");
+            cachedSerQNames.add(qName);
+            cls = String.class;
+            cachedSerClasses.add(cls);
+            cachedSerFactories.add(org.apache.axis.encoding.ser.BaseSerializerFactory.createFactory(org.apache.axis.encoding.ser.SimpleSerializerFactory.class, cls, qName));
+            cachedDeserFactories.add(org.apache.axis.encoding.ser.BaseDeserializerFactory.createFactory(org.apache.axis.encoding.ser.SimpleDeserializerFactory.class, cls, qName));
+
             qName = new javax.xml.namespace.QName("archserver.xsd.dataflux.com", ">row__out>DistrictMC");
             cachedSerQNames.add(qName);
             cls = String.class;
@@ -318,12 +325,6 @@ public class DataManagementServiceStub extends org.apache.axis.client.Stub imple
                 String key = (String) keys.nextElement();
                 _call.setProperty(key, super.cachedProperties.get(key));
             }
-
-            // Auth settings
-            // Local test need
-            _call.setUsername("sas");
-            _call.setPassword("sas@123456");
-
             // All the type mapping information is registered
             // when the first call is made.
             // The type mapping information is actually registered in
@@ -362,19 +363,19 @@ public class DataManagementServiceStub extends org.apache.axis.client.Stub imple
         }
     }
 
-    public Row__out[] datasvc_hxbcb__rt__matchDdf_in(Row__in[] table_) throws java.rmi.RemoteException {
+    public Row__out[] datasvc_hxbcb__dataflux__realtimeDdf_in(Row__in[] table_) throws java.rmi.RemoteException {
         if (super.cachedEndpoint == null) {
             throw new org.apache.axis.NoEndPointException();
         }
         org.apache.axis.client.Call _call = createCall();
         _call.setOperation(_operations[0]);
         _call.setUseSOAPAction(true);
-        _call.setSOAPActionURI("hxbcb_rt_match.ddf*1*5A2880EF7E5E6F86");
+        _call.setSOAPActionURI("hxbcb_dataflux_realtime.ddf*1*5A34FE9005148777");
         _call.setEncodingStyle(null);
         _call.setProperty(org.apache.axis.client.Call.SEND_TYPE_ATTR, Boolean.FALSE);
         _call.setProperty(org.apache.axis.AxisEngine.PROP_DOMULTIREFS, Boolean.FALSE);
         _call.setSOAPVersion(org.apache.axis.soap.SOAPConstants.SOAP11_CONSTANTS);
-        _call.setOperationName(new javax.xml.namespace.QName("archserver.xsd.dataflux.com", "datasvc_hxbcb__rt__match.ddf_in"));
+        _call.setOperationName(new javax.xml.namespace.QName("archserver.xsd.dataflux.com", "datasvc_hxbcb__dataflux__realtime.ddf_in"));
 
         setRequestHeaders(_call);
         setAttachments(_call);

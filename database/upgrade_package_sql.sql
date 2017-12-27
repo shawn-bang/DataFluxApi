@@ -18,11 +18,17 @@
   --推广员姓名 c4_abname
   v_abname af_request_applicantinfo.c4_abname%type;
 
+  --是否命中反洗钱名单 v_aml_flag = aml_flag
+  v_aml_flag af_request_applicantinfo.aml_flag%type;
+
   --申请人呆帐_笔数 v_bad_debt_num = bad_debt_num
   v_bad_debt_num af_request_applicantinfo.bad_debt_num%type;
 
-  --申请人出生日期 v_birth = c2_birth
-  v_birth af_request_applicantinfo.c2_birth%type;
+  --附卡申请人出生日期 v_birth = c1_birth
+  v_birth af_request_applicantinfo.c1_birth%type;
+
+  --附卡申请人出生日期 v_c2_birth = c2_birth
+  v_c2_birth af_request_applicantinfo.c2_birth%type;
 
   --累计缴费月数 v_cumul_pay_months = cumul_pay_months
   v_cumul_pay_months af_request_applicantinfo.cumul_pay_months%type;
@@ -54,6 +60,21 @@
   --申请人单位号码 v_cotel = c1_cotel
   v_cotel af_request_applicantinfo.c1_cotel%type;
 
+  --自购车辆情况  v_carst = c1_carst
+  v_carst af_request_applicantinfo.c1_carst%type;
+
+  --公司性质 v_cokind = c1_cokind
+  v_cokind af_request_applicantinfo.c1_cokind%type;
+
+  --公司服务年数  v_coyr = c1_coyr
+  v_coyr af_request_applicantinfo.c1_coyr%type;
+
+  --主卡卡号 v_cardnbr = c1_cardnbr
+  v_cardnbr af_request_applicantinfo.c1_cardnbr%type;
+
+  --附卡额度占主卡额度百分比  v_credpct = c1_credpct
+  v_credpct af_request_applicantinfo.c1_credpct%type;
+
   --申请人贷记卡逾期_最长逾期月数/最长透支月数 v_debit_co_due_longest_over =debit_co_due_longest_over_due
   v_debit_co_due_longest_over af_request_applicantinfo.debit_co_due_longest_over_due%type;
 
@@ -77,6 +98,12 @@
 
   --申请人学历 v_educationdegree = educationdegree
   v_educationdegree af_request_applicantinfo.educationdegree%type;
+
+  --主卡申请人E-mail地址 v_email = c1_email
+  v_email af_request_applicantinfo.c1_email%type;
+
+  --主卡申请人年收入 v_earn = c1_earn
+  v_earn af_request_applicantinfo.c1_earn%type;
 
   --初缴月份 v_first_deposit_ym = first_deposit_ym
   v_first_deposit_ym af_request_applicantinfo.first_deposit_ym%type;
@@ -126,11 +153,23 @@
   --申请人国际移动设备标志 v_imeienenglish = imeienenglish
   v_imeienenglish af_request_applicantinfo.imeienenglish%type;
 
-  --申请人证件有效日期 v_idte1 = c5_idte1
-  v_idte1 af_request_applicantinfo.c5_idte1%type;
+  --是否特殊客户 v_is_special_cust = is_special_cust
+  v_is_special_cust af_request_applicantinfo.is_special_cust%type;
 
-  --申请人证件起始日期 v_iddt1 = c2_iddt1
-  v_iddt1 af_request_applicantinfo.c2_iddt1%type;
+  --申请人推广推广机构号 v_c5_abcode = c5_abcode
+  v_c5_abcode af_request_applicantinfo.c5_abcode%type;
+
+  --申请人证件有效日期 v_c5_idte1 = c5_idte1
+  v_c5_idte1 af_request_applicantinfo.c5_idte1%type;
+
+  --附卡证件有效日期 v_c5_idte2 = c5_idte2
+  v_c5_idte2 af_request_applicantinfo.c5_idte2%type;
+
+  --附卡证件起始日期 v_c2_iddt1 = c2_iddt1
+  v_c2_iddt1 af_request_applicantinfo.c2_iddt1%type;
+
+  --申请人证件起始日期 v_c2_iddt2 = c2_iddt2
+  v_c2_iddt2 af_request_applicantinfo.c2_iddt2%type;
 
   --申请人证件类型 v_idtype = c1_idtype
   v_idtype af_request_applicantinfo.c1_idtype%type;
@@ -147,6 +186,9 @@
   --申请人手机号码 v_mobile = c1_mobile
   v_mobile af_request_applicantinfo.c1_mobile%type;
 
+  --主卡申请人婚姻状况 v_marst = c1_marst
+  v_marst af_request_applicantinfo.c1_marst%type;
+
   --申请人未销户贷记卡_贷款法人机构数/发卡法人机构数v_no_pd_card_loan_corp_number = no_pd_card_loan_corp_number
   v_no_pd_card_loan_corp_number af_request_applicantinfo.no_pd_card_loan_corp_number%type;
 
@@ -155,6 +197,12 @@
 
   --申请人未销户贷记卡_笔数/账户数v_no_pin_debit_card_acct_num = no_pin_debit_card_acct_num
   v_no_pin_debit_card_acct_num af_request_applicantinfo.no_pin_debit_card_acct_num%type;
+
+  --主卡申请人国籍 v_nation = c1_nation
+  v_nation af_request_applicantinfo.c1_nation%type;
+
+  --附卡申请人国籍 v_c2_nation = c2_nation
+  v_c2_nation af_request_applicantinfo.c2_nation%type;
 
   --逾期天数 v_overdue_day = overdue_day
   v_overdue_day af_request_applicantinfo.overdue_day%type;
@@ -183,6 +231,12 @@
   --最近两年内的查询次数_贷后管理 v_query_rec_2y_sum1=query_rec_2y_sum1
   v_query_rec_2y_sum1 af_request_applicantinfo.query_rec_2y_sum1%type;
 
+  --最近30天内的查询机构数_贷款审批 v_query_org_1m_sum2 = query_org_1m_sum2
+  v_query_org_1m_sum2 af_request_applicantinfo.query_org_1m_sum2%type;
+
+  --最近30天内的查询机构数_信用卡审批 v_query_org_1m_sum3 = query_org_1m_sum3
+  v_query_org_1m_sum3 af_request_applicantinfo.query_org_1m_sum3%type;
+
   --住宅电话 v_resi_tel = resi_tel
   v_resi_tel af_request_applicantinfo.resi_tel%type;
 
@@ -200,6 +254,9 @@
 
   --申请人直系亲属手机 v_remobil = c1_remobil
   v_remobil af_request_applicantinfo.c1_remobil%type;
+
+  --申请人公民身份号码核查结果 v_result_gmsfhm = result_gmsfhm
+  v_result_gmsfhm af_request_applicantinfo.result_gmsfhm%type;
 
   --申请人公民身份号码核查结果 v_result_xm = result_xm
   v_result_xm af_request_applicantinfo.result_xm%type;
@@ -231,11 +288,52 @@
   --附卡申请人证件类型 v_c2_idtype = c2_idtype
   v_c2_idtype af_request_applicantinfo.c2_idtype%type;
 
+  --网申进件标识
+  v_is_online varchar2(1);
+
+  --是否存量客户
+  v_exist_card_flag af_request_applicantinfo.exist_card_flag%type;
+
+  --存量标准卡账户状态
+  v_bk_acc_status af_request_applicantinfo.remain_bk_acc_status%type;
+
+  --存量易达金卡账户状态
+  v_ydj_acc_status af_request_applicantinfo.remian_ydj_acc_status%type;
+
+  --ivs评分
+  v_ivs_score af_request_applicantinfo.ivs_score%type;
+
+  --主卡申请人中文姓名 v_cname = c1_cname
+  v_cname af_request_applicantinfo.c1_cname%type;
+
+  --附卡申请人中文姓名 v_c2_cname = c2_cname
+  v_c2_cname af_request_applicantinfo.c2_cname%type;
+
+  --主卡申请人英文姓名 v_ename = c1_ename
+  v_ename af_request_applicantinfo.c1_ename%type;
+
+  --附卡申请人英文姓名 v_c2_ename = c2_ename
+  v_c2_ename af_request_applicantinfo.c2_ename%type;
+
+  --附卡申请人手机号码 v_c2_mobile = c2_mobile
+  v_c2_mobile af_request_applicantinfo.c2_mobile%type;
+
+  --类型4（公司）邮政编码
+  v_copost af_request_applicantinfo.c1_copost%type;
+
+  --app_id time
+  v_app_time varchar2(8);
+
+  --推广人方式 v_c4_abtype = c4_abtype
+  v_c4_abtype af_request_applicantinfo.c4_abtype%type;
+
+  --附卡与主卡关系 v_c2_relship = c2_relship
+  v_c2_relship af_request_applicantinfo.c2_relship%type;
 
   --声明入口调用过程
   procedure RT_MAIN(app_id_input in varchar2);
   --声明规则调用过程
-  procedure AF_HXBCB_RULE(app_id_input in varchar2);
+  procedure AF_HXBCB_RULE(app_id_input in varchar2, v_app_num in varchar2);
   --声明Model调用过程
   procedure AF_HXBCB_MODEL(app_id_model in varchar2);
   --声明SNA调用过程
@@ -246,6 +344,7 @@
 end AF_HXBCB;
 
 /
+
 create or replace package body AF_HXBCB is
 
   procedure RT_MAIN(app_id_input in varchar2) is
@@ -253,6 +352,7 @@ create or replace package body AF_HXBCB is
     begin
       --从request_applicantinfo获取全局参数
       select
+        aml_flag,
         req_app_num,
         bad_debt_num,
         codeaddrenglish,
@@ -282,17 +382,27 @@ create or replace package body AF_HXBCB is
         c1_gender,
         c1_xname1,
         c1_xmobil1,
+        c1_birth,
+        c1_nation,
+        c1_email,
+        c1_carst,
+        c1_cokind,
+        c1_coyr,
+        c1_cardnbr,
         c1c2_flag,
         c2_iddt1,
+        c2_iddt2,
         c2_birth,
         c2_gender,
         c2_idnbr,
         c2_idtype,
+        c2_nation,
         c4_abuser,
         c4_abname,
         c4_cycadd1,
         c4_apsour,
         c5_idte1,
+        c5_idte2,
         deb_c60overd_month_num,
         deb_c60overd_longest_over_due,
         debit_card_over_due_acct_num,
@@ -304,106 +414,153 @@ create or replace package body AF_HXBCB is
         first_deposit_ym,
         imeienenglish,
         imsienenglish,
-        industry_type1，
-      industry_type2，
-      industry_type3，
-      industry_type4，
-      industry_type5，
-      ipenenglish,
-      loan_overdue_month_num,
-      mate_contact_tel,
-      mate_name,
-      no_pd_card_loan_org_number,
-      no_pd_card_loan_corp_number,
-      no_pin_debit_card_acct_num,
-      opposite_position,
-      overdue_day,
-      pboc_gjj_pay_status,
-      pay_ym,
-      pboc_yl_pay_status,
-      query_rec_2y_sum1,
-      query_rec_2y_sum5,
-      query_org_1m_sum1,
-      query_org_1m_sum5,
-      result_xm,
-      resi_tel,
-      wifimacenenglish
+        industry_type1,
+        industry_type2,
+        industry_type3,
+        industry_type4,
+        industry_type5,
+        ipenenglish,
+        loan_overdue_month_num,
+        mate_contact_tel,
+        mate_name,
+        no_pd_card_loan_org_number,
+        no_pd_card_loan_corp_number,
+        no_pin_debit_card_acct_num,
+        opposite_position,
+        overdue_day,
+        pboc_gjj_pay_status,
+        pay_ym,
+        pboc_yl_pay_status,
+        query_rec_2y_sum1,
+        query_rec_2y_sum5,
+        query_org_1m_sum1,
+        query_org_1m_sum5,
+        query_org_1m_sum2,
+        query_org_1m_sum3,
+        result_xm,
+        result_gmsfhm,
+        resi_tel,
+        wifimacenenglish,
+        substr(app_id, 7, 1),
+        exist_card_flag,
+        remain_bk_acc_status,
+        remian_ydj_acc_status,
+        ivs_score,
+        c5_abcode,
+        c1_cname,
+        c2_cname,
+        c1_ename,
+        c2_ename,
+        c2_mobile,
+        c1_copost,
+        '20' || substr(app_id, 1, 6),
+        c4_abtype,
+        c2_relship
       into
-      v_app_num,
-      v_bad_debt_num,
-      v_codeaddrenglish,
-      v_codeemailenglish,
-      v_codenameenglish,
-      v_cell_phone,
-      v_cumul_pay_months,
-      v_comp_phone,
-      v_coadd,
-      v_hmadd,
-      v_mobile,
-      v_cotel,
-      v_idnbr,
-      v_idtype,
-      v_remobil,
-      v_hmare,
-      v_hmtel,
-      v_coname,
-      v_reship,
-      v_educls,
-      v_hmst,
-      v_retel,
-      v_retelar,
-      v_xtel1,
-      v_xtelar1,
-      v_rename,
-      v_gender,
-      v_xname1,
-      v_xmobil1,
-      v_c1c2_flag,
-      v_iddt1,
-      v_birth,
-      v_c2_gender,
-      v_c2_idnbr,
-      v_c2_idtype,
-      v_abuser,
-      v_abname,
-      v_cycadd1,
-      v_apsour,
-      v_idte1,
-      v_deb_c60overd_month_num,
-      v_deb_c60overd_longest_over,
-      v_debit_card_over_due_acct_num,
-      v_debit_co_due_longest_over,
-      v_debit_card_over_due_month,
-      v_educationdegree,
-      v_educationapproach,
-      v_frs_cred_crd_issue_mon,
-      v_first_deposit_ym,
-      v_imeienenglish,
-      v_imsienenglish,
-      v_industry_type1，
-      v_industry_type2，
-      v_industry_type3，
-      v_industry_type4，
-      v_industry_type5，
-      v_ipenenglish,
-      v_loan_overdue_month_num,
-      v_mate_contact_tel,
-      v_mate_name,
-      v_no_pd_card_loan_org_number,
-      v_no_pd_card_loan_corp_number,
-      v_no_pin_debit_card_acct_num,
-      v_opposite_position,
-      v_overdue_day,
-      v_pboc_gjj_pay_status,
-      v_pay_ym,
-      v_pboc_yl_pay_status,
-      v_query_rec_2y_sum1,
-      v_query_rec_2y_sum5,
-      v_query_org_1m_sum1,
-      v_query_org_1m_sum5,
-      v_result_xm,
-      v_resi_tel,
-      v_wifimacenenglish
+        v_aml_flag,
+        v_app_num,
+        v_bad_debt_num,
+        v_codeaddrenglish,
+        v_codeemailenglish,
+        v_codenameenglish,
+        v_cell_phone,
+        v_cumul_pay_months,
+        v_comp_phone,
+        v_coadd,
+        v_hmadd,
+        v_mobile,
+        v_cotel,
+        v_idnbr,
+        v_idtype,
+        v_remobil,
+        v_hmare,
+        v_hmtel,
+        v_coname,
+        v_reship,
+        v_educls,
+        v_hmst,
+        v_retel,
+        v_retelar,
+        v_xtel1,
+        v_xtelar1,
+        v_rename,
+        v_gender,
+        v_xname1,
+        v_xmobil1,
+        v_birth,
+        v_nation,
+        v_email,
+        v_carst,
+        v_cokind,
+        v_coyr,
+        v_cardnbr,
+        v_c1c2_flag,
+        v_c2_iddt1,
+        v_c2_iddt2,
+        v_c2_birth,
+        v_c2_gender,
+        v_c2_idnbr,
+        v_c2_idtype,
+        v_c2_nation,
+        v_abuser,
+        v_abname,
+        v_cycadd1,
+        v_apsour,
+        v_c5_idte1,
+        v_c5_idte2,
+        v_deb_c60overd_month_num,
+        v_deb_c60overd_longest_over,
+        v_debit_card_over_due_acct_num,
+        v_debit_co_due_longest_over,
+        v_debit_card_over_due_month,
+        v_educationdegree,
+        v_educationapproach,
+        v_frs_cred_crd_issue_mon,
+        v_first_deposit_ym,
+        v_imeienenglish,
+        v_imsienenglish,
+        v_industry_type1,
+        v_industry_type2,
+        v_industry_type3,
+        v_industry_type4,
+        v_industry_type5,
+        v_ipenenglish,
+        v_loan_overdue_month_num,
+        v_mate_contact_tel,
+        v_mate_name,
+        v_no_pd_card_loan_org_number,
+        v_no_pd_card_loan_corp_number,
+        v_no_pin_debit_card_acct_num,
+        v_opposite_position,
+        v_overdue_day,
+        v_pboc_gjj_pay_status,
+        v_pay_ym,
+        v_pboc_yl_pay_status,
+        v_query_rec_2y_sum1,
+        v_query_rec_2y_sum5,
+        v_query_org_1m_sum1,
+        v_query_org_1m_sum5,
+        v_query_org_1m_sum2,
+        v_query_org_1m_sum3,
+        v_result_xm,
+        v_result_gmsfhm,
+        v_resi_tel,
+        v_wifimacenenglish,
+        v_is_online,
+        v_exist_card_flag,
+        v_bk_acc_status,
+        v_ydj_acc_status,
+        v_ivs_score,
+        v_c5_abcode,
+        v_cname,
+        v_c2_cname,
+        v_ename,
+        v_c2_ename,
+        v_c2_mobile,
+        v_copost,
+        v_app_time,
+        v_c4_abtype,
+        v_c2_relship
 
       from af_request_applicantinfo
       where app_id = app_id_input;
@@ -412,8 +569,7 @@ create or replace package body AF_HXBCB is
       -- TODO业务场景是(需要添加流程控制):
       -- 1.申请件首次进来会直接进行黑名单规则计算,不执行模型和SNA计算
       -- 2.黑名单校验不通过业务方会直接拒掉该笔申请,通过后，业务方会带着新数据再次调用接口进行业务规则，模型，SNA完成全部计算
-      AF_HXBCB_RULE(app_id_input);
-      -- 第一次申请只计算黑名单规则
+      AF_HXBCB_RULE(app_id_input, v_app_num);
       if v_app_num > 1 then
         --调用模型
         AF_HXBCB_MODEL(app_id_input);
@@ -437,105 +593,496 @@ create or replace package body AF_HXBCB is
       -- TODO W&H
     end RT_MAIN;
   --规则存储过程
-
-
-
-  procedure AF_HXBCB_RULE(app_id_input in varchar2) is
+  procedure AF_HXBCB_RULE(app_id_input in varchar2, v_app_num in varchar2) is
     rules_riskcode af_response_afriskwarning.riskcode%type;
+    v_start_time varchar2(50);
+    v_end_time varchar2(50);
+    v_cost_time number(10);
     begin
-      -- @author song
-      -- @date 2017-12-2 10:30:00
-      AF_HXBCB_RULE_PKG.RULE_1(app_id_input, v_mate_name,v_reship,v_rename);
-      AF_HXBCB_RULE_PKG.RULE_2(app_id_input, v_mobile,v_cell_phone);
-      AF_HXBCB_RULE_PKG.RULE_20(app_id_input,v_cotel,v_resi_tel);
-      AF_HXBCB_RULE_PKG.RULE_21(app_id_input,v_cotel,v_comp_phone);
-      AF_HXBCB_RULE_PKG.RULE_23(app_id_input, v_hmtel,v_hmare,v_resi_tel);
-      AF_HXBCB_RULE_PKG.RULE_24(app_id_input, v_hmtel,v_hmare,v_comp_phone);
-      AF_HXBCB_RULE_PKG.RULE_26(app_id_input, v_remobil,v_cell_phone);
-      AF_HXBCB_RULE_PKG.RULE_32(app_id_input, v_xmobil1,v_cell_phone);
-      AF_HXBCB_RULE_PKG.RULE_37(app_id_input, v_cumul_pay_months,v_pboc_yl_pay_status);
-      AF_HXBCB_RULE_PKG.RULE_38(app_id_input, v_pboc_gjj_pay_status ,v_pay_ym, v_first_deposit_ym);
-      AF_HXBCB_RULE_PKG.RULE_39(app_id_input, v_industry_type1 ,v_industry_type2 ,v_industry_type3 ,v_industry_type4 ,v_industry_type5);
-      AF_HXBCB_RULE_PKG.RULE_80(app_id_input, v_mobile);
-      AF_HXBCB_RULE_PKG.RULE_175(app_id_input, v_remobil, v_reship);
-      AF_HXBCB_RULE_PKG.RULE_176(app_id_input, v_remobil, v_rename);
-      AF_HXBCB_RULE_PKG.RULE_178(app_id_input, v_xname1, v_xmobil1);
-      -----精确匹配的规则---------------------------
-      AF_HXBCB_RULE_PKG.RULE_40(app_id_input,v_bad_debt_num);
-      AF_HXBCB_RULE_PKG.RULE_42(app_id_input,v_loan_overdue_month_num);
-      AF_HXBCB_RULE_PKG.RULE_44(app_id_input,v_debit_card_over_due_acct_num);
-      AF_HXBCB_RULE_PKG.RULE_45(app_id_input,v_debit_card_over_due_month);
-      AF_HXBCB_RULE_PKG.RULE_46(app_id_input,v_debit_co_due_longest_over);
-      AF_HXBCB_RULE_PKG.RULE_65(app_id_input,v_cotel,v_hmare,v_hmtel);
-      AF_HXBCB_RULE_PKG.RULE_67(app_id_input,v_cycadd1);
-      AF_HXBCB_RULE_PKG.RULE_68(app_id_input,v_cycadd1);
-      AF_HXBCB_RULE_PKG.RULE_70(app_id_input,v_idnbr,v_mobile);
-      AF_HXBCB_RULE_PKG.RULE_71(app_id_input,v_idnbr,v_cotel);
-      AF_HXBCB_RULE_PKG.RULE_98(app_id_input,v_result_xm);
-      AF_HXBCB_RULE_PKG.RULE_138(app_id_input,v_educls,v_educationapproach);
-      AF_HXBCB_RULE_PKG.RULE_143(app_id_input,v_frs_cred_crd_issue_mon);
-      AF_HXBCB_RULE_PKG.RULE_145(app_id_input,v_reship,v_mate_contact_tel,v_remobil);
-      AF_HXBCB_RULE_PKG.RULE_152_1(app_id_input,v_apsour);
-      AF_HXBCB_RULE_PKG.RULE_152_2(app_id_input,v_apsour);
-      AF_HXBCB_RULE_PKG.RULE_152_4(app_id_input,v_apsour);
-      AF_HXBCB_RULE_PKG.RULE_153_2(app_id_input,v_apsour);
-      AF_HXBCB_RULE_PKG.RULE_153_3(app_id_input,v_apsour);
-      AF_HXBCB_RULE_PKG.RULE_179(app_id_input,v_remobil,v_rename);
-      AF_HXBCB_RULE_PKG.RULE_182(app_id_input,v_coname);
-      AF_HXBCB_RULE_PKG.RULE_198(app_id_input,v_c1c2_flag,v_c2_gender,v_c2_idnbr,v_c2_idtype,v_gender,v_idtype,v_idnbr);
-      AF_HXBCB_RULE_PKG.RULE_236(app_id_input);
-      --调用规则包中的黑名单规则编号160
-      AF_HXBCB_RULE_PKG.RULE_155(app_id_input, v_idnbr);
-      AF_HXBCB_RULE_PKG.RULE_156(app_id_input, v_idnbr);
-      AF_HXBCB_RULE_PKG.RULE_158(app_id_input, v_coname);
-      AF_HXBCB_RULE_PKG.RULE_160(app_id_input, v_coadd);
-      AF_HXBCB_RULE_PKG.RULE_162(app_id_input, v_hmadd);
-      AF_HXBCB_RULE_PKG.RULE_164(app_id_input, v_mobile);
-      AF_HXBCB_RULE_PKG.RULE_166(app_id_input, v_cotel);
-      AF_HXBCB_RULE_PKG.RULE_168(app_id_input, v_hmare, v_hmtel);
-      AF_HXBCB_RULE_PKG.RULE_232(app_id_input, v_abuser, v_abname);
+      -- 第一次申请只计算黑名单规则
+      if v_app_num = 1 then
+        --调用规则包中的黑名单规则
+        AF_HXBCB_RULE_PKG.RULE_155(app_id_input, v_idnbr);
+        AF_HXBCB_RULE_PKG.RULE_156(app_id_input, v_idnbr);
+        AF_HXBCB_RULE_PKG.RULE_158(app_id_input, v_coname);
+        AF_HXBCB_RULE_PKG.RULE_160(app_id_input, v_coadd);
+        AF_HXBCB_RULE_PKG.RULE_162(app_id_input, v_hmadd);
+        AF_HXBCB_RULE_PKG.RULE_164(app_id_input, v_mobile);
+        AF_HXBCB_RULE_PKG.RULE_166(app_id_input, v_cotel);
+      else
+        v_start_time := to_char(current_timestamp, 'yyyy-MM-DD HH24:MI:SS.FF3');
+        AF_HXBCB_RULE_PKG.RULE_78(app_id_input, v_remobil);
+        v_end_time := to_char(current_timestamp, 'yyyy-MM-DD HH24:MI:SS.FF3');
+        insert into af_time_recording(app_id, object_name, cost_time, start_time, end_time) values(app_id_input, 'AF_HXBCB_RULE_PKG.RULE_78', 0, v_start_time, v_end_time);
+        commit;
+        v_start_time := to_char(current_timestamp, 'yyyy-MM-DD HH24:MI:SS.FF3');
+        AF_HXBCB_RULE_PKG.RULE_102(app_id_input);
+        v_end_time := to_char(current_timestamp, 'yyyy-MM-DD HH24:MI:SS.FF3');
+        insert into af_time_recording(app_id, object_name, cost_time, start_time, end_time) values(app_id_input, 'AF_HXBCB_RULE_PKG.RULE_102', 0, v_start_time, v_end_time);
+        commit;
+        v_start_time := to_char(current_timestamp, 'yyyy-MM-DD HH24:MI:SS.FF3');
+        AF_HXBCB_RULE_PKG.RULE_122(app_id_input, v_c1c2_flag, v_idtype, v_c2_idtype, v_c5_idte1, v_c5_idte2, v_c2_iddt1, v_c2_iddt2, v_idnbr, v_c2_idnbr, v_app_time);
+        v_end_time := to_char(current_timestamp, 'yyyy-MM-DD HH24:MI:SS.FF3');
+        insert into af_time_recording(app_id, object_name, cost_time, start_time, end_time) values(app_id_input, 'AF_HXBCB_RULE_PKG.RULE_122', 0, v_start_time, v_end_time);
+        commit;
+        v_start_time := to_char(current_timestamp, 'yyyy-MM-DD HH24:MI:SS.FF3');
+        AF_HXBCB_RULE_PKG.RULE_172(app_id_input, v_exist_card_flag, v_bk_acc_status, v_ydj_acc_status);
+        v_end_time := to_char(current_timestamp, 'yyyy-MM-DD HH24:MI:SS.FF3');
+        insert into af_time_recording(app_id, object_name, cost_time, start_time, end_time) values(app_id_input, 'AF_HXBCB_RULE_PKG.RULE_172', 0, v_start_time, v_end_time);
+        commit;
+        v_start_time := to_char(current_timestamp, 'yyyy-MM-DD HH24:MI:SS.FF3');
+        AF_HXBCB_RULE_PKG.RULE_177(app_id_input, v_xmobil1);
+        v_end_time := to_char(current_timestamp, 'yyyy-MM-DD HH24:MI:SS.FF3');
+        insert into af_time_recording(app_id, object_name, cost_time, start_time, end_time) values(app_id_input, 'AF_HXBCB_RULE_PKG.RULE_177', 0, v_start_time, v_end_time);
+        commit;
+        v_start_time := to_char(current_timestamp, 'yyyy-MM-DD HH24:MI:SS.FF3');
+        AF_HXBCB_RULE_PKG.RULE_224(app_id_input, v_is_online);
+        v_end_time := to_char(current_timestamp, 'yyyy-MM-DD HH24:MI:SS.FF3');
+        insert into af_time_recording(app_id, object_name, cost_time, start_time, end_time) values(app_id_input, 'AF_HXBCB_RULE_PKG.RULE_224', 0, v_start_time, v_end_time);
+        commit;
+        v_start_time := to_char(current_timestamp, 'yyyy-MM-DD HH24:MI:SS.FF3');
+        AF_HXBCB_RULE_PKG.RULE_225_227(app_id_input, v_is_online, v_c1c2_flag);
+        v_end_time := to_char(current_timestamp, 'yyyy-MM-DD HH24:MI:SS.FF3');
+        insert into af_time_recording(app_id, object_name, cost_time, start_time, end_time) values(app_id_input, 'AF_HXBCB_RULE_PKG.RULE_225_227', 0, v_start_time, v_end_time);
+        commit;
+        v_start_time := to_char(current_timestamp, 'yyyy-MM-DD HH24:MI:SS.FF3');
+        AF_HXBCB_RULE_PKG.RULE_238(app_id_input, v_is_online, v_cycadd1, v_ivs_score);
+        v_end_time := to_char(current_timestamp, 'yyyy-MM-DD HH24:MI:SS.FF3');
+        insert into af_time_recording(app_id, object_name, cost_time, start_time, end_time) values(app_id_input, 'AF_HXBCB_RULE_PKG.RULE_238', 0, v_start_time, v_end_time);
+        commit;
+        v_start_time := to_char(current_timestamp, 'yyyy-MM-DD HH24:MI:SS.FF3');
+
+        AF_HXBCB_RULE_PKG.RULE_PBOC_CONAME_3(app_id_input);
+        v_end_time := to_char(current_timestamp, 'yyyy-MM-DD HH24:MI:SS.FF3');
+        insert into af_time_recording(app_id, object_name, cost_time, start_time, end_time) values(app_id_input, 'AF_HXBCB_RULE_PKG.RULE_PBOC_CONAME_3', 0, v_start_time, v_end_time);
+        commit;
+        v_start_time := to_char(current_timestamp, 'yyyy-MM-DD HH24:MI:SS.FF3');
+        AF_HXBCB_RULE_PKG.RULE_PBOC_CONAME_4(app_id_input);
+        v_end_time := to_char(current_timestamp, 'yyyy-MM-DD HH24:MI:SS.FF3');
+        insert into af_time_recording(app_id, object_name, cost_time, start_time, end_time) values(app_id_input, 'AF_HXBCB_RULE_PKG.RULE_PBOC_CONAME_4', 0, v_start_time, v_end_time);
+        commit;
+        v_start_time := to_char(current_timestamp, 'yyyy-MM-DD HH24:MI:SS.FF3');
+        AF_HXBCB_RULE_PKG.RULE_40(app_id_input, v_bad_debt_num);
+        v_end_time := to_char(current_timestamp, 'yyyy-MM-DD HH24:MI:SS.FF3');
+        insert into af_time_recording(app_id, object_name, cost_time, start_time, end_time) values(app_id_input, 'AF_HXBCB_RULE_PKG.RULE_40', 0, v_start_time, v_end_time);
+        commit;
+        v_start_time := to_char(current_timestamp, 'yyyy-MM-DD HH24:MI:SS.FF3');
+        AF_HXBCB_RULE_PKG.RULE_44(app_id_input, v_debit_card_over_due_acct_num);
+        v_end_time := to_char(current_timestamp, 'yyyy-MM-DD HH24:MI:SS.FF3');
+        insert into af_time_recording(app_id, object_name, cost_time, start_time, end_time) values(app_id_input, 'AF_HXBCB_RULE_PKG.RULE_44', 0, v_start_time, v_end_time);
+        commit;
+        v_start_time := to_char(current_timestamp, 'yyyy-MM-DD HH24:MI:SS.FF3');
+        AF_HXBCB_RULE_PKG.RULE_45(app_id_input, v_debit_card_over_due_month);
+        v_end_time := to_char(current_timestamp, 'yyyy-MM-DD HH24:MI:SS.FF3');
+        insert into af_time_recording(app_id, object_name, cost_time, start_time, end_time) values(app_id_input, 'AF_HXBCB_RULE_PKG.RULE_45', 0, v_start_time, v_end_time);
+        commit;
+        v_start_time := to_char(current_timestamp, 'yyyy-MM-DD HH24:MI:SS.FF3');
+        AF_HXBCB_RULE_PKG.RULE_46(app_id_input, v_debit_co_due_longest_over);
+        v_end_time := to_char(current_timestamp, 'yyyy-MM-DD HH24:MI:SS.FF3');
+        insert into af_time_recording(app_id, object_name, cost_time, start_time, end_time) values(app_id_input, 'AF_HXBCB_RULE_PKG.RULE_46', 0, v_start_time, v_end_time);
+        commit;
+        v_start_time := to_char(current_timestamp, 'yyyy-MM-DD HH24:MI:SS.FF3');
+        AF_HXBCB_RULE_PKG.RULE_67(app_id_input, v_cycadd1);
+        v_end_time := to_char(current_timestamp, 'yyyy-MM-DD HH24:MI:SS.FF3');
+        insert into af_time_recording(app_id, object_name, cost_time, start_time, end_time) values(app_id_input, 'AF_HXBCB_RULE_PKG.RULE_67', 0, v_start_time, v_end_time);
+        commit;
+        v_start_time := to_char(current_timestamp, 'yyyy-MM-DD HH24:MI:SS.FF3');
+        AF_HXBCB_RULE_PKG.RULE_70(app_id_input, v_idnbr, v_mobile);
+        v_end_time := to_char(current_timestamp, 'yyyy-MM-DD HH24:MI:SS.FF3');
+        insert into af_time_recording(app_id, object_name, cost_time, start_time, end_time) values(app_id_input, 'AF_HXBCB_RULE_PKG.RULE_70', 0, v_start_time, v_end_time);
+        commit;
+        v_start_time := to_char(current_timestamp, 'yyyy-MM-DD HH24:MI:SS.FF3');
+        AF_HXBCB_RULE_PKG.RULE_71(app_id_input, v_idnbr, v_cotel);
+        v_end_time := to_char(current_timestamp, 'yyyy-MM-DD HH24:MI:SS.FF3');
+        insert into af_time_recording(app_id, object_name, cost_time, start_time, end_time) values(app_id_input, 'AF_HXBCB_RULE_PKG.RULE_71', 0, v_start_time, v_end_time);
+        commit;
+        --v_start_time := to_char(current_timestamp, 'yyyy-MM-DD HH24:MI:SS.FF3');
+        --AF_HXBCB_RULE_PKG.RULE_73(app_id_input, v_idnbr);
+        --v_end_time := to_char(current_timestamp, 'yyyy-MM-DD HH24:MI:SS.FF3');
+        --insert into af_time_recording(app_id, object_name, cost_time, start_time, end_time) values(app_id_input, 'AF_HXBCB_RULE_PKG.RULE_73', 0, v_start_time, v_end_time);
+        --commit;
+        v_start_time := to_char(current_timestamp, 'yyyy-MM-DD HH24:MI:SS.FF3');
+        AF_HXBCB_RULE_PKG.RULE_75(app_id_input, v_idnbr);
+        v_end_time := to_char(current_timestamp, 'yyyy-MM-DD HH24:MI:SS.FF3');
+        insert into af_time_recording(app_id, object_name, cost_time, start_time, end_time) values(app_id_input, 'AF_HXBCB_RULE_PKG.RULE_75', 0, v_start_time, v_end_time);
+        commit;
+        v_start_time := to_char(current_timestamp, 'yyyy-MM-DD HH24:MI:SS.FF3');
+        AF_HXBCB_RULE_PKG.RULE_82(app_id_input, v_cotel);
+        v_end_time := to_char(current_timestamp, 'yyyy-MM-DD HH24:MI:SS.FF3');
+        insert into af_time_recording(app_id, object_name, cost_time, start_time, end_time) values(app_id_input, 'AF_HXBCB_RULE_PKG.RULE_82', 0, v_start_time, v_end_time);
+        commit;
+        --v_start_time := to_char(current_timestamp, 'yyyy-MM-DD HH24:MI:SS.FF3');
+        --AF_HXBCB_RULE_PKG.RULE_83(app_id_input, v_cotel);
+        --v_end_time := to_char(current_timestamp, 'yyyy-MM-DD HH24:MI:SS.FF3');
+        --insert into af_time_recording(app_id, object_name, cost_time, start_time, end_time) values(app_id_input, 'AF_HXBCB_RULE_PKG.RULE_83', 0, v_start_time, v_end_time);
+        --commit;
+        v_start_time := to_char(current_timestamp, 'yyyy-MM-DD HH24:MI:SS.FF3');
+        AF_HXBCB_RULE_PKG.RULE_98(app_id_input, v_result_xm, v_result_gmsfhm, v_idtype);
+        v_end_time := to_char(current_timestamp, 'yyyy-MM-DD HH24:MI:SS.FF3');
+        insert into af_time_recording(app_id, object_name, cost_time, start_time, end_time) values(app_id_input, 'AF_HXBCB_RULE_PKG.RULE_98', 0, v_start_time, v_end_time);
+        commit;
+        v_start_time := to_char(current_timestamp, 'yyyy-MM-DD HH24:MI:SS.FF3');
+        AF_HXBCB_RULE_PKG.RULE_116(app_id_input, v_is_online, v_c5_abcode);
+        v_end_time := to_char(current_timestamp, 'yyyy-MM-DD HH24:MI:SS.FF3');
+        insert into af_time_recording(app_id, object_name, cost_time, start_time, end_time) values(app_id_input, 'AF_HXBCB_RULE_PKG.RULE_116', 0, v_start_time, v_end_time);
+        commit;
+        v_start_time := to_char(current_timestamp, 'yyyy-MM-DD HH24:MI:SS.FF3');
+        AF_HXBCB_RULE_PKG.RULE_117(app_id_input, v_cotel);
+        v_end_time := to_char(current_timestamp, 'yyyy-MM-DD HH24:MI:SS.FF3');
+        insert into af_time_recording(app_id, object_name, cost_time, start_time, end_time) values(app_id_input, 'AF_HXBCB_RULE_PKG.RULE_117', 0, v_start_time, v_end_time);
+        commit;
+        v_start_time := to_char(current_timestamp, 'yyyy-MM-DD HH24:MI:SS.FF3');
+        AF_HXBCB_RULE_PKG.RULE_CRM_HMADD_135(app_id_input);
+        v_end_time := to_char(current_timestamp, 'yyyy-MM-DD HH24:MI:SS.FF3');
+        insert into af_time_recording(app_id, object_name, cost_time, start_time, end_time) values(app_id_input, 'AF_HXBCB_RULE_PKG.RULE_CRM_HMADD_135', 0, v_start_time, v_end_time);
+        commit;
+        v_start_time := to_char(current_timestamp, 'yyyy-MM-DD HH24:MI:SS.FF3');
+        AF_HXBCB_RULE_PKG.RULE_CRM_COADD_137(app_id_input);
+        v_end_time := to_char(current_timestamp, 'yyyy-MM-DD HH24:MI:SS.FF3');
+        insert into af_time_recording(app_id, object_name, cost_time, start_time, end_time) values(app_id_input, 'AF_HXBCB_RULE_PKG.RULE_CRM_COADD_137', 0, v_start_time, v_end_time);
+        commit;
+        v_start_time := to_char(current_timestamp, 'yyyy-MM-DD HH24:MI:SS.FF3');
+        AF_HXBCB_RULE_PKG.RULE_138(app_id_input, v_educls, v_educationdegree);
+        v_end_time := to_char(current_timestamp, 'yyyy-MM-DD HH24:MI:SS.FF3');
+        insert into af_time_recording(app_id, object_name, cost_time, start_time, end_time) values(app_id_input, 'AF_HXBCB_RULE_PKG.RULE_138', 0, v_start_time, v_end_time);
+        commit;
+        v_start_time := to_char(current_timestamp, 'yyyy-MM-DD HH24:MI:SS.FF3');
+        AF_HXBCB_RULE_PKG.RULE_143(app_id_input, v_frs_cred_crd_issue_mon);
+        v_end_time := to_char(current_timestamp, 'yyyy-MM-DD HH24:MI:SS.FF3');
+        insert into af_time_recording(app_id, object_name, cost_time, start_time, end_time) values(app_id_input, 'AF_HXBCB_RULE_PKG.RULE_143', 0, v_start_time, v_end_time);
+        commit;
+        v_start_time := to_char(current_timestamp, 'yyyy-MM-DD HH24:MI:SS.FF3');
+        AF_HXBCB_RULE_PKG.RULE_145(app_id_input, v_reship, v_mate_contact_tel, v_remobil);
+        v_end_time := to_char(current_timestamp, 'yyyy-MM-DD HH24:MI:SS.FF3');
+        insert into af_time_recording(app_id, object_name, cost_time, start_time, end_time) values(app_id_input, 'AF_HXBCB_RULE_PKG.RULE_145', 0, v_start_time, v_end_time);
+        commit;
+        v_start_time := to_char(current_timestamp, 'yyyy-MM-DD HH24:MI:SS.FF3');
+        AF_HXBCB_RULE_PKG.RULE_152(app_id_input, v_apsour);
+        v_end_time := to_char(current_timestamp, 'yyyy-MM-DD HH24:MI:SS.FF3');
+        insert into af_time_recording(app_id, object_name, cost_time, start_time, end_time) values(app_id_input, 'AF_HXBCB_RULE_PKG.RULE_152', 0, v_start_time, v_end_time);
+        commit;
+        v_start_time := to_char(current_timestamp, 'yyyy-MM-DD HH24:MI:SS.FF3');
+        AF_HXBCB_RULE_PKG.RULE_178(app_id_input, v_xname1, v_xmobil1);
+        v_end_time := to_char(current_timestamp, 'yyyy-MM-DD HH24:MI:SS.FF3');
+        insert into af_time_recording(app_id, object_name, cost_time, start_time, end_time) values(app_id_input, 'AF_HXBCB_RULE_PKG.RULE_178', 0, v_start_time, v_end_time);
+        commit;
+        v_start_time := to_char(current_timestamp, 'yyyy-MM-DD HH24:MI:SS.FF3');
+        AF_HXBCB_RULE_PKG.RULE_179(app_id_input, v_remobil, v_rename);
+        v_end_time := to_char(current_timestamp, 'yyyy-MM-DD HH24:MI:SS.FF3');
+        insert into af_time_recording(app_id, object_name, cost_time, start_time, end_time) values(app_id_input, 'AF_HXBCB_RULE_PKG.RULE_179', 0, v_start_time, v_end_time);
+        commit;
+        v_start_time := to_char(current_timestamp, 'yyyy-MM-DD HH24:MI:SS.FF3');
+        AF_HXBCB_RULE_PKG.RULE_182(app_id_input, v_coname);
+        v_end_time := to_char(current_timestamp, 'yyyy-MM-DD HH24:MI:SS.FF3');
+        insert into af_time_recording(app_id, object_name, cost_time, start_time, end_time) values(app_id_input, 'AF_HXBCB_RULE_PKG.RULE_182', 0, v_start_time, v_end_time);
+        commit;
+        v_start_time := to_char(current_timestamp, 'yyyy-MM-DD HH24:MI:SS.FF3');
+        AF_HXBCB_RULE_PKG.RULE_198(app_id_input, v_c1c2_flag, v_c2_gender, v_c2_idnbr, v_c2_idtype, v_gender, v_idtype, v_idnbr);
+        v_end_time := to_char(current_timestamp, 'yyyy-MM-DD HH24:MI:SS.FF3');
+        insert into af_time_recording(app_id, object_name, cost_time, start_time, end_time) values(app_id_input, 'AF_HXBCB_RULE_PKG.RULE_198', 0, v_start_time, v_end_time);
+        commit;
+        v_start_time := to_char(current_timestamp, 'yyyy-MM-DD HH24:MI:SS.FF3');
+        AF_HXBCB_RULE_PKG.RULE_234(app_id_input);
+        v_end_time := to_char(current_timestamp, 'yyyy-MM-DD HH24:MI:SS.FF3');
+        insert into af_time_recording(app_id, object_name, cost_time, start_time, end_time) values(app_id_input, 'AF_HXBCB_RULE_PKG.RULE_234', 0, v_start_time, v_end_time);
+        commit;
+        v_start_time := to_char(current_timestamp, 'yyyy-MM-DD HH24:MI:SS.FF3');
+
+        AF_HXBCB_RULE_PKG.RULE_1(app_id_input, v_mate_name, v_reship, v_rename);
+        v_end_time := to_char(current_timestamp, 'yyyy-MM-DD HH24:MI:SS.FF3');
+        insert into af_time_recording(app_id, object_name, cost_time, start_time, end_time) values(app_id_input, 'AF_HXBCB_RULE_PKG.RULE_1', 0, v_start_time, v_end_time);
+        commit;
+        v_start_time := to_char(current_timestamp, 'yyyy-MM-DD HH24:MI:SS.FF3');
+        AF_HXBCB_RULE_PKG.RULE_2(app_id_input, v_mobile, v_cell_phone);
+        v_end_time := to_char(current_timestamp, 'yyyy-MM-DD HH24:MI:SS.FF3');
+        insert into af_time_recording(app_id, object_name, cost_time, start_time, end_time) values(app_id_input, 'AF_HXBCB_RULE_PKG.RULE_2', 0, v_start_time, v_end_time);
+        commit;
+        v_start_time := to_char(current_timestamp, 'yyyy-MM-DD HH24:MI:SS.FF3');
+        AF_HXBCB_RULE_PKG.RULE_PBOC_CONAME_6(app_id_input);
+        v_end_time := to_char(current_timestamp, 'yyyy-MM-DD HH24:MI:SS.FF3');
+        insert into af_time_recording(app_id, object_name, cost_time, start_time, end_time) values(app_id_input, 'AF_HXBCB_RULE_PKG.RULE_PBOC_CONAME_6', 0, v_start_time, v_end_time);
+        commit;
+        v_start_time := to_char(current_timestamp, 'yyyy-MM-DD HH24:MI:SS.FF3');
+        AF_HXBCB_RULE_PKG.RULE_PBOC_HMADD_7(app_id_input);
+        v_end_time := to_char(current_timestamp, 'yyyy-MM-DD HH24:MI:SS.FF3');
+        insert into af_time_recording(app_id, object_name, cost_time, start_time, end_time) values(app_id_input, 'AF_HXBCB_RULE_PKG.RULE_PBOC_HMADD_7', 0, v_start_time, v_end_time);
+        commit;
+        v_start_time := to_char(current_timestamp, 'yyyy-MM-DD HH24:MI:SS.FF3');
+        AF_HXBCB_RULE_PKG.RULE_PBOC_HMADD_8(app_id_input);
+        v_end_time := to_char(current_timestamp, 'yyyy-MM-DD HH24:MI:SS.FF3');
+        insert into af_time_recording(app_id, object_name, cost_time, start_time, end_time) values(app_id_input, 'AF_HXBCB_RULE_PKG.RULE_PBOC_HMADD_8', 0, v_start_time, v_end_time);
+        commit;
+        v_start_time := to_char(current_timestamp, 'yyyy-MM-DD HH24:MI:SS.FF3');
+        AF_HXBCB_RULE_PKG.RULE_PBOC_COADD_13(app_id_input);
+        v_end_time := to_char(current_timestamp, 'yyyy-MM-DD HH24:MI:SS.FF3');
+        insert into af_time_recording(app_id, object_name, cost_time, start_time, end_time) values(app_id_input, 'AF_HXBCB_RULE_PKG.RULE_PBOC_COADD_13', 0, v_start_time, v_end_time);
+        commit;
+        v_start_time := to_char(current_timestamp, 'yyyy-MM-DD HH24:MI:SS.FF3');
+        AF_HXBCB_RULE_PKG.RULE_PBOC_COADD_14(app_id_input);
+        v_end_time := to_char(current_timestamp, 'yyyy-MM-DD HH24:MI:SS.FF3');
+        insert into af_time_recording(app_id, object_name, cost_time, start_time, end_time) values(app_id_input, 'AF_HXBCB_RULE_PKG.RULE_PBOC_COADD_14', 0, v_start_time, v_end_time);
+        commit;
+        v_start_time := to_char(current_timestamp, 'yyyy-MM-DD HH24:MI:SS.FF3');
+        AF_HXBCB_RULE_PKG.RULE_PBOC_COADD_15(app_id_input);
+        v_end_time := to_char(current_timestamp, 'yyyy-MM-DD HH24:MI:SS.FF3');
+        insert into af_time_recording(app_id, object_name, cost_time, start_time, end_time) values(app_id_input, 'AF_HXBCB_RULE_PKG.RULE_PBOC_COADD_15', 0, v_start_time, v_end_time);
+        commit;
+        v_start_time := to_char(current_timestamp, 'yyyy-MM-DD HH24:MI:SS.FF3');
+        AF_HXBCB_RULE_PKG.RULE_20(app_id_input, v_cotel, v_resi_tel);
+        v_end_time := to_char(current_timestamp, 'yyyy-MM-DD HH24:MI:SS.FF3');
+        insert into af_time_recording(app_id, object_name, cost_time, start_time, end_time) values(app_id_input, 'AF_HXBCB_RULE_PKG.RULE_20', 0, v_start_time, v_end_time);
+        commit;
+        v_start_time := to_char(current_timestamp, 'yyyy-MM-DD HH24:MI:SS.FF3');
+        AF_HXBCB_RULE_PKG.RULE_21(app_id_input, v_cotel, v_comp_phone);
+        v_end_time := to_char(current_timestamp, 'yyyy-MM-DD HH24:MI:SS.FF3');
+        insert into af_time_recording(app_id, object_name, cost_time, start_time, end_time) values(app_id_input, 'AF_HXBCB_RULE_PKG.RULE_21', 0, v_start_time, v_end_time);
+        commit;
+        v_start_time := to_char(current_timestamp, 'yyyy-MM-DD HH24:MI:SS.FF3');
+        AF_HXBCB_RULE_PKG.RULE_23(app_id_input, v_hmtel, v_hmare, v_resi_tel);
+        v_end_time := to_char(current_timestamp, 'yyyy-MM-DD HH24:MI:SS.FF3');
+        insert into af_time_recording(app_id, object_name, cost_time, start_time, end_time) values(app_id_input, 'AF_HXBCB_RULE_PKG.RULE_23', 0, v_start_time, v_end_time);
+        commit;
+        v_start_time := to_char(current_timestamp, 'yyyy-MM-DD HH24:MI:SS.FF3');
+        AF_HXBCB_RULE_PKG.RULE_24(app_id_input, v_hmtel, v_hmare, v_comp_phone);
+        v_end_time := to_char(current_timestamp, 'yyyy-MM-DD HH24:MI:SS.FF3');
+        insert into af_time_recording(app_id, object_name, cost_time, start_time, end_time) values(app_id_input, 'AF_HXBCB_RULE_PKG.RULE_24', 0, v_start_time, v_end_time);
+        commit;
+        v_start_time := to_char(current_timestamp, 'yyyy-MM-DD HH24:MI:SS.FF3');
+        AF_HXBCB_RULE_PKG.RULE_26(app_id_input, v_remobil, v_comp_phone);
+        v_end_time := to_char(current_timestamp, 'yyyy-MM-DD HH24:MI:SS.FF3');
+        insert into af_time_recording(app_id, object_name, cost_time, start_time, end_time) values(app_id_input, 'AF_HXBCB_RULE_PKG.RULE_26', 0, v_start_time, v_end_time);
+        commit;
+        v_start_time := to_char(current_timestamp, 'yyyy-MM-DD HH24:MI:SS.FF3');
+        AF_HXBCB_RULE_PKG.RULE_32(app_id_input, v_xmobil1, v_cell_phone);
+        v_end_time := to_char(current_timestamp, 'yyyy-MM-DD HH24:MI:SS.FF3');
+        insert into af_time_recording(app_id, object_name, cost_time, start_time, end_time) values(app_id_input, 'AF_HXBCB_RULE_PKG.RULE_32', 0, v_start_time, v_end_time);
+        commit;
+        v_start_time := to_char(current_timestamp, 'yyyy-MM-DD HH24:MI:SS.FF3');
+        AF_HXBCB_RULE_PKG.RULE_38(app_id_input, v_pboc_gjj_pay_status, v_pay_ym, v_first_deposit_ym);
+        v_end_time := to_char(current_timestamp, 'yyyy-MM-DD HH24:MI:SS.FF3');
+        insert into af_time_recording(app_id, object_name, cost_time, start_time, end_time) values(app_id_input, 'AF_HXBCB_RULE_PKG.RULE_38', 0, v_start_time, v_end_time);
+        commit;
+        v_start_time := to_char(current_timestamp, 'yyyy-MM-DD HH24:MI:SS.FF3');
+        AF_HXBCB_RULE_PKG.RULE_39(app_id_input, v_industry_type1, v_industry_type2, v_industry_type3, v_industry_type4, v_industry_type5);
+        v_end_time := to_char(current_timestamp, 'yyyy-MM-DD HH24:MI:SS.FF3');
+        insert into af_time_recording(app_id, object_name, cost_time, start_time, end_time) values(app_id_input, 'AF_HXBCB_RULE_PKG.RULE_39', 0, v_start_time, v_end_time);
+        commit;
+        v_start_time := to_char(current_timestamp, 'yyyy-MM-DD HH24:MI:SS.FF3');
+        AF_HXBCB_RULE_PKG.RULE_42(app_id_input, v_loan_overdue_month_num);
+        v_end_time := to_char(current_timestamp, 'yyyy-MM-DD HH24:MI:SS.FF3');
+        insert into af_time_recording(app_id, object_name, cost_time, start_time, end_time) values(app_id_input, 'AF_HXBCB_RULE_PKG.RULE_42', 0, v_start_time, v_end_time);
+        commit;
+        v_start_time := to_char(current_timestamp, 'yyyy-MM-DD HH24:MI:SS.FF3');
+        AF_HXBCB_RULE_PKG.RULE_53(app_id_input, v_query_org_1m_sum2);
+        v_end_time := to_char(current_timestamp, 'yyyy-MM-DD HH24:MI:SS.FF3');
+        insert into af_time_recording(app_id, object_name, cost_time, start_time, end_time) values(app_id_input, 'AF_HXBCB_RULE_PKG.RULE_53', 0, v_start_time, v_end_time);
+        commit;
+        v_start_time := to_char(current_timestamp, 'yyyy-MM-DD HH24:MI:SS.FF3');
+        AF_HXBCB_RULE_PKG.RULE_54(app_id_input, v_query_org_1m_sum3);
+        v_end_time := to_char(current_timestamp, 'yyyy-MM-DD HH24:MI:SS.FF3');
+        insert into af_time_recording(app_id, object_name, cost_time, start_time, end_time) values(app_id_input, 'AF_HXBCB_RULE_PKG.RULE_54', 0, v_start_time, v_end_time);
+        commit;
+        v_start_time := to_char(current_timestamp, 'yyyy-MM-DD HH24:MI:SS.FF3');
+        AF_HXBCB_RULE_PKG.RULE_80(app_id_input, v_mobile);
+        v_end_time := to_char(current_timestamp, 'yyyy-MM-DD HH24:MI:SS.FF3');
+        insert into af_time_recording(app_id, object_name, cost_time, start_time, end_time) values(app_id_input, 'AF_HXBCB_RULE_PKG.RULE_80', 0, v_start_time, v_end_time);
+        commit;
+        v_start_time := to_char(current_timestamp, 'yyyy-MM-DD HH24:MI:SS.FF3');
+        AF_HXBCB_RULE_PKG.RULE_84(app_id_input, v_hmare, v_hmtel);
+        v_end_time := to_char(current_timestamp, 'yyyy-MM-DD HH24:MI:SS.FF3');
+        insert into af_time_recording(app_id, object_name, cost_time, start_time, end_time) values(app_id_input, 'AF_HXBCB_RULE_PKG.RULE_84', 0, v_start_time, v_end_time);
+        commit;
+        v_start_time := to_char(current_timestamp, 'yyyy-MM-DD HH24:MI:SS.FF3');
+        AF_HXBCB_RULE_PKG.RULE_CRM_COADD_136(app_id_input);
+        v_end_time := to_char(current_timestamp, 'yyyy-MM-DD HH24:MI:SS.FF3');
+        insert into af_time_recording(app_id, object_name, cost_time, start_time, end_time) values(app_id_input, 'AF_HXBCB_RULE_PKG.RULE_CRM_COADD_136', 0, v_start_time, v_end_time);
+        commit;
+        v_start_time := to_char(current_timestamp, 'yyyy-MM-DD HH24:MI:SS.FF3');
+        AF_HXBCB_RULE_PKG.RULE_170(app_id_input, v_idtype);
+        v_end_time := to_char(current_timestamp, 'yyyy-MM-DD HH24:MI:SS.FF3');
+        insert into af_time_recording(app_id, object_name, cost_time, start_time, end_time) values(app_id_input, 'AF_HXBCB_RULE_PKG.RULE_170', 0, v_start_time, v_end_time);
+        commit;
+        v_start_time := to_char(current_timestamp, 'yyyy-MM-DD HH24:MI:SS.FF3');
+        AF_HXBCB_RULE_PKG.RULE_175(app_id_input, v_remobil, v_reship, v_idnbr);
+        v_end_time := to_char(current_timestamp, 'yyyy-MM-DD HH24:MI:SS.FF3');
+        insert into af_time_recording(app_id, object_name, cost_time, start_time, end_time) values(app_id_input, 'AF_HXBCB_RULE_PKG.RULE_175', 0, v_start_time, v_end_time);
+        commit;
+        v_start_time := to_char(current_timestamp, 'yyyy-MM-DD HH24:MI:SS.FF3');
+        AF_HXBCB_RULE_PKG.RULE_176(app_id_input, v_remobil, v_rename);
+        v_end_time := to_char(current_timestamp, 'yyyy-MM-DD HH24:MI:SS.FF3');
+        insert into af_time_recording(app_id, object_name, cost_time, start_time, end_time) values(app_id_input, 'AF_HXBCB_RULE_PKG.RULE_176', 0, v_start_time, v_end_time);
+        commit;
+        v_start_time := to_char(current_timestamp, 'yyyy-MM-DD HH24:MI:SS.FF3');
+        AF_HXBCB_RULE_PKG.RULE_195(app_id_input, v_cname, v_c2_cname, v_c1c2_flag);
+        v_end_time := to_char(current_timestamp, 'yyyy-MM-DD HH24:MI:SS.FF3');
+        insert into af_time_recording(app_id, object_name, cost_time, start_time, end_time) values(app_id_input, 'AF_HXBCB_RULE_PKG.RULE_195', 0, v_start_time, v_end_time);
+        commit;
+        v_start_time := to_char(current_timestamp, 'yyyy-MM-DD HH24:MI:SS.FF3');
+        AF_HXBCB_RULE_PKG.RULE_196(app_id_input, v_ename, v_c2_ename, v_c1c2_flag);
+        v_end_time := to_char(current_timestamp, 'yyyy-MM-DD HH24:MI:SS.FF3');
+        insert into af_time_recording(app_id, object_name, cost_time, start_time, end_time) values(app_id_input, 'AF_HXBCB_RULE_PKG.RULE_196', 0, v_start_time, v_end_time);
+        commit;
+        v_start_time := to_char(current_timestamp, 'yyyy-MM-DD HH24:MI:SS.FF3');
+        AF_HXBCB_RULE_PKG.RULE_197(app_id_input, v_idnbr, v_c2_idnbr, v_c1c2_flag);
+        v_end_time := to_char(current_timestamp, 'yyyy-MM-DD HH24:MI:SS.FF3');
+        insert into af_time_recording(app_id, object_name, cost_time, start_time, end_time) values(app_id_input, 'AF_HXBCB_RULE_PKG.RULE_197', 0, v_start_time, v_end_time);
+        commit;
+        v_start_time := to_char(current_timestamp, 'yyyy-MM-DD HH24:MI:SS.FF3');
+        AF_HXBCB_RULE_PKG.RULE_199(app_id_input, v_c2_birth, v_c2_idnbr, v_c2_idtype, v_birth, v_idtype, v_idnbr, v_c1c2_flag);
+        v_end_time := to_char(current_timestamp, 'yyyy-MM-DD HH24:MI:SS.FF3');
+        insert into af_time_recording(app_id, object_name, cost_time, start_time, end_time) values(app_id_input, 'AF_HXBCB_RULE_PKG.RULE_199', 0, v_start_time, v_end_time);
+        commit;
+        v_start_time := to_char(current_timestamp, 'yyyy-MM-DD HH24:MI:SS.FF3');
+        AF_HXBCB_RULE_PKG.RULE_200(app_id_input, v_nation, v_c2_nation, v_c1c2_flag);
+        v_end_time := to_char(current_timestamp, 'yyyy-MM-DD HH24:MI:SS.FF3');
+        insert into af_time_recording(app_id, object_name, cost_time, start_time, end_time) values(app_id_input, 'AF_HXBCB_RULE_PKG.RULE_200', 0, v_start_time, v_end_time);
+        commit;
+        v_start_time := to_char(current_timestamp, 'yyyy-MM-DD HH24:MI:SS.FF3');
+        AF_HXBCB_RULE_PKG.RULE_201(app_id_input, v_idtype, v_c2_idtype, v_c1c2_flag);
+        v_end_time := to_char(current_timestamp, 'yyyy-MM-DD HH24:MI:SS.FF3');
+        insert into af_time_recording(app_id, object_name, cost_time, start_time, end_time) values(app_id_input, 'AF_HXBCB_RULE_PKG.RULE_201', 0, v_start_time, v_end_time);
+        commit;
+        v_start_time := to_char(current_timestamp, 'yyyy-MM-DD HH24:MI:SS.FF3');
+        AF_HXBCB_RULE_PKG.RULE_202(app_id_input, v_c2_iddt1, v_c2_iddt2, v_c1c2_flag);
+        v_end_time := to_char(current_timestamp, 'yyyy-MM-DD HH24:MI:SS.FF3');
+        insert into af_time_recording(app_id, object_name, cost_time, start_time, end_time) values(app_id_input, 'AF_HXBCB_RULE_PKG.RULE_202', 0, v_start_time, v_end_time);
+        commit;
+        v_start_time := to_char(current_timestamp, 'yyyy-MM-DD HH24:MI:SS.FF3');
+        AF_HXBCB_RULE_PKG.RULE_203(app_id_input, v_c5_idte1, v_c5_idte2, v_c1c2_flag);
+        v_end_time := to_char(current_timestamp, 'yyyy-MM-DD HH24:MI:SS.FF3');
+        insert into af_time_recording(app_id, object_name, cost_time, start_time, end_time) values(app_id_input, 'AF_HXBCB_RULE_PKG.RULE_203', 0, v_start_time, v_end_time);
+        commit;
+        v_start_time := to_char(current_timestamp, 'yyyy-MM-DD HH24:MI:SS.FF3');
+        AF_HXBCB_RULE_PKG.RULE_204(app_id_input, v_marst, v_c1c2_flag);
+        v_end_time := to_char(current_timestamp, 'yyyy-MM-DD HH24:MI:SS.FF3');
+        insert into af_time_recording(app_id, object_name, cost_time, start_time, end_time) values(app_id_input, 'AF_HXBCB_RULE_PKG.RULE_204', 0, v_start_time, v_end_time);
+        commit;
+        v_start_time := to_char(current_timestamp, 'yyyy-MM-DD HH24:MI:SS.FF3');
+        AF_HXBCB_RULE_PKG.RULE_205(app_id_input, v_educls, v_c1c2_flag);
+        v_end_time := to_char(current_timestamp, 'yyyy-MM-DD HH24:MI:SS.FF3');
+        insert into af_time_recording(app_id, object_name, cost_time, start_time, end_time) values(app_id_input, 'AF_HXBCB_RULE_PKG.RULE_205', 0, v_start_time, v_end_time);
+        commit;
+        v_start_time := to_char(current_timestamp, 'yyyy-MM-DD HH24:MI:SS.FF3');
+        AF_HXBCB_RULE_PKG.RULE_206(app_id_input, v_mobile, v_c2_mobile, v_c1c2_flag);
+        v_end_time := to_char(current_timestamp, 'yyyy-MM-DD HH24:MI:SS.FF3');
+        insert into af_time_recording(app_id, object_name, cost_time, start_time, end_time) values(app_id_input, 'AF_HXBCB_RULE_PKG.RULE_206', 0, v_start_time, v_end_time);
+        commit;
+        v_start_time := to_char(current_timestamp, 'yyyy-MM-DD HH24:MI:SS.FF3');
+        AF_HXBCB_RULE_PKG.RULE_207(app_id_input, v_cotel, v_c1c2_flag);
+        v_end_time := to_char(current_timestamp, 'yyyy-MM-DD HH24:MI:SS.FF3');
+        insert into af_time_recording(app_id, object_name, cost_time, start_time, end_time) values(app_id_input, 'AF_HXBCB_RULE_PKG.RULE_207', 0, v_start_time, v_end_time);
+        commit;
+        v_start_time := to_char(current_timestamp, 'yyyy-MM-DD HH24:MI:SS.FF3');
+        AF_HXBCB_RULE_PKG.RULE_208(app_id_input, v_coadd, v_c1c2_flag);
+        v_end_time := to_char(current_timestamp, 'yyyy-MM-DD HH24:MI:SS.FF3');
+        insert into af_time_recording(app_id, object_name, cost_time, start_time, end_time) values(app_id_input, 'AF_HXBCB_RULE_PKG.RULE_208', 0, v_start_time, v_end_time);
+        commit;
+        v_start_time := to_char(current_timestamp, 'yyyy-MM-DD HH24:MI:SS.FF3');
+        AF_HXBCB_RULE_PKG.RULE_209(app_id_input, v_hmadd, v_c1c2_flag);
+        v_end_time := to_char(current_timestamp, 'yyyy-MM-DD HH24:MI:SS.FF3');
+        insert into af_time_recording(app_id, object_name, cost_time, start_time, end_time) values(app_id_input, 'AF_HXBCB_RULE_PKG.RULE_209', 0, v_start_time, v_end_time);
+        commit;
+        v_start_time := to_char(current_timestamp, 'yyyy-MM-DD HH24:MI:SS.FF3');
+        AF_HXBCB_RULE_PKG.RULE_210(app_id_input, v_email, v_c1c2_flag);
+        v_end_time := to_char(current_timestamp, 'yyyy-MM-DD HH24:MI:SS.FF3');
+        insert into af_time_recording(app_id, object_name, cost_time, start_time, end_time) values(app_id_input, 'AF_HXBCB_RULE_PKG.RULE_210', 0, v_start_time, v_end_time);
+        commit;
+        v_start_time := to_char(current_timestamp, 'yyyy-MM-DD HH24:MI:SS.FF3');
+        AF_HXBCB_RULE_PKG.RULE_211(app_id_input, v_copost, v_c1c2_flag);
+        v_end_time := to_char(current_timestamp, 'yyyy-MM-DD HH24:MI:SS.FF3');
+        insert into af_time_recording(app_id, object_name, cost_time, start_time, end_time) values(app_id_input, 'AF_HXBCB_RULE_PKG.RULE_211', 0, v_start_time, v_end_time);
+        commit;
+        v_start_time := to_char(current_timestamp, 'yyyy-MM-DD HH24:MI:SS.FF3');
+        AF_HXBCB_RULE_PKG.RULE_212(app_id_input, v_rename, v_c1c2_flag);
+        v_end_time := to_char(current_timestamp, 'yyyy-MM-DD HH24:MI:SS.FF3');
+        insert into af_time_recording(app_id, object_name, cost_time, start_time, end_time) values(app_id_input, 'AF_HXBCB_RULE_PKG.RULE_212', 0, v_start_time, v_end_time);
+        commit;
+        v_start_time := to_char(current_timestamp, 'yyyy-MM-DD HH24:MI:SS.FF3');
+        AF_HXBCB_RULE_PKG.RULE_213(app_id_input, v_retelar, v_retel, v_remobil);
+        v_end_time := to_char(current_timestamp, 'yyyy-MM-DD HH24:MI:SS.FF3');
+        insert into af_time_recording(app_id, object_name, cost_time, start_time, end_time) values(app_id_input, 'AF_HXBCB_RULE_PKG.RULE_213', 0, v_start_time, v_end_time);
+        commit;
+        v_start_time := to_char(current_timestamp, 'yyyy-MM-DD HH24:MI:SS.FF3');
+        AF_HXBCB_RULE_PKG.RULE_214(app_id_input, v_xname1, v_c1c2_flag);
+        v_end_time := to_char(current_timestamp, 'yyyy-MM-DD HH24:MI:SS.FF3');
+        insert into af_time_recording(app_id, object_name, cost_time, start_time, end_time) values(app_id_input, 'AF_HXBCB_RULE_PKG.RULE_214', 0, v_start_time, v_end_time);
+        commit;
+        v_start_time := to_char(current_timestamp, 'yyyy-MM-DD HH24:MI:SS.FF3');
+        AF_HXBCB_RULE_PKG.RULE_215(app_id_input, v_xtel1, v_xtelar1, v_xmobil1, v_c1c2_flag);
+        v_end_time := to_char(current_timestamp, 'yyyy-MM-DD HH24:MI:SS.FF3');
+        insert into af_time_recording(app_id, object_name, cost_time, start_time, end_time) values(app_id_input, 'AF_HXBCB_RULE_PKG.RULE_215', 0, v_start_time, v_end_time);
+        commit;
+        v_start_time := to_char(current_timestamp, 'yyyy-MM-DD HH24:MI:SS.FF3');
+        AF_HXBCB_RULE_PKG.RULE_216(app_id_input, v_hmst, v_c1c2_flag);
+        v_end_time := to_char(current_timestamp, 'yyyy-MM-DD HH24:MI:SS.FF3');
+        insert into af_time_recording(app_id, object_name, cost_time, start_time, end_time) values(app_id_input, 'AF_HXBCB_RULE_PKG.RULE_216', 0, v_start_time, v_end_time);
+        commit;
+        v_start_time := to_char(current_timestamp, 'yyyy-MM-DD HH24:MI:SS.FF3');
+        AF_HXBCB_RULE_PKG.RULE_217(app_id_input, v_carst, v_c1c2_flag);
+        v_end_time := to_char(current_timestamp, 'yyyy-MM-DD HH24:MI:SS.FF3');
+        insert into af_time_recording(app_id, object_name, cost_time, start_time, end_time) values(app_id_input, 'AF_HXBCB_RULE_PKG.RULE_217', 0, v_start_time, v_end_time);
+        commit;
+        v_start_time := to_char(current_timestamp, 'yyyy-MM-DD HH24:MI:SS.FF3');
+        AF_HXBCB_RULE_PKG.RULE_218(app_id_input, v_coname, v_c1c2_flag);
+        v_end_time := to_char(current_timestamp, 'yyyy-MM-DD HH24:MI:SS.FF3');
+        insert into af_time_recording(app_id, object_name, cost_time, start_time, end_time) values(app_id_input, 'AF_HXBCB_RULE_PKG.RULE_218', 0, v_start_time, v_end_time);
+        commit;
+        v_start_time := to_char(current_timestamp, 'yyyy-MM-DD HH24:MI:SS.FF3');
+        AF_HXBCB_RULE_PKG.RULE_219(app_id_input, v_cokind, v_c1c2_flag);
+        v_end_time := to_char(current_timestamp, 'yyyy-MM-DD HH24:MI:SS.FF3');
+        insert into af_time_recording(app_id, object_name, cost_time, start_time, end_time) values(app_id_input, 'AF_HXBCB_RULE_PKG.RULE_219', 0, v_start_time, v_end_time);
+        commit;
+        v_start_time := to_char(current_timestamp, 'yyyy-MM-DD HH24:MI:SS.FF3');
+        AF_HXBCB_RULE_PKG.RULE_220(app_id_input, v_coyr, v_c1c2_flag);
+        v_end_time := to_char(current_timestamp, 'yyyy-MM-DD HH24:MI:SS.FF3');
+        insert into af_time_recording(app_id, object_name, cost_time, start_time, end_time) values(app_id_input, 'AF_HXBCB_RULE_PKG.RULE_220', 0, v_start_time, v_end_time);
+        commit;
+        v_start_time := to_char(current_timestamp, 'yyyy-MM-DD HH24:MI:SS.FF3');
+        AF_HXBCB_RULE_PKG.RULE_221(app_id_input, v_earn, v_c1c2_flag);
+        v_end_time := to_char(current_timestamp, 'yyyy-MM-DD HH24:MI:SS.FF3');
+        insert into af_time_recording(app_id, object_name, cost_time, start_time, end_time) values(app_id_input, 'AF_HXBCB_RULE_PKG.RULE_221', 0, v_start_time, v_end_time);
+        commit;
+        v_start_time := to_char(current_timestamp, 'yyyy-MM-DD HH24:MI:SS.FF3');
+        AF_HXBCB_RULE_PKG.RULE_222(app_id_input, v_cycadd1, v_c1c2_flag);
+        v_end_time := to_char(current_timestamp, 'yyyy-MM-DD HH24:MI:SS.FF3');
+        insert into af_time_recording(app_id, object_name, cost_time, start_time, end_time) values(app_id_input, 'AF_HXBCB_RULE_PKG.RULE_222', 0, v_start_time, v_end_time);
+        commit;
+        v_start_time := to_char(current_timestamp, 'yyyy-MM-DD HH24:MI:SS.FF3');
+        AF_HXBCB_RULE_PKG.RULE_223(app_id_input, v_cardnbr, v_c1c2_flag);
+        v_end_time := to_char(current_timestamp, 'yyyy-MM-DD HH24:MI:SS.FF3');
+        insert into af_time_recording(app_id, object_name, cost_time, start_time, end_time) values(app_id_input, 'AF_HXBCB_RULE_PKG.RULE_223', 0, v_start_time, v_end_time);
+        commit;
+        v_start_time := to_char(current_timestamp, 'yyyy-MM-DD HH24:MI:SS.FF3');
+        AF_HXBCB_RULE_PKG.RULE_226(app_id_input, v_c2_relship, v_c1c2_flag);
+        v_end_time := to_char(current_timestamp, 'yyyy-MM-DD HH24:MI:SS.FF3');
+        insert into af_time_recording(app_id, object_name, cost_time, start_time, end_time) values(app_id_input, 'AF_HXBCB_RULE_PKG.RULE_226', 0, v_start_time, v_end_time);
+        commit;
+        v_start_time := to_char(current_timestamp, 'yyyy-MM-DD HH24:MI:SS.FF3');
+        AF_HXBCB_RULE_PKG.RULE_228(app_id_input, v_is_online, v_c4_abtype);
+        v_end_time := to_char(current_timestamp, 'yyyy-MM-DD HH24:MI:SS.FF3');
+        insert into af_time_recording(app_id, object_name, cost_time, start_time, end_time) values(app_id_input, 'AF_HXBCB_RULE_PKG.RULE_228', 0, v_start_time, v_end_time);
+        commit;
+        v_start_time := to_char(current_timestamp, 'yyyy-MM-DD HH24:MI:SS.FF3');
+        AF_HXBCB_RULE_PKG.RULE_233(app_id_input, v_credpct, v_c1c2_flag);
+        v_end_time := to_char(current_timestamp, 'yyyy-MM-DD HH24:MI:SS.FF3');
+        insert into af_time_recording(app_id, object_name, cost_time, start_time, end_time) values(app_id_input, 'AF_HXBCB_RULE_PKG.RULE_233', 0, v_start_time, v_end_time);
+        commit;
+        v_start_time := to_char(current_timestamp, 'yyyy-MM-DD HH24:MI:SS.FF3');
+        AF_HXBCB_RULE_PKG.RULE_237(app_id_input, v_aml_flag);
+        v_end_time := to_char(current_timestamp, 'yyyy-MM-DD HH24:MI:SS.FF3');
+        insert into af_time_recording(app_id, object_name, cost_time, start_time, end_time) values(app_id_input, 'AF_HXBCB_RULE_PKG.RULE_237', 0, v_start_time, v_end_time);
+        commit;
+        v_start_time := to_char(current_timestamp, 'yyyy-MM-DD HH24:MI:SS.FF3');
+        AF_HXBCB_RULE_PKG.RULE_239(app_id_input, v_is_special_cust);
+        v_end_time := to_char(current_timestamp, 'yyyy-MM-DD HH24:MI:SS.FF3');
+        insert into af_time_recording(app_id, object_name, cost_time, start_time, end_time) values(app_id_input, 'AF_HXBCB_RULE_PKG.RULE_239', 0, v_start_time, v_end_time);
+        commit;
 
 
-      --------Not at this stage
-
-      /*AF_HXBCB_RULE_PKG.RULE_18(app_id_input,v_mobile,v_comp_phone);
-      AF_HXBCB_RULE_PKG.RULE_19(app_id_input,v_cotel,v_cell_phone);
-      AF_HXBCB_RULE_PKG.RULE_22(app_id_input, v_hmtel,v_hmare,v_cell_phone);
-      AF_HXBCB_RULE_PKG.RULE_25(app_id_input, v_retel ,v_retelar ,v_cell_phone);
-      AF_HXBCB_RULE_PKG.RULE_27(app_id_input, v_retel ,v_retelar ,v_resi_tel);
-      AF_HXBCB_RULE_PKG.RULE_28(app_id_input, v_remobil,v_resi_tel);
-      AF_HXBCB_RULE_PKG.RULE_29(app_id_input, v_retel ,v_retelar ,v_comp_phone);
-      AF_HXBCB_RULE_PKG.RULE_30(app_id_input, v_remobil,v_comp_phone);
-      AF_HXBCB_RULE_PKG.RULE_31(app_id_input, v_xtel1,v_xtelar1,v_cell_phone);
-      AF_HXBCB_RULE_PKG.RULE_33(app_id_input, v_xtel1,v_xtelar1,v_resi_tel);
-      AF_HXBCB_RULE_PKG.RULE_34(app_id_input, v_xmobil1,v_resi_tel);
-      AF_HXBCB_RULE_PKG.RULE_35(app_id_input, v_xtel1,v_xtelar1,v_comp_phone);
-      AF_HXBCB_RULE_PKG.RULE_36(app_id_input, v_xmobil1,v_comp_phone);
-      AF_HXBCB_RULE_PKG.RULE_48(app_id_input,v_deb_c60overd_month_num);
-      AF_HXBCB_RULE_PKG.RULE_49(app_id_input,v_deb_c60overd_longest_over);
-      AF_HXBCB_RULE_PKG.RULE_96(app_id_input,v_educationdegree);
-      AF_HXBCB_RULE_PKG.RULE_118(app_id_input,v_remobil,v_mobile);
-      AF_HXBCB_RULE_PKG.RULE_121(app_id_input,v_idtype, v_idnbr,v_iddt1,v_idte1,v_birth);
-      AF_HXBCB_RULE_PKG.RULE_122(app_id_input,v_idte1,v_iddt1);
-      AF_HXBCB_RULE_PKG.RULE_125(app_id_input,v_wifimacenenglish);
-      AF_HXBCB_RULE_PKG.RULE_126(app_id_input,v_imeienenglish);
-      AF_HXBCB_RULE_PKG.RULE_127(app_id_input,v_imsienenglish);
-      AF_HXBCB_RULE_PKG.RULE_128(app_id_input,v_ipenenglish);
-      AF_HXBCB_RULE_PKG.RULE_129(app_id_input,v_codeaddrenglish);
-      AF_HXBCB_RULE_PKG.RULE_130(app_id_input,v_codeemailenglish);
-      AF_HXBCB_RULE_PKG.RULE_131(app_id_input,v_codenameenglish);
-      AF_HXBCB_RULE_PKG.RULE_139(app_id_input,v_no_pin_debit_card_acct_num);
-      AF_HXBCB_RULE_PKG.RULE_140(app_id_input,v_no_pd_card_loan_org_number);
-      AF_HXBCB_RULE_PKG.RULE_141(app_id_input,v_no_pd_card_loan_corp_number);
-      AF_HXBCB_RULE_PKG.RULE_142(app_id_input, v_opposite_position);
-      AF_HXBCB_RULE_PKG.RULE_146(app_id_input, v_query_rec_2y_sum1);
-      AF_HXBCB_RULE_PKG.RULE_147(app_id_input, v_query_rec_2y_sum5);
-      AF_HXBCB_RULE_PKG.RULE_148(app_id_input, v_query_org_1m_sum1);
-      AF_HXBCB_RULE_PKG.RULE_149(app_id_input, v_query_org_1m_sum5);
-      */
+      end if;
 
       --生成规则风险等级结果数据(聚合结果)
-      select max(ra.riskcode) into rules_riskcode from af_response_afriskwarning ra where ra.type = 'RULE' and ra.app_id = app_id_input;
+      select max(ra.riskcode) into rules_riskcode from af_response_afriskwarning ra where ra.type = 'RULE' and ra.riskvalue != 0 and ra.app_id = app_id_input;
       if nvl(rules_riskcode, 'null') != 'null' then
         insert into af_response_afsummary(app_id, type, value, remarks) values(app_id_input, 'RULE', rules_riskcode, '');
         commit;
@@ -544,6 +1091,7 @@ create or replace package body AF_HXBCB is
         commit;
       end if;
     end AF_HXBCB_RULE;
+
 
   --模型存储过程
   procedure AF_HXBCB_MODEL(app_id_model in varchar2) is

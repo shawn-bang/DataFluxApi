@@ -10,7 +10,8 @@ create table af_app_cmp_his
   ADDMC              varchar(256),
   LEGALFORMMC        varchar(256),
   NAMEMC             varchar(256),
-  SITEMC             varchar(256)
+  SITEMC             varchar(256),
+  DATAVALUEMC        varchar(32)
 );
 
 -- if exist table af_app_cmp_today
@@ -25,7 +26,8 @@ create table af_app_cmp_today
   LEGALFORMMC        varchar(255),
   SITEMC             varchar(255),
   ADDMC              varchar(255),
-  CREATE_TIME     timestamp default CURRENT_TIMESTAMP
+  DATAVALUEMC        varchar(32),
+  CREATE_TIME        date default sysdate not null
 );
 
 -- if exist table af_app_add_his
@@ -43,7 +45,8 @@ create table af_app_add_his
   ROOMMC             varchar(256),
   STREETMC           varchar(256),
   TOWNMC             varchar(256),
-  UNITMC             varchar(256)
+  UNITMC             varchar(256),
+  DATAVALUEMC        varchar(32)
 );
 
 -- if exist table af_app_add_ext_his
@@ -62,7 +65,8 @@ create table af_app_add_ext_his
   ROOMMC             varchar(256),
   STREETMC           varchar(256),
   TOWNMC             varchar(256),
-  UNITMC             varchar(256)
+  UNITMC             varchar(256),
+  DATAVALUEMC        varchar(32)
 );
 
 -- if exist table af_app_add_today
@@ -84,7 +88,8 @@ create table af_app_add_today
   ROOMMC             varchar(255),
   ADDINFOMC          varchar(255),
   CITY               varchar(100),
-  CREATE_TIME     timestamp default CURRENT_TIMESTAMP
+  DATAVALUEMC        varchar(32),
+  CREATE_TIME        date default sysdate not null
 );
 
 -- if exist view v_add_all_his
@@ -311,7 +316,9 @@ create table af_risk_level_settings
   riskcategory VARCHAR2(200),
   riskvalue    NUMBER(2),
   riskcode     VARCHAR2(6),
-  riskdesc     VARCHAR2(200)
+  riskdesc     VARCHAR2(200),
+  priority     NUMBER(10),
+  status       NUMBER(1)
 );
 
 comment on table af_risk_level_settings is '风险提示信息配置表';
@@ -325,6 +332,8 @@ comment on column af_risk_level_settings.ruleno is '校验规则编号';
 comment on column af_risk_level_settings.type is '反欺诈结果类型(AF_ALL,RULE,MODEL,SNA)';
 comment on column af_risk_level_settings.class is 'TYPE 二级分类';
 comment on column  af_risk_level_settings.riskvalue is '风险等级依据结果值(1:命中,0:未命中[不会纳入聚合计算],-1:NULL)';
+comment on column af_risk_level_settings.priority is '规则优先级';
+comment on column  af_risk_level_settings.status is '规则启用状态(1:启用,0:未启用)';
 
 -- if exist table af_request_appinfo_zmivsinfo
 DROP TABLE af_request_appinfo_zmivsinfo cascade constraints;
@@ -390,6 +399,8 @@ create table af_response_afriskwarning(
       class VARCHAR2(6),
       riskvalue NUMBER(2),
       calculatenum NUMBER(10),
+      priority     NUMBER(10),
+      status       NUMBER(1),
       modify_time date default sysdate not null
 );
 
@@ -405,13 +416,52 @@ comment on column  af_response_afriskwarning.type is '反欺诈结果类型(AF_A
 comment on column  af_response_afriskwarning.class is 'TYPE 二级分类';
 comment on column  af_response_afriskwarning.riskvalue is '风险等级依据结果值(1:命中,0:未命中[不会纳入聚合计算],-1:NULL)';
 comment on column  af_response_afriskwarning.calculatenum is '规则命中依据中间变量值';
+comment on column  af_response_afriskwarning.priority is '规则优先级';
+comment on column  af_response_afriskwarning.status is '规则启用状态(1:启用,0:未启用)';
 comment on column  af_response_afriskwarning.modify_time is '更新时间';
+
+-- if exist table af_response_afriskwarning_his
+DROP TABLE af_response_afriskwarning_his cascade constraints;
+-- create table af_response_afriskwarning_his
+create table af_response_afriskwarning_his(
+  app_id VARCHAR2(20) NOT NUll,
+  riskno VARCHAR2(20),
+  risktype VARCHAR2(20),
+  riskcategory VARCHAR2(200),
+  riskdesc VARCHAR2(200),
+  riskcode VARCHAR2(6),
+  ruleno VARCHAR2(20),
+  type VARCHAR2(10),
+  class VARCHAR2(6),
+  riskvalue NUMBER(2),
+  calculatenum NUMBER(10),
+  priority     NUMBER(10),
+  status       NUMBER(1),
+  modify_time date default sysdate not null
+);
+
+comment on table af_response_afriskwarning_his is '响应报文中风险提示信息表';
+comment on column  af_response_afriskwarning_his.app_id is '申请件编号';
+comment on column  af_response_afriskwarning_his.riskno is '校验规则一级分类编号';
+comment on column  af_response_afriskwarning_his.risktype is '校验规则二级分类编号';
+comment on column  af_response_afriskwarning_his.riskcategory is '校验规则三级分类编号';
+comment on column  af_response_afriskwarning_his.riskdesc is '校验结果详情描述';
+comment on column  af_response_afriskwarning_his.riskcode is '校验结果A,B,C,D,E';
+comment on column  af_response_afriskwarning_his.ruleno is '校验规则编号';
+comment on column  af_response_afriskwarning_his.type is '反欺诈结果类型(AF_ALL,RULE,MODEL,SNA)';
+comment on column  af_response_afriskwarning_his.class is 'TYPE 二级分类';
+comment on column  af_response_afriskwarning_his.riskvalue is '风险等级依据结果值(1:命中,0:未命中[不会纳入聚合计算],-1:NULL)';
+comment on column  af_response_afriskwarning_his.calculatenum is '规则命中依据中间变量值';
+comment on column  af_response_afriskwarning_his.priority is '规则优先级';
+comment on column  af_response_afriskwarning_his.status is '规则启用状态(1:启用,0:未启用)';
+comment on column  af_response_afriskwarning_his.modify_time is '更新时间';
 
 -- if exist table af_request_applicantinfo
 DROP TABLE af_request_applicantinfo cascade constraints;
 -- create table af_request_applicantinfo
 create table af_request_applicantinfo(
       app_id VARCHAR2(20) NOT NULL,
+      app_time VARCHAR2(8) NOT NULL,
       app_code NUMBER(10),
       app_flag NUMBER(1),
       app_prod VARCHAR2(4),
@@ -894,6 +944,7 @@ create table af_request_applicantinfo(
 
 comment on table af_request_applicantinfo is '请求报文applicants信息表';
 comment on column  af_request_applicantinfo.app_id is '申请件编号';
+comment on column  af_request_applicantinfo.app_time is '申请件编号时间';
 comment on column  af_request_applicantinfo.app_code is '申请书编号';
 comment on column  af_request_applicantinfo.app_flag is '主卡/副卡标志';
 comment on column  af_request_applicantinfo.app_prod is '申请卡产品';
@@ -1378,6 +1429,7 @@ DROP TABLE af_request_appinfo_his_hot cascade constraints;
 -- create table af_request_appinfo_his_hot
 create table af_request_appinfo_his_hot(
   app_id VARCHAR2(20) NOT NULL,
+  app_time VARCHAR2(8) NOT NULL,
   c1_cotel VARCHAR2(17),
   bad_debt_num VARCHAR2(10),
   c_comp_phone VARCHAR2(70),
@@ -1407,7 +1459,6 @@ create table af_request_appinfo_his_hot(
   c2_idnbr VARCHAR2(19),
   c2_idtype VARCHAR2(2),
   cell_phone VARCHAR2(25),
-  communication_addr VARCHAR2(100),
   deb_c60overd_longest_over_due VARCHAR2(10),
   deb_c60overd_month_num VARCHAR2(10),
   debit_card_over_due_acct_num VARCHAR2(10),
@@ -1435,12 +1486,14 @@ create table af_request_appinfo_his_hot(
   pay_ym VARCHAR2(7),
   pboc_yl_pay_status VARCHAR2(50),
   no_pin_debit_card_acct_num VARCHAR2(10),
+  ivs_score VARCHAR2(10),
   req_app_num NUMBER(10) default 1,
   modify_time date default sysdate not null
 );
 
 comment on table af_request_appinfo_his_hot is '请求报文applicants信息历史数据表(热字段部分)';
 comment on column  af_request_appinfo_his_hot.app_id is '申请件编号';
+comment on column  af_request_appinfo_his_hot.app_time is '申请件编号时间';
 comment on column  af_request_appinfo_his_hot.c1_cotel is '公司电话';
 comment on column  af_request_appinfo_his_hot.bad_debt_num is '呆帐_笔数';
 comment on column  af_request_appinfo_his_hot.c_comp_phone is '单位电话';
@@ -1470,7 +1523,6 @@ comment on column  af_request_appinfo_his_hot.c2_gender is '附卡申请人性�
 comment on column  af_request_appinfo_his_hot.c2_idnbr is '附卡申请人证件号码*';
 comment on column  af_request_appinfo_his_hot.c2_idtype is '附卡申请人证件类型*';
 comment on column  af_request_appinfo_his_hot.cell_phone is '手机号码';
-comment on column  af_request_appinfo_his_hot.communication_addr is '通讯地址';
 comment on column  af_request_appinfo_his_hot.deb_c60overd_longest_over_due is '准贷记卡60天以上透支_最长逾期月数/最长透支月数';
 comment on column  af_request_appinfo_his_hot.deb_c60overd_month_num is '准贷记卡60天以上透支_月份数';
 comment on column  af_request_appinfo_his_hot.debit_card_over_due_acct_num is '贷记卡逾期_笔数/账户数';
@@ -1498,6 +1550,7 @@ comment on column  af_request_appinfo_his_hot.pboc_gjj_pay_status is '缴费状�
 comment on column  af_request_appinfo_his_hot.pay_ym is '缴至月份';
 comment on column  af_request_appinfo_his_hot.pboc_yl_pay_status is '缴费状态';
 comment on column  af_request_appinfo_his_hot.no_pin_debit_card_acct_num is '未销户贷记卡_笔数/账户数';
+comment on column  af_request_appinfo_his_hot.ivs_score is 'ivs评分。取值区间为[0,100]。分数越高，表示可信程度越高。0表示无对应数据。';
 comment on column  af_request_appinfo_his_hot.req_app_num is '申请次数';
 comment on column  af_request_appinfo_his_hot.modify_time is '更新时间';
 
@@ -1555,6 +1608,7 @@ create table af_request_appinfo_his_cold(
   c2_isdp1 VARCHAR2(6),
   c2_signck VARCHAR2(8),
   c2_sign1_check VARCHAR2(1),
+  communication_addr VARCHAR2(100),
   c5_sgndte1 VARCHAR2(10),
   c2_signck2_check VARCHAR2(1),
   c5_sgndte2 VARCHAR2(10),
@@ -1761,7 +1815,6 @@ create table af_request_appinfo_his_cold(
   lm_nbank_p2p_refuse VARCHAR2(10),
   lm_phone_overdue VARCHAR2(10),
   zm_score VARCHAR2(10),
-  ivs_score VARCHAR2(10),
   codeaddrenglish VARCHAR2(80),
   codecertnoenglish VARCHAR2(80),
   codeemailenglish VARCHAR2(80),
@@ -1978,6 +2031,7 @@ comment on column  af_request_appinfo_his_cold.c2_iddt1 is '主卡证件起始�
 comment on column  af_request_appinfo_his_cold.c2_isdp1 is '主卡发证机关代码';
 comment on column  af_request_appinfo_his_cold.c2_signck is '申请人签名确认';
 comment on column  af_request_appinfo_his_cold.c2_sign1_check is '主卡申请人签名准确性校验';
+comment on column  af_request_appinfo_his_cold.communication_addr is '通讯地址';
 comment on column  af_request_appinfo_his_cold.c5_sgndte1 is '客户签字日期（主卡）';
 comment on column  af_request_appinfo_his_cold.c2_signck2_check is '附属卡申请人（代理人）签名准确性校验';
 comment on column  af_request_appinfo_his_cold.c5_sgndte2 is '客户签字日期（附卡）';
@@ -2184,7 +2238,6 @@ comment on column  af_request_appinfo_his_cold.lm_nbank_p2p_overdue is '通过�
 comment on column  af_request_appinfo_his_cold.lm_nbank_p2p_refuse is '通过联系人手机查询非银-P2P拒绝 ';
 comment on column  af_request_appinfo_his_cold.lm_phone_overdue is '通过联系人手机查询电信欠费 ';
 comment on column  af_request_appinfo_his_cold.zm_score is '用户的芝麻信用评分。分值范围[350,950]。如果用户数据不足，无法评分时，返回字符串""N/A""。';
-comment on column  af_request_appinfo_his_cold.ivs_score is 'ivs评分。取值区间为[0,100]。分数越高，表示可信程度越高。0表示无对应数据。';
 comment on column  af_request_appinfo_his_cold.codeaddrenglish is '地址英文风险描述';
 comment on column  af_request_appinfo_his_cold.codecertnoenglish is '身份证英文风险描述';
 comment on column  af_request_appinfo_his_cold.codeemailenglish is '邮件英文风险描述';
@@ -2349,606 +2402,646 @@ comment on column  af_request_appinfo_his_cold.vehicle_query_result is '查询�
 comment on column  af_request_appinfo_his_cold.vehicle_value is '车辆价值';
 comment on column  af_request_appinfo_his_cold.vehicle_age is '车龄';
 
+-- if exist view v_appinfo_year_his
+DROP VIEW v_appinfo_year_his;
+create or replace view v_appinfo_year_his as
+  select app_id,
+    c1_cotel,
+    bad_debt_num,
+    c_comp_phone,
+    c1_educls,
+    c1_gender,
+    c1_hmare,
+    c1_hmst,
+    c1_hmtel,
+    c1_idnbr,
+    c1_idtype,
+    c1_mobile,
+    c1_remobil,
+    c1_rename,
+    c1_reship,
+    c1_retel,
+    c1_retelar,
+    c1_xmobil1,
+    c1_xname1,
+    c1_xtel1,
+    c1_xtelar1,
+    c1c2_flag,
+    c4_abname,
+    c4_abuser,
+    c4_apsour,
+    c4_cycadd1,
+    c2_gender,
+    c2_idnbr,
+    c2_idtype,
+    cell_phone,
+    deb_c60overd_longest_over_due,
+    deb_c60overd_month_num,
+    debit_card_over_due_acct_num,
+    debit_card_over_due_month_num,
+    debit_co_due_longest_over_due,
+    cumul_pay_months,
+    educationapproach,
+    educationdegree,
+    frs_cred_crd_issue_mon,
+    loan_overdue_month_num,
+    mate_contact_tel,
+    mate_name,
+    industry_type1,
+    industry_type2,
+    industry_type3,
+    industry_type4,
+    industry_type5,
+    first_deposit_ym,
+    no_pd_card_loan_corp_number,
+    no_pd_card_loan_org_number,
+    no_padc_contract_amt,
+    result_xm,
+    resi_tel,
+    pboc_gjj_pay_status,
+    pay_ym,
+    pboc_yl_pay_status,
+    no_pin_debit_card_acct_num,
+    ivs_score,
+    req_app_num,
+    modify_time,
+    app_time
+  from af_request_applicantinfo
+  union all
+  select app_id,
+    c1_cotel,
+    bad_debt_num,
+    c_comp_phone,
+    c1_educls,
+    c1_gender,
+    c1_hmare,
+    c1_hmst,
+    c1_hmtel,
+    c1_idnbr,
+    c1_idtype,
+    c1_mobile,
+    c1_remobil,
+    c1_rename,
+    c1_reship,
+    c1_retel,
+    c1_retelar,
+    c1_xmobil1,
+    c1_xname1,
+    c1_xtel1,
+    c1_xtelar1,
+    c1c2_flag,
+    c4_abname,
+    c4_abuser,
+    c4_apsour,
+    c4_cycadd1,
+    c2_gender,
+    c2_idnbr,
+    c2_idtype,
+    cell_phone,
+    deb_c60overd_longest_over_due,
+    deb_c60overd_month_num,
+    debit_card_over_due_acct_num,
+    debit_card_over_due_month_num,
+    debit_co_due_longest_over_due,
+    cumul_pay_months,
+    educationapproach,
+    educationdegree,
+    frs_cred_crd_issue_mon,
+    loan_overdue_month_num,
+    mate_contact_tel,
+    mate_name,
+    industry_type1,
+    industry_type2,
+    industry_type3,
+    industry_type4,
+    industry_type5,
+    first_deposit_ym,
+    no_pd_card_loan_corp_number,
+    no_pd_card_loan_org_number,
+    no_padc_contract_amt,
+    result_xm,
+    resi_tel,
+    pboc_gjj_pay_status,
+    pay_ym,
+    pboc_yl_pay_status,
+    no_pin_debit_card_acct_num,
+    ivs_score,
+    req_app_num,
+    modify_time,
+    app_time
+  from af_request_appinfo_his_hot;
+
 -----------------------------------------------------------------------------------------
 -- init risk result settings data
 
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc, priority, status) values('RULE_1','EMPTY','RULE','Z','Z2','Z03','Z03_1','-1','C','人行直系配偶为空','30','1');
 
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc, priority, status) values('RULE_1','HIT','RULE','Z','Z2','Z03','Z03_1','1','D','人行配偶姓名异常','7','1');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_PBOC_1','EMPTY','RULE','Z','Z2','Z03','Z03_1','-1','NULL','NULL');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc, priority, status) values('RULE_1','UNHIT','RULE','Z','Z2','Z03','Z03_1','0','A','','','');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_PBOC_1','HIT','RULE','Z','Z2','Z03','Z03_1','1','','');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc, priority, status) values('RULE_2','EMPTY','RULE','Z','Z2','Z03','Z03_2','-1','C','申请表手机号码为空','18','1');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_PBOC_1','UNHIT','RULE','Z','Z2','Z03','Z03_1','0','','');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc, priority, status) values('RULE_2','HIT','RULE','Z','Z2','Z03','Z03_2','1','D','人行手机异常','2','1');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_PBOC_2','EMPTY','RULE','Z','Z2','Z03','Z03_3','-1','NULL','NULL');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc, priority, status) values('RULE_2','UNHIT','RULE','Z','Z2','Z03','Z03_2','0','A','','','');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_PBOC_2','HIT','RULE','Z','Z2','Z03','Z03_3','1','','');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc, priority, status) values('RULE_PBOC_CONAME_3','EMPTY','RULE','Z','Z2','Z03','Z03_4','-1','C','人行最新单位名称为空','16','1');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_PBOC_2','UNHIT','RULE','Z','Z2','Z03','Z03_3','0','','');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc, priority, status) values('RULE_PBOC_CONAME_3','HIT','RULE','Z','Z2','Z03','Z03_4','1','D','申请人电话名称与人行不一致','4','1');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_PBOC_3','EMPTY','RULE','Z','Z2','Z03','Z03_4','-1','NULL','NULL');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc, priority, status) values('RULE_PBOC_CONAME_3','UNHIT','RULE','Z','Z2','Z03','Z03_4','0','A','','','');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_PBOC_3','HIT','RULE','Z','Z2','Z03','Z03_4','1','','');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc, priority, status) values('RULE_PBOC_CONAME_4','EMPTY','RULE','Z','Z2','Z03','Z03_4','-1','C','人行所有单位名称为空','14','1');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_PBOC_3','UNHIT','RULE','Z','Z2','Z03','Z03_4','0','','');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc, priority, status) values('RULE_PBOC_CONAME_4','HIT','RULE','Z','Z2','Z03','Z03_4','1','D','单位与人行所有单位均不一致','1','1');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_PBOC_4_1','EMPTY','RULE','Z','Z2','Z03','Z03_4','-1','NULL','NULL');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc, priority, status) values('RULE_PBOC_CONAME_4','UNHIT','RULE','Z','Z2','Z03','Z03_4','0','A','','','');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_PBOC_4_1','HIT','RULE','Z','Z2','Z03','Z03_4','1','','');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc, priority, status) values('RULE_PBOC_CONAME_6','EMPTY','RULE','Z','Z2','Z03','Z03_4','-1','B','人行最新公积金缴费单位为空','17','1');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_PBOC_4_1','UNHIT','RULE','Z','Z2','Z03','Z03_4','0','','');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc, priority, status) values('RULE_PBOC_CONAME_6','HIT','RULE','Z','Z2','Z03','Z03_4','1','C','申请人单位名称与人行最新公积金缴费单位不一致','6','1');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_PBOC_4_2','EMPTY','RULE','Z','Z2','Z03','Z03_4','-1','NULL','NULL');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc, priority, status) values('RULE_PBOC_CONAME_6','UNHIT','RULE','Z','Z2','Z03','Z03_4','0','A','','','');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_PBOC_4_2','HIT','RULE','Z','Z2','Z03','Z03_4','1','','');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc, priority, status) values('RULE_PBOC_HMADD_7','UNHIT','RULE','Z','Z2','Z03','Z03_3','0','A','','','');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_PBOC_4_2','UNHIT','RULE','Z','Z2','Z03','Z03_4','0','','');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc, priority, status) values('RULE_PBOC_HMADD_7','EMPTY','RULE','Z','Z2','Z03','Z03_3','-1','C','人行最新家庭地址为空','25','1');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_PBOC_4_3','EMPTY','RULE','Z','Z2','Z03','Z03_4','-1','NULL','NULL');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc, priority, status) values('RULE_PBOC_HMADD_7','HIT','RULE','Z','Z2','Z03','Z03_3','1','C','申请人家庭地址与人行最新家庭地址不一致','10','1');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_PBOC_4_3','HIT','RULE','Z','Z2','Z03','Z03_4','1','','');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc, priority, status) values('RULE_PBOC_HMADD_8','EMPTY','RULE','Z','Z2','Z03','Z03_3','-1','C','人行所有家庭地址为空','22','1');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_PBOC_4_3','UNHIT','RULE','Z','Z2','Z03','Z03_4','0','','');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc, priority, status) values('RULE_PBOC_HMADD_8','HIT','RULE','Z','Z2','Z03','Z03_3','1','D','家庭地址与人行所有家庭地址均不一致','2','1');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_PBOC_4_4','EMPTY','RULE','Z','Z2','Z03','Z03_4','-1','NULL','NULL');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc, priority, status) values('RULE_PBOC_HMADD_8','UNHIT','RULE','Z','Z2','Z03','Z03_3','0','A','','','');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_PBOC_4_4','HIT','RULE','Z','Z2','Z03','Z03_4','1','','');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc, priority, status) values('RULE_PBOC_COADD_13','EMPTY','RULE','Z','Z2','Z03','Z03_3','-1','C','人行最新单位地址为空','24','1');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_PBOC_4_4','UNHIT','RULE','Z','Z2','Z03','Z03_4','0','','');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc, priority, status) values('RULE_PBOC_COADD_13','HIT','RULE','Z','Z2','Z03','Z03_3','1','D','申请人单位地址与人行最新单位地址不一致','7','1');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_PBOC_4_5','EMPTY','RULE','Z','Z2','Z03','Z03_4','-1','NULL','NULL');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc, priority, status) values('RULE_PBOC_COADD_13','UNHIT','RULE','Z','Z2','Z03','Z03_3','0','A','','','');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_PBOC_4_5','HIT','RULE','Z','Z2','Z03','Z03_4','1','','');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc, priority, status) values('RULE_PBOC_COADD_14','EMPTY','RULE','Z','Z2','Z03','Z03_3','-1','B','人行所有单位地址为空','21','1');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_PBOC_4_5','UNHIT','RULE','Z','Z2','Z03','Z03_4','0','','');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc, priority, status) values('RULE_PBOC_COADD_14','HIT','RULE','Z','Z2','Z03','Z03_3','1','D','单位地址与人行所有单位地址均不一致','1','1');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_PBOC_6','EMPTY','RULE','Z','Z2','Z03','Z03_4','-1','NULL','NULL');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc, priority, status) values('RULE_PBOC_COADD_14','UNHIT','RULE','Z','Z2','Z03','Z03_3','0','A','','','');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_PBOC_6','HIT','RULE','Z','Z2','Z03','Z03_4','1','','');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc, priority, status) values('RULE_PBOC_COADD_15','EMPTY','RULE','Z','Z2','Z03','Z03_3','-1','C','人行所有家庭地址为空','23','1');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_PBOC_6','UNHIT','RULE','Z','Z2','Z03','Z03_4','0','','');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc, priority, status) values('RULE_PBOC_COADD_15','HIT','RULE','Z','Z2','Z03','Z03_3','1','D','单位地址与人行所有家庭地址一致','3','1');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_PBOC_8_2','EMPTY','RULE','Z','Z2','Z03','Z03_3','-1','NULL','NULL');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc, priority, status) values('RULE_PBOC_COADD_15','UNHIT','RULE','Z','Z2','Z03','Z03_3','0','A','','','');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_PBOC_8_2','HIT','RULE','Z','Z2','Z03','Z03_3','1','','');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc, priority, status) values('RULE_20','EMPTY','RULE','Z','Z2','Z03','Z03_2','-1','C','申请表单位电话为空','19','1');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_PBOC_8_2','UNHIT','RULE','Z','Z2','Z03','Z03_3','0','','');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc, priority, status) values('RULE_20','HIT','RULE','Z','Z2','Z03','Z03_2','1','D','申请人单位电话与人行家庭电话相同','3','1');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_PBOC_8_3','EMPTY','RULE','Z','Z2','Z03','Z03_3','-1','NULL','NULL');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc, priority, status) values('RULE_20','UNHIT','RULE','Z','Z2','Z03','Z03_2','0','A','','','');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_PBOC_8_3','HIT','RULE','Z','Z2','Z03','Z03_3','1','','');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc, priority, status) values('RULE_21','EMPTY','RULE','Z','Z2','Z03','Z03_2','-1','B','申请表单位电话为空','22','1');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_PBOC_8_3','UNHIT','RULE','Z','Z2','Z03','Z03_3','0','','');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc, priority, status) values('RULE_21','HIT','RULE','Z','Z2','Z03','Z03_2','1','D','人行单位电话异常','7','1');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_PBOC_13','EMPTY','RULE','Z','Z2','Z03','Z03_3','-1','NULL','NULL');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc, priority, status) values('RULE_21','UNHIT','RULE','Z','Z2','Z03','Z03_2','0','A','','','');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_PBOC_13','HIT','RULE','Z','Z2','Z03','Z03_3','1','','');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc, priority, status) values('RULE_23','EMPTY','RULE','Z','Z2','Z03','Z03_2','-1','B','申请表家庭电话为空','23','1');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_PBOC_13','UNHIT','RULE','Z','Z2','Z03','Z03_3','0','','');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc, priority, status) values('RULE_23','HIT','RULE','Z','Z2','Z03','Z03_2','1','D','人行家庭电话异常','8','1');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_PBOC_14_3','EMPTY','RULE','Z','Z2','Z03','Z03_3','-1','NULL','NULL');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc, priority, status) values('RULE_23','UNHIT','RULE','Z','Z2','Z03','Z03_2','0','A','','','');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_PBOC_14_3','HIT','RULE','Z','Z2','Z03','Z03_3','1','','');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc, priority, status) values('RULE_24','EMPTY','RULE','Z','Z2','Z03','Z03_2','-1','B','申请人家庭电话或人行单位电话为空','25','1');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_PBOC_14_3','UNHIT','RULE','Z','Z2','Z03','Z03_3','0','','');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc, priority, status) values('RULE_24','HIT','RULE','Z','Z2','Z03','Z03_2','1','C','申请人家庭电话与人行单位电话相同','13','1');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_PBOC_14_5','EMPTY','RULE','Z','Z2','Z03','Z03_3','-1','NULL','NULL');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc, priority, status) values('RULE_24','UNHIT','RULE','Z','Z2','Z03','Z03_2','0','A','','','');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_PBOC_14_5','HIT','RULE','Z','Z2','Z03','Z03_3','1','','');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc, priority, status) values('RULE_26','EMPTY','RULE','Z','Z2','Z03','Z03_2','-1','C','申请人直系亲属手机或人行手机为空','26','1');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_PBOC_14_5','UNHIT','RULE','Z','Z2','Z03','Z03_3','0','','');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc, priority, status) values('RULE_26','HIT','RULE','Z','Z2','Z03','Z03_2','1','B','申请人直系亲属手机与人行手机一致','16','1');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_PBOC_15_4','EMPTY','RULE','Z','Z2','Z03','Z03_3','-1','NULL','NULL');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc, priority, status) values('RULE_26','UNHIT','RULE','Z','Z2','Z03','Z03_2','0','A','','','');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_PBOC_15_4','HIT','RULE','Z','Z2','Z03','Z03_3','1','','');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc, priority, status) values('RULE_32','EMPTY','RULE','Z','Z2','Z03','Z03_2','-1','C','申请人其他联系人手机或人行手机为空','27','1');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_PBOC_15_4','UNHIT','RULE','Z','Z2','Z03','Z03_3','0','','');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc, priority, status) values('RULE_32','HIT','RULE','Z','Z2','Z03','Z03_2','1','B','申请人其他联系人手机与人行手机一致','17','1');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_PBOC_15_5','EMPTY','RULE','Z','Z2','Z03','Z03_3','-1','NULL','NULL');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc, priority, status) values('RULE_32','UNHIT','RULE','Z','Z2','Z03','Z03_2','0','A','','','');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_PBOC_15_5','HIT','RULE','Z','Z2','Z03','Z03_3','1','','');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc, priority, status) values('RULE_37','EMPTY','RULE','Z','Z2','Z03','Z03_4','-1','B','人行养老保险缴存记录为空','22','1');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_PBOC_15_5','UNHIT','RULE','Z','Z2','Z03','Z03_3','0','','');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc, priority, status) values('RULE_37','HIT','RULE','Z','Z2','Z03','Z03_4','1','C','人行养老保险缴存时间过短','11','1');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_PBOC_16','EMPTY','RULE','Z','Z2','Z03','Z03_3','-1','NULL','NULL');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc, priority, status) values('RULE_37','UNHIT','RULE','Z','Z2','Z03','Z03_4','0','A','','','');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_PBOC_16','HIT','RULE','Z','Z2','Z03','Z03_3','1','','');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc, priority, status) values('RULE_38','EMPTY','RULE','Z','Z2','Z03','Z03_4','-1','B','人行公积金缴存记录为空','21','1');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_PBOC_16','UNHIT','RULE','Z','Z2','Z03','Z03_3','0','','');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc, priority, status) values('RULE_38','HIT','RULE','Z','Z2','Z03','Z03_4','1','C','人行公积金缴存时间过短','10','1');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_PBOC_21','EMPTY','RULE','Z','Z2','Z03','Z03_2','-1','NULL','NULL');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc, priority, status) values('RULE_38','UNHIT','RULE','Z','Z2','Z03','Z03_4','0','A','','','');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_PBOC_21','HIT','RULE','Z','Z2','Z03','Z03_2','1','','');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc, priority, status) values('RULE_39','EMPTY','RULE','Z','Z2','Z03','Z03_4','-1','B','单位行业信息为空','20','1');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_PBOC_21','UNHIT','RULE','Z','Z2','Z03','Z03_2','0','','');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc, priority, status) values('RULE_39','HIT','RULE','Z','Z2','Z03','Z03_4','1','C','人行单位行业变动异常','9','1');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_PBOC_23','EMPTY','RULE','Z','Z2','Z03','Z03_2','-1','NULL','NULL');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc, priority, status) values('RULE_39','UNHIT','RULE','Z','Z2','Z03','Z03_4','0','A','','','');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_PBOC_23','HIT','RULE','Z','Z2','Z03','Z03_2','1','','');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc, priority, status) values('RULE_40','EMPTY','RULE','Z','Z2','Z03','Z03_1','-1','A','人行呆账信息为空','37','1');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_PBOC_23','UNHIT','RULE','Z','Z2','Z03','Z03_2','0','','');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc, priority, status) values('RULE_40','HIT','RULE','Z','Z2','Z03','Z03_1','1','C','人行呆账笔数过多','14','1');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_PBOC_24','EMPTY','RULE','Z','Z2','Z03','Z03_2','-1','NULL','NULL');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc, priority, status) values('RULE_40','UNHIT','RULE','Z','Z2','Z03','Z03_1','0','B','','','');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_PBOC_24','HIT','RULE','Z','Z2','Z03','Z03_2','1','','');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc, priority, status) values('RULE_42','EMPTY','RULE','Z','Z2','Z03','Z03_1','-1','B','人行贷款逾期月份为空','48','1');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_PBOC_24','UNHIT','RULE','Z','Z2','Z03','Z03_2','0','','');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc, priority, status) values('RULE_42','HIT','RULE','Z','Z2','Z03','Z03_1','1','C','人行贷款逾期月份过长
+','19','1');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_PBOC_26','EMPTY','RULE','Z','Z2','Z03','Z03_2','-1','NULL','NULL');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc, priority, status) values('RULE_42','UNHIT','RULE','Z','Z2','Z03','Z03_1','0','A','','','');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_PBOC_26','HIT','RULE','Z','Z2','Z03','Z03_2','1','','');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc, priority, status) values('RULE_44','EMPTY','RULE','Z','Z2','Z03','Z03_1','-1','A','人行贷记卡逾期信息为空','38','1');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_PBOC_26','UNHIT','RULE','Z','Z2','Z03','Z03_2','0','','');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc, priority, status) values('RULE_44','HIT','RULE','Z','Z2','Z03','Z03_1','1','C','人行信用卡逾期户数过多','15','1');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_PBOC_32','EMPTY','RULE','Z','Z2','Z03','Z03_2','-1','NULL','NULL');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc, priority, status) values('RULE_44','UNHIT','RULE','Z','Z2','Z03','Z03_1','0','B','','','');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_PBOC_32','HIT','RULE','Z','Z2','Z03','Z03_2','1','','');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc, priority, status) values('RULE_45','EMPTY','RULE','Z','Z2','Z03','Z03_1','-1','A','人行贷记卡逾期信息为空','39','1');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_PBOC_32','UNHIT','RULE','Z','Z2','Z03','Z03_2','0','','');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc, priority, status) values('RULE_45','HIT','RULE','Z','Z2','Z03','Z03_1','1','C','人行信用卡逾期时间过多','16','1');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_PBOC_37','EMPTY','RULE','Z','Z2','Z03','Z03_1','-1','NULL','NULL');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc, priority, status) values('RULE_45','UNHIT','RULE','Z','Z2','Z03','Z03_1','0','B','','','');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_PBOC_37','HIT','RULE','Z','Z2','Z03','Z03_1','1','','');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc, priority, status) values('RULE_46','EMPTY','RULE','Z','Z2','Z03','Z03_1','-1','A','人行贷记卡逾期信息为空','40','1');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_PBOC_37','UNHIT','RULE','Z','Z2','Z03','Z03_1','0','','');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc, priority, status) values('RULE_46','HIT','RULE','Z','Z2','Z03','Z03_1','1','C','人行信用卡最长逾期月份过长','17','1');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_PBOC_38','EMPTY','RULE','Z','Z2','Z03','Z03_1','-1','NULL','NULL');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc, priority, status) values('RULE_46','UNHIT','RULE','Z','Z2','Z03','Z03_1','0','B','','','');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_PBOC_38','HIT','RULE','Z','Z2','Z03','Z03_1','1','','');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc, priority, status) values('RULE_53','EMPTY','RULE','Z','Z2','Z03','Z03_1','-1','A','人行查询机构数为空','36','1');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_PBOC_38','UNHIT','RULE','Z','Z2','Z03','Z03_1','0','','');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc, priority, status) values('RULE_53','HIT','RULE','Z','Z2','Z03','Z03_1','1','C','近期贷款申请频繁','13','1');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_PBOC_39','EMPTY','RULE','Z','Z2','Z03','Z03_4','-1','NULL','NULL');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc, priority, status) values('RULE_53','UNHIT','RULE','Z','Z2','Z03','Z03_1','0','A','','','');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_PBOC_39','HIT','RULE','Z','Z2','Z03','Z03_4','1','','');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc, priority, status) values('RULE_54','EMPTY','RULE','Z','Z2','Z03','Z03_1','-1','A','人行查询机构数为空','35','1');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_PBOC_39','UNHIT','RULE','Z','Z2','Z03','Z03_4','0','','');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc, priority, status) values('RULE_54','HIT','RULE','Z','Z2','Z03','Z03_1','1','C','近期信用卡申请频繁','12','1');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_40','EMPTY','RULE','Z','Z2','Z03','Z03_1','-1','NULL','NULL');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc, priority, status) values('RULE_54','UNHIT','RULE','Z','Z2','Z03','Z03_1','0','A','','','');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_40','HIT','RULE','Z','Z2','Z03','Z03_1','1','','');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc, priority, status) values('RULE_66','HIT','RULE','Z','Z2','Z03','Z03_3','1','C','单位地址与家庭地址相同','14','1');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_40','UNHIT','RULE','Z','Z2','Z03','Z03_1','0','','');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc, priority, status) values('RULE_66','UNHIT','RULE','Z','Z2','Z03','Z03_3','0','A','','','');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_42','EMPTY','RULE','Z','Z2','Z03','Z03_1','-1','NULL','NULL');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc, priority, status) values('RULE_66','EMPTY','RULE','Z','Z2','Z03','Z03_3','-1','B','申请表家庭地址为空','27','1');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_42','HIT','RULE','Z','Z2','Z03','Z03_1','1','','');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc, priority, status) values('RULE_67','HIT','RULE','Z','Z2','Z03','Z03_3','1','B','卡片邮寄非公司地址','17','1');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_42','UNHIT','RULE','Z','Z2','Z03','Z03_1','0','','');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc, priority, status) values('RULE_67','UNHIT','RULE','Z','Z2','Z03','Z03_3','0','A','','','');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_44','EMPTY','RULE','Z','Z2','Z03','Z03_1','-1','NULL','NULL');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc, priority, status) values('RULE_70','HIT','RULE','Z','Z2','Z03','Z03_2','1','D','申请人历史申请中，手机号码不一致','4','1');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_44','HIT','RULE','Z','Z2','Z03','Z03_1','1','','');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc, priority, status) values('RULE_70','UNHIT','RULE','Z','Z2','Z03','Z03_2','0','A','','','');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_44','UNHIT','RULE','Z','Z2','Z03','Z03_1','0','','');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc, priority, status) values('RULE_71','HIT','RULE','Z','Z2','Z03','Z03_2','1','C','申请人历史申请中，单位电话号码不一致','14','1');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_45','EMPTY','RULE','Z','Z2','Z03','Z03_1','-1','NULL','NULL');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc, priority, status) values('RULE_71','UNHIT','RULE','Z','Z2','Z03','Z03_2','0','A','','','');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_45','HIT','RULE','Z','Z2','Z03','Z03_1','1','','');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc, priority, status) values('RULE_73','HIT','RULE','Z','Z2','Z03','Z03_3','1','C','申请人历史申请中，单位地址不一致','8','1');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_45','UNHIT','RULE','Z','Z2','Z03','Z03_1','0','','');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc, priority, status) values('RULE_73','UNHIT','RULE','Z','Z2','Z03','Z03_3','0','A','','','');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_46','EMPTY','RULE','Z','Z2','Z03','Z03_1','-1','NULL','NULL');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc, priority, status) values('RULE_75','HIT','RULE','Z','Z2','Z03','Z03_4','1','C','申请人历史申请中，单位名称不一致','5','1');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_46','HIT','RULE','Z','Z2','Z03','Z03_1','1','','');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc, priority, status) values('RULE_75','UNHIT','RULE','Z','Z2','Z03','Z03_4','0','A','','','');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_46','UNHIT','RULE','Z','Z2','Z03','Z03_1','0','','');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc, priority, status) values('RULE_78','HIT','RULE','Z','Z2','Z03','Z03_2','1','C','申请人与历史库中多人共用同一直系电话号码','9','1');
 
---riskcategory Value of the unknown
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_PBOC_53','EMPTY','RULE','Z','Z2','Z03','','-1','NULL','NULL');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc, priority, status) values('RULE_78','UNHIT','RULE','Z','Z2','Z03','Z03_2','0','A','','','');
 
---riskcategory Value of the unknown
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_PBOC_53','HIT','RULE','Z','Z2','Z03','','1','','');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc, priority, status) values('RULE_80','HIT','RULE','Z','Z2','Z03','Z03_2','1','D','历史库中，申请人手机号码被多人使用','1','1');
 
---riskcategory Value of the unknown
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_PBOC_53','UNHIT','RULE','Z','Z2','Z03','','0','','');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc, priority, status) values('RULE_80','UNHIT','RULE','Z','Z2','Z03','Z03_2','0','A','','','');
 
---riskcategory Value of the unknown
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_PBOC_54','EMPTY','RULE','Z','Z2','Z03','','-1','NULL','NULL');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc, priority, status) values('RULE_82','HIT','RULE','Z','Z2','Z03','Z03_2','1','D','历史库中，申请人单位电话被多个单位使用','2','1');
 
---riskcategory Value of the unknown
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_PBOC_54','HIT','RULE','Z','Z2','Z03','','1','','');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc, priority, status) values('RULE_82','UNHIT','RULE','Z','Z2','Z03','Z03_2','0','A','','','');
 
---riskcategory Value of the unknown
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_PBOC_54','UNHIT','RULE','Z','Z2','Z03','','0','','');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc, priority, status) values('RULE_83','HIT','RULE','Z','Z2','Z03','Z03_3','1','D','历史库中，同一单位电话被多个单位地址使用','5','1');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_65','HIT','RULE','Z','Z2','Z03','Z03_2','1','','');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc, priority, status) values('RULE_83','UNHIT','RULE','Z','Z2','Z03','Z03_3','0','A','','','');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_65','UNHIT','RULE','Z','Z2','Z03','Z03_2','0','','');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc, priority, status) values('RULE_84','UNHIT','RULE','Z','Z2','Z03','Z03_3','0','A','','','');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_65','EMPTY','RULE','Z','Z2','Z03','Z03_2','-1','','');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc, priority, status) values('RULE_84','HIT','RULE','Z','Z2','Z03','Z03_3','1','D','历史库中，同一家庭电话被多个家庭地址使用','6','1');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_66','HIT','RULE','Z','Z2','Z01','Z03_3','1','','');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc, priority, status) values('RULE_98','HIT','RULE','Z','Z2','Z03','Z03_1','1','D','公安信息核查异常','4','1');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_66','UNHIT','RULE','Z','Z2','Z01','Z03_3','0','','');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc, priority, status) values('RULE_98','UNHIT','RULE','Z','Z2','Z03','Z03_1','0','A','','','');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_66','EMPTY','RULE','Z','Z2','Z01','Z03_3','-1','','');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc, priority, status) values('RULE_102','HIT','RULE','Z','Z2','Z02','Z02_2','1','E','申请人命中百融风险名单','1','1');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_67','HIT','RULE','Z','Z2','Z03','Z03_3','1','','');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc, priority, status) values('RULE_102','EMPTY','RULE','Z','Z2','Z02','Z02_2','-1','A','申请人命中百融风险名单','1','1');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_67','UNHIT','RULE','Z','Z2','Z03','Z03_3','0','','');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc, priority, status) values('RULE_102','UNHIT','RULE','Z','Z2','Z02','Z02_2','0','C','','','');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_67','EMPTY','RULE','Z','Z2','Z03','Z03_3','-1','','');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc, priority, status) values('RULE_116','HIT','RULE','Z','Z2','Z03','Z03_3','1','B','单位所在区域不在营销员所辖营销区域','16','1');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_68','HIT','RULE','Z','Z2','Z03','Z03_3','1','','');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc, priority, status) values('RULE_116','UNHIT','RULE','Z','Z2','Z03','Z03_3','0','A','','','1');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_68','UNHIT','RULE','Z','Z2','Z03','Z03_3','0','','');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc, priority, status) values('RULE_117','HIT','RULE','Z','Z2','Z03','Z03_3','1','B','单位电话所在地区与单位地址所在区域不符','15','1');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_68','EMPTY','RULE','Z','Z2','Z03','Z03_3','-1','','');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc, priority, status) values('RULE_117','UNHIT','RULE','Z','Z2','Z03','Z03_3','0','A','','','');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_70','HIT','RULE','Z','Z2','Z01','Z01_2','1','','');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc, priority, status) values('RULE_122','HIT','RULE','H','H2','H04','H04_2','1','B','申请人证件有效期异常','1','1');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_70','EMPTY','RULE','Z','Z2','Z01','Z01_2','-1','','');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc, priority, status) values('RULE_122','EMPTY','RULE','H','H2','H04','H04_2','-1','B','申请人证件有效期异常','1','1');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_70','UNHIT','RULE','Z','Z2','Z01','Z01_2','0','','');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc, priority, status) values('RULE_122','UNHIT','RULE','H','H2','H04','H04_2','0','A','','','');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_71','HIT','RULE','Z','Z2','Z01','Z01_2','1','','');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc, priority, status) values('RULE_123','HIT','RULE','Z','Z2','Z03','Z03_3','1','C','历史库中，同一手机号码被多个单位地址的申请使用','13','1');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_71','EMPTY','RULE','Z','Z2','Z01','Z01_2','-1','','');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc, priority, status) values('RULE_123','UNHIT','RULE','Z','Z2','Z03','Z03_3','0','A','','','');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_71','UNHIT','RULE','Z','Z2','Z01','Z01_2','0','','');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc, priority, status) values('RULE_CRM_HMADD_135','UNHIT','RULE','Z','Z2','Z03','Z03_3','0','A','','','');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_73','EMPTY','RULE','Z','Z2','Z01','Z01_3','-1','','');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc, priority, status) values('RULE_CRM_HMADD_135','EMPTY','RULE','Z','Z2','Z03','Z03_3','-1','B','CRM家庭地址为空','30','1');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_73','UNHIT','RULE','Z','Z2','Z01','Z01_3','0','','');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc, priority, status) values('RULE_CRM_HMADD_135','HIT','RULE','Z','Z2','Z03','Z03_3','1','C','家庭地址与CRM家庭地址不一致','12','1');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_75','HIT','RULE','Z','Z2','Z01','Z01_3','1','','');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc, priority, status) values('RULE_CRM_COADD_136','HIT','RULE','Z','Z2','Z03','Z03_3','1','c','单位地址与CRM单位地址不一致','11','1');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_75','EMPTY','RULE','Z','Z2','Z01','Z01_3','-1','','');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc, priority, status) values('RULE_CRM_COADD_136','EMPTY','RULE','Z','Z2','Z03','Z03_3','-1','B','CRM单位地址为空','29','1');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_75','UNHIT','RULE','Z','Z2','Z01','Z01_3','0','','');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc, priority, status) values('RULE_CRM_COADD_136','UNHIT','RULE','Z','Z2','Z03','Z03_3','0','A','','','');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_80','HIT','RULE','Z','Z2','Z01','Z01_2','1','','');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc, priority, status) values('RULE_CRM_COADD_137','UNHIT','RULE','Z','Z2','Z03','Z03_4','0','A','','','');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_80','EMPTY','RULE','Z','Z2','Z01','Z01_2','-1','','');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc, priority, status) values('RULE_CRM_COADD_137','EMPTY','RULE','Z','Z2','Z03','Z03_4','-1','B','CRM单位信息为空','19','1');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_80','UNHIT','RULE','Z','Z2','Z01','Z01_2','0','','');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc, priority, status) values('RULE_CRM_COADD_137','HIT','RULE','Z','Z2','Z03','Z03_4','1','C','单位名称与CRM单位名称不一致','8','1');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_82','HIT','RULE','Z','Z2','Z01','Z01_2','1','','');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc, priority, status) values('RULE_138','HIT','RULE','Z','Z2','Z03','Z03_1','1','C','第三方学历信息与填写不一致','11','1');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_82','EMPTY','RULE','Z','Z2','Z01','Z01_2','-1','','');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc, priority, status) values('RULE_138','EMPTY','RULE','Z','Z2','Z03','Z03_1','-1','B','申请表学历信息为空','34','1');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_82','UNHIT','RULE','Z','Z2','Z01','Z01_2','0','','');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc, priority, status) values('RULE_138','UNHIT','RULE','Z','Z2','Z03','Z03_1','0','A','','','');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_83','HIT','RULE','Z','Z2','Z01','Z01_3','1','','');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc, priority, status) values('RULE_143','EMPTY','RULE','Z','Z2','Z03','Z03_1','-1','B','人行贷记卡开户信息为空','47','1');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_83','EMPTY','RULE','Z','Z2','Z01','Z01_3','-1','','');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc, priority, status) values('RULE_143','HIT','RULE','Z','Z2','Z03','Z03_1','1','C','人行首次开卡时间过短','25','1');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_83','UNHIT','RULE','Z','Z2','Z01','Z01_3','0','','');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc, priority, status) values('RULE_143','UNHIT','RULE','Z','Z2','Z03','Z03_1','0','A','','','');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_85','HIT','RULE','Z','Z2','Z01','Z01_4','1','','');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc, priority, status) values('RULE_145','EMPTY','RULE','Z','Z2','Z03','Z03_2','-1','B','申请表直系和联系人电话号码为空','20','1');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_85','EMPTY','RULE','Z','Z2','Z01','Z01_4','-1','','');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc, priority, status) values('RULE_145','HIT','RULE','Z','Z2','Z03','Z03_2','1','D','直系手机号码与人行直系手机号码不一致','5','1');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_85','UNHIT','RULE','Z','Z2','Z01','Z01_4','0','','');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc, priority, status) values('RULE_145','UNHIT','RULE','Z','Z2','Z03','Z03_2','0','A','','','');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_98','HIT','RULE','Z','Z2','Z03','Z03_1','1','','');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc, priority, status) values('RULE_152','HIT','RULE','Z','Z2','Z03','Z03_3','1','B','申请进件方式为非陌生拜访','18','1');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_98','EMPTY','RULE','Z','Z2','Z03','Z03_1','-1','','');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc, priority, status) values('RULE_152','EMPTY','RULE','Z','Z2','Z03','Z03_3','-1','B','申请进件方式为非陌生拜访','31','1');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_98','UNHIT','RULE','Z','Z2','Z03','Z03_1','0','','');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc, priority, status) values('RULE_152','UNHIT','RULE','Z','Z2','Z03','Z03_3','0','A','','','1');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_115','HIT','RULE','Z','Z2','Z03','Z03_3','1','','');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc, priority, status) values('RULE_155','HIT','RULE','Z','Z2','Z01','Z01_1','1','E','命中身份类风险名单','1','1');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_115','EMPTY','RULE','Z','Z2','Z03','Z03_3','-1','','');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc, priority, status) values('RULE_155','UNHIT','RULE','Z','Z2','Z01','Z01_1','0','A','','','1');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_115','UNHIT','RULE','Z','Z2','Z03','Z03_3','0','','');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc, priority, status) values('RULE_156','HIT','RULE','Z','Z2','Z01','Z01_5','1','E','申请人命中同业类风险名单','1','1');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_117','HIT','RULE','Z','Z2','Z03','Z03_3','1','','');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc, priority, status) values('RULE_156','EMPTY','RULE','Z','Z2','Z01','Z01_5','-1','D','申请人命中同业类风险名单','1','1');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_117','EMPTY','RULE','Z','Z2','Z03','Z03_3','-1','','');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc, priority, status) values('RULE_156','UNHIT','RULE','Z','Z2','Z01','Z01_5','0','A','','','1');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_117','UNHIT','RULE','Z','Z2','Z03','Z03_3','0','','');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc, priority, status) values('RULE_158','UNHIT','RULE','Z','Z2','Z01','Z01_4','0','A','','','1');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_123','HIT','RULE','Z','Z2','Z03','Z03_3','1','','');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc, priority, status) values('RULE_158','HIT','RULE','Z','Z2','Z01','Z01_4','1','D','申请人公司命中单位类风险名单','1','1');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_123','EMPTY','RULE','Z','Z2','Z03','Z03_3','-1','','');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc, priority, status) values('RULE_160','HIT','RULE','Z','Z2','Z01','Z01_3','1','D','申请人单位地址命中地址类风险名单','1','1');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_135','UNHIT','RULE','Z','Z2','Z03','Z03_3','0','','');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc, priority, status) values('RULE_160','UNHIT','RULE','Z','Z2','Z01','Z01_3','0','A','','','1');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_135','EMPTY','RULE','Z','Z2','Z03','Z03_3','-1','','');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc, priority, status) values('RULE_162','HIT','RULE','Z','Z2','Z01','Z01_3','1','D','申请人住宅地址命中地址类风险名单','1','1');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_135','UNHIT','RULE','Z','Z2','Z03','Z03_3','0','','');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc, priority, status) values('RULE_162','UNHIT','RULE','Z','Z2','Z01','Z01_3','0','A','','','1');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_138','HIT','RULE','Z','Z2','Z03','Z03_1','1','','');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc, priority, status) values('RULE_164','HIT','RULE','Z','Z2','Z01','Z01_2','1','E','申请人手机号码命中电话类风险名单','1','1');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_138','EMPTY','RULE','Z','Z2','Z03','Z03_1','-1','','');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc, priority, status) values('RULE_164','UNHIT','RULE','Z','Z2','Z01','Z01_2','0','A','','','1');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_138','UNHIT','RULE','Z','Z2','Z03','Z03_1','0','','');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc, priority, status) values('RULE_166','HIT','RULE','Z','Z2','Z01','Z01_2','1','E','申请人单位电话命中电话类风险名单','1','1');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_143','EMPTY','RULE','Z','Z2','Z03','Z03_1','-1','NULL','NULL');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc, priority, status) values('RULE_166','UNHIT','RULE','Z','Z2','Z01','Z01_2','0','A','','','1');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_143','HIT','RULE','Z','Z2','Z03','Z03_1','1','','');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc, priority, status) values('RULE_168','HIT','RULE','Z','Z2','Z01','Z01_2','1','E','申请人住宅电话命中电话类风险名单','1','1');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_143','UNHIT','RULE','Z','Z2','Z03','Z03_1','0','','');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc, priority, status) values('RULE_168','UNHIT','RULE','Z','Z2','Z01','Z01_2','0','A','','','1');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_145','EMPTY','RULE','Z','Z2','Z03','Z03_2','-1','NULL','NULL');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc, priority, status) values('RULE_170','HIT','RULE','Z','Z2','Z03','Z03_1','1','C','非二代居民身份证客户申请','3','1');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_145','HIT','RULE','Z','Z2','Z03','Z03_2','1','','');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc, priority, status) values('RULE_170','UNHIT','RULE','Z','Z2','Z03','Z03_1','0','A','','','1');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_145','UNHIT','RULE','Z','Z2','Z03','Z03_2','0','','');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc, priority, status) values('RULE_170','EMPTY','RULE','Z','Z2','Z03','Z03_1','-1','B','证件类型为空','27','1');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_152_1','HIT','RULE','Z','Z2','Z03','Z03_1','1','','');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc, priority, status) values('RULE_172','HIT','RULE','Z','Z2','Z03','Z03_1','1','D','存量客户账户状态异常','5','1');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_152_1','EMPTY','RULE','Z','Z2','Z03','Z03_1','-1','','');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc, priority, status) values('RULE_172','EMPTY','RULE','Z','Z2','Z03','Z03_1','-1','A','存量客户账户状态为空','28','1');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_152_1','UNHIT','RULE','Z','Z2','Z03','Z03_1','0','','');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc, priority, status) values('RULE_172','UNHIT','RULE','Z','Z2','Z03','Z03_1','0','A','','','1');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_152_2','HIT','RULE','Z','Z2','Z03','Z03_1','1','','');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc, priority, status) values('RULE_175','HIT','RULE','Z','Z2','Z03','Z03_2','1','D','申请人历史申请中，同一直系联系人手机但亲属关系不同','6','1');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_152_2','EMPTY','RULE','Z','Z2','Z03','Z03_1','-1','','');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc, priority, status) values('RULE_175','EMPTY','RULE','Z','Z2','Z03','Z03_2','-1','B','申请表直系信息为空','21','1');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_152_2','UNHIT','RULE','Z','Z2','Z03','Z03_1','0','','');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc, priority, status) values('RULE_175','UNHIT','RULE','Z','Z2','Z03','Z03_2','0','A','','','1');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_152_4','HIT','RULE','Z','Z2','Z03','Z03_1','1','','');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc, priority, status) values('RULE_176','HIT','RULE','Z','Z2','Z03','Z03_1','1','D','申请人直系手机号码与历史库中其他联系人手机号码相同，但姓名不同','8','1');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_152_4','EMPTY','RULE','Z','Z2','Z03','Z03_1','-1','','');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc, priority, status) values('RULE_176','EMPTY','RULE','Z','Z2','Z03','Z03_1','-1','B','申请表直系信息为空','31','1');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_152_4','UNHIT','RULE','Z','Z2','Z03','Z03_1','0','','');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc, priority, status) values('RULE_176','UNHIT','RULE','Z','Z2','Z03','Z03_1','0','A','','','1');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_153_2','HIT','RULE','Z','Z2','Z03','Z03_1','1','','');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc, priority, status) values('RULE_177','HIT','RULE','Z','Z2','Z03','Z03_1','1','D','历史库中，联系人手机相同，姓名不同','9','1');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_153_2','EMPTY','RULE','Z','Z2','Z03','Z03_1','-1','','');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc, priority, status) values('RULE_177','EMPTY','RULE','Z','Z2','Z03','Z03_1','-1','B','申请表联系人信息为空','32','1');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_153_2','UNHIT','RULE','Z','Z2','Z03','Z03_1','0','','');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc, priority, status) values('RULE_177','UNHIT','RULE','Z','Z2','Z03','Z03_1','0','A','','','1');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_153_3','HIT','RULE','Z','Z2','Z03','Z03_1','1','','');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc, priority, status) values('RULE_178','HIT','RULE','Z','Z2','Z03','Z03_1','1','D','申请人的其他联系人手机号码与历史库中直系手机号码一致，但姓名不一致','10','1');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_153_3','EMPTY','RULE','Z','Z2','Z03','Z03_1','-1','','');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc, priority, status) values('RULE_178','EMPTY','RULE','Z','Z2','Z03','Z03_1','-1','B','申请表联系人信息为空','33','1');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_153_3','UNHIT','RULE','Z','Z2','Z03','Z03_1','0','','');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc, priority, status) values('RULE_178','UNHIT','RULE','Z','Z2','Z03','Z03_1','0','A','','','1');
 
---TODO RULE_154
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc, priority, status) values('RULE_179','HIT','RULE','Z','Z2','Z03','Z03_1','1','D','历史库中，直系手机号码相同，但姓名不同','6','1');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_155','HIT','RULE','Z','Z2','Z01','Z01_1','1','E','高风险');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc, priority, status) values('RULE_179','EMPTY','RULE','Z','Z2','Z03','Z03_1','-1','B','申请表直系信息为空','29','1');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_155','EMPTY','RULE','Z','Z2','Z01','Z01_1','-1','E','高风险');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc, priority, status) values('RULE_179','UNHIT','RULE','Z','Z2','Z03','Z03_1','0','A','','','1');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_155','UNHIT','RULE','Z','Z2','Z01','Z01_1','0','E','高风险');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc, priority, status) values('RULE_182','HIT','RULE','Z','Z2','Z03','Z03_4','1','B','单位名称异常','13','1');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc)values('RULE_156','HIT','RULE','Z','Z2','Z01','Z01_5','1','D','中高风险');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc, priority, status) values('RULE_182','EMPTY','RULE','Z','Z2','Z03','Z03_4','-1','B','单位名称为空','21','1');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc)values('RULE_156','EMPTY','RULE','Z','Z2','Z01','Z01_5','-1','D','中高风险');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc, priority, status) values('RULE_182','UNHIT','RULE','Z','Z2','Z03','Z03_4','0','A','','','1');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc)values('RULE_156','UNHIT','RULE','Z','Z2','Z01','Z01_5','0','D','中高风险');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc, priority, status) values('RULE_195','HIT','RULE','W','W2','W01','W01_1','1','B','申请信息中“姓名”为空','1','1');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_157','HIT','RULE','Z','Z2','Z01','Z01_1','1','','');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc, priority, status) values('RULE_195','UNHIT','RULE','W','W2','W01','W01_1','0','A','','','1');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_157','EMPTY','RULE','Z','Z2','Z01','Z01_1','-1','','');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc, priority, status) values('RULE_196','HIT','RULE','W','W2','W01','W01_2','1','B','申请信息中“姓名拼音”为空','1','1');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_157','UNHIT','RULE','Z','Z2','Z01','Z01_1','0','','');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc, priority, status) values('RULE_196','UNHIT','RULE','W','W2','W01','W01_2','0','A','','','1');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_159','HIT','RULE','Z','Z2','Z01','Z01_4','1','','');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc, priority, status) values('RULE_197','HIT','RULE','W','W2','W01','W01_3','1','B','申请信息中“证件号码”为空','1','1');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_159','EMPTY','RULE','Z','Z2','Z01','Z01_4','-1','','');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc, priority, status) values('RULE_197','UNHIT','RULE','W','W2','W01','W01_3','0','A','','','1');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_159','UNHIT','RULE','Z','Z2','Z01','Z01_4','0','','');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc, priority, status) values('RULE_198','HIT','RULE','W','W2','W01','W01_4','1','B','申请信息中“性别”与证件号码中实际性别不符','1','1');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc)values('RULE_160','HIT','RULE','Z','Z2','Z01','Z01_3','1','D','中高风险');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc, priority, status) values('RULE_198','UNHIT','RULE','W','W2','W01','W01_4','0','A','','','1');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc)values('RULE_160','EMPTY','RULE','Z','Z2','Z01','Z01_3','-1','D','中高风险');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc, priority, status) values('RULE_199','HIT','RULE','W','W2','W01','W01_5','1','B','申请信息中“出生日期”与证件号码中实际出生日期匹配','1','1');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc)values('RULE_160','UNHIT','RULE','Z','Z2','Z01','Z01_3','0','D','中高风险');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc, priority, status) values('RULE_199','UNHIT','RULE','W','W2','W01','W01_5','0','A','','','1');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc)values('RULE_162','HIT','RULE','Z','Z2','Z01','Z01_3','1','D','中高风险');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc, priority, status) values('RULE_200','HIT','RULE','W','W2','W01','W01_6','1','B','申请信息中“国家/地区”为空','1','1');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc)values('RULE_162','EMPTY','RULE','Z','Z2','Z01','Z01_3','-1','D','中高风险');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc, priority, status) values('RULE_200','UNHIT','RULE','W','W2','W01','W01_6','0','A','','','1');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc)values('RULE_162','UNHIT','RULE','Z','Z2','Z01','Z01_3','0','D','中高风险');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc, priority, status) values('RULE_201','HIT','RULE','W','W2','W01','W01_7','1','B','申请信息中“证件类别”为空','1','1');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc)values('RULE_164','HIT','RULE','Z','Z2','Z01','Z01_2','1','E','高风险');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc, priority, status) values('RULE_201','UNHIT','RULE','W','W2','W01','W01_7','0','A','','','1');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc)values('RULE_164','EMPTY','RULE','Z','Z2','Z01','Z01_2','-1','E','高风险');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc, priority, status) values('RULE_202','HIT','RULE','W','W2','W01','W01_8','1','B','申请信息中“证件签发日期”为空','1','1');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc)values('RULE_164','UNHIT','RULE','Z','Z2','Z01','Z01_2','0','E','高风险');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc, priority, status) values('RULE_202','UNHIT','RULE','W','W2','W01','W01_8','0','A','','','1');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc)values('RULE_166','HIT','RULE','Z','Z2','Z01','Z01_2','1','E','高风险');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc, priority, status) values('RULE_203','HIT','RULE','W','W2','W01','W01_9','1','B','申请信息中“证件有效期至”为空','1','1');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc)values('RULE_166','EMPTY','RULE','Z','Z2','Z01','Z01_2','-1','E','高风险');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc, priority, status) values('RULE_203','UNHIT','RULE','W','W2','W01','W01_9','0','A','','','1');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc)values('RULE_166','UNHIT','RULE','Z','Z2','Z01','Z01_2','0','E','高风险');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc, priority, status) values('RULE_204','HIT','RULE','W','W2','W01','W01_10','1','B','申请信息中“婚姻状况”为空','1','1');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_167','HIT','RULE','Z','Z2','Z01','Z01_2','1','','');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc, priority, status) values('RULE_204','UNHIT','RULE','W','W2','W01','W01_10','0','A','','','1');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_167','EMPTY','RULE','Z','Z2','Z01','Z01_2','-1','','');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc, priority, status) values('RULE_205','HIT','RULE','W','W2','W01','W01_11','1','B','申请信息中“教育程度”为空','1','1');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_167','UNHIT','RULE','Z','Z2','Z01','Z01_2','0','','');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc, priority, status) values('RULE_205','UNHIT','RULE','W','W2','W01','W01_11','0','A','','','1');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc)values('RULE_168','HIT','RULE','Z','Z2','Z01','Z01_2','1','E','中高风险');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc, priority, status) values('RULE_206','HIT','RULE','W','W2','W02','W02_1','1','B','申请信息中“手机号码”为空或长度不足','1','1');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc)values('RULE_168','EMPTY','RULE','Z','Z2','Z01','Z01_2','-1','E','中高风险');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc, priority, status) values('RULE_206','UNHIT','RULE','W','W2','W02','W02_1','0','B','','','1');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc)values('RULE_168','UNHIT','RULE','Z','Z2','Z01','Z01_2','0','E','中高风险');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc, priority, status) values('RULE_207','HIT','RULE','W','W2','W02','W02_2','1','B','申请信息中“单位电话”为空或长度不足','1','1');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_169','HIT','RULE','Z','Z2','Z01','Z01_2','1','','');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc, priority, status) values('RULE_207','UNHIT','RULE','W','W2','W02','W02_2','0','A','','','1');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_169','EMPTY','RULE','Z','Z2','Z01','Z01_2','-1','','');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc, priority, status) values('RULE_208','HIT','RULE','W','W2','W03','W03_1','1','B','申请信息中“单位地址”为空','1','1');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_169','UNHIT','RULE','Z','Z2','Z01','Z01_2','0','','');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc, priority, status) values('RULE_208','UNHIT','RULE','W','W2','W03','W03_1','0','A','','','1');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_173','HIT','RULE','Z','Z2','Z01','Z01_3','1','','');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc, priority, status) values('RULE_209','HIT','RULE','W','W2','W03','W03_2','1','B','申请信息中“住宅地址”为空','1','1');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_173','EMPTY','RULE','Z','Z2','Z01','Z01_3','-1','','');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc, priority, status) values('RULE_209','UNHIT','RULE','W','W2','W03','W03_2','0','A','','','1');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_173','UNHIT','RULE','Z','Z2','Z01','Z01_3','0','','');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc, priority, status) values('RULE_210','HIT','RULE','W','W2','W03','W03_3','1','B','申请信息中“EMAIL地址”为空或格式不正确','1','1');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_174','HIT','RULE','Z','Z2','Z01','Z01_3','1','','');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc, priority, status) values('RULE_210','UNHIT','RULE','W','W2','W03','W03_3','0','A','','','1');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_174','EMPTY','RULE','Z','Z2','Z01','Z01_3','-1','','');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc, priority, status) values('RULE_211','HIT','RULE','W','W2','W03','W03_4','1','B','申请信息中“单位邮编”为空或不是6位数字','1','1');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_174','UNHIT','RULE','Z','Z2','Z01','Z01_3','0','','');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc, priority, status) values('RULE_211','UNHIT','RULE','W','W2','W03','W03_4','0','A','','','1');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_175','HIT','RULE','Z','Z2','Z01','Z01_2','1','','');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc, priority, status) values('RULE_212','HIT','RULE','W','W2','W04','W04_1','1','B','申请信息中“直系亲属姓名”为空','1','1');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_175','EMPTY','RULE','Z','Z2','Z01','Z01_2','-1','','');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc, priority, status) values('RULE_212','UNHIT','RULE','W','W2','W04','W04_1','0','A','','','1');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_175','UNHIT','RULE','Z','Z2','Z01','Z01_2','0','','');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc, priority, status) values('RULE_213','HIT','RULE','W','W2','W04','W04_2','1','B','申请信息中“直系联系电话号码或手机号码”为空或长度不足','1','1');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_176','HIT','RULE','Z','Z2','Z01','Z01_2','1','','');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc, priority, status) values('RULE_213','UNHIT','RULE','W','W2','W04','W04_2','0','A','','','1');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_176','HIT','RULE','Z','Z2','Z01','Z01_2','-1','','');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc, priority, status) values('RULE_214','HIT','RULE','W','W2','W04','W04_3','1','B','申请信息中“其他联系人姓名”为空','1','1');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_176','HIT','RULE','Z','Z2','Z01','Z01_2','0','','');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc, priority, status) values('RULE_214','UNHIT','RULE','W','W2','W04','W04_3','0','A','','','1');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_178','HIT','RULE','Z','Z2','Z01','Z01_1','1','','');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc, priority, status) values('RULE_215','HIT','RULE','W','W2','W04','W04_4','1','B','申请信息中“其他联系电话号码或手机号码”为空或长度不足','1','1');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_178','EMPTY','RULE','Z','Z2','Z01','Z01_1','-1','','');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc, priority, status) values('RULE_215','UNHIT','RULE','W','W2','W04','W04_4','0','A','','','1');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_178','UNHIT','RULE','Z','Z2','Z01','Z01_1','0','','');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc, priority, status) values('RULE_216','HIT','RULE','W','W2','W05','W05_1','1','B','申请信息中“住宅情况”为空','1','1');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_179','HIT','RULE','Z','Z2','Z01','Z01_2','1','','');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc, priority, status) values('RULE_216','UNHIT','RULE','W','W2','W05','W05_1','0','A','','','1');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_179','EMPTY','RULE','Z','Z2','Z01','Z01_2','-1','','');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc, priority, status) values('RULE_217','HIT','RULE','W','W2','W05','W05_2','1','B','申请信息中“车辆情况”为空','1','1');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_179','UNHIT','RULE','Z','Z2','Z01','Z01_2','0','','');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc, priority, status) values('RULE_217','UNHIT','RULE','W','W2','W05','W05_2','0','A','','','1');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_182','HIT','RULE','Z','Z2','Z01','Z03_4','1','','');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc, priority, status) values('RULE_218','HIT','RULE','W','W2','W05','W05_3','1','B','申请信息中“公司名称”为空','1','1');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_182','EMPTY','RULE','Z','Z2','Z01','Z03_4','-1','','');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc, priority, status) values('RULE_218','UNHIT','RULE','W','W2','W05','W05_3','0','A','','','1');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_182','UNHIT','RULE','Z','Z2','Z01','Z03_4','0','','');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc, priority, status) values('RULE_219','HIT','RULE','W','W2','W05','W05_4','1','B','申请信息中“单位性质”为空','1','1');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_198','HIT','RULE','W','W2','W01','W01_4','1','','');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc, priority, status) values('RULE_219','UNHIT','RULE','W','W2','W05','W05_4','0','A','','','1');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_198','EMPTY','RULE','W','W2','W01','W01_4','-1','','');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc, priority, status) values('RULE_220','HIT','RULE','W','W2','W05','W05_5','1','B','申请信息中“现职年限”为空','1','1');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_198','UNHIT','RULE','W','W2','W01','W01_4','0','','');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc, priority, status) values('RULE_220','UNHIT','RULE','W','W2','W05','W05_5','0','A','','','1');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc)values('RULE_232','HIT','RULE','Z','Z2','Z01','Z01_6','1','D','中高风险');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc, priority, status) values('RULE_221','HIT','RULE','W','W2','W05','W05_6','1','B','申请信息中“当前税前年收入”为空','1','1');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc)values('RULE_232','EMPTY','RULE','Z','Z2','Z01','Z01_6','-1','D','中高风险');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc, priority, status) values('RULE_221','UNHIT','RULE','W','W2','W05','W05_6','0','A','','','1');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc)values('RULE_232','UNHIT','RULE','Z','Z2','Z01','Z01_6','0','D','中高风险');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc, priority, status) values('RULE_222','HIT','RULE','W','W2','W05','W05_7','1','B','申请信息中“邮寄地址类型”为空','1','1');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_234','HIT','RULE','Z','Z2','Z02','Z02_1','1','','');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc, priority, status) values('RULE_222','UNHIT','RULE','W','W2','W05','W05_7','0','A','','','1');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_234','UNHIT','RULE','Z','Z2','Z02','Z02_1','-1','','');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc, priority, status) values('RULE_223','HIT','RULE','W','W2','W05','W05_10','1','B','“主卡卡号”为空','1','1');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_234','EMPTY','RULE','Z','Z2','Z02','Z02_1','0','','');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc, priority, status) values('RULE_223','UNHIT','RULE','W','W2','W05','W05_10','0','A','','','1');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_236','HIT','RULE','Z','Z2','Z03','Z03_1','1','','');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc, priority, status) values('RULE_224','HIT','RULE','H','H2','H01','H01_1','1','B','申请信息中“抄录文字”为空','1','1');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_236','EMPTY','RULE','Z','Z2','Z03','Z03_1','-1','','');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc, priority, status) values('RULE_225','HIT','RULE','H','H2','H02','H02_1','1','B','申请信息中“主卡申请人签名”为空','1','1');
 
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_236','UNHIT','RULE','Z','Z2','Z03','Z03_1','0','','');
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc, priority, status) values('RULE_227','HIT','RULE','H','H2','H02','H02_3','1','B','申请信息中“附属卡申请人签名”或“主卡申请人签名及附属卡申请人(代理人)签名”为空','1','1');
+
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc, priority, status) values('RULE_228','HIT','RULE','H','H2','H03','H03_1','1','B','申请信息中“亲见签名”为空','1','1');
+
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc, priority, status) values('RULE_228','UNHIT','RULE','H','H2','H03','H03_1','0','A','','','');
+
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc, priority, status) values('RULE_233','HIT','RULE','W','W2','W05','W05_9','1','B','“附卡额度比例”为空','1','1');
+
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc, priority, status) values('RULE_233','UNHIT','RULE','W','W2','W05','W05_9','0','A','','','1');
+
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc, priority, status) values('RULE_234','HIT','RULE','Z','Z2','Z02','Z02_1','1','E','申请人命中蚂蚁风险名单','1','1');
+
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc, priority, status) values('RULE_234','UNHIT','RULE','Z','Z2','Z02','Z02_1','-1','A','申请人命中蚂蚁风险名单','1','1');
+
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc, priority, status) values('RULE_234','EMPTY','RULE','Z','Z2','Z02','Z02_1','0','D','','','1');
+
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc, priority, status) values('RULE_236','HIT','RULE','Z','Z2','Z03','Z03_1','1','D','特殊客户','2','1');
+
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc, priority, status) values('RULE_236','UNHIT','RULE','Z','Z2','Z03','Z03_1','0','A','','','1');
+
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc, priority, status) values('RULE_237','HIT','RULE','H','H2','H04','H04_1','1','E','触碰反洗钱名单','1','1');
+
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc, priority, status) values('RULE_237','UNHIT','RULE','H','H2','H04','H04_1','0','A','','','1');
+
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc, priority, status) values('RULE_238','HIT','RULE','Z','Z2','Z04','Z04_1','1','E','高风险客户(IVS)','1','1');
+
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc, priority, status) values('RULE_238','UNHIT','RULE','Z','Z2','Z04','Z04_1','0','A','','','1');
+
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc, priority, status) values('RULE_239','HIT','RULE','Z','Z2','Z03','Z03_1','1','D','VIP客户','1','1');
+
+insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc, priority, status) values('RULE_239','UNHIT','RULE','Z','Z2','Z03','Z03_1','0','A','','','1');
 
 commit;
-/*
-
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_PBOC_4_3','EMPTY','RULE','Z','Z2','Z03','Z03_4','NULL','NULL');
-
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_PBOC_4_3','HIT','RULE','Z','Z2','Z03','Z03_4','','');
-
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_PBOC_4_4','EMPTY','RULE','Z','Z2','Z03','Z03_4','NULL','NULL');
-
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_PBOC_4_4','HIT','RULE','Z','Z2','Z03','Z03_4','','');
-
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_PBOC_4_5','EMPTY','RULE','Z','Z2','Z03','Z03_4','NULL','NULL');
-
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_PBOC_4_5','HIT','RULE','Z','Z2','Z03','Z03_4','','');
-
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_PBOC_9_1','EMPTY','RULE','Z','Z2','Z03','Z03_3','NULL','NULL');
-
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_PBOC_9_1','HIT','RULE','Z','Z2','Z03','Z03_3','','');
-
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_PBOC_12','EMPTY','RULE','Z','Z2','Z03','Z03_3','NULL','NULL');
-
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_PBOC_12','HIT','RULE','Z','Z2','Z03','Z03_3','','');
-
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_PBOC_18','EMPTY','RULE','Z','Z2','Z03','Z03_2','NULL','NULL');
-
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_PBOC_18','HIT','RULE','Z','Z2','Z03','Z03_2','','');
-
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_PBOC_19','EMPTY','RULE','Z','Z2','Z03','Z03_2','NULL','NULL');
-
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_PBOC_19','HIT','RULE','Z','Z2','Z03','Z03_2','','');
-
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_PBOC_20','EMPTY','RULE','Z','Z2','Z03','Z03_2','NULL','NULL');
-
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_PBOC_20','HIT','RULE','Z','Z2','Z03','Z03_2','','');
-
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_PBOC_22','EMPTY','RULE','Z','Z2','Z03','Z03_2','NULL','NULL');
-
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_PBOC_22','HIT','RULE','Z','Z2','Z03','Z03_2','','');
-
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_PBOC_25','EMPTY','RULE','Z','Z2','Z03','Z03_2','NULL','NULL');
-
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_PBOC_25','HIT','RULE','Z','Z2','Z03','Z03_2','','');
-
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_PBOC_27','EMPTY','RULE','Z','Z2','Z03','Z03_2','NULL','NULL');
-
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_PBOC_27','HIT','RULE','Z','Z2','Z03','Z03_2','','');
-
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_PBOC_28','EMPTY','RULE','Z','Z2','Z03','Z03_2','NULL','NULL');
-
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_PBOC_28','HIT','RULE','Z','Z2','Z03','Z03_2','','');
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_PBOC_29','EMPTY','RULE','Z','Z2','Z03','Z03_2','NULL','NULL');
-
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_PBOC_29','HIT','RULE','Z','Z2','Z03','Z03_2','','');
-
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_PBOC_30','EMPTY','RULE','Z','Z2','Z03','Z03_2','NULL','NULL');
-
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_PBOC_30','HIT','RULE','Z','Z2','Z03','Z03_2','','');
-
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_PBOC_31','EMPTY','RULE','Z','Z2','Z03','Z03_2','NULL','NULL');
-
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_PBOC_31','HIT','RULE','Z','Z2','Z03','Z03_2','','');
-
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_PBOC_33','EMPTY','RULE','Z','Z2','Z03','Z03_2','NULL','NULL');
-
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_PBOC_33','HIT','RULE','Z','Z2','Z03','Z03_2','','');
-
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_PBOC_34','EMPTY','RULE','Z','Z2','Z03','Z03_2','NULL','NULL');
-
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_PBOC_34','HIT','RULE','Z','Z2','Z03','Z03_2','','');
-
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_PBOC_35','EMPTY','RULE','Z','Z2','Z03','Z03_2','NULL','NULL');
-
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_PBOC_35','HIT','RULE','Z','Z2','Z03','Z03_2','','');
-
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_PBOC_36','EMPTY','RULE','Z','Z2','Z03','Z03_2','NULL','NULL');
-
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_PBOC_36','HIT','RULE','Z','Z2','Z03','Z03_2','','');
-
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_PBOC_48','EMPTY','RULE','Z','Z2','Z03','Z03_1','NULL','NULL');
-
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_PBOC_48','HIT','RULE','Z','Z2','Z03','Z03_1','','');
-
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_PBOC_49','EMPTY','RULE','Z','Z2','Z03','Z03_1','NULL','NULL');
-
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_PBOC_49','HIT','RULE','Z','Z2','Z03','Z03_1','','');
-
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_PBOC_50','EMPTY','RULE','Z','Z2','Z03','Z03_1','NULL','NULL');
-
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_PBOC_50','HIT','RULE','Z','Z2','Z03','Z03_1','','');
-
---riskcategory Value of the unknown
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_PBOC_52','EMPTY','RULE','Z','Z2','Z03','','NULL','NULL');
-
---riskcategory Value of the unknown
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_PBOC_52','HIT','RULE','Z','Z2','Z03','','','');
-
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_86','HIT','RULE','Z','Z2','Z01','Z01_2','','');
-
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_96','HIT','RULE','Z','Z2','Z03','Z03_1','','');
-
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_114','HIT','RULE','Z','Z2','Z03','Z03_3','','');
-
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_118','HIT','RULE','Z','Z2','Z03','Z03_2','','');
-
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_PBOC_139','EMPTY','RULE','Z','Z2','Z03','Z03_1','NULL','NULL');
-
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_PBOC_139','HIT','RULE','Z','Z2','Z03','Z03_1','','');
-
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_PBOC_140','EMPTY','RULE','Z','Z2','Z03','Z03_1','NULL','NULL');
-
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_PBOC_140','HIT','RULE','Z','Z2','Z03','Z03_1','','');
-
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_PBOC_141','EMPTY','RULE','Z','Z2','Z03','Z03_1','NULL','NULL');
-
-insert into af_risk_level_settings(ruleno, result_type, type, class, riskno, risktype, riskcategory, riskvalue, riskcode, riskdesc) values('RULE_PBOC_141','HIT','RULE','Z','Z2','Z03','Z03_1','','');
-
-*/
 
 -----------------------------------------------------------------------------------------
 -- DDL comment: create index

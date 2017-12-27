@@ -52,7 +52,7 @@ public class HxbDao {
 		mapper.deleteModelVarInputByAppid(appId);
 	}
 
-	public List<Map<String, Object>>  selectModelInputParams(SqlSession sqlSession){
+	public List<Map<String, Object>> selectModelInputParams(SqlSession sqlSession){
 		HxbMapper mapper = sqlSession.getMapper(HxbMapper.class);
 		return mapper.selectModelInputParams();
 	}
@@ -88,18 +88,28 @@ public class HxbDao {
 	}
 
 	public List<Object>  selectAfriskwarning(SqlSession sqlSession,String appId){
-		HxbMapper mapper = sqlSession.getMapper(HxbMapper.class);
-		return mapper.selectAfriskwarning(appId);
-	}
+        HxbMapper mapper = sqlSession.getMapper(HxbMapper.class);
+        return mapper.selectAfriskwarning(appId);
+    }
+
+    public List<Object>  selectAfriskwarningForBlack(SqlSession sqlSession,String appId){
+        HxbMapper mapper = sqlSession.getMapper(HxbMapper.class);
+        return mapper.selectAfriskwarningForBlack(appId);
+    }
 
 	public void deleteAfsummaryByAppid(SqlSession sqlSession,String appId){
 		HxbMapper mapper = sqlSession.getMapper(HxbMapper.class);
 		mapper.deleteAfsummaryByAppid(appId);
 	}
 
-	public void deleteAfriskwarningByAppid(SqlSession sqlSession,String appId){
+	public void deletePartWarningByAppid(SqlSession sqlSession,String appId){
 		HxbMapper mapper = sqlSession.getMapper(HxbMapper.class);
-		mapper.deleteAfriskwarningByAppid(appId);
+		mapper.deletePartWarningByAppid(appId);
+	}
+
+	public void deleteAllWarningByAppid(SqlSession sqlSession,String appId){
+		HxbMapper mapper = sqlSession.getMapper(HxbMapper.class);
+		mapper.deleteAllWarningByAppid(appId);
 	}
 
     public void saveAddMCInfos(SqlSession sqlSession,List<Map<String, Object>> list){
@@ -136,5 +146,10 @@ public class HxbDao {
 		HxbMapper mapper = sqlSession.getMapper(HxbMapper.class);
 		mapper.deleteCmpMCHisInfosByAppid(appId);
 	}
+
+    public List<Map<String, Object>> queryAppinfoByAppId(SqlSession sqlSession,String appId){
+        HxbMapper mapper = sqlSession.getMapper(HxbMapper.class);
+        return mapper.queryAppinfoByAppId(appId);
+    }
 	
 }

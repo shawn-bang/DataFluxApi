@@ -11,6 +11,16 @@
   <servlet-name>CCAFServlet</servlet-name>
   <url-pattern>/HXBApiEntrance</url-pattern>
   </servlet-mapping>
+
+  <servlet>
+    <servlet-name>TestServlet</servlet-name>
+    <servlet-class>api.action.TestServlet</servlet-class>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>TestServlet</servlet-name>
+    <url-pattern>/GetJsonByAppId</url-pattern>
+  </servlet-mapping>
   
   <session-config>
     <session-timeout>30</session-timeout>

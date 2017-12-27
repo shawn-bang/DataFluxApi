@@ -26,7 +26,7 @@ public class DMService_ServiceLocator extends org.apache.axis.client.Service imp
     }
 
     // Use to get a proxy class for DMService
-    private String DMService_address = "http://fna:21036";
+    private String DMService_address = "http://fqzcapp1:21036";
 
     public String getDMServiceAddress() {
         return DMService_address;

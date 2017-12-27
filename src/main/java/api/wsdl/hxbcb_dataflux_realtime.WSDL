@@ -1,0 +1,296 @@
+<?xml version="1.0"?>
+<definitions name="DMService"
+        targetNamespace="http://archserver.wsdl.dataflux.com"
+        xmlns:tns="http://archserver.wsdl.dataflux.com"
+        xmlns:archxsd="archserver.xsd.dataflux.com"
+
+ xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/"
+ xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+ xmlns:SOAP="http://schemas.xmlsoap.org/wsdl/soap/"
+ xmlns:MIME="http://schemas.xmlsoap.org/wsdl/mime/"
+ xmlns:DIME="http://schemas.xmlsoap.org/ws/2002/04/dime/wsdl/"
+ xmlns:WSDL="http://schemas.xmlsoap.org/wsdl/"
+ xmlns="http://schemas.xmlsoap.org/wsdl/">
+
+<types>
+ <schema
+        targetNamespace="archserver.xsd.dataflux.com"
+        xmlns:tns="archserver.xsd.dataflux.com"
+        xmlns="http://www.w3.org/2001/XMLSchema"
+        elementFormDefault="unqualified"
+        attributeFormDefault="unqualified">
+
+  <complexType name="row__in">
+   <sequence>
+    <element name="app_id">
+     <simpleType>
+      <restriction base="string">
+       <maxLength value="20"/>
+      </restriction>
+     </simpleType>
+    </element>
+    <element name="entity_type">
+     <simpleType>
+      <restriction base="string">
+       <maxLength value="10"/>
+      </restriction>
+     </simpleType>
+    </element>
+    <element name="data_type">
+     <simpleType>
+      <restriction base="string">
+       <maxLength value="50"/>
+      </restriction>
+     </simpleType>
+    </element>
+    <element name="data_value">
+     <simpleType>
+      <restriction base="string">
+       <maxLength value="255"/>
+      </restriction>
+     </simpleType>
+    </element>
+    <element name="data_source">
+     <simpleType>
+      <restriction base="string">
+       <maxLength value="32"/>
+      </restriction>
+     </simpleType>
+    </element>
+   </sequence>
+  </complexType>
+
+  <complexType name="table__in">
+   <sequence>
+    <element name="row" type="tns:row__in" minOccurs="1" maxOccurs="unbounded"/>
+   </sequence>
+  </complexType>
+
+
+  <complexType name="row__out">
+   <sequence>
+    <element name="app_id">
+     <simpleType>
+      <restriction base="string">
+       <maxLength value="20"/>
+      </restriction>
+     </simpleType>
+    </element>
+    <element name="entity_type">
+     <simpleType>
+      <restriction base="string">
+       <maxLength value="10"/>
+      </restriction>
+     </simpleType>
+    </element>
+    <element name="data_type">
+     <simpleType>
+      <restriction base="string">
+       <maxLength value="50"/>
+      </restriction>
+     </simpleType>
+    </element>
+    <element name="data_value">
+     <simpleType>
+      <restriction base="string">
+       <maxLength value="255"/>
+      </restriction>
+     </simpleType>
+    </element>
+    <element name="data_source">
+     <simpleType>
+      <restriction base="string">
+       <maxLength value="32"/>
+      </restriction>
+     </simpleType>
+    </element>
+    <element name="ProvinceMC">
+     <simpleType>
+      <restriction base="string">
+       <maxLength value="892"/>
+      </restriction>
+     </simpleType>
+    </element>
+    <element name="CityMC">
+     <simpleType>
+      <restriction base="string">
+       <maxLength value="892"/>
+      </restriction>
+     </simpleType>
+    </element>
+    <element name="DistrictMC">
+     <simpleType>
+      <restriction base="string">
+       <maxLength value="892"/>
+      </restriction>
+     </simpleType>
+    </element>
+    <element name="TownMC">
+     <simpleType>
+      <restriction base="string">
+       <maxLength value="892"/>
+      </restriction>
+     </simpleType>
+    </element>
+    <element name="StreetMC">
+     <simpleType>
+      <restriction base="string">
+       <maxLength value="892"/>
+      </restriction>
+     </simpleType>
+    </element>
+    <element name="BlockMC">
+     <simpleType>
+      <restriction base="string">
+       <maxLength value="892"/>
+      </restriction>
+     </simpleType>
+    </element>
+    <element name="BuildingMC">
+     <simpleType>
+      <restriction base="string">
+       <maxLength value="892"/>
+      </restriction>
+     </simpleType>
+    </element>
+    <element name="UnitMC">
+     <simpleType>
+      <restriction base="string">
+       <maxLength value="892"/>
+      </restriction>
+     </simpleType>
+    </element>
+    <element name="FloorMC">
+     <simpleType>
+      <restriction base="string">
+       <maxLength value="892"/>
+      </restriction>
+     </simpleType>
+    </element>
+    <element name="RoomMC">
+     <simpleType>
+      <restriction base="string">
+       <maxLength value="892"/>
+      </restriction>
+     </simpleType>
+    </element>
+    <element name="AddInfoMC">
+     <simpleType>
+      <restriction base="string">
+       <maxLength value="892"/>
+      </restriction>
+     </simpleType>
+    </element>
+    <element name="City">
+     <simpleType>
+      <restriction base="string">
+       <maxLength value="256"/>
+      </restriction>
+     </simpleType>
+    </element>
+    <element name="NameMC">
+     <simpleType>
+      <restriction base="string">
+       <maxLength value="400"/>
+      </restriction>
+     </simpleType>
+    </element>
+    <element name="LegalFormMC">
+     <simpleType>
+      <restriction base="string">
+       <maxLength value="400"/>
+      </restriction>
+     </simpleType>
+    </element>
+    <element name="SiteMC">
+     <simpleType>
+      <restriction base="string">
+       <maxLength value="400"/>
+      </restriction>
+     </simpleType>
+    </element>
+    <element name="AddMC">
+     <simpleType>
+      <restriction base="string">
+       <maxLength value="400"/>
+      </restriction>
+     </simpleType>
+    </element>
+    <element name="cid">
+     <annotation>
+      <documentation>integer</documentation>
+     </annotation>
+     <simpleType>
+      <restriction base="string">
+      </restriction>
+     </simpleType>
+    </element>
+   </sequence>
+  </complexType>
+
+  <complexType name="table__out">
+   <sequence>
+    <element name="row" type="tns:row__out" minOccurs="1" maxOccurs="unbounded"/>
+   </sequence>
+  </complexType>
+
+
+  <complexType name="request">
+    <sequence>
+    <element name="table_" type="tns:table__in" minOccurs="0" maxOccurs="1"/>
+   </sequence>
+  </complexType>
+  <element name="datasvc_hxbcb__dataflux__realtime.ddf_in" type="tns:request"/>
+
+  <complexType name="response">
+    <sequence>
+    <element name="table_" type="tns:table__out" minOccurs="0" maxOccurs="1"/>
+   </sequence>
+  </complexType>
+  <element name="datasvc_hxbcb__dataflux__realtime.ddf_out" type="tns:response"/>
+
+ </schema>
+</types>
+
+
+<message name="datasvc_hxbcb__dataflux__realtime.ddf_in">
+ <part name="body" element="archxsd:datasvc_hxbcb__dataflux__realtime.ddf_in"/>
+</message>
+<message name="datasvc_hxbcb__dataflux__realtime.ddf_out">
+ <part name="body" element="archxsd:datasvc_hxbcb__dataflux__realtime.ddf_out"/>
+</message>
+
+
+<portType name="DataManagementServicePortType">
+ <operation name="datasvc_hxbcb__dataflux__realtime.ddf_in">
+  <documentation></documentation>
+  <input message="tns:datasvc_hxbcb__dataflux__realtime.ddf_in"/>
+  <output message="tns:datasvc_hxbcb__dataflux__realtime.ddf_out"/>
+ </operation>
+</portType>
+
+
+<binding name="DataManagementService" type="tns:DataManagementServicePortType">
+ <SOAP:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+ <operation name="datasvc_hxbcb__dataflux__realtime.ddf_in">
+  <SOAP:operation soapAction="hxbcb_dataflux_realtime.ddf*1*5A335E3CAAE5069F"/>
+  <input>
+   <SOAP:body use="literal"/>
+  </input>
+  <output>
+   <SOAP:body use="literal"/>
+  </output>
+ </operation>
+</binding>
+
+
+<service name="DMService">
+ <documentation>Data Management Server</documentation>
+ <port name="DMService" binding="tns:DataManagementService">
+  <SOAP:address location="http://fqzcapp1:21036"/>
+ </port>
+</service>
+
+</definitions>

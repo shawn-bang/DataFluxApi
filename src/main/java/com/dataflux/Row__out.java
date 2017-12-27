@@ -18,19 +18,6 @@ public class Row__out  implements java.io.Serializable {
 
     private String data_source;
 
-    /* integer */
-    private String cid;
-
-    private String nameMC;
-
-    private String legalFormMC;
-
-    private String siteMC;
-
-    private String addMC;
-
-    private String city;
-
     private String provinceMC;
 
     private String cityMC;
@@ -53,6 +40,21 @@ public class Row__out  implements java.io.Serializable {
 
     private String addInfoMC;
 
+    private String city;
+
+    private String nameMC;
+
+    private String legalFormMC;
+
+    private String siteMC;
+
+    private String addMC;
+
+    /* integer */
+    private String cid;
+
+    private String datavalueMC;
+
     public Row__out() {
     }
 
@@ -62,12 +64,6 @@ public class Row__out  implements java.io.Serializable {
            String data_type,
            String data_value,
            String data_source,
-           String cid,
-           String nameMC,
-           String legalFormMC,
-           String siteMC,
-           String addMC,
-           String city,
            String provinceMC,
            String cityMC,
            String districtMC,
@@ -78,18 +74,19 @@ public class Row__out  implements java.io.Serializable {
            String unitMC,
            String floorMC,
            String roomMC,
-           String addInfoMC) {
+           String addInfoMC,
+           String city,
+           String nameMC,
+           String legalFormMC,
+           String siteMC,
+           String addMC,
+           String cid,
+           String datavalueMC) {
            this.app_id = app_id;
            this.entity_type = entity_type;
            this.data_type = data_type;
            this.data_value = data_value;
            this.data_source = data_source;
-           this.cid = cid;
-           this.nameMC = nameMC;
-           this.legalFormMC = legalFormMC;
-           this.siteMC = siteMC;
-           this.addMC = addMC;
-           this.city = city;
            this.provinceMC = provinceMC;
            this.cityMC = cityMC;
            this.districtMC = districtMC;
@@ -101,6 +98,13 @@ public class Row__out  implements java.io.Serializable {
            this.floorMC = floorMC;
            this.roomMC = roomMC;
            this.addInfoMC = addInfoMC;
+           this.city = city;
+           this.nameMC = nameMC;
+           this.legalFormMC = legalFormMC;
+           this.siteMC = siteMC;
+           this.addMC = addMC;
+           this.cid = cid;
+           this.datavalueMC = datavalueMC;
     }
 
 
@@ -201,126 +205,6 @@ public class Row__out  implements java.io.Serializable {
      */
     public void setData_source(String data_source) {
         this.data_source = data_source;
-    }
-
-
-    /**
-     * Gets the cid value for this Row__out.
-     * 
-     * @return cid   * integer
-     */
-    public String getCid() {
-        return cid;
-    }
-
-
-    /**
-     * Sets the cid value for this Row__out.
-     * 
-     * @param cid   * integer
-     */
-    public void setCid(String cid) {
-        this.cid = cid;
-    }
-
-
-    /**
-     * Gets the nameMC value for this Row__out.
-     * 
-     * @return nameMC
-     */
-    public String getNameMC() {
-        return nameMC;
-    }
-
-
-    /**
-     * Sets the nameMC value for this Row__out.
-     * 
-     * @param nameMC
-     */
-    public void setNameMC(String nameMC) {
-        this.nameMC = nameMC;
-    }
-
-
-    /**
-     * Gets the legalFormMC value for this Row__out.
-     * 
-     * @return legalFormMC
-     */
-    public String getLegalFormMC() {
-        return legalFormMC;
-    }
-
-
-    /**
-     * Sets the legalFormMC value for this Row__out.
-     * 
-     * @param legalFormMC
-     */
-    public void setLegalFormMC(String legalFormMC) {
-        this.legalFormMC = legalFormMC;
-    }
-
-
-    /**
-     * Gets the siteMC value for this Row__out.
-     * 
-     * @return siteMC
-     */
-    public String getSiteMC() {
-        return siteMC;
-    }
-
-
-    /**
-     * Sets the siteMC value for this Row__out.
-     * 
-     * @param siteMC
-     */
-    public void setSiteMC(String siteMC) {
-        this.siteMC = siteMC;
-    }
-
-
-    /**
-     * Gets the addMC value for this Row__out.
-     * 
-     * @return addMC
-     */
-    public String getAddMC() {
-        return addMC;
-    }
-
-
-    /**
-     * Sets the addMC value for this Row__out.
-     * 
-     * @param addMC
-     */
-    public void setAddMC(String addMC) {
-        this.addMC = addMC;
-    }
-
-
-    /**
-     * Gets the city value for this Row__out.
-     * 
-     * @return city
-     */
-    public String getCity() {
-        return city;
-    }
-
-
-    /**
-     * Sets the city value for this Row__out.
-     * 
-     * @param city
-     */
-    public void setCity(String city) {
-        this.city = city;
     }
 
 
@@ -543,6 +427,146 @@ public class Row__out  implements java.io.Serializable {
         this.addInfoMC = addInfoMC;
     }
 
+
+    /**
+     * Gets the city value for this Row__out.
+     * 
+     * @return city
+     */
+    public String getCity() {
+        return city;
+    }
+
+
+    /**
+     * Sets the city value for this Row__out.
+     * 
+     * @param city
+     */
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+
+    /**
+     * Gets the nameMC value for this Row__out.
+     * 
+     * @return nameMC
+     */
+    public String getNameMC() {
+        return nameMC;
+    }
+
+
+    /**
+     * Sets the nameMC value for this Row__out.
+     * 
+     * @param nameMC
+     */
+    public void setNameMC(String nameMC) {
+        this.nameMC = nameMC;
+    }
+
+
+    /**
+     * Gets the legalFormMC value for this Row__out.
+     * 
+     * @return legalFormMC
+     */
+    public String getLegalFormMC() {
+        return legalFormMC;
+    }
+
+
+    /**
+     * Sets the legalFormMC value for this Row__out.
+     * 
+     * @param legalFormMC
+     */
+    public void setLegalFormMC(String legalFormMC) {
+        this.legalFormMC = legalFormMC;
+    }
+
+
+    /**
+     * Gets the siteMC value for this Row__out.
+     * 
+     * @return siteMC
+     */
+    public String getSiteMC() {
+        return siteMC;
+    }
+
+
+    /**
+     * Sets the siteMC value for this Row__out.
+     * 
+     * @param siteMC
+     */
+    public void setSiteMC(String siteMC) {
+        this.siteMC = siteMC;
+    }
+
+
+    /**
+     * Gets the addMC value for this Row__out.
+     * 
+     * @return addMC
+     */
+    public String getAddMC() {
+        return addMC;
+    }
+
+
+    /**
+     * Sets the addMC value for this Row__out.
+     * 
+     * @param addMC
+     */
+    public void setAddMC(String addMC) {
+        this.addMC = addMC;
+    }
+
+
+    /**
+     * Gets the cid value for this Row__out.
+     * 
+     * @return cid   * integer
+     */
+    public String getCid() {
+        return cid;
+    }
+
+
+    /**
+     * Sets the cid value for this Row__out.
+     * 
+     * @param cid   * integer
+     */
+    public void setCid(String cid) {
+        this.cid = cid;
+    }
+
+
+    /**
+     * Gets the datavalueMC value for this Row__out.
+     * 
+     * @return datavalueMC
+     */
+    public String getDatavalueMC() {
+        return datavalueMC;
+    }
+
+
+    /**
+     * Sets the datavalueMC value for this Row__out.
+     * 
+     * @param datavalueMC
+     */
+    public void setDatavalueMC(String datavalueMC) {
+        this.datavalueMC = datavalueMC;
+    }
+
     private Object __equalsCalc = null;
     public synchronized boolean equals(Object obj) {
         if (!(obj instanceof Row__out)) return false;
@@ -570,24 +594,6 @@ public class Row__out  implements java.io.Serializable {
             ((this.data_source==null && other.getData_source()==null) || 
              (this.data_source!=null &&
               this.data_source.equals(other.getData_source()))) &&
-            ((this.cid==null && other.getCid()==null) || 
-             (this.cid!=null &&
-              this.cid.equals(other.getCid()))) &&
-            ((this.nameMC==null && other.getNameMC()==null) || 
-             (this.nameMC!=null &&
-              this.nameMC.equals(other.getNameMC()))) &&
-            ((this.legalFormMC==null && other.getLegalFormMC()==null) || 
-             (this.legalFormMC!=null &&
-              this.legalFormMC.equals(other.getLegalFormMC()))) &&
-            ((this.siteMC==null && other.getSiteMC()==null) || 
-             (this.siteMC!=null &&
-              this.siteMC.equals(other.getSiteMC()))) &&
-            ((this.addMC==null && other.getAddMC()==null) || 
-             (this.addMC!=null &&
-              this.addMC.equals(other.getAddMC()))) &&
-            ((this.city==null && other.getCity()==null) || 
-             (this.city!=null &&
-              this.city.equals(other.getCity()))) &&
             ((this.provinceMC==null && other.getProvinceMC()==null) || 
              (this.provinceMC!=null &&
               this.provinceMC.equals(other.getProvinceMC()))) &&
@@ -620,7 +626,28 @@ public class Row__out  implements java.io.Serializable {
               this.roomMC.equals(other.getRoomMC()))) &&
             ((this.addInfoMC==null && other.getAddInfoMC()==null) || 
              (this.addInfoMC!=null &&
-              this.addInfoMC.equals(other.getAddInfoMC())));
+              this.addInfoMC.equals(other.getAddInfoMC()))) &&
+            ((this.city==null && other.getCity()==null) || 
+             (this.city!=null &&
+              this.city.equals(other.getCity()))) &&
+            ((this.nameMC==null && other.getNameMC()==null) || 
+             (this.nameMC!=null &&
+              this.nameMC.equals(other.getNameMC()))) &&
+            ((this.legalFormMC==null && other.getLegalFormMC()==null) || 
+             (this.legalFormMC!=null &&
+              this.legalFormMC.equals(other.getLegalFormMC()))) &&
+            ((this.siteMC==null && other.getSiteMC()==null) || 
+             (this.siteMC!=null &&
+              this.siteMC.equals(other.getSiteMC()))) &&
+            ((this.addMC==null && other.getAddMC()==null) || 
+             (this.addMC!=null &&
+              this.addMC.equals(other.getAddMC()))) &&
+            ((this.cid==null && other.getCid()==null) || 
+             (this.cid!=null &&
+              this.cid.equals(other.getCid()))) &&
+            ((this.datavalueMC==null && other.getDatavalueMC()==null) || 
+             (this.datavalueMC!=null &&
+              this.datavalueMC.equals(other.getDatavalueMC())));
         __equalsCalc = null;
         return _equals;
     }
@@ -646,24 +673,6 @@ public class Row__out  implements java.io.Serializable {
         }
         if (getData_source() != null) {
             _hashCode += getData_source().hashCode();
-        }
-        if (getCid() != null) {
-            _hashCode += getCid().hashCode();
-        }
-        if (getNameMC() != null) {
-            _hashCode += getNameMC().hashCode();
-        }
-        if (getLegalFormMC() != null) {
-            _hashCode += getLegalFormMC().hashCode();
-        }
-        if (getSiteMC() != null) {
-            _hashCode += getSiteMC().hashCode();
-        }
-        if (getAddMC() != null) {
-            _hashCode += getAddMC().hashCode();
-        }
-        if (getCity() != null) {
-            _hashCode += getCity().hashCode();
         }
         if (getProvinceMC() != null) {
             _hashCode += getProvinceMC().hashCode();
@@ -697,6 +706,27 @@ public class Row__out  implements java.io.Serializable {
         }
         if (getAddInfoMC() != null) {
             _hashCode += getAddInfoMC().hashCode();
+        }
+        if (getCity() != null) {
+            _hashCode += getCity().hashCode();
+        }
+        if (getNameMC() != null) {
+            _hashCode += getNameMC().hashCode();
+        }
+        if (getLegalFormMC() != null) {
+            _hashCode += getLegalFormMC().hashCode();
+        }
+        if (getSiteMC() != null) {
+            _hashCode += getSiteMC().hashCode();
+        }
+        if (getAddMC() != null) {
+            _hashCode += getAddMC().hashCode();
+        }
+        if (getCid() != null) {
+            _hashCode += getCid().hashCode();
+        }
+        if (getDatavalueMC() != null) {
+            _hashCode += getDatavalueMC().hashCode();
         }
         __hashCodeCalc = false;
         return _hashCode;
@@ -735,42 +765,6 @@ public class Row__out  implements java.io.Serializable {
         elemField = new org.apache.axis.description.ElementDesc();
         elemField.setFieldName("data_source");
         elemField.setXmlName(new javax.xml.namespace.QName("", "data_source"));
-        elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
-        elemField.setNillable(false);
-        typeDesc.addFieldDesc(elemField);
-        elemField = new org.apache.axis.description.ElementDesc();
-        elemField.setFieldName("cid");
-        elemField.setXmlName(new javax.xml.namespace.QName("", "cid"));
-        elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
-        elemField.setNillable(false);
-        typeDesc.addFieldDesc(elemField);
-        elemField = new org.apache.axis.description.ElementDesc();
-        elemField.setFieldName("nameMC");
-        elemField.setXmlName(new javax.xml.namespace.QName("", "NameMC"));
-        elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
-        elemField.setNillable(false);
-        typeDesc.addFieldDesc(elemField);
-        elemField = new org.apache.axis.description.ElementDesc();
-        elemField.setFieldName("legalFormMC");
-        elemField.setXmlName(new javax.xml.namespace.QName("", "LegalFormMC"));
-        elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
-        elemField.setNillable(false);
-        typeDesc.addFieldDesc(elemField);
-        elemField = new org.apache.axis.description.ElementDesc();
-        elemField.setFieldName("siteMC");
-        elemField.setXmlName(new javax.xml.namespace.QName("", "SiteMC"));
-        elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
-        elemField.setNillable(false);
-        typeDesc.addFieldDesc(elemField);
-        elemField = new org.apache.axis.description.ElementDesc();
-        elemField.setFieldName("addMC");
-        elemField.setXmlName(new javax.xml.namespace.QName("", "AddMC"));
-        elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
-        elemField.setNillable(false);
-        typeDesc.addFieldDesc(elemField);
-        elemField = new org.apache.axis.description.ElementDesc();
-        elemField.setFieldName("city");
-        elemField.setXmlName(new javax.xml.namespace.QName("", "City"));
         elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
         elemField.setNillable(false);
         typeDesc.addFieldDesc(elemField);
@@ -837,6 +831,48 @@ public class Row__out  implements java.io.Serializable {
         elemField = new org.apache.axis.description.ElementDesc();
         elemField.setFieldName("addInfoMC");
         elemField.setXmlName(new javax.xml.namespace.QName("", "AddInfoMC"));
+        elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
+        elemField.setNillable(false);
+        typeDesc.addFieldDesc(elemField);
+        elemField = new org.apache.axis.description.ElementDesc();
+        elemField.setFieldName("city");
+        elemField.setXmlName(new javax.xml.namespace.QName("", "City"));
+        elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
+        elemField.setNillable(false);
+        typeDesc.addFieldDesc(elemField);
+        elemField = new org.apache.axis.description.ElementDesc();
+        elemField.setFieldName("nameMC");
+        elemField.setXmlName(new javax.xml.namespace.QName("", "NameMC"));
+        elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
+        elemField.setNillable(false);
+        typeDesc.addFieldDesc(elemField);
+        elemField = new org.apache.axis.description.ElementDesc();
+        elemField.setFieldName("legalFormMC");
+        elemField.setXmlName(new javax.xml.namespace.QName("", "LegalFormMC"));
+        elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
+        elemField.setNillable(false);
+        typeDesc.addFieldDesc(elemField);
+        elemField = new org.apache.axis.description.ElementDesc();
+        elemField.setFieldName("siteMC");
+        elemField.setXmlName(new javax.xml.namespace.QName("", "SiteMC"));
+        elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
+        elemField.setNillable(false);
+        typeDesc.addFieldDesc(elemField);
+        elemField = new org.apache.axis.description.ElementDesc();
+        elemField.setFieldName("addMC");
+        elemField.setXmlName(new javax.xml.namespace.QName("", "AddMC"));
+        elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
+        elemField.setNillable(false);
+        typeDesc.addFieldDesc(elemField);
+        elemField = new org.apache.axis.description.ElementDesc();
+        elemField.setFieldName("cid");
+        elemField.setXmlName(new javax.xml.namespace.QName("", "cid"));
+        elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
+        elemField.setNillable(false);
+        typeDesc.addFieldDesc(elemField);
+        elemField = new org.apache.axis.description.ElementDesc();
+        elemField.setFieldName("datavalueMC");
+        elemField.setXmlName(new javax.xml.namespace.QName("", "datavalueMC"));
         elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
         elemField.setNillable(false);
         typeDesc.addFieldDesc(elemField);

@@ -2,6 +2,6 @@ package api.constants;
 
 public enum AppReqNumEnum {
 
-    AF001,AF002
+    AF1001,AF1002
 
 }

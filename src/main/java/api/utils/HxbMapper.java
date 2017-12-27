@@ -19,8 +19,10 @@ public interface HxbMapper {
 	void deleteSNAInputByAppid(String appId);
 	List<Object> selectAfsummary(String appId);
 	List<Object> selectAfriskwarning(String appId);
+    List<Object> selectAfriskwarningForBlack(String appId);
 	void deleteAfsummaryByAppid(String appId);
-	void deleteAfriskwarningByAppid(String appId);
+	void deletePartWarningByAppid(String appId);
+    void deleteAllWarningByAppid(String appId);
 	void saveAddMCInfos(List<Map<String, Object>> list);
 	void saveCmpMCInfos(List<Map<String, Object>> list);
 	void deleteAddMCInfosByAppid(String appId);
@@ -28,5 +30,9 @@ public interface HxbMapper {
 	void deleteAddMCExtHisInfosByAppid(String appId);
 	void deleteCmpMCInfosByAppid(String appId);
 	void deleteCmpMCHisInfosByAppid(String appId);
+
+    //---------------------------------------------------------
+    List<Map<String, Object>> queryAppinfoByAppId(String appId);
+
 
 }
