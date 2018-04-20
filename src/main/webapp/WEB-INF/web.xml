@@ -21,7 +21,20 @@
     <servlet-name>TestServlet</servlet-name>
     <url-pattern>/GetJsonByAppId</url-pattern>
   </servlet-mapping>
-  
+
+  <!-- XFire servlet -->
+  <servlet>
+    <servlet-name>XFireServlet</servlet-name>
+    <servlet-class>
+      org.codehaus.xfire.transport.http.XFireConfigurableServlet
+    </servlet-class>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>XFireServlet</servlet-name>
+    <url-pattern>/XFire/service/*</url-pattern>
+  </servlet-mapping>
+
   <session-config>
     <session-timeout>30</session-timeout>
  </session-config>
